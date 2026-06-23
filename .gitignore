@@ -1,0 +1,18 @@
+# Node / Angular
+node_modules/
+dist/
+.angular/
+
+# PHP / Laravel
+vendor/
+.env
+storage/*.key
+bootstrap/cache/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+
+# Geral
+.DS_Store
+*.log
