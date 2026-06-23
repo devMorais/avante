@@ -171,4 +171,8 @@ export class ApiService {
     formData.append('avatar', file);
     return this.http.post(`${API_URL}/profile/avatar`, formData);
   }
+
+  finishSprint(sprintId: number, body: { concluded_status_id: number | null }) {
+    return this.http.post<any>(`${API_URL}/sprints/${sprintId}/finish`, body);
+  }
 }

@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/tasks/{task}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
     Route::apiResource('sprints', SprintController::class);
+    Route::post('/sprints/{id}/finish', [SprintController::class, 'finish']);
     Route::apiResource('statuses', StatusController::class);
     Route::apiResource('users', UserController::class);
     // Profile

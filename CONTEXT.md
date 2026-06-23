@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 23/06/2026 — Deploy inicial em produção.
+> Última atualização: 23/06/2026 — Sprint header rico + seleção de tarefas + finalizar sprint.
 
 ---
 
@@ -33,63 +33,36 @@
 
 ```
 gestao-tarefas/
-├── backend/                    ← Laravel 13
+├── backend/
 │   ├── app/
-│   │   ├── Http/Controllers/   ← controllers da API
-│   │   ├── Models/             ← modelos Eloquent
-│   │   └── Http/Middleware/    ← middlewares
+│   │   ├── Http/Controllers/
+│   │   ├── Models/
+│   │   └── Http/Middleware/
 │   ├── database/
-│   │   └── migrations/         ← histórico do banco
+│   │   └── migrations/
 │   ├── routes/
-│   │   └── api.php             ← todas as rotas são API (sem web.php relevante)
-│   ├── public/                 ← document root do servidor
-│   │   ├── index.php           ← Laravel entry point (NÃO apagar)
-│   │   ├── .htaccess           ← roteamento interno Laravel (NÃO apagar)
-│   │   └── [build Angular]     ← index.html + *.js + *.css gerados pelo ng build
-│   └── .env                    ← NÃO versionado
-├── frontend/                   ← Angular 21
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── components/     ← componentes reutilizáveis
-│   │   │   ├── pages/          ← páginas/rotas
-│   │   │   ├── services/       ← serviços HTTP
-│   │   │   └── guards/         ← proteção de rotas
-│   │   └── environments/       ← config de ambiente
-│   └── angular.json            ← outputPath aponta para ../backend/public
-├── .htaccess                   ← roteamento raiz (ver seção abaixo)
-├── index.php                   ← ponte que chama backend/public/index.php
-└── CONTEXT.md                  ← este arquivo
+│   │   └── api.php
+│   └── public/              ← document root (Laravel + Angular build)
+├── frontend/
+│   └── src/app/
+│       ├── components/
+│       ├── pages/
+│       │   └── task-list/   ← task-list.ts/.html/.scss  ← ARQUIVO PRINCIPAL
+│       └── services/
+│           └── api.ts       ← todos os endpoints HTTP
+└── CONTEXT.md
 ```
 
 ---
 
-## 🔀 Como funciona o roteamento em produção
+## 🔀 Roteamento em produção
 
-O projeto roda num **shared hosting** sem virtual hosts configuráveis, então o roteamento é feito via `.htaccess` em camadas:
+`.htaccess` da raiz em camadas:
+1. Arquivos estáticos → `backend/public/`
+2. `/api/*` → Laravel (`backend/public/index.php`)
+3. Tudo mais → Angular SPA (`backend/public/index.html`)
 
-### `.htaccess` da raiz
-
-```apache
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    # 1. Arquivos estáticos (JS, CSS, imagens) → serve direto de backend/public/
-    RewriteCond %{DOCUMENT_ROOT}/backend/public%{REQUEST_URI} -f
-    RewriteRule ^(.*)$ backend/public/$1 [L]
-    # 2. Rotas de API → Laravel
-    RewriteCond %{REQUEST_URI} ^/api [NC]
-    RewriteRule ^ backend/public/index.php [L,QSA]
-    # 3. Tudo mais → Angular SPA
-    RewriteRule ^ backend/public/index.html [L]
-</IfModule>
-```
-
-### `backend/public/.htaccess`
-
-Padrão Laravel — roteia requisições PHP internas para o `index.php`.
-
-### `index.php` da raiz
-
-Ponte simples que chama o `backend/public/index.php` do Laravel.
+> ⚠️ `ng build` pode apagar `backend/public/index.php` e `.htaccess`. Verificar sempre após build!
 
 ---
 
@@ -97,17 +70,15 @@ Ponte simples que chama o `backend/public/index.php` do Laravel.
 
 ### Tabelas principais
 
-| Tabela                  | Descrição                                          |
-| ----------------------- | -------------------------------------------------- |
-| users                   | Usuários com roles (admin/membro) e soft delete    |
-| boards                  | Quadros de tarefas com soft delete                 |
-| tasks                   | Tarefas com assignee, sprint, status e soft delete |
-| sprints                 | Sprints vinculados a boards                        |
-| statuses                | Status personalizados por board                    |
-| task_user               | Pivot — múltiplos usuários por tarefa              |
-| comments                | Comentários em tarefas                             |
-| personal_access_tokens  | Sanctum tokens                                     |
-| sessions / cache / jobs | Infraestrutura Laravel                             |
+| Tabela     | Descrição                                          |
+| ---------- | -------------------------------------------------- |
+| users      | name, email, password, role, bio, position, avatar_url, soft delete |
+| boards     | soft delete                                        |
+| tasks      | description, priority, sprint_id, status_id, board_id, soft delete |
+| sprints    | name, start_date, end_date, **finished_at**, board_id, soft delete |
+| statuses   | name, color, order, board_id, soft delete          |
+| task_user  | pivot — múltiplos usuários por tarefa              |
+| comments   | conteúdo de comentários em tarefas                 |
 
 ### Migrations em ordem
 
@@ -128,65 +99,127 @@ Ponte simples que chama o `backend/public/index.php` do Laravel.
 2026_06_21_203314 create_task_user_table
 2026_06_21_213358 create_comments_table
 2026_06_22_033101 add_profile_fields_to_users_table
+2026_06_23_034204 add_finished_to_sprints_table        ← NOVO: campo finished_at
 ```
+
+---
+
+## 🔌 API — Endpoints relevantes
+
+| Método | Rota                        | Controller            | Descrição                          |
+| ------ | --------------------------- | --------------------- | ---------------------------------- |
+| GET    | /api/tasks                  | TaskController@index  | Lista paginada com filtros         |
+| POST   | /api/tasks                  | TaskController@store  | Cria tarefa                        |
+| PUT    | /api/tasks/{id}             | TaskController@update | Atualiza (inclui sprint_id, assignee_ids) |
+| DELETE | /api/tasks/{id}             | TaskController@destroy| Soft delete                        |
+| GET    | /api/sprints                | SprintController@index| Lista sprints por board_id         |
+| POST   | /api/sprints/{id}/finish    | SprintController@finish| **NOVO** — Finaliza sprint e transborda tarefas |
+| GET    | /api/users                  | UserController@index  | Lista usuários (inclui avatar_url) |
+| POST   | /api/profile/avatar         | ProfileController     | Upload de avatar                   |
+| GET    | /api/profile                | ProfileController     | Perfil do usuário autenticado      |
+
+---
+
+## 🎨 Frontend — Componentes principais
+
+### task-list (página principal do quadro)
+
+**Funcionalidades implementadas:**
+- Agrupamento de tarefas por sprint (ordenadas por `start_date`)
+- Cabeçalho por grupo com: nome, contagem, datas, barra de progresso colorida por status, badge "Vencida"/"Finalizada", botão "Finalizar Sprint"
+- Cabeçalho de colunas discreto **dentro de cada grupo** (não fixo no topo)
+- Ordenação local por: Atividade, Status, Prioridade, Responsável
+- Seleção de tarefas: individual, por grupo (com indeterminate), barra flutuante
+- Mover tarefas selecionadas entre sprints via modal
+- Finalizar sprint: transborda tarefas não concluídas para próxima sprint
+- Toast de feedback após finalizar sprint
+- Avatares de responsáveis com foto (photoUrl) ou iniciais coloridas
+- Paginação (25 por página padrão)
+- Filtros: busca, status, prioridade, responsável
+
+**Grid de colunas:** `40px 1fr 140px 120px 70px 36px`
+(checkbox | título | status | prioridade | resp. | ações)
+
+### Avatar (`app-avatar`)
+- `[name]` → iniciais coloridas como fallback
+- `[photoUrl]` → foto do usuário
+- `[size]` → sm (28px) / md (34px) / lg (48px)
+- Fallback automático se imagem falhar
+
+### Sidebar (`app-sidebar`)
+- Colapsável
+- Avatar do usuário logado com foto
+- Navegação: Tarefas / Sprints / Status
+
+---
+
+## 🔑 Avatar — Normalização de URL
+
+O `avatar_url` é salvo no banco como `/storage/avatars/foto.jpg` (relativo).
+
+**Solução:** accessor no `User` model que converte para URL absoluta em todo lugar:
+```php
+public function getAvatarUrlAttribute($value): ?string {
+    if (!$value) return null;
+    if (str_starts_with($value, 'http')) return $value;
+    return url($value);
+}
+```
+
+---
+
+## 🏁 Finalizar Sprint — Lógica
+
+- Endpoint: `POST /api/sprints/{id}/finish`
+- Body: `{ concluded_status_id: number | null }`
+- O backend detecta o status "concluído" pelo `concluded_status_id` ou pelo nome (fallback: busca por "concluído/concluido/done/finalizado")
+- Tarefas **não concluídas** são movidas para a próxima sprint (por `start_date`)
+- `finished_at` é preenchido com `now()`
+- Frontend: botão ativo somente quando sprint está vencida OU 100% concluída
+- Toast exibe quantas tarefas foram transbordadas
 
 ---
 
 ## ⚙️ Configurações importantes
 
-### Angular — angular.json
-
-O build vai direto para `backend/public/` sem subpasta:
-
+### angular.json — outputPath
 ```json
-"outputPath": {
-  "base": "../backend/public",
-  "browser": ""
-}
+"outputPath": { "base": "../backend/public", "browser": "" }
 ```
 
-> ⚠️ O `ng build` pode apagar `backend/public/index.php` e `backend/public/.htaccess`.
-> Sempre verificar após o build!
-
-### Budgets de build (angular.json)
-
-Aumentados para comportar o bundle atual:
-
+### Budgets de build
 ```json
 { "type": "initial", "maximumWarning": "2MB", "maximumError": "5MB" },
 { "type": "anyComponentStyle", "maximumWarning": "50kB", "maximumError": "100kB" }
 ```
 
-### Dependências Angular extras instaladas
-
+### Dependências Angular extras
 ```
-@angular/animations@21.2.17  ← necessário, não vinha por padrão
+@angular/animations@21.2.17
 ```
 
 ---
 
-## 🚫 Limitações do servidor (shared hosting)
+## 🚫 Limitações do servidor (shared hosting Hostinger)
 
-| Recurso                            | Situação                              |
-| ---------------------------------- | ------------------------------------- |
-| `exec()` no PHP                    | ❌ Bloqueado                          |
-| `php artisan storage:link`         | ❌ Não funciona — usar `ln -s` manual |
-| Supervisord / queues em background | ❌ Não disponível                     |
-| Symlinks via artisan               | ❌ Não funciona                       |
-| Cron jobs                          | ✅ Configurar via hPanel              |
-| SSH                                | ✅ Porta 65002                        |
+| Recurso                    | Situação                              |
+| -------------------------- | ------------------------------------- |
+| `exec()` no PHP            | ❌ Bloqueado                          |
+| `php artisan storage:link` | ❌ Usar `ln -s` manual via SSH        |
+| Queues em background       | ❌ Não disponível                     |
+| Cron jobs                  | ✅ Configurar via hPanel              |
+| SSH                        | ✅ Porta 65002                        |
 
 ---
 
 ## 📦 O que NÃO vai pro Git
 
 ```
-backend/.env          ← criado manualmente no servidor
-backend/vendor/       ← gerado pelo composer install
+backend/.env
+backend/vendor/
 frontend/node_modules/
-frontend/dist/        ← não usado (build vai para backend/public/)
 frontend/.angular/
-DEPLOY.md             ← roteiro pessoal de deploy (só do owner)
+DEPLOY.md
 ```
 
 ---
@@ -194,17 +227,19 @@ DEPLOY.md             ← roteiro pessoal de deploy (só do owner)
 ## 🤖 Prompt para IAs
 
 Cole o conteúdo deste arquivo no início de qualquer conversa com uma IA seguido de:
-
 > "Me ajude com: [SUA DÚVIDA AQUI]"
 
 ---
 
 ## 📝 Histórico de decisões técnicas
 
-| Data       | Decisão                                         | Motivo                                                                 |
-| ---------- | ----------------------------------------------- | ---------------------------------------------------------------------- |
-| 23/06/2026 | Build Angular vai para `backend/public/`        | Shared hosting sem virtual hosts — precisava de um único document root |
-| 23/06/2026 | `.htaccess` em camadas (raiz + backend/public/) | Separar roteamento de assets, API e SPA                                |
-| 23/06/2026 | Sanctum para autenticação                       | API stateless com tokens para o Angular consumir                       |
-| 23/06/2026 | SESSION_DRIVER=database                         | Shared hosting sem Redis                                               |
-| 23/06/2026 | QUEUE_CONNECTION=database                       | Shared hosting sem supervisord                                         |
+| Data       | Decisão                                                    | Motivo                                                    |
+| ---------- | ---------------------------------------------------------- | --------------------------------------------------------- |
+| 23/06/2026 | Build Angular vai para `backend/public/`                   | Shared hosting sem virtual hosts                          |
+| 23/06/2026 | Sanctum para autenticação                                  | API stateless com tokens                                  |
+| 23/06/2026 | SESSION_DRIVER=database / QUEUE_CONNECTION=database        | Shared hosting sem Redis/supervisord                      |
+| 23/06/2026 | accessor `getAvatarUrlAttribute` no User model             | Garante URL absoluta em todos os endpoints de uma vez     |
+| 23/06/2026 | `assignees:id,name,email,avatar_url` no TaskController     | Forçar seleção do campo avatar_url no relacionamento      |
+| 23/06/2026 | Header de colunas dentro de cada grupo (não fixo no topo)  | Evita duplicação visual e melhora UX por sprint           |
+| 23/06/2026 | Finalizar sprint transborda tarefas para próxima sprint    | UX motivacional — nada se perde ao encerrar um ciclo      |
+| 23/06/2026 | Barra de progresso colorida por status no header da sprint | Visibilidade rápida do andamento sem abrir o grupo        |

@@ -97,91 +97,153 @@
     <!-- Visão Tabela -->
     <div *ngIf="viewMode() === 'table'" class="table-view">
 
-      <div class="table-header-box">
-        <div class="table-columns-header">
-          <!-- Checkbox selecionar todos (apenas visual de cabeçalho) -->
-          <div class="col col-check"></div>
-          <div class="col col-title sort-col" (click)="setSort('description')">
-            Atividade
-            <span class="sort-icon" [class.active]="sortField() === 'description'">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'description' && sortDir() === 'desc'">
-                  <path d="m18 15-6-6-6 6" />
-                </ng-container>
-                <ng-container *ngIf="sortField() !== 'description' || sortDir() === 'asc'">
-                  <path d="m6 9 6 6 6-6" />
-                </ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="col col-status sort-col" (click)="setSort('status')">
-            Status
-            <span class="sort-icon" [class.active]="sortField() === 'status'">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'status' && sortDir() === 'desc'">
-                  <path d="m18 15-6-6-6 6" />
-                </ng-container>
-                <ng-container *ngIf="sortField() !== 'status' || sortDir() === 'asc'">
-                  <path d="m6 9 6 6 6-6" />
-                </ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="col col-priority sort-col" (click)="setSort('priority')">
-            Prioridade
-            <span class="sort-icon" [class.active]="sortField() === 'priority'">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'priority' && sortDir() === 'desc'">
-                  <path d="m18 15-6-6-6 6" />
-                </ng-container>
-                <ng-container *ngIf="sortField() !== 'priority' || sortDir() === 'asc'">
-                  <path d="m6 9 6 6 6-6" />
-                </ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="col col-assignee sort-col" (click)="setSort('assignee')">
-            Resp.
-            <span class="sort-icon" [class.active]="sortField() === 'assignee'">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'assignee' && sortDir() === 'desc'">
-                  <path d="m18 15-6-6-6 6" />
-                </ng-container>
-                <ng-container *ngIf="sortField() !== 'assignee' || sortDir() === 'asc'">
-                  <path d="m6 9 6 6 6-6" />
-                </ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="col"></div>
-        </div>
-      </div>
-
       <ng-container *ngIf="!loading(); else loadingTpl">
         <ng-container *ngFor="let group of groupedBySprint()">
-          <div *ngIf="group.tasks.length > 0" class="sprint-group">
+          <div *ngIf="group.tasks.length > 0" class="sprint-group"
+            [class.sprint-group--finished]="isSprintFinished(group.sprint)"
+            [class.sprint-group--overdue]="isSprintOverdue(group.sprint)">
 
+            <!-- ===== CABEÇALHO DA SPRINT ===== -->
             <div class="sprint-group-header" (click)="toggleGroup(group.sprint?.id ?? 'backlog')">
-              <!-- Checkbox do grupo -->
+
               <div class="group-check-wrap" (click)="$event.stopPropagation()">
                 <input type="checkbox" class="row-checkbox" [checked]="isGroupAllSelected(group.tasks)"
                   [indeterminate]="isGroupIndeterminate(group.tasks)" (change)="toggleSelectGroup(group.tasks, $event)"
                   (click)="$event.stopPropagation()" />
               </div>
+
               <span class="chevron" [class.collapsed]="isGroupCollapsed(group.sprint?.id ?? 'backlog')">▾</span>
-              <span class="sprint-name">{{ group.sprint?.name || 'Sem Sprint' }}</span>
-              <span class="sprint-count">{{ group.tasks.length }}</span>
+
+              <div class="sprint-header-info">
+                <div class="sprint-header-top">
+                  <span class="sprint-name">{{ group.sprint?.name || 'Sem Sprint' }}</span>
+                  <span class="sprint-count">{{ group.tasks.length }}</span>
+
+                  <ng-container *ngIf="group.sprint?.start_date">
+                    <span class="sprint-dates">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                      {{ group.sprint.start_date | date:'dd/MM' }} – {{ group.sprint.end_date | date:'dd/MM/yy' }}
+                    </span>
+                    <span *ngIf="isSprintOverdue(group.sprint)" class="sprint-overdue-badge">Vencida</span>
+                    <span *ngIf="isSprintFinished(group.sprint)" class="sprint-finished-badge">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round">
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      Finalizada
+                    </span>
+                  </ng-container>
+                </div>
+
+                <ng-container *ngIf="group.sprint">
+                  <div class="sprint-progress-wrap" [title]="sprintTooltip(group.sprint, group.tasks)"
+                    (click)="$event.stopPropagation()">
+                    <div class="sprint-progress-bar">
+                      <div *ngFor="let seg of sprintProgressSegments(group.tasks)" class="sprint-progress-seg"
+                        [style.width.%]="seg.pct" [style.background]="seg.color" [title]="seg.name + ': ' + seg.count">
+                      </div>
+                    </div>
+                    <span class="sprint-progress-pct" [class.pct--done]="sprintCompletionPct(group.tasks) === 100">
+                      {{ sprintCompletionPct(group.tasks) }}%
+                    </span>
+                  </div>
+                </ng-container>
+              </div>
+
+              <ng-container *ngIf="group.sprint && !isSprintFinished(group.sprint)">
+                <button class="sprint-finish-btn"
+                  [class.sprint-finish-btn--ready]="canFinishSprint(group.sprint, group.tasks)"
+                  [disabled]="!canFinishSprint(group.sprint, group.tasks) || finishingSprintId() === group.sprint.id"
+                  [title]="canFinishSprint(group.sprint, group.tasks) ? 'Finalizar sprint' : 'Disponível quando vencida ou 100% concluída'"
+                  (click)="openFinishConfirm(group.sprint, group.tasks, $event)">
+                  <svg *ngIf="finishingSprintId() !== group.sprint.id" width="13" height="13" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <svg *ngIf="finishingSprintId() === group.sprint.id" width="13" height="13" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="spin">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                  </svg>
+                  {{ finishingSprintId() === group.sprint.id ? 'Finalizando...' : 'Finalizar Sprint' }}
+                </button>
+              </ng-container>
+
+            </div>
+            <!-- ===== FIM CABEÇALHO DA SPRINT ===== -->
+
+            <!-- Cabeçalho de colunas discreto — dentro de cada grupo -->
+            <div class="group-columns-header" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
+              <div class="gcol gcol-check"></div>
+              <div class="gcol gcol-title sort-col" (click)="setSort('description')">
+                Atividade
+                <span class="sort-icon" [class.active]="sortField() === 'description'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <ng-container *ngIf="sortField() === 'description' && sortDir() === 'desc'">
+                      <path d="m18 15-6-6-6 6" />
+                    </ng-container>
+                    <ng-container *ngIf="sortField() !== 'description' || sortDir() === 'asc'">
+                      <path d="m6 9 6 6 6-6" />
+                    </ng-container>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-status sort-col" (click)="setSort('status')">
+                Status
+                <span class="sort-icon" [class.active]="sortField() === 'status'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <ng-container *ngIf="sortField() === 'status' && sortDir() === 'desc'">
+                      <path d="m18 15-6-6-6 6" />
+                    </ng-container>
+                    <ng-container *ngIf="sortField() !== 'status' || sortDir() === 'asc'">
+                      <path d="m6 9 6 6 6-6" />
+                    </ng-container>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-priority sort-col" (click)="setSort('priority')">
+                Prioridade
+                <span class="sort-icon" [class.active]="sortField() === 'priority'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <ng-container *ngIf="sortField() === 'priority' && sortDir() === 'desc'">
+                      <path d="m18 15-6-6-6 6" />
+                    </ng-container>
+                    <ng-container *ngIf="sortField() !== 'priority' || sortDir() === 'asc'">
+                      <path d="m6 9 6 6 6-6" />
+                    </ng-container>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-assignee sort-col" (click)="setSort('assignee')">
+                Resp.
+                <span class="sort-icon" [class.active]="sortField() === 'assignee'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <ng-container *ngIf="sortField() === 'assignee' && sortDir() === 'desc'">
+                      <path d="m18 15-6-6-6 6" />
+                    </ng-container>
+                    <ng-container *ngIf="sortField() !== 'assignee' || sortDir() === 'asc'">
+                      <path d="m6 9 6 6 6-6" />
+                    </ng-container>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol"></div>
             </div>
 
+            <!-- Linhas de tarefa -->
             <div class="task-rows" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
               <div *ngFor="let task of group.tasks" class="task-row" [class.selected]="isSelected(task.id)"
                 (click)="openEditTaskDialog(task)">
 
-                <!-- Checkbox individual -->
                 <div class="task-check-cell" (click)="$event.stopPropagation()">
                   <input type="checkbox" class="row-checkbox" [checked]="isSelected(task.id)"
                     (change)="toggleSelect(task.id, $event)" (click)="$event.stopPropagation()" />
@@ -203,20 +265,17 @@
                   </button>
                 </div>
 
-                <!-- Status -->
                 <div class="task-col" (click)="$event.stopPropagation()">
                   <app-popover>
                     <ng-container trigger>
-                      <app-badge [color]="task.status?.color || '#6B6B70'">
-                        {{ task.status?.name || 'Sem status' }}
-                      </app-badge>
+                      <app-badge [color]="task.status?.color || '#6B6B70'">{{ task.status?.name || 'Sem status'
+                        }}</app-badge>
                     </ng-container>
                     <ng-container panel>
                       <div class="status-popover-list" (click)="$event.stopPropagation()">
                         <button *ngFor="let s of statuses()" class="status-popover-item"
                           (click)="updateTaskField(task, 'status_id', s.id)">
-                          <span class="status-dot" [style.background]="s.color || '#6B6B70'"></span>
-                          {{ s.name }}
+                          <span class="status-dot" [style.background]="s.color || '#6B6B70'"></span>{{ s.name }}
                         </button>
                         <button class="status-popover-item status-popover-item--clear"
                           (click)="updateTaskField(task, 'status_id', null)">Remover status</button>
@@ -225,36 +284,31 @@
                   </app-popover>
                 </div>
 
-                <!-- Prioridade -->
                 <div class="task-col" (click)="$event.stopPropagation()">
                   <app-popover>
                     <ng-container trigger>
-                      <app-badge [color]="priorityColor(task.priority)">
-                        {{ task.priority || 'Sem prioridade' }}
-                      </app-badge>
+                      <app-badge [color]="priorityColor(task.priority)">{{ task.priority || 'Sem prioridade'
+                        }}</app-badge>
                     </ng-container>
                     <ng-container panel>
                       <div class="status-popover-list" (click)="$event.stopPropagation()">
                         <button *ngFor="let p of priorities" class="status-popover-item"
                           (click)="updateTaskField(task, 'priority', p)">
-                          <span class="status-dot" [style.background]="priorityColor(p)"></span>
-                          {{ p }}
+                          <span class="status-dot" [style.background]="priorityColor(p)"></span>{{ p }}
                         </button>
                       </div>
                     </ng-container>
                   </app-popover>
                 </div>
 
-                <!-- Responsáveis -->
                 <div class="task-col">
                   <button class="assignees-trigger" (click)="openAssigneeModal(task, $event)">
                     <ng-container *ngIf="task.assignees?.length > 0; else emptyAssignee">
                       <ng-container *ngFor="let a of task.assignees.slice(0,3)">
                         <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm" [title]="a.name"></app-avatar>
                       </ng-container>
-                      <div *ngIf="task.assignees.length > 3" class="assignee-avatar--more">
-                        +{{ task.assignees.length - 3 }}
-                      </div>
+                      <div *ngIf="task.assignees.length > 3" class="assignee-avatar--more">+{{ task.assignees.length - 3
+                        }}</div>
                     </ng-container>
                     <ng-template #emptyAssignee>
                       <div class="assignee-avatar assignee-avatar--empty">+</div>
@@ -262,13 +316,12 @@
                   </button>
                 </div>
 
-                <!-- Ações -->
                 <div class="task-col col-actions">
                   <button class="row-delete-btn" (click)="askDeleteTask(task, $event)" title="Excluir">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round">
                       <path
-                        d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 0-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                        d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
                     </svg>
                   </button>
                 </div>
@@ -297,24 +350,63 @@
 
     </div>
 
-    <!-- Visão Kanban -->
     <div *ngIf="viewMode() === 'kanban'" class="kanban-placeholder">
       <p>Visão Kanban chega no próximo passo</p>
     </div>
 
   </ng-container>
 
-  <!-- ===== SEÇÃO SPRINTS ===== -->
   <ng-container *ngIf="section() === 'sprints'">
     <app-sprint-manager [boardId]="boardId" (sprintsChanged)="reloadSprints()"></app-sprint-manager>
   </ng-container>
 
-  <!-- ===== SEÇÃO STATUS ===== -->
   <ng-container *ngIf="section() === 'statuses'">
     <app-status-manager [boardId]="boardId" (statusesChanged)="reloadStatuses()"></app-status-manager>
   </ng-container>
 
 </div>
+
+<!-- Toast de feedback -->
+<div class="toast" [class.toast--visible]="toastMsg()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+    stroke-linecap="round">
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+  {{ toastMsg() }}
+</div>
+
+<!-- Modal confirmar finalizar sprint -->
+<app-modal [isOpen]="finishConfirmOpen()" (closeModal)="closeFinishConfirm()" width="420px">
+  <div class="finish-sprint-modal">
+    <div class="finish-sprint-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    </div>
+    <h2>Finalizar "{{ sprintToFinish?.name }}"?</h2>
+    <p *ngIf="sprintToFinishTasks.length > 0">
+      <ng-container *ngIf="sprintCompletionPct(sprintToFinishTasks) < 100">
+        <strong>{{ sprintToFinishTasks.length - sprintCompletionPct(sprintToFinishTasks) * sprintToFinishTasks.length /
+          100 | number:"1.0-0" }}</strong>
+        tarefa(s) ainda não concluída(s) serão movidas automaticamente para a próxima sprint.
+      </ng-container>
+      <ng-container *ngIf="sprintCompletionPct(sprintToFinishTasks) === 100">
+        Todas as <strong>{{ sprintToFinishTasks.length }}</strong> tarefas estão concluídas. 🎉
+      </ng-container>
+    </p>
+    <div class="finish-sprint-actions">
+      <button class="finish-sprint-cancel" (click)="closeFinishConfirm()">Cancelar</button>
+      <button class="finish-sprint-confirm" (click)="confirmFinishSprint()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Finalizar Sprint
+      </button>
+    </div>
+  </div>
+</app-modal>
 
 <!-- Modal de criar/editar atividade -->
 <app-task-dialog [isOpen]="taskDialogOpen()" [mode]="dialogMode" [task]="editingTask" [statuses]="statuses()"
@@ -334,7 +426,6 @@
         </svg>
       </button>
     </div>
-
     <div *ngIf="taskForAssignees?.assignees?.length > 0" class="assignee-chips">
       <button *ngFor="let a of taskForAssignees.assignees" class="assignee-chip" (click)="removeAssignee(a.id)">
         <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
@@ -345,7 +436,6 @@
         </svg>
       </button>
     </div>
-
     <div class="assignee-search">
       <input type="text" class="assignee-search-input" placeholder="Buscar pessoas..." [value]="assigneeSearchTerm()"
         (input)="assigneeSearchTerm.set($any($event.target).value)" />
@@ -355,9 +445,7 @@
         <path d="m21 21-4.35-4.35" />
       </svg>
     </div>
-
     <p class="assignee-suggested-label">Pessoas Sugeridas</p>
-
     <div class="assignee-suggested-list">
       <button *ngFor="let u of suggestedUsers()" class="assignee-suggested-item" (click)="toggleAssignee(u.id)">
         <app-avatar [name]="u.name" [photoUrl]="u.avatar_url" size="sm"></app-avatar>
@@ -365,7 +453,6 @@
       </button>
       <p *ngIf="suggestedUsers().length === 0" class="assignee-suggested-empty">Nenhum usuário encontrado.</p>
     </div>
-
     <button class="assignee-confirm-btn" (click)="closeAssigneeModal()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
         stroke-linecap="round">

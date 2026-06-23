@@ -257,13 +257,7 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   gap: 16px;
 }
 
-.table-header-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-rest);
-  overflow: hidden;
-}
+/* .table-header-box removido — header agora fica dentro de cada grupo */
 
 .table-columns-header {
   display: grid;
@@ -347,6 +341,54 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   accent-color: var(--accent);
   cursor: pointer;
   flex-shrink: 0;
+}
+
+
+/* ---------- Cabeçalho de colunas por grupo (substitui o header fixo) ---------- */
+
+$cols: 40px 1fr 140px 120px 70px 36px;
+
+.group-columns-header {
+  display: grid;
+  grid-template-columns: $cols;
+  align-items: center;
+  background: rgba(28, 28, 31, 0.022);
+  border-bottom: 1px solid var(--border);
+
+  .gcol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 7px 16px;
+    border-right: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .gcol:last-child {
+    border-right: none;
+  }
+
+  .gcol-check {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .gcol-status,
+  .gcol-priority,
+  .gcol-assignee {
+    justify-content: center;
+  }
+
+  .gcol-title {
+    padding-left: 12px;
+  }
 }
 
 /* ---------- Grupo de sprint ---------- */
@@ -1055,4 +1097,318 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   .move-sprint-modal {
     min-width: 0;
   }
+}
+
+/* ---------- Sprint header rico ---------- */
+
+.sprint-header-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.sprint-header-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sprint-dates {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.sprint-overdue-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 20px;
+  padding: 1px 7px;
+}
+
+.sprint-finished-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #059669;
+  background: rgba(5, 150, 105, 0.08);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  border-radius: 20px;
+  padding: 1px 7px;
+}
+
+/* ---------- Barra de progresso ---------- */
+
+.sprint-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.sprint-progress-bar {
+  flex: 1;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+  display: flex;
+  min-width: 80px;
+  max-width: 320px;
+}
+
+.sprint-progress-seg {
+  height: 100%;
+  transition: width 0.3s ease;
+  min-width: 2px;
+
+  &:first-child {
+    border-radius: 999px 0 0 999px;
+  }
+
+  &:last-child {
+    border-radius: 0 999px 999px 0;
+  }
+
+  &:only-child {
+    border-radius: 999px;
+  }
+}
+
+.sprint-progress-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  min-width: 32px;
+  text-align: right;
+
+  &.pct--done {
+    color: #059669;
+  }
+}
+
+/* ---------- Modificadores de estado da sprint ---------- */
+
+.sprint-group--overdue {
+  .sprint-group-header {
+    background: rgba(220, 38, 38, 0.02);
+    border-bottom-color: rgba(220, 38, 38, 0.12);
+  }
+
+  .sprint-progress-bar {
+    background: rgba(220, 38, 38, 0.1);
+  }
+}
+
+.sprint-group--finished {
+  opacity: 0.72;
+
+  .sprint-group-header {
+    background: rgba(5, 150, 105, 0.02);
+  }
+
+  .sprint-progress-bar {
+    background: rgba(5, 150, 105, 0.1);
+  }
+}
+
+/* ---------- Botão finalizar sprint ---------- */
+
+.sprint-finish-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: not-allowed;
+  white-space: nowrap;
+  opacity: 0.55;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &.sprint-finish-btn--ready {
+    cursor: pointer;
+    opacity: 1;
+    border-color: var(--accent);
+    color: var(--accent);
+
+    &:hover {
+      background: var(--accent);
+      color: white;
+    }
+  }
+
+  &:disabled:not(.sprint-finish-btn--ready) {
+    pointer-events: none;
+  }
+}
+
+/* ---------- Modal confirmar finalizar sprint ---------- */
+
+.finish-sprint-modal {
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.finish-sprint-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.finish-sprint-modal h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.finish-sprint-modal p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.5;
+
+  strong {
+    color: var(--text-primary);
+  }
+}
+
+.finish-sprint-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.finish-sprint-cancel {
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+
+  &:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+  }
+}
+
+.finish-sprint-confirm {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease;
+
+  &:hover {
+    background: var(--accent-hover);
+  }
+}
+
+/* ---------- Toast ---------- */
+
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--text-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+
+  svg {
+    color: #34D399;
+    flex-shrink: 0;
+  }
+
+  &.toast--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ---------- Animação de loading (spin) ---------- */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
 }

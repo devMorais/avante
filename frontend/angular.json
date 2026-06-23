@@ -54,6 +54,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "index.php",
+                "input": "public-static",
+                "output": "/"
+              },
+              {
+                "glob": ".htaccess",
+                "input": "public-static",
+                "output": "/"
               }
             ],
             "styles": [
