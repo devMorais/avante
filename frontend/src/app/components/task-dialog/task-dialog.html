@@ -1,0 +1,104 @@
+<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="920px">
+  <div class="task-dialog">
+    <div class="dialog-header">
+      <h2>{{ mode === 'edit' ? 'Editar atividade' : 'Nova atividade' }}</h2>
+    </div>
+
+    <div class="dialog-tabs" *ngIf="mode === 'edit'">
+      <button class="tab-btn" [class.active]="activeTab === 'details'" (click)="activeTab = 'details'">
+        Detalhes
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === 'comments'" (click)="activeTab = 'comments'">
+        Comentários
+        <span class="tab-count" *ngIf="comments.length">{{ comments.length }}</span>
+      </button>
+    </div>
+
+    <div class="dialog-content" *ngIf="mode === 'create' || activeTab === 'details'">
+
+      <label class="field">
+        <span class="field-label">História</span>
+        <textarea [(ngModel)]="formDescription" rows="8" class="field-input"
+          placeholder="Descreva a atividade com o máximo de detalhe que precisar..."></textarea>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">Status</span>
+          <select [(ngModel)]="formStatusId" class="field-input">
+            <option [ngValue]="null">Sem status</option>
+            <option *ngFor="let s of statuses" [ngValue]="s.id">{{ s.name }}</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Prioridade</span>
+          <select [(ngModel)]="formPriority" class="field-input">
+            <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field-label">Sprint</span>
+        <select [(ngModel)]="formSprintId" class="field-input">
+          <option [ngValue]="null">Sem sprint</option>
+          <option *ngFor="let sp of sprints" [ngValue]="sp.id">{{ sp.name }}</option>
+        </select>
+      </label>
+
+      <div class="field" *ngIf="mode === 'edit'">
+        <span class="field-label">Responsáveis</span>
+        <button type="button" class="assignees-field-trigger" (click)="onManageAssignees()">
+          <ng-container *ngIf="task?.assignees?.length; else noAssignees">
+            <span class="assignees-field-person" *ngFor="let a of task.assignees">
+              <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+              <span class="assignees-field-name">{{ a.name }}</span>
+            </span>
+          </ng-container>
+          <ng-template #noAssignees>
+            <span class="assignees-field-empty">+ Adicionar responsáveis</span>
+          </ng-template>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="comments-section" *ngIf="mode === 'edit' && activeTab === 'comments'">
+      <div class="comments-list" *ngIf="comments.length; else noComments">
+        <div class="comment" *ngFor="let c of comments">
+          <div class="comment-header">
+            <span class="comment-author">{{ c.user?.name || 'Usuário' }}</span>
+            <span class="comment-date">{{ c.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+            <button class="comment-delete" (click)="onDeleteComment(c.id)" title="Excluir comentário">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z" />
+              </svg>
+            </button>
+          </div>
+          <p class="comment-content">{{ c.content }}</p>
+        </div>
+      </div>
+
+      <ng-template #noComments>
+        <p class="comments-empty">Nenhum comentário ainda.</p>
+      </ng-template>
+
+      <div class="comment-form">
+        <textarea [(ngModel)]="commentContent" rows="2" class="field-input"
+          placeholder="Escreva um comentário..."></textarea>
+        <app-button variant="text" (clicked)="onAddComment()" [disabled]="!commentContent.trim() || savingComment">
+          {{ savingComment ? 'Enviando...' : 'Comentar' }}
+        </app-button>
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <app-button variant="text" (clicked)="onClose()">Cancelar</app-button>
+      <app-button variant="primary" (clicked)="onSave()" [disabled]="!formDescription.trim() || saving">
+        {{ saving ? 'Salvando...' : (mode === 'edit' ? 'Salvar alterações' : 'Criar atividade') }}
+      </app-button>
+    </div>
+  </div>
+</app-modal>

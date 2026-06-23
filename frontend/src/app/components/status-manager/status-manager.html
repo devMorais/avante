@@ -1,0 +1,102 @@
+<div class="status-manager">
+
+  <div class="sm-header">
+    <h2 class="sm-title">Status</h2>
+    <app-button variant="primary" (clicked)="openCreateDialog()">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Adicionar Status
+    </app-button>
+  </div>
+
+  <div class="sm-loading" *ngIf="loading()">
+    <span>Carregando status...</span>
+  </div>
+
+  <div class="sm-list" *ngIf="!loading()">
+
+    <div class="sm-empty" *ngIf="statuses().length === 0">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <p>Nenhum status cadastrado ainda.</p>
+      <p class="sm-empty-sub">Crie os status que representam as etapas do seu fluxo de trabalho.</p>
+    </div>
+
+    <div class="sm-card" *ngFor="let status of statuses()">
+      <div class="sm-card-body">
+        <span class="sm-color-dot" [style.background]="status.color"></span>
+        <span class="sm-card-name">{{ status.name }}</span>
+      </div>
+
+      <div class="sm-card-actions">
+        <button class="sm-action-btn" (click)="openEditDialog(status)" title="Editar">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+        </button>
+        <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(status)" title="Excluir">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal criar/editar -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()">
+  <div class="dialog-header">
+    <h2>{{ dialogMode === 'edit' ? 'Editar status' : 'Novo status' }}</h2>
+    <p>{{ dialogMode === 'edit' ? 'Altere o nome ou a cor do status.' : 'Defina o nome e a cor do novo status.' }}</p>
+  </div>
+
+  <div class="dialog-content">
+    <div class="field-group">
+      <label class="field-label">Nome <span class="required">*</span></label>
+      <input class="field-input" type="text" [(ngModel)]="form.name" placeholder="Ex: Em andamento"
+        (keyup.enter)="confirmSave()">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Cor</label>
+      <div class="color-picker">
+        <button class="color-swatch" *ngFor="let c of presetColors" [style.background]="c"
+          [class.selected]="form.color === c" (click)="form.color = c" type="button">
+        </button>
+        <div class="color-custom">
+          <input type="color" [(ngModel)]="form.color" class="color-input-native">
+          <span class="color-hex">{{ form.color }}</span>
+        </div>
+      </div>
+      <div class="color-preview">
+        <span class="preview-dot" [style.background]="form.color"></span>
+        <span class="preview-label" [style.color]="form.color">{{ form.name || 'Pré-visualização' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-actions">
+    <app-button variant="text" (clicked)="closeDialog()">Cancelar</app-button>
+    <app-button variant="primary" (clicked)="confirmSave()" [disabled]="!form.name.trim() || saving()">
+      {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar alterações' : 'Criar status') }}
+    </app-button>
+  </div>
+</app-modal>
+
+<!-- Modal de confirmação de exclusão -->
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir status?" [itemName]="statusPendingDelete?.name"
+  [loading]="deleting()" (confirm)="confirmDelete()" (cancel)="cancelDelete()"></app-confirm-dialog>

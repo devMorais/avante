@@ -1,0 +1,108 @@
+<div class="sprint-manager">
+
+  <div class="sm-header">
+    <h2 class="sm-title">Sprints</h2>
+    <app-button variant="primary" (clicked)="openCreateDialog()">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Adicionar Sprint
+    </app-button>
+  </div>
+
+  <!-- Loading -->
+  <div class="sm-loading" *ngIf="loading()">
+    <span>Carregando sprints...</span>
+  </div>
+
+  <!-- Lista de sprints -->
+  <div class="sm-list" *ngIf="!loading()">
+
+    <div class="sm-empty" *ngIf="sprints().length === 0">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <p>Nenhum sprint cadastrado ainda.</p>
+      <p class="sm-empty-sub">Crie o primeiro sprint para começar a organizar as atividades por período.</p>
+    </div>
+
+    <div class="sm-card" *ngFor="let sprint of sprints()">
+      <div class="sm-card-body">
+        <span class="sm-card-name">{{ sprint.name }}</span>
+        <span class="sm-card-dates">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          {{ formatDate(sprint.start_date) }} → {{ formatDate(sprint.end_date) }}
+        </span>
+      </div>
+
+      <div class="sm-card-actions">
+        <button class="sm-action-btn" (click)="openEditDialog(sprint)" title="Editar">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+        </button>
+        <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(sprint)" title="Excluir">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal criar/editar -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()">
+  <div class="dialog-header">
+    <h2>{{ dialogMode === 'edit' ? 'Editar sprint' : 'Novo sprint' }}</h2>
+    <p>{{ dialogMode === 'edit' ? 'Altere os dados do sprint.' : 'Defina o nome e o período do sprint.' }}</p>
+  </div>
+
+  <div class="dialog-content">
+    <div class="field-group">
+      <label class="field-label">Nome do sprint <span class="required">*</span></label>
+      <input class="field-input" type="text" [(ngModel)]="form.name" placeholder="Ex: Sprint 01"
+        (keyup.enter)="confirmSave()">
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">Data de início</label>
+        <input class="field-input" type="date" [(ngModel)]="form.start_date">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Data de término</label>
+        <input class="field-input" type="date" [(ngModel)]="form.end_date">
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-actions">
+    <app-button variant="text" (clicked)="closeDialog()">Cancelar</app-button>
+    <app-button variant="primary" (clicked)="confirmSave()" [disabled]="!form.name.trim() || saving()">
+      {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar alterações' : 'Criar sprint') }}
+    </app-button>
+  </div>
+</app-modal>
+
+<!-- Modal de confirmação de exclusão -->
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir sprint?" [itemName]="sprintPendingDelete?.name"
+  [loading]="deleting()" (confirm)="confirmDelete()" (cancel)="cancelDelete()"></app-confirm-dialog>

@@ -1,0 +1,178 @@
+<div class="profile-page">
+
+  <div class="profile-container" *ngIf="!loading(); else loadingTpl">
+
+    <!-- Header -->
+    <div class="profile-header">
+      <button class="back-link" (click)="goBack()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        Voltar
+      </button>
+      <h1>Meu Perfil</h1>
+      <p class="profile-subtitle">Gerencie suas informações pessoais e segurança da conta.</p>
+    </div>
+
+    <div class="profile-body">
+
+      <!-- Coluna esquerda: avatar -->
+      <div class="profile-avatar-col">
+        <div class="avatar-wrap">
+          <div class="avatar-circle">
+            <img *ngIf="avatarPreview() || user()?.avatar_url" [src]="avatarPreview() || user()?.avatar_url"
+              [alt]="user()?.name" class="avatar-img" />
+            <span *ngIf="!avatarPreview() && !user()?.avatar_url" class="avatar-initials">
+              {{ initialsFor(user()?.name) }}
+            </span>
+            <div class="avatar-overlay" [class.loading]="uploadingAvatar()">
+              <label class="avatar-upload-label" for="avatar-input">
+                <svg *ngIf="!uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+                  stroke-width="2" stroke-linecap="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <svg *ngIf="uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+                  stroke-width="2" stroke-linecap="round">
+                  <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                </svg>
+              </label>
+              <input id="avatar-input" type="file" accept="image/*" class="avatar-input"
+                (change)="onAvatarChange($event)" />
+            </div>
+          </div>
+          <p class="avatar-hint">Clique para alterar a foto</p>
+        </div>
+
+        <div class="profile-card-info">
+          <p class="profile-card-name">{{ user()?.name }}</p>
+          <p class="profile-card-position" *ngIf="user()?.position">{{ user()?.position }}</p>
+          <p class="profile-card-bio" *ngIf="user()?.bio">{{ user()?.bio }}</p>
+        </div>
+      </div>
+
+      <!-- Coluna direita: formulários -->
+      <div class="profile-forms-col">
+
+        <!-- Tabs -->
+        <div class="profile-tabs">
+          <button class="tab-btn" [class.active]="activeTab() === 'info'" (click)="activeTab.set('info')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Informações
+          </button>
+          <button class="tab-btn" [class.active]="activeTab() === 'password'" (click)="activeTab.set('password')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            Segurança
+          </button>
+        </div>
+
+        <!-- Tab: Informações -->
+        <div *ngIf="activeTab() === 'info'" class="profile-form">
+          <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" [(ngModel)]="form.name" placeholder="Seu nome" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="form.email" placeholder="seu@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Cargo / Função</label>
+            <input type="text" [(ngModel)]="form.position" placeholder="Ex: Designer, Desenvolvedor..." />
+          </div>
+          <div class="form-group">
+            <label>Bio <span class="label-hint">{{ form.bio.length }}/300</span></label>
+            <textarea [(ngModel)]="form.bio" placeholder="Conte um pouco sobre você..." maxlength="300"
+              rows="3"></textarea>
+          </div>
+
+          <div class="form-feedback success" *ngIf="successMsg()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            {{ successMsg() }}
+          </div>
+          <div class="form-feedback error" *ngIf="errorMsg()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            {{ errorMsg() }}
+          </div>
+
+          <button class="save-btn" (click)="saveProfile()" [disabled]="saving()">
+            <svg *ngIf="!saving()" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+              <polyline points="17 21 17 13 7 13 7 21" />
+              <polyline points="7 3 7 8 15 8" />
+            </svg>
+            {{ saving() ? 'Salvando...' : 'Salvar alterações' }}
+          </button>
+        </div>
+
+        <!-- Tab: Segurança -->
+        <div *ngIf="activeTab() === 'password'" class="profile-form">
+          <div class="form-group">
+            <label>Senha atual</label>
+            <input type="password" [(ngModel)]="passwordForm.current_password" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label>Nova senha <span class="label-hint">mín. 8 caracteres</span></label>
+            <input type="password" [(ngModel)]="passwordForm.password" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label>Confirmar nova senha</label>
+            <input type="password" [(ngModel)]="passwordForm.password_confirmation" placeholder="••••••••" />
+          </div>
+
+          <div class="form-feedback success" *ngIf="passwordSuccessMsg()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            {{ passwordSuccessMsg() }}
+          </div>
+          <div class="form-feedback error" *ngIf="passwordErrorMsg()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            {{ passwordErrorMsg() }}
+          </div>
+
+          <button class="save-btn" (click)="savePassword()" [disabled]="savingPassword()">
+            <svg *ngIf="!savingPassword()" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            {{ savingPassword() ? 'Atualizando...' : 'Atualizar senha' }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingTpl>
+    <div class="profile-loading">Carregando perfil...</div>
+  </ng-template>
+
+</div>

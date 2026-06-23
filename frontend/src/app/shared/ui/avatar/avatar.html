@@ -1,0 +1,5 @@
+<span class="avatar avatar--{{ size }}" [title]="name || ''" [style.background]="showImage ? 'transparent' : colors.bg"
+  [style.color]="colors.fg">
+  <img *ngIf="showImage" [src]="photoUrl" [alt]="name || ''" (error)="onImageError()" class="avatar-img" />
+  <span *ngIf="!showImage" class="avatar-initials">{{ initials }}</span>
+</span>

@@ -1,0 +1,52 @@
+<div class="login-page">
+  <aside class="login-visual">
+    <div class="brand-mark">
+      <img src="favicon.svg" alt="" class="brand-mark__icon" />
+      <span class="brand-mark__name">Avante</span>
+    </div>
+
+    <div class="visual-hero">
+      <div class="visual-hero__glow"></div>
+      <img src="favicon.svg" alt="Avante" class="visual-hero__icon" />
+    </div>
+
+    <div class="visual-copy">
+      <p class="visual-copy__eyebrow">Gestão de tarefas</p>
+      <h1 class="visual-copy__headline">Avante.</h1>
+      <p class="visual-copy__subtext">
+        Cada tarefa concluída é um passo à frente. Entre e continue o progresso da sua equipe.
+      </p>
+    </div>
+  </aside>
+
+  <main class="login-form-panel">
+    <div class="login-form">
+      <div class="login-form__mobile-brand">
+        <img src="favicon.svg" alt="" />
+        <span>Avante</span>
+      </div>
+
+      <p class="login-form__eyebrow">Bem-vindo de volta</p>
+      <h2 class="login-form__heading">Entre na sua conta</h2>
+      <p class="login-form__subtext">Acesse seus quadros e continue de onde parou.</p>
+
+      <label class="field">
+        <span class="field-label">E-mail</span>
+        <input type="email" [(ngModel)]="email" name="email" class="field-input" placeholder="voce@empresa.com"
+          autocomplete="username" (keydown.enter)="onSubmit()" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Senha</span>
+        <input type="password" [(ngModel)]="password" name="password" class="field-input" placeholder="••••••••"
+          autocomplete="current-password" (keydown.enter)="onSubmit()" />
+      </label>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <app-button variant="primary" [disabled]="!email.trim() || !password.trim() || loading" (clicked)="onSubmit()">
+        {{ loading ? 'Entrando...' : 'Entrar' }}
+      </app-button>
+    </div>
+  </main>
+</div>

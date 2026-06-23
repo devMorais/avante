@@ -1,0 +1,22 @@
+<app-modal [isOpen]="isOpen" (closeModal)="onCancel()" width="380px">
+  <div class="confirm-dialog">
+    <div class="dialog-header">
+      <h2>{{ title }}</h2>
+      <p *ngIf="itemName">
+        Tem certeza que deseja excluir
+        <strong>{{ itemName }}</strong>?
+        {{ message }}
+      </p>
+      <p *ngIf="!itemName">{{ message }}</p>
+    </div>
+
+    <div class="dialog-actions">
+      <app-button variant="text" (clicked)="onCancel()" [disabled]="loading">
+        {{ cancelLabel }}
+      </app-button>
+      <app-button variant="danger" (clicked)="onConfirm()" [disabled]="loading">
+        {{ loading ? 'Excluindo...' : confirmLabel }}
+      </app-button>
+    </div>
+  </div>
+</app-modal>

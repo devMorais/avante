@@ -1,0 +1,177 @@
+<app-sidebar [collapsed]="sidebarCollapsed()" (toggle)="toggleSidebar()">
+  <button class="sidebar-nav-item" [class.active]="section() === 'boards'" (click)="setSection('boards')"
+    title="Quadros">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+      <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+      <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+      <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+    </svg>
+    <span *ngIf="!sidebarCollapsed()">Quadros</span>
+  </button>
+
+  <button class="sidebar-nav-item" [class.active]="section() === 'users'" (click)="setSection('users')"
+    title="Usuários">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+      <circle cx="9" cy="7" r="4"></circle>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </svg>
+    <span *ngIf="!sidebarCollapsed()">Usuários</span>
+  </button>
+</app-sidebar>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="page-header" *ngIf="section() === 'boards'">
+    <div class="header-text">
+      <p class="eyebrow">Workspace</p>
+      <h1>Meus Quadros</h1>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-box">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text" placeholder="Buscar quadro..." [ngModel]="searchTerm()"
+          (ngModelChange)="searchTerm.set($event)">
+      </div>
+
+      <app-button variant="primary" (clicked)="openAddBoardDialog()">
+        <mat-icon>add</mat-icon>
+        Novo Quadro
+      </app-button>
+    </div>
+  </header>
+
+  <!-- Seção: Quadros -->
+  <ng-container *ngIf="section() === 'boards'">
+
+    <!-- Grid de quadros -->
+    <div class="boards-grid" *ngIf="filteredBoards().length > 0">
+      <article class="board-card" *ngFor="let board of filteredBoards()" (click)="openBoard(board.id)">
+
+        <div class="card-menu-trigger">
+          <app-popover>
+            <button trigger class="icon-btn" aria-label="Mais opções">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <div panel>
+              <button class="popover-item" (click)="openEditBoardDialog(board, $event)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button class="popover-item popover-item--danger" (click)="openDeleteDialog(board, $event)">
+                <mat-icon>delete_outline</mat-icon>
+                <span>Excluir</span>
+              </button>
+            </div>
+          </app-popover>
+        </div>
+
+        <div class="board-cover" [style.background]="board.icon_url ? '#F3F2EE' : accentFor(board.name).bg">
+          <img *ngIf="board.icon_url" [src]="board.icon_url" [alt]="board.name">
+          <span *ngIf="!board.icon_url" class="board-initials" [style.color]="accentFor(board.name).fg">{{
+            initialsFor(board.name) }}</span>
+        </div>
+
+        <div class="board-body">
+          <h3 class="board-title">{{ board.name }}</h3>
+          <p class="board-meta">
+            <mat-icon class="meta-icon">schedule</mat-icon>
+            {{ board.created_at | date:'dd MMM yyyy, HH:mm' }}
+          </p>
+        </div>
+
+        <div class="board-footer">
+          <span class="board-access">
+            Acessar
+            <mat-icon>arrow_forward</mat-icon>
+          </span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Estado vazio: nenhum quadro existe -->
+    <div class="empty-state" *ngIf="boards().length === 0">
+      <div class="empty-icon">
+        <mat-icon>dashboard_customize</mat-icon>
+      </div>
+      <h2>Nenhum quadro por aqui ainda</h2>
+      <p>Crie seu primeiro quadro para começar a organizar tarefas.</p>
+      <app-button variant="primary" (clicked)="openAddBoardDialog()">
+        <mat-icon>add</mat-icon>
+        Criar primeiro quadro
+      </app-button>
+    </div>
+
+    <!-- Estado vazio: busca sem resultado -->
+    <div class="empty-state" *ngIf="boards().length > 0 && filteredBoards().length === 0">
+      <div class="empty-icon">
+        <mat-icon>search_off</mat-icon>
+      </div>
+      <h2>Nenhum resultado para "{{ searchTerm() }}"</h2>
+      <p>Tente buscar por outro nome de quadro.</p>
+    </div>
+
+  </ng-container>
+
+  <!-- Seção: Usuários -->
+  <ng-container *ngIf="section() === 'users'">
+    <app-user-manager></app-user-manager>
+  </ng-container>
+
+</div>
+
+<!-- Modal de criar/editar -->
+<app-modal [isOpen]="boardDialogOpen()" (closeModal)="closeBoardDialog()">
+  <div class="dialog-header">
+    <h2>{{ dialogMode === 'edit' ? 'Editar quadro' : 'Criar novo quadro' }}</h2>
+    <p>Dê um nome e, se quiser, escolha uma imagem de capa.</p>
+  </div>
+
+  <div class="dialog-content">
+
+    <!-- Upload de imagem -->
+    <div class="image-upload">
+      <input #fileInput type="file" accept="image/png,image/jpeg,image/webp" hidden (change)="onFileSelected($event)">
+
+      <div class="upload-preview" [class.has-image]="imagePreview()" (click)="fileInput.click()">
+        <img *ngIf="imagePreview()" [src]="imagePreview()" alt="Pré-visualização">
+
+        <div class="upload-placeholder" *ngIf="!imagePreview()">
+          <mat-icon>add_photo_alternate</mat-icon>
+          <span>Adicionar imagem</span>
+        </div>
+
+        <button *ngIf="imagePreview()" type="button" class="remove-image-btn"
+          (click)="removeSelectedImage(); $event.stopPropagation()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Nome do quadro -->
+    <mat-form-field appearance="outline" class="name-field">
+      <mat-label>Nome do quadro</mat-label>
+      <input matInput [(ngModel)]="newBoardName" placeholder="Ex: Financeiro" autofocus
+        (keyup.enter)="confirmSaveBoard()">
+    </mat-form-field>
+
+  </div>
+
+  <div class="dialog-actions">
+    <app-button variant="text" (clicked)="closeBoardDialog()">Cancelar</app-button>
+    <app-button variant="primary" (clicked)="confirmSaveBoard()" [disabled]="!newBoardName.trim() || saving()">
+      {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar alterações' : 'Criar quadro') }}
+    </app-button>
+  </div>
+</app-modal>
+
+<!-- Modal de confirmação de exclusão -->
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir quadro?" [itemName]="boardPendingDelete?.name"
+  [loading]="deleting()" (confirm)="confirmDeleteBoard()" (cancel)="closeDeleteDialog()"></app-confirm-dialog>

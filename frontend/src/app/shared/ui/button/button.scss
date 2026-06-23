@@ -1,0 +1,59 @@
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.app-btn--primary {
+  background: #4F46E5;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #4338CA;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.app-btn--text {
+  background: transparent;
+  color: #6B6B70;
+  padding: 0 16px;
+
+  &:hover:not(:disabled) {
+    background: rgba(28, 28, 31, 0.05);
+    color: #1C1C1F;
+  }
+}
+
+.app-btn--danger {
+  background: #DC2626;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #B91C1C;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}

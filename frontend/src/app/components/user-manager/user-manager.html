@@ -1,0 +1,136 @@
+<div class="user-manager">
+
+  <div class="um-header">
+    <h2 class="um-title">Usuários</h2>
+    <app-button variant="primary" (clicked)="openCreateDialog()">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Adicionar Usuário
+    </app-button>
+  </div>
+
+  <!-- Loading -->
+  <div class="um-loading" *ngIf="loading()">
+    <span>Carregando usuários...</span>
+  </div>
+
+  <!-- Tabela -->
+  <div class="um-table-wrap" *ngIf="!loading()">
+
+    <div class="um-empty" *ngIf="users().length === 0">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <p>Nenhum usuário cadastrado ainda.</p>
+      <p class="um-empty-sub">Adicione o primeiro usuário para poder atribuir responsáveis às atividades.</p>
+    </div>
+
+    <table class="um-table" *ngIf="users().length > 0">
+      <thead>
+        <tr>
+          <th class="col-user">Usuário</th>
+          <th class="col-email" style="text-align:center">E-mail</th>
+          <th class="col-role" style="text-align:center">Papel</th>
+          <th class="col-date" style="text-align:center">Cadastro</th>
+          <th class="col-actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users()">
+          <td class="col-user">
+            <div class="um-user-cell">
+              <div class="um-avatar">{{ initialsFor(user.name) }}</div>
+              <span class="um-name">{{ user.name }}</span>
+            </div>
+          </td>
+          <td class="col-email">
+            <span class="um-email">{{ user.email }}</span>
+          </td>
+          <td class="col-role">
+            <span class="um-role-badge" [class.um-role-badge--admin]="user.role === 'Administrador'">
+              {{ user.role }}
+            </span>
+          </td>
+          <td class="col-date">
+            <span class="um-date">{{ user.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+          </td>
+          <td class="col-actions">
+            <div class="um-actions">
+              <button class="um-action-btn" (click)="openEditDialog(user)" title="Editar">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </button>
+              <button class="um-action-btn um-action-btn--danger" (click)="askDelete(user)" title="Excluir">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<!-- Modal criar/editar -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()">
+  <div class="dialog-header">
+    <h2>{{ dialogMode === 'edit' ? 'Editar usuário' : 'Novo usuário' }}</h2>
+    <p>{{ dialogMode === 'edit' ? 'Altere os dados do usuário.' : 'Preencha os dados para criar um novo usuário.' }}</p>
+  </div>
+
+  <div class="dialog-content">
+    <div class="field-group">
+      <label class="field-label">Nome <span class="required">*</span></label>
+      <input class="field-input" type="text" [(ngModel)]="form.name" placeholder="Ex: João Silva">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">E-mail <span class="required">*</span></label>
+      <input class="field-input" type="email" [(ngModel)]="form.email" placeholder="Ex: joao@empresa.com">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">
+        Senha <span class="required" *ngIf="dialogMode === 'create'">*</span>
+        <span class="field-hint" *ngIf="dialogMode === 'edit'"> — deixe em branco para não alterar</span>
+      </label>
+      <input class="field-input" type="password" [(ngModel)]="form.password" placeholder="••••••">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Papel <span class="required">*</span></label>
+      <select class="field-input field-select" [(ngModel)]="form.role">
+        <option value="Usuário">Usuário</option>
+        <option value="Administrador">Administrador</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="dialog-actions">
+    <app-button variant="text" (clicked)="closeDialog()">Cancelar</app-button>
+    <app-button variant="primary" (clicked)="confirmSave()"
+      [disabled]="!form.name.trim() || !form.email.trim() || (dialogMode === 'create' && !form.password.trim()) || saving()">
+      {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar alterações' : 'Criar usuário') }}
+    </app-button>
+  </div>
+</app-modal>
+
+<!-- Modal de confirmação de exclusão -->
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir usuário?" [itemName]="userPendingDelete?.name"
+  [loading]="deleting()" (confirm)="confirmDelete()" (cancel)="cancelDelete()"></app-confirm-dialog>
