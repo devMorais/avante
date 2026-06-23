@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const API_URL = 'http://gestao-tarefas.test/api';
 
-const BACKEND_URL = 'http://gestao-tarefas.test';
+const API_URL = environment.apiUrl;
+const BACKEND_URL = environment.backendUrl;
 
 export function resolveAvatarUrl(url: string | null | undefined): string | null {
   if (!url) return null;
