@@ -16,7 +16,7 @@
     <span>Carregando status...</span>
   </div>
 
-  <div class="sm-list" *ngIf="!loading()">
+  <ng-container *ngIf="!loading()">
 
     <div class="sm-empty" *ngIf="statuses().length === 0">
       <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -29,31 +29,50 @@
       <p class="sm-empty-sub">Crie os status que representam as etapas do seu fluxo de trabalho.</p>
     </div>
 
-    <div class="sm-card" *ngFor="let status of statuses()">
-      <div class="sm-card-body">
-        <span class="sm-color-dot" [style.background]="status.color"></span>
-        <span class="sm-card-name">{{ status.name }}</span>
-      </div>
-
-      <div class="sm-card-actions">
-        <button class="sm-action-btn" (click)="openEditDialog(status)" title="Editar">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-          </svg>
-        </button>
-        <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(status)" title="Excluir">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-          </svg>
-        </button>
-      </div>
+    <div class="sm-table-wrap" *ngIf="statuses().length > 0">
+      <table class="sm-table">
+        <thead>
+          <tr>
+            <th class="th-color">Cor</th>
+            <th class="th-name">Nome</th>
+            <th class="th-order">Ordem</th>
+            <th class="th-actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sm-row" *ngFor="let status of statuses()">
+            <td class="td-color">
+              <span class="sm-color-dot" [style.background]="status.color"
+                [title]="status.color"></span>
+            </td>
+            <td class="td-name">
+              <span class="status-label" [style.color]="status.color">{{ status.name }}</span>
+            </td>
+            <td class="td-order">{{ status.order ?? '—' }}</td>
+            <td class="td-actions">
+              <div class="action-wrap">
+                <button class="sm-action-btn" (click)="openEditDialog(status)" title="Editar">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </button>
+                <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(status)" title="Excluir">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-  </div>
+  </ng-container>
 
 </div>
 

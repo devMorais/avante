@@ -70,29 +70,93 @@
         (filtersChange)="onFiltersChange($event)"></app-task-filters>
     </div>
 
-    <!-- Barra de seleção flutuante -->
+    <!-- ===== BARRA DE SELEÇÃO ===== -->
     <div class="selection-bar" [class.visible]="selectedCount > 0">
       <div class="selection-bar-info">
-        <span class="selection-count">{{ selectedCount }} {{ selectedCount === 1 ? 'tarefa selecionada' : 'tarefas
-          selecionadas' }}</span>
+        <span class="selection-count">
+          {{ selectedCount }} {{ selectedCount === 1 ? 'tarefa selecionada' : 'tarefas selecionadas' }}
+        </span>
       </div>
+
       <div class="selection-bar-actions">
-        <button class="selection-action-btn" (click)="openMoveModal()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+
+        <!-- Botão Status em massa -->
+        <div class="bulk-dropdown-wrap">
+          <button class="selection-action-btn" (click)="toggleBulkDropdown('status')" [disabled]="bulkUpdating()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Status
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'status'" (click)="$event.stopPropagation()">
+            <div class="bulk-dropdown-label">Definir status para selecionadas</div>
+            <button *ngFor="let s of statuses()" class="bulk-dropdown-item" (click)="bulkSetStatus(s)">
+              <span class="bulk-status-dot" [style.background]="s.color || '#6B6B70'"></span>
+              {{ s.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Botão Prioridade em massa -->
+        <div class="bulk-dropdown-wrap">
+          <button class="selection-action-btn" (click)="toggleBulkDropdown('priority')" [disabled]="bulkUpdating()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+              <line x1="4" y1="22" x2="4" y2="15" />
+            </svg>
+            Prioridade
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'priority'" (click)="$event.stopPropagation()">
+            <div class="bulk-dropdown-label">Definir prioridade para selecionadas</div>
+            <button *ngFor="let p of priorities" class="bulk-dropdown-item" (click)="bulkSetPriority(p)">
+              <span class="bulk-status-dot" [style.background]="priorityColor(p)"></span>
+              {{ p }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Botão Mover para Sprint -->
+        <button class="selection-action-btn" (click)="openMoveModal()" [disabled]="bulkUpdating()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
           Mover para Sprint
         </button>
-        <button class="selection-clear-btn" (click)="clearSelection()">
+
+        <!-- Spinner quando atualizando -->
+        <span *ngIf="bulkUpdating()" class="bulk-updating-hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" class="spin">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+          </svg>
+          Atualizando...
+        </span>
+
+        <!-- Limpar seleção -->
+        <button class="selection-clear-btn" (click)="clearSelection()" [disabled]="bulkUpdating()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round">
             <path d="M18 6 6 18M6 6l12 12" />
           </svg>
-          Limpar seleção
+          Limpar
         </button>
       </div>
     </div>
+
+    <!-- Overlay para fechar dropdowns clicando fora -->
+    <div *ngIf="bulkDropdown()" class="bulk-overlay" (click)="closeBulkDropdown()"></div>
 
     <!-- Visão Tabela -->
     <div *ngIf="viewMode() === 'table'" class="table-view">
@@ -175,9 +239,8 @@
               </ng-container>
 
             </div>
-            <!-- ===== FIM CABEÇALHO DA SPRINT ===== -->
 
-            <!-- Cabeçalho de colunas discreto — dentro de cada grupo -->
+            <!-- Cabeçalho de colunas por grupo -->
             <div class="group-columns-header" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
               <div class="gcol gcol-check"></div>
               <div class="gcol gcol-title sort-col" (click)="setSort('description')">
@@ -325,7 +388,6 @@
                     </svg>
                   </button>
                 </div>
-
               </div>
             </div>
 
@@ -347,7 +409,6 @@
       <app-pagination *ngIf="lastPage() > 1" [currentPage]="currentPage()" [lastPage]="lastPage()" [total]="total()"
         [perPage]="perPage()" [from]="fromItem()" [to]="toItem()" (pageChange)="onPageChange($event)"
         (perPageChange)="onPerPageChange($event)"></app-pagination>
-
     </div>
 
     <div *ngIf="viewMode() === 'kanban'" class="kanban-placeholder">
@@ -366,7 +427,7 @@
 
 </div>
 
-<!-- Toast de feedback -->
+<!-- Toast -->
 <div class="toast" [class.toast--visible]="toastMsg()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
     stroke-linecap="round">
@@ -408,13 +469,13 @@
   </div>
 </app-modal>
 
-<!-- Modal de criar/editar atividade -->
+<!-- Modal criar/editar atividade -->
 <app-task-dialog [isOpen]="taskDialogOpen()" [mode]="dialogMode" [task]="editingTask" [statuses]="statuses()"
   [sprints]="sprints()" [saving]="saving()" [comments]="comments()" [savingComment]="savingComment()"
   (closeDialog)="closeTaskDialog()" (save)="confirmSaveTask($event)" (addComment)="onAddComment($event)"
   (removeComment)="onRemoveComment($event)" (manageAssignees)="openAssigneeModal(editingTask)"></app-task-dialog>
 
-<!-- Modal de responsáveis -->
+<!-- Modal responsáveis -->
 <app-modal [isOpen]="assigneeModalOpen()" (closeModal)="closeAssigneeModal()" width="420px">
   <div class="assignee-modal">
     <div class="assignee-modal-header">

@@ -14,7 +14,7 @@
   --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);
 
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   min-height: 100vh;
   background: var(--bg);
   font-family: 'Inter', sans-serif;
@@ -45,7 +45,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -54,16 +54,25 @@
 
   svg {
     flex-shrink: 0;
+    opacity: 0.85;
   }
 
   &:hover {
-    background: rgba(28, 28, 31, 0.05);
-    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    svg {
+      opacity: 1;
+    }
   }
 
   &.active {
-    background: var(--accent);
+    background: rgba(255, 255, 255, 0.18);
     color: white;
+
+    svg {
+      opacity: 1;
+    }
   }
 }
 
@@ -1025,6 +1034,97 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   font-size: 13px;
   color: var(--text-secondary);
   padding: 8px 0;
+}
+
+
+/* ---------- Ações em massa — dropdowns na barra de seleção ---------- */
+
+.bulk-dropdown-wrap {
+  position: relative;
+}
+
+.bulk-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.12);
+  padding: 6px;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.bulk-dropdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 4px 8px 8px;
+}
+
+.bulk-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s ease;
+
+  &:hover {
+    background: rgba(79, 70, 229, 0.06);
+    color: var(--accent);
+
+    .bulk-status-dot {
+      outline: 2px solid rgba(79, 70, 229, 0.3);
+    }
+  }
+}
+
+.bulk-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  outline: 2px solid transparent;
+  transition: outline 0.1s ease;
+}
+
+.bulk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+}
+
+.bulk-updating-hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* ---------- Filtros ---------- */

@@ -155,6 +155,7 @@ export class TaskListComponent implements OnInit {
           this.toItem.set(res.length);
         }
         this.selectedIds.set(new Set());
+        this.closeBulkDropdown();
         this.loading.set(false);
       },
       error: (err) => { console.error('Erro ao carregar tarefas:', err); this.loading.set(false); }
@@ -228,50 +229,33 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Progresso da sprint ----------
 
-  /** Segmentos coloridos da barra de progresso baseados nos status */
   sprintProgressSegments(sprintTasks: any[]): { color: string; pct: number; name: string; count: number }[] {
     if (!sprintTasks.length) return [];
     const total = sprintTasks.length;
-
-    // Agrupa por status
     const map = new Map<string, { color: string; name: string; count: number }>();
-
     for (const task of sprintTasks) {
       const key = task.status?.id ?? '__none__';
       const name = task.status?.name ?? 'Sem status';
       const color = task.status?.color ?? '#D1D5DB';
-      if (map.has(key)) {
-        map.get(key)!.count++;
-      } else {
-        map.set(key, { color, name, count: 1 });
-      }
+      if (map.has(key)) { map.get(key)!.count++; }
+      else { map.set(key, { color, name, count: 1 }); }
     }
-
-    return Array.from(map.values()).map(s => ({
-      ...s,
-      pct: (s.count / total) * 100
-    }));
+    return Array.from(map.values()).map(s => ({ ...s, pct: (s.count / total) * 100 }));
   }
 
-  /** % de tarefas com status que contém "conclu" no nome */
   sprintCompletionPct(sprintTasks: any[]): number {
     if (!sprintTasks.length) return 0;
-    const done = sprintTasks.filter(t =>
-      t.status?.name && /conclu/i.test(t.status.name)
-    ).length;
+    const done = sprintTasks.filter(t => t.status?.name && /conclu/i.test(t.status.name)).length;
     return Math.round((done / sprintTasks.length) * 100);
   }
 
-  isSprintFinished(sprint: any): boolean {
-    return !!sprint?.finished_at;
-  }
+  isSprintFinished(sprint: any): boolean { return !!sprint?.finished_at; }
 
   isSprintOverdue(sprint: any): boolean {
     if (!sprint?.end_date || sprint?.finished_at) return false;
     return new Date(sprint.end_date) < new Date(new Date().toDateString());
   }
 
-  /** Pode finalizar se: vencida OU 100% concluída */
   canFinishSprint(sprint: any, sprintTasks: any[]): boolean {
     if (!sprint || sprint.finished_at) return false;
     return this.isSprintOverdue(sprint) || this.sprintCompletionPct(sprintTasks) === 100;
@@ -308,34 +292,29 @@ export class TaskListComponent implements OnInit {
   confirmFinishSprint() {
     if (!this.sprintToFinish) return;
     const sprint = this.sprintToFinish;
-
-    // Descobre o status "concluído" localmente
     const concludedStatus = this.statuses().find(s => /conclu/i.test(s.name));
-
     this.finishingSprintId.set(sprint.id);
     this.finishConfirmOpen.set(false);
-
     this.apiService.finishSprint(sprint.id, { concluded_status_id: concludedStatus?.id ?? null }).subscribe({
       next: (res) => {
         this.finishingSprintId.set(null);
         this.sprintToFinish = null;
-        // Mostra feedback
         const msg = res.overflow_count > 0
           ? `Sprint finalizada! ${res.overflow_count} tarefa(s) movida(s) para "${res.next_sprint}".`
           : 'Sprint finalizada com sucesso!';
-        this.toastMsg.set(msg);
-        setTimeout(() => this.toastMsg.set(''), 4000);
+        this.showToast(msg);
         this.loadSprints();
         this.loadTasks();
       },
-      error: (err) => {
-        console.error('Erro ao finalizar sprint:', err);
-        this.finishingSprintId.set(null);
-      }
+      error: (err) => { console.error('Erro ao finalizar sprint:', err); this.finishingSprintId.set(null); }
     });
   }
 
   toastMsg = signal('');
+  showToast(msg: string) {
+    this.toastMsg.set(msg);
+    setTimeout(() => this.toastMsg.set(''), 4000);
+  }
 
   // ---------- Seleção de tarefas ----------
 
@@ -372,14 +351,66 @@ export class TaskListComponent implements OnInit {
   }
 
   get selectedCount(): number { return this.selectedIds().size; }
-  clearSelection() { this.selectedIds.set(new Set()); }
+  clearSelection() { this.selectedIds.set(new Set()); this.closeBulkDropdown(); }
+
+  // ---------- Ações em massa ----------
+
+  bulkDropdown = signal<'status' | 'priority' | 'sprint' | null>(null);
+  bulkUpdating = signal(false);
+
+  toggleBulkDropdown(type: 'status' | 'priority' | 'sprint') {
+    this.bulkDropdown.set(this.bulkDropdown() === type ? null : type);
+  }
+
+  closeBulkDropdown() { this.bulkDropdown.set(null); }
+
+  bulkUpdateField(field: 'status_id' | 'priority', value: any, label: string) {
+    const ids = Array.from(this.selectedIds());
+    if (!ids.length) return;
+    this.bulkUpdating.set(true);
+    this.closeBulkDropdown();
+
+    let completed = 0;
+    const updatedTasks = [...this.tasks()];
+
+    for (const id of ids) {
+      this.apiService.updateTask(id, { [field]: value }).subscribe({
+        next: (updated) => {
+          const idx = updatedTasks.findIndex(t => t.id === id);
+          if (idx !== -1) updatedTasks[idx] = updated;
+          completed++;
+          if (completed === ids.length) {
+            this.tasks.set([...updatedTasks]);
+            this.bulkUpdating.set(false);
+            this.showToast(`${ids.length} tarefa(s) atualizadas — ${label}`);
+          }
+        },
+        error: (err) => {
+          console.error('Erro ao atualizar em massa:', err);
+          completed++;
+          if (completed === ids.length) {
+            this.bulkUpdating.set(false);
+            this.loadTasks();
+          }
+        }
+      });
+    }
+  }
+
+  bulkSetStatus(status: any) {
+    this.bulkUpdateField('status_id', status.id, status.name);
+  }
+
+  bulkSetPriority(priority: string) {
+    this.bulkUpdateField('priority', priority, priority);
+  }
 
   // ---------- Mover tarefas selecionadas ----------
 
   movingToSprint = signal(false);
   moveSprintModalOpen = signal(false);
 
-  openMoveModal() { this.moveSprintModalOpen.set(true); }
+  openMoveModal() { this.closeBulkDropdown(); this.moveSprintModalOpen.set(true); }
   closeMoveModal() { this.moveSprintModalOpen.set(false); }
 
   moveSelectedToSprint(sprintId: number | null) {
@@ -436,7 +467,6 @@ export class TaskListComponent implements OnInit {
     const request$ = this.dialogMode === 'edit' && this.editingTask
       ? this.apiService.updateTask(this.editingTask.id, payload)
       : this.apiService.createTask(payload);
-
     request$.subscribe({
       next: () => { this.saving.set(false); this.taskDialogOpen.set(false); this.loadTasks(); },
       error: (err) => { console.error('Erro ao salvar tarefa:', err); this.saving.set(false); }

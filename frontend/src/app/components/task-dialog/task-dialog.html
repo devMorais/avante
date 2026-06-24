@@ -1,28 +1,65 @@
-<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="920px">
+<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="960px">
   <div class="task-dialog">
+
+    <!-- Header -->
     <div class="dialog-header">
-      <h2>{{ mode === 'edit' ? 'Editar atividade' : 'Nova atividade' }}</h2>
+      <div class="dialog-header-left">
+        <span class="dialog-mode-badge" [class.badge--edit]="mode === 'edit'">
+          {{ mode === 'edit' ? 'Editando' : 'Nova atividade' }}
+        </span>
+        <h2>{{ mode === 'edit' ? 'Detalhes da atividade' : 'Nova atividade' }}</h2>
+      </div>
+      <div class="dialog-header-meta" *ngIf="mode === 'edit' && task">
+        <span class="meta-badge" *ngIf="task.status" [style.color]="task.status?.color">
+          <span class="meta-dot" [style.background]="task.status?.color"></span>
+          {{ task.status?.name }}
+        </span>
+        <span class="meta-badge priority-badge" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+      </div>
     </div>
 
+    <!-- Tabs (apenas no modo editar) -->
     <div class="dialog-tabs" *ngIf="mode === 'edit'">
       <button class="tab-btn" [class.active]="activeTab === 'details'" (click)="activeTab = 'details'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
         Detalhes
       </button>
       <button class="tab-btn" [class.active]="activeTab === 'comments'" (click)="activeTab = 'comments'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
         Comentários
         <span class="tab-count" *ngIf="comments.length">{{ comments.length }}</span>
       </button>
+      <button class="tab-btn" [class.active]="activeTab === 'notes'" (click)="activeTab = 'notes'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"></path>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+        </svg>
+        Minhas Notas
+        <span class="tab-dot-notes" *ngIf="taskNotes.trim()"></span>
+      </button>
     </div>
 
+    <!-- ===== ABA DETALHES ===== -->
     <div class="dialog-content" *ngIf="mode === 'create' || activeTab === 'details'">
 
-      <label class="field">
-        <span class="field-label">História</span>
-        <textarea [(ngModel)]="formDescription" rows="8" class="field-input"
-          placeholder="Descreva a atividade com o máximo de detalhe que precisar..."></textarea>
-      </label>
+      <div class="field field--full">
+        <div class="field-label-row">
+          <span class="field-label">História / Descrição</span>
+          <span class="field-counter">{{ charCount }} chars · {{ wordCount }} palavras</span>
+        </div>
+        <textarea [(ngModel)]="formDescription" rows="10" class="field-input"
+          placeholder="Descreva a atividade com o máximo de detalhe possível. Use este espaço para incluir contexto, requisitos, critérios de aceite e prompts de IA para estudo..."></textarea>
+      </div>
 
-      <div class="field-row">
+      <div class="field-grid">
         <label class="field">
           <span class="field-label">Status</span>
           <select [(ngModel)]="formStatusId" class="field-input">
@@ -37,15 +74,15 @@
             <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
           </select>
         </label>
-      </div>
 
-      <label class="field">
-        <span class="field-label">Sprint</span>
-        <select [(ngModel)]="formSprintId" class="field-input">
-          <option [ngValue]="null">Sem sprint</option>
-          <option *ngFor="let sp of sprints" [ngValue]="sp.id">{{ sp.name }}</option>
-        </select>
-      </label>
+        <label class="field">
+          <span class="field-label">Sprint</span>
+          <select [(ngModel)]="formSprintId" class="field-input">
+            <option [ngValue]="null">Sem sprint</option>
+            <option *ngFor="let sp of sprints" [ngValue]="sp.id">{{ sp.name }}</option>
+          </select>
+        </label>
+      </div>
 
       <div class="field" *ngIf="mode === 'edit'">
         <span class="field-label">Responsáveis</span>
@@ -64,6 +101,7 @@
 
     </div>
 
+    <!-- ===== ABA COMENTÁRIOS ===== -->
     <div class="comments-section" *ngIf="mode === 'edit' && activeTab === 'comments'">
       <div class="comments-list" *ngIf="comments.length; else noComments">
         <div class="comment" *ngFor="let c of comments">
@@ -72,8 +110,7 @@
             <span class="comment-date">{{ c.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
             <button class="comment-delete" (click)="onDeleteComment(c.id)" title="Excluir comentário">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z" />
+                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z" />
               </svg>
             </button>
           </div>
@@ -82,23 +119,105 @@
       </div>
 
       <ng-template #noComments>
-        <p class="comments-empty">Nenhum comentário ainda.</p>
+        <div class="comments-empty-state">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <p>Nenhum comentário ainda.</p>
+          <p class="comments-empty-sub">Seja o primeiro a comentar nesta atividade.</p>
+        </div>
       </ng-template>
 
       <div class="comment-form">
-        <textarea [(ngModel)]="commentContent" rows="2" class="field-input"
+        <textarea [(ngModel)]="commentContent" rows="3" class="field-input"
           placeholder="Escreva um comentário..."></textarea>
-        <app-button variant="text" (clicked)="onAddComment()" [disabled]="!commentContent.trim() || savingComment">
-          {{ savingComment ? 'Enviando...' : 'Comentar' }}
-        </app-button>
+        <div class="comment-form-actions">
+          <app-button variant="primary" (clicked)="onAddComment()" [disabled]="!commentContent.trim() || savingComment">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            {{ savingComment ? 'Enviando...' : 'Comentar' }}
+          </app-button>
+        </div>
       </div>
     </div>
 
-    <div class="dialog-actions">
+    <!-- ===== ABA NOTAS ===== -->
+    <div class="notes-section" *ngIf="mode === 'edit' && activeTab === 'notes'">
+      <div class="notes-header">
+        <div class="notes-header-left">
+          <h3 class="notes-title">Minhas Anotações</h3>
+          <p class="notes-subtitle">Anotações pessoais salvas localmente no seu navegador.</p>
+        </div>
+        <div class="notes-header-actions">
+          <button class="notes-save-btn" [class.saved]="notesSaved" (click)="saveNotes()" type="button">
+            <svg *ngIf="!notesSaved" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            <svg *ngIf="notesSaved" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            {{ notesSaved ? 'Salvo!' : 'Salvar notas' }}
+          </button>
+          <button class="notes-pdf-btn" (click)="exportPDF()" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Exportar PDF
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        class="notes-textarea"
+        [(ngModel)]="taskNotes"
+        placeholder="Escreva suas anotações aqui... Resumos de estudo, dúvidas, insights, próximos passos.
+
+Dicas:
+• Copie os prompts da história e cole para treinar com IA
+• Anote erros encontrados e como resolveu
+• Marque pontos de atenção para revisão
+"
+        (blur)="saveNotes()">
+      </textarea>
+
+      <div class="notes-footer">
+        <span class="notes-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Salvo automaticamente ao sair do campo · {{ taskNotes.length }} caracteres
+        </span>
+      </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="dialog-actions" *ngIf="activeTab !== 'notes'">
       <app-button variant="text" (clicked)="onClose()">Cancelar</app-button>
       <app-button variant="primary" (clicked)="onSave()" [disabled]="!formDescription.trim() || saving">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" *ngIf="!saving">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+        </svg>
         {{ saving ? 'Salvando...' : (mode === 'edit' ? 'Salvar alterações' : 'Criar atividade') }}
       </app-button>
     </div>
+
   </div>
 </app-modal>

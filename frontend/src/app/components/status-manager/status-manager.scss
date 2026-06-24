@@ -29,13 +29,7 @@
   color: var(--text-secondary);
 }
 
-/* ---------- Lista ---------- */
-
-.sm-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+/* ---------- Empty ---------- */
 
 .sm-empty {
   display: flex;
@@ -68,70 +62,145 @@
   max-width: 320px;
 }
 
-/* ---------- Card ---------- */
+/* ---------- Tabela ---------- */
 
-.sm-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.sm-table-wrap {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 20px;
   box-shadow: var(--shadow-rest);
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  overflow: hidden;
+}
+
+.sm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.sm-table thead {
+  background: rgba(28, 28, 31, 0.022);
+  border-bottom: 1px solid var(--border);
+}
+
+.sm-table thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-right: 1px solid var(--border);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.th-color {
+  width: 60px;
+  text-align: center !important;
+}
+
+.th-name {
+  width: 50%;
+}
+
+.th-order {
+  width: 80px;
+  text-align: center !important;
+}
+
+.th-actions {
+  width: 88px;
+  text-align: center !important;
+}
+
+.sm-row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   &:hover {
-    border-color: rgba(79, 70, 229, 0.2);
-    box-shadow: 0 4px 12px rgba(28, 28, 31, 0.07);
+    background: rgba(79, 70, 229, 0.03);
 
-    .sm-card-actions {
+    .action-wrap {
       opacity: 1;
     }
   }
 }
 
-.sm-card-body {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
+.sm-table tbody td {
+  padding: 12px 16px;
+  border-right: 1px solid var(--border);
+  vertical-align: middle;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+/* ---------- Células ---------- */
+
+.td-color {
+  text-align: center;
 }
 
 .sm-color-dot {
-  width: 14px;
-  height: 14px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-.sm-card-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
+.td-name {
   font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+}
+
+.status-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.td-order {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.td-actions {
+  text-align: center;
 }
 
 /* ---------- Ações ---------- */
 
-.sm-card-actions {
+.action-wrap {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   opacity: 0;
   transition: opacity 0.15s ease;
-  flex-shrink: 0;
 }
 
 .sm-action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;

@@ -33,6 +33,7 @@ Thumbs.db
 .zed/
 .cursor/
 .codex/
+.claude
 Homestead.json
 Homestead.yaml
 
