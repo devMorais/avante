@@ -2,60 +2,75 @@
 
   <div class="profile-container" *ngIf="!loading(); else loadingTpl">
 
-    <!-- Header -->
-    <div class="profile-header">
+    <div class="profile-topbar">
       <button class="back-link" (click)="goBack()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round">
           <path d="m15 18-6-6 6-6" />
         </svg>
-        Voltar
+        Voltar aos quadros
       </button>
-      <h1>Meu Perfil</h1>
-      <p class="profile-subtitle">Gerencie suas informações pessoais e segurança da conta.</p>
     </div>
 
     <div class="profile-body">
 
-      <!-- Coluna esquerda: avatar -->
+      <!-- ===== COLUNA ESQUERDA ===== -->
       <div class="profile-avatar-col">
-        <div class="avatar-wrap">
-          <div class="avatar-circle">
-            <img *ngIf="avatarPreview() || user()?.avatar_url" [src]="avatarPreview() || user()?.avatar_url"
-              [alt]="user()?.name" class="avatar-img" />
-            <span *ngIf="!avatarPreview() && !user()?.avatar_url" class="avatar-initials">
-              {{ initialsFor(user()?.name) }}
-            </span>
-            <div class="avatar-overlay" [class.loading]="uploadingAvatar()">
-              <label class="avatar-upload-label" for="avatar-input">
-                <svg *ngIf="!uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-                  stroke-width="2" stroke-linecap="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="17 8 12 3 7 8" />
-                  <line x1="12" y1="3" x2="12" y2="15" />
-                </svg>
-                <svg *ngIf="uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-                  stroke-width="2" stroke-linecap="round">
-                  <path
-                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                </svg>
-              </label>
-              <input id="avatar-input" type="file" accept="image/*" class="avatar-input"
-                (change)="onAvatarChange($event)" />
-            </div>
+
+        <!-- Card com banner gradiente + avatar -->
+        <div class="profile-card">
+          <div class="profile-card-banner">
+            <span class="profile-brand-tag">Avante</span>
           </div>
-          <p class="avatar-hint">Clique para alterar a foto</p>
+
+          <div class="profile-card-body">
+            <div class="avatar-circle">
+              <img *ngIf="avatarPreview() || user()?.avatar_url" [src]="avatarPreview() || user()?.avatar_url"
+                [alt]="user()?.name" class="avatar-img" />
+              <span *ngIf="!avatarPreview() && !user()?.avatar_url" class="avatar-initials">
+                {{ initialsFor(user()?.name) }}
+              </span>
+              <div class="avatar-overlay" [class.loading]="uploadingAvatar()">
+                <label class="avatar-upload-label" for="avatar-input">
+                  <svg *ngIf="!uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+                    stroke-width="2" stroke-linecap="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  <svg *ngIf="uploadingAvatar()" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+                    stroke-width="2" stroke-linecap="round">
+                    <path
+                      d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                  </svg>
+                </label>
+                <input id="avatar-input" type="file" accept="image/*" class="avatar-input"
+                  (change)="onAvatarChange($event)" />
+              </div>
+            </div>
+
+            <p class="profile-card-name">{{ user()?.name }}</p>
+            <span class="profile-role-badge" *ngIf="user()?.role">{{ user()?.role }}</span>
+            <p class="profile-card-position" *ngIf="user()?.position">{{ user()?.position }}</p>
+            <p class="avatar-hint">Clique na foto para alterar</p>
+          </div>
         </div>
 
-        <div class="profile-card-info">
-          <p class="profile-card-name">{{ user()?.name }}</p>
-          <p class="profile-card-position" *ngIf="user()?.position">{{ user()?.position }}</p>
-          <p class="profile-card-bio" *ngIf="user()?.bio">{{ user()?.bio }}</p>
+        <!-- Bio -->
+        <div class="bio-card" *ngIf="user()?.bio">
+          <p class="bio-card-label">Sobre mim</p>
+          <p class="bio-card-text">{{ user()?.bio }}</p>
         </div>
+
       </div>
 
-      <!-- Coluna direita: formulários -->
+      <!-- ===== COLUNA DIREITA ===== -->
       <div class="profile-forms-col">
+
+        <div class="forms-col-header">
+          <h1>Meu Perfil</h1>
+          <p>Gerencie suas informações pessoais e segurança da conta.</p>
+        </div>
 
         <!-- Tabs -->
         <div class="profile-tabs">
@@ -79,13 +94,15 @@
 
         <!-- Tab: Informações -->
         <div *ngIf="activeTab() === 'info'" class="profile-form">
-          <div class="form-group">
-            <label>Nome completo</label>
-            <input type="text" [(ngModel)]="form.name" placeholder="Seu nome" />
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" [(ngModel)]="form.email" placeholder="seu@email.com" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome completo</label>
+              <input type="text" [(ngModel)]="form.name" placeholder="Seu nome" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" [(ngModel)]="form.email" placeholder="seu@email.com" />
+            </div>
           </div>
           <div class="form-group">
             <label>Cargo / Função</label>
@@ -94,7 +111,7 @@
           <div class="form-group">
             <label>Bio <span class="label-hint">{{ form.bio.length }}/300</span></label>
             <textarea [(ngModel)]="form.bio" placeholder="Conte um pouco sobre você..." maxlength="300"
-              rows="3"></textarea>
+              rows="4"></textarea>
           </div>
 
           <div class="form-feedback success" *ngIf="successMsg()">
@@ -127,17 +144,26 @@
 
         <!-- Tab: Segurança -->
         <div *ngIf="activeTab() === 'password'" class="profile-form">
+          <div class="security-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" style="flex-shrink:0">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Atualize sua senha regularmente para manter sua conta segura.
+          </div>
           <div class="form-group">
             <label>Senha atual</label>
             <input type="password" [(ngModel)]="passwordForm.current_password" placeholder="••••••••" />
           </div>
-          <div class="form-group">
-            <label>Nova senha <span class="label-hint">mín. 8 caracteres</span></label>
-            <input type="password" [(ngModel)]="passwordForm.password" placeholder="••••••••" />
-          </div>
-          <div class="form-group">
-            <label>Confirmar nova senha</label>
-            <input type="password" [(ngModel)]="passwordForm.password_confirmation" placeholder="••••••••" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nova senha <span class="label-hint">mín. 8 caracteres</span></label>
+              <input type="password" [(ngModel)]="passwordForm.password" placeholder="••••••••" />
+            </div>
+            <div class="form-group">
+              <label>Confirmar nova senha</label>
+              <input type="password" [(ngModel)]="passwordForm.password_confirmation" placeholder="••••••••" />
+            </div>
           </div>
 
           <div class="form-feedback success" *ngIf="passwordSuccessMsg()">
