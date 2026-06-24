@@ -22,6 +22,32 @@
     </svg>
     <span>Status</span>
   </button>
+
+  <!-- Divisor -->
+  <div class="sidebar-divider"></div>
+
+  <!-- Analytics — em breve -->
+  <button class="sidebar-nav-item sidebar-nav-item--soon" (click)="showComingSoon('Analytics')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </svg>
+    <span>Analytics</span>
+    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Em breve</span>
+  </button>
+
+  <!-- EduCore — em breve -->
+  <button class="sidebar-nav-item sidebar-nav-item--soon" (click)="showComingSoon('EduCore')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+    <span>EduCore</span>
+    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Em breve</span>
+  </button>
 </app-sidebar>
 
 <div class="page">
@@ -60,6 +86,15 @@
             Kanban
           </button>
         </div>
+        <button class="import-json-btn" (click)="openImportJsonModal()" title="Importar tarefas via JSON">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          Importar JSON
+        </button>
         <app-button variant="primary" (clicked)="openCreateTaskDialog()">+ Nova Atividade</app-button>
       </div>
     </div>
@@ -438,13 +473,18 @@
 
 </div>
 
-<!-- Toast -->
+<!-- Toast principal -->
 <div class="toast" [class.toast--visible]="toastMsg()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
     stroke-linecap="round">
     <path d="M20 6 9 17l-5-5" />
   </svg>
   {{ toastMsg() }}
+</div>
+
+<!-- Toast coming soon -->
+<div class="toast toast--soon" [class.toast--visible]="comingSoonToast()">
+  {{ comingSoonToast() }}
 </div>
 
 <!-- Modal confirmar finalizar sprint -->
@@ -574,3 +614,103 @@
 
 <app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir atividade" [itemName]="taskPendingDelete?.description"
   [loading]="deleting()" (confirm)="confirmDeleteTask()" (cancel)="cancelDeleteTask()"></app-confirm-dialog>
+
+<!-- Modal importar JSON -->
+<app-modal [isOpen]="importJsonModalOpen()" (closeModal)="closeImportJsonModal()" width="600px">
+  <div class="import-json-modal">
+    <div class="import-json-header">
+      <div class="import-json-header-left">
+        <div class="import-json-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </div>
+        <div>
+          <h2>Importar Tarefas via JSON</h2>
+          <p>Cole o JSON abaixo. Cada item precisa ter ao menos o campo <code>description</code>.</p>
+        </div>
+      </div>
+      <button class="assignee-modal-close" (click)="closeImportJsonModal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="import-json-format">
+      <span class="import-json-format-label">Formato esperado:</span>
+      <code class="import-json-example">[ &#123; "description": "Criar tela de login", "priority": "Alta", "epic": "Autenticação" &#125; ]</code>
+    </div>
+
+    <div class="import-json-defaults">
+      <div class="import-json-field">
+        <label class="import-json-label">Sprint padrão (opcional)</label>
+        <select class="import-json-select" [(ngModel)]="importJsonSprintId">
+          <option [ngValue]="null">— Sem sprint —</option>
+          <option *ngFor="let s of sprints()" [ngValue]="s.id">{{ s.name }}</option>
+        </select>
+      </div>
+      <div class="import-json-field">
+        <label class="import-json-label">Status padrão (opcional)</label>
+        <select class="import-json-select" [(ngModel)]="importJsonStatusId">
+          <option [ngValue]="null">— Sem status —</option>
+          <option *ngFor="let s of statuses()" [ngValue]="s.id">{{ s.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <textarea class="import-json-textarea" [(ngModel)]="importJsonText"
+      placeholder='[&#10;  { "description": "Minha primeira tarefa", "priority": "Alta" },&#10;  { "description": "Segunda tarefa", "priority": "Média", "epic": "MVP" }&#10;]'
+      [disabled]="importJsonRunning() || importJsonDone()"></textarea>
+
+    <!-- Erros -->
+    <div *ngIf="importJsonErrors.length > 0" class="import-json-errors">
+      <div *ngFor="let err of importJsonErrors" class="import-json-error-item">⚠ {{ err }}</div>
+    </div>
+
+    <!-- Progresso -->
+    <div *ngIf="importJsonRunning() || importJsonDone()" class="import-json-progress-wrap">
+      <div class="import-json-progress-bar">
+        <div class="import-json-progress-fill"
+          [style.width.%]="importJsonTotal() > 0 ? (importJsonProgress() / importJsonTotal()) * 100 : 0">
+        </div>
+      </div>
+      <span class="import-json-progress-label">
+        {{ importJsonProgress() }} / {{ importJsonTotal() }} tarefas importadas
+      </span>
+    </div>
+
+    <!-- Sucesso -->
+    <div *ngIf="importJsonDone()" class="import-json-done">
+      🎉 Importação concluída! {{ importJsonTotal() - importJsonErrors.length }} tarefas criadas com sucesso.
+    </div>
+
+    <div class="import-json-actions">
+      <button class="import-json-cancel" (click)="closeImportJsonModal()" [disabled]="importJsonRunning()">Cancelar</button>
+      <button *ngIf="!importJsonDone()" class="import-json-confirm" (click)="startJsonImport()"
+        [disabled]="importJsonRunning() || !importJsonText.trim()">
+        <svg *ngIf="!importJsonRunning()" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="17 8 12 3 7 8" />
+          <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+        <svg *ngIf="importJsonRunning()" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" class="spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        {{ importJsonRunning() ? 'Importando...' : 'Importar Tarefas' }}
+      </button>
+      <button *ngIf="importJsonDone()" class="import-json-confirm" (click)="closeImportJsonModal()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Concluir
+      </button>
+    </div>
+  </div>
+</app-modal>

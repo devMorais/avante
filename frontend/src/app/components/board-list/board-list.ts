@@ -75,12 +75,19 @@ export class BoardListComponent implements OnInit {
   sidebarCollapsed = signal(false);
   section = signal<'boards' | 'users'>('boards');
 
+  comingSoonToast = signal('');
+
   toggleSidebar() {
     this.sidebarCollapsed.set(!this.sidebarCollapsed());
   }
 
   setSection(section: 'boards' | 'users') {
     this.section.set(section);
+  }
+
+  showComingSoon(feature: string) {
+    this.comingSoonToast.set(`🚀 ${feature} — Funcionalidade em evolução. Em breve!`);
+    setTimeout(() => this.comingSoonToast.set(''), 3500);
   }
 
   constructor(

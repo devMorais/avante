@@ -536,9 +536,25 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Atualização inline ----------
 
+  private readonly MOTIVATIONAL_COMPLETE = [
+    '🎉 Tarefa concluída! Você está arrasando!',
+    '🔥 Mais uma na conta! Continue esse ritmo!',
+    '✅ Concluído! Cada tarefa é uma vitória.',
+    '💪 Isso! Progresso é progresso, não importa o tamanho.',
+    '🚀 Tarefa finalizada! O sucesso é construído assim.',
+    '⭐ Excelente! Você está mais perto dos seus objetivos.',
+    '🏆 Task done! Você é imparável!',
+  ];
+
   updateTaskField(task: any, field: string, value: any) {
     this.apiService.updateTask(task.id, { [field]: value }).subscribe({
-      next: (updated) => { this.tasks.set(this.tasks().map(t => t.id === task.id ? updated : t)); },
+      next: (updated) => {
+        this.tasks.set(this.tasks().map(t => t.id === task.id ? updated : t));
+        if (field === 'status_id' && updated.status?.name && /conclu/i.test(updated.status.name)) {
+          const msg = this.MOTIVATIONAL_COMPLETE[Math.floor(Math.random() * this.MOTIVATIONAL_COMPLETE.length)];
+          this.showToast(msg);
+        }
+      },
       error: (err) => console.error(`Erro ao atualizar ${field}:`, err)
     });
   }
@@ -601,6 +617,95 @@ export class TaskListComponent implements OnInit {
       return (u.name ?? '').toLowerCase().includes(term);
     });
   });
+
+  // ---------- JSON Bulk Import ----------
+
+  importJsonModalOpen = signal(false);
+  importJsonText = '';
+  importJsonSprintId: number | null = null;
+  importJsonStatusId: number | null = null;
+  importJsonProgress = signal(0);
+  importJsonTotal = signal(0);
+  importJsonErrors: string[] = [];
+  importJsonRunning = signal(false);
+  importJsonDone = signal(false);
+
+  openImportJsonModal() {
+    this.importJsonText = '';
+    this.importJsonSprintId = null;
+    this.importJsonStatusId = null;
+    this.importJsonProgress.set(0);
+    this.importJsonTotal.set(0);
+    this.importJsonErrors = [];
+    this.importJsonRunning.set(false);
+    this.importJsonDone.set(false);
+    this.importJsonModalOpen.set(true);
+  }
+
+  closeImportJsonModal() {
+    if (this.importJsonRunning()) return;
+    this.importJsonModalOpen.set(false);
+  }
+
+  startJsonImport() {
+    if (this.importJsonRunning()) return;
+    let parsed: any[];
+    try {
+      parsed = JSON.parse(this.importJsonText);
+      if (!Array.isArray(parsed)) throw new Error('O JSON deve ser um array.');
+    } catch (e: any) {
+      this.importJsonErrors = [`Erro ao parsear JSON: ${e.message}`];
+      return;
+    }
+
+    const tasks = parsed.filter(item => item && typeof item.description === 'string' && item.description.trim());
+    if (!tasks.length) {
+      this.importJsonErrors = ['Nenhuma tarefa válida encontrada. Verifique o campo "description".'];
+      return;
+    }
+
+    this.importJsonErrors = [];
+    this.importJsonTotal.set(tasks.length);
+    this.importJsonProgress.set(0);
+    this.importJsonRunning.set(true);
+    this.importJsonDone.set(false);
+
+    const importNext = (idx: number) => {
+      if (idx >= tasks.length) {
+        this.importJsonRunning.set(false);
+        this.importJsonDone.set(true);
+        this.loadTasks();
+        return;
+      }
+      const item = tasks[idx];
+      const payload: any = {
+        board_id: this.boardId,
+        description: item.description.trim(),
+        priority: item.priority ?? 'Média',
+        epic: item.epic ?? undefined,
+        sprint_id: item.sprint_id ?? this.importJsonSprintId ?? undefined,
+        status_id: item.status_id ?? this.importJsonStatusId ?? undefined,
+      };
+      this.apiService.createTask(payload).subscribe({
+        next: () => { this.importJsonProgress.set(idx + 1); importNext(idx + 1); },
+        error: () => {
+          this.importJsonErrors.push(`Tarefa ${idx + 1}: "${item.description.substring(0, 40)}..." — erro ao importar`);
+          this.importJsonProgress.set(idx + 1);
+          importNext(idx + 1);
+        }
+      });
+    };
+
+    importNext(0);
+  }
+
+  // ---------- Feature placeholder (coming soon) ----------
+
+  comingSoonToast = signal('');
+  showComingSoon(feature: string) {
+    this.comingSoonToast.set(`🚀 ${feature} — Funcionalidade em evolução. Em breve!`);
+    setTimeout(() => this.comingSoonToast.set(''), 3500);
+  }
 
   // ---------- Utilitários ----------
 

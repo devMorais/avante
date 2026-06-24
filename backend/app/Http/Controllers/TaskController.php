@@ -87,6 +87,7 @@ class TaskController extends Controller
             'description'    => 'sometimes|required|string',
             'priority'       => 'nullable|string',
             'epic'           => 'nullable|string',
+            'notes'          => 'nullable|string',
         ]);
 
         $task->update(collect($validated)->except('assignee_ids')->toArray());

@@ -22,6 +22,32 @@
     </svg>
     <span *ngIf="!sidebarCollapsed()">Usuários</span>
   </button>
+
+  <!-- Divisor -->
+  <div class="sidebar-divider"></div>
+
+  <!-- Analytics — em breve -->
+  <button class="sidebar-nav-item sidebar-nav-item--soon" (click)="showComingSoon('Analytics')" title="Analytics">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </svg>
+    <span *ngIf="!sidebarCollapsed()">Analytics</span>
+    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Em breve</span>
+  </button>
+
+  <!-- EduCore — em breve -->
+  <button class="sidebar-nav-item sidebar-nav-item--soon" (click)="showComingSoon('EduCore')" title="EduCore">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+    <span *ngIf="!sidebarCollapsed()">EduCore</span>
+    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Em breve</span>
+  </button>
 </app-sidebar>
 
 <div class="page">
@@ -175,3 +201,8 @@
 <!-- Modal de confirmação de exclusão -->
 <app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir quadro?" [itemName]="boardPendingDelete?.name"
   [loading]="deleting()" (confirm)="confirmDeleteBoard()" (cancel)="closeDeleteDialog()"></app-confirm-dialog>
+
+<!-- Toast coming soon -->
+<div class="coming-soon-toast" [class.visible]="comingSoonToast()">
+  {{ comingSoonToast() }}
+</div>
