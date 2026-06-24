@@ -326,6 +326,17 @@
                       <path d="M20 6 9 17l-5-5" />
                     </svg>
                   </button>
+                  <!-- Meta mobile: shown only on small screens -->
+                  <div class="task-mobile-meta">
+                    <span class="task-mobile-status" *ngIf="task.status"
+                      [style.color]="task.status.color">
+                      <span class="task-mobile-dot" [style.background]="task.status.color"></span>
+                      {{ task.status.name }}
+                    </span>
+                    <span class="task-mobile-priority" [style.color]="priorityColor(task.priority)">
+                      {{ task.priority }}
+                    </span>
+                  </div>
                 </div>
 
                 <div class="task-col" (click)="$event.stopPropagation()">

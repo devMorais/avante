@@ -20,8 +20,22 @@
   max-width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  width: 100%;
 
   animation: panel-in 0.18s ease-out;
+}
+
+@media (max-width: 560px) {
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-panel {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    width: 100% !important;
+  }
 }
 
 @keyframes backdrop-in {

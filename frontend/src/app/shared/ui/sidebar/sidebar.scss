@@ -188,22 +188,28 @@
 
 @media (max-width: 720px) {
   .sidebar {
-    width: 100%;
+    width: 100% !important;
     height: auto;
     position: relative;
     top: auto;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 10px 12px;
+    gap: 4px;
     overflow-y: visible;
+    overflow-x: auto;
+    min-height: 56px;
+    flex-shrink: 0;
+  }
 
-    &.collapsed {
-      width: 100%;
-    }
+  .sidebar-toggle {
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 
   .sidebar-nav {
     flex-direction: row;
+    gap: 2px;
     flex: 1;
   }
 
@@ -214,13 +220,25 @@
     align-items: center;
     border-top: none;
     padding-top: 0;
+    gap: 4px;
+    flex-shrink: 0;
   }
 
   .sidebar-user-info {
     display: none;
   }
 
-  .sidebar-logout-btn span {
-    display: none;
+  .sidebar-logout-btn {
+    padding: 8px;
+    width: auto;
+    gap: 0;
+
+    span { display: none; }
+  }
+
+  .sidebar-user {
+    padding: 6px;
+    width: auto;
+    gap: 0;
   }
 }
