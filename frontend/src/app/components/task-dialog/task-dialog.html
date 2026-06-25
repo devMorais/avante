@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <!-- Tabs (apenas no modo editar) -->
+    <!-- Tabs -->
     <div class="dialog-tabs" *ngIf="mode === 'edit'">
       <button class="tab-btn" [class.active]="activeTab === 'details'" (click)="activeTab = 'details'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -127,7 +127,8 @@
         </div>
       </ng-template>
       <div class="comment-form">
-        <textarea [(ngModel)]="commentContent" rows="3" class="field-input" placeholder="Escreva um comentário..."></textarea>
+        <textarea [(ngModel)]="commentContent" rows="3" class="field-input"
+          placeholder="Escreva um comentário..."></textarea>
         <div class="comment-form-actions">
           <app-button variant="primary" (clicked)="onAddComment()" [disabled]="!commentContent.trim() || savingComment">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -142,68 +143,239 @@
     </div>
 
     <!-- ===== ABA CADERNO ===== -->
-    <div class="notes-section" *ngIf="mode === 'edit' && activeTab === 'notes'">
+    <div class="notes-section" [class.notes-fullscreen]="isFullscreen"
+      *ngIf="mode === 'edit' && activeTab === 'notes'">
 
-      <!-- Header do caderno -->
+      <!-- Header -->
       <div class="notes-header">
         <div class="notes-header-left">
-          <h3 class="notes-title">📓 Caderno de Estudos</h3>
-          <p class="notes-subtitle">Anotações salvas na nuvem · imagens salvas localmente</p>
+          <h3 class="notes-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            Caderno de Estudos
+          </h3>
+          <p class="notes-subtitle">
+            {{ previewMode ? 'Modo visualização · markdown renderizado' : 'Modo edição · markdown suportado' }}
+            <span class="notes-char-count">· {{ taskNotes.length }} chars</span>
+          </p>
         </div>
+
         <div class="notes-header-actions">
+
+          <!-- Font picker -->
+          <div class="notes-font-picker" title="Fonte do editor">
+            <button class="font-btn" [class.active]="noteFont === 'inter'" (click)="noteFont = 'inter'"
+              title="Inter (sans-serif)">Aa</button>
+            <button class="font-btn font-btn--mono" [class.active]="noteFont === 'mono'" (click)="noteFont = 'mono'"
+              title="JetBrains Mono">Aa</button>
+            <button class="font-btn font-btn--lora" [class.active]="noteFont === 'lora'" (click)="noteFont = 'lora'"
+              title="Lora (serif)">Aa</button>
+          </div>
+
+          <!-- Preview toggle -->
+          <button class="notes-mode-btn" [class.active]="previewMode" (click)="togglePreview()" type="button">
+            <svg *ngIf="!previewMode" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg *ngIf="previewMode" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            {{ previewMode ? 'Editar' : 'Preview' }}
+          </button>
+
+          <!-- Save -->
           <button class="notes-save-btn" [class.saved]="notesSaved" [disabled]="savingNotes"
             (click)="saveNotes()" type="button">
-            <svg *ngIf="!notesSaved && !savingNotes" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            <svg *ngIf="!notesSaved && !savingNotes" width="13" height="13" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
               <polyline points="17 21 17 13 7 13 7 21"></polyline>
               <polyline points="7 3 7 8 15 8"></polyline>
             </svg>
-            <svg *ngIf="notesSaved" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <svg *ngIf="notesSaved" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <svg *ngIf="savingNotes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <svg *ngIf="savingNotes" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" class="spin">
               <path d="M21 12a9 9 0 1 1-6.219-8.56" />
             </svg>
-            {{ savingNotes ? 'Salvando...' : (notesSaved ? 'Salvo!' : 'Salvar na nuvem') }}
+            {{ savingNotes ? 'Salvando...' : (notesSaved ? 'Salvo!' : 'Salvar') }}
           </button>
-          <button class="notes-pdf-btn" (click)="exportPDF()" type="button">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+
+          <!-- PDF -->
+          <button class="notes-pdf-btn" (click)="exportPDF()" type="button" title="Exportar PDF">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
             </svg>
-            Exportar PDF
+            PDF
           </button>
+
+          <!-- Fullscreen toggle -->
+          <button class="notes-fs-btn" (click)="toggleFullscreen()" type="button"
+            [title]="isFullscreen ? 'Minimizar (Esc)' : 'Expandir editor'">
+            <svg *ngIf="!isFullscreen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg *ngIf="isFullscreen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+            </svg>
+          </button>
+
         </div>
       </div>
 
-      <!-- Mensagem motivacional após salvar -->
+      <!-- Toolbar -->
+      <div class="notes-toolbar" *ngIf="!previewMode">
+
+        <div class="tb-group">
+          <button class="tb-btn tb-btn--label" (click)="insertFormat('h1')" title="Título principal (H1)">H1</button>
+          <button class="tb-btn tb-btn--label" (click)="insertFormat('h2')" title="Subtítulo (H2)">H2</button>
+          <button class="tb-btn tb-btn--label" (click)="insertFormat('h3')" title="Seção (H3)">H3</button>
+        </div>
+
+        <span class="tb-sep"></span>
+
+        <div class="tb-group">
+          <button class="tb-btn tb-btn--bold" (click)="insertFormat('bold')" title="Negrito (Ctrl+B)">B</button>
+          <button class="tb-btn tb-btn--italic" (click)="insertFormat('italic')" title="Itálico (Ctrl+I)">I</button>
+        </div>
+
+        <span class="tb-sep"></span>
+
+        <div class="tb-group">
+          <button class="tb-btn tb-btn--code" (click)="insertFormat('code')" title="Código inline (Ctrl+K)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            inline
+          </button>
+          <button class="tb-btn tb-btn--code" (click)="insertFormat('codeblock')" title="Bloco de código (```)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            block
+          </button>
+        </div>
+
+        <span class="tb-sep"></span>
+
+        <div class="tb-group">
+          <button class="tb-btn" (click)="insertFormat('bullet')" title="Lista com marcadores">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            Lista
+          </button>
+          <button class="tb-btn" (click)="insertFormat('numbered')" title="Lista numerada">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="10" y1="6" x2="21" y2="6"></line>
+              <line x1="10" y1="12" x2="21" y2="12"></line>
+              <line x1="10" y1="18" x2="21" y2="18"></line>
+              <path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path>
+            </svg>
+            1. Lista
+          </button>
+        </div>
+
+        <span class="tb-sep"></span>
+
+        <div class="tb-group">
+          <button class="tb-btn" (click)="insertFormat('quote')" title="Citação / destaque">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+            </svg>
+            Nota
+          </button>
+          <button class="tb-btn" (click)="insertFormat('hr')" title="Linha divisória">—</button>
+          <button class="tb-btn tb-btn--math" (click)="insertFormat('math')" title="Bloco matemático / fórmula ($$)">
+            ∑ Math
+          </button>
+        </div>
+
+        <span class="tb-hint">Ctrl+B · I · K · S &nbsp;|&nbsp; Tab = indent</span>
+
+      </div>
+
+      <!-- Toast motivacional -->
       <div class="notes-save-toast" *ngIf="notesSaveMsg">{{ notesSaveMsg }}</div>
 
-      <!-- Textarea principal do caderno -->
-      <textarea
-        class="notes-textarea"
-        [(ngModel)]="taskNotes"
-        (blur)="onNotesBlur()"
-        placeholder="Escreva aqui suas anotações de estudo...
+      <!-- Editor / Preview area -->
+      <div class="notes-editor-area">
 
-✍️ Dicas de uso:
-• Cole os prompts da história e treine com IA
-• Anote erros e como os resolveu
-• Faça resumos dos tópicos principais
-• Marque pontos de atenção para revisão
-• Tire foto do caderno físico e importe abaixo">
-      </textarea>
+        <!-- Textarea -->
+        <textarea
+          id="notes-editor"
+          class="notes-textarea"
+          [class.font-mono]="noteFont === 'mono'"
+          [class.font-lora]="noteFont === 'lora'"
+          [(ngModel)]="taskNotes"
+          (ngModelChange)="onNotesChange()"
+          (blur)="onNotesBlur()"
+          (keydown)="onNotesKeydown($event)"
+          *ngIf="!previewMode"
+          placeholder="Escreva aqui suas anotações...
 
-      <!-- ===== SEÇÃO DE IMAGENS ===== -->
-      <div class="notes-images-section">
+# Título da seção
+## Subtítulo
+
+**Negrito**, *itálico*, `código inline`
+
+\`\`\`javascript
+const exemplo = 'bloco de código com syntax';
+\`\`\`
+
+$$
+f(x) = ax² + bx + c
+$$
+
+- Item da lista
+- Outro item
+
+> 💡 Nota de destaque ou citação importante">
+        </textarea>
+
+        <!-- Preview -->
+        <div class="notes-preview"
+          [class.font-mono]="noteFont === 'mono'"
+          [class.font-lora]="noteFont === 'lora'"
+          *ngIf="previewMode"
+          [innerHTML]="renderedNotes">
+        </div>
+
+      </div>
+
+      <!-- Imagens (oculto no fullscreen) -->
+      <div class="notes-images-section" *ngIf="!isFullscreen">
         <div class="notes-images-header">
           <span class="notes-images-title">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" />
               <polyline points="21 15 16 10 5 21" />
@@ -212,7 +384,7 @@
             <span class="notes-images-count">{{ noteImages.length }}/5</span>
           </span>
           <label class="notes-add-img-btn" *ngIf="noteImages.length < 5" for="notes-img-input">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline
                 points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
             {{ imageUploading ? 'Carregando...' : 'Importar imagem' }}
@@ -221,19 +393,17 @@
             (change)="onImageUpload($event)" />
         </div>
 
-        <!-- Gallery -->
         <div class="notes-images-gallery" *ngIf="noteImages.length > 0">
           <div class="notes-img-thumb" *ngFor="let img of noteImages" (click)="openImageViewer(img)">
             <img [src]="img.data" [alt]="img.name" />
-            <button class="notes-img-delete" (click)="deleteImage(img.id); $event.stopPropagation()" type="button"
-              title="Excluir imagem">
+            <button class="notes-img-delete" (click)="deleteImage(img.id); $event.stopPropagation()" type="button">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
             </button>
           </div>
           <div class="notes-img-placeholder" *ngIf="noteImages.length < 5">
-            <label for="notes-img-input" style="cursor:pointer; opacity:.4; font-size:11px; text-align:center;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            <label for="notes-img-input" style="cursor:pointer; opacity:.35; font-size:11px; text-align:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                 stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline
                   points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
               Adicionar
@@ -250,10 +420,13 @@
       <!-- Footer -->
       <div class="notes-footer">
         <span class="notes-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" />
             <line x1="12" y1="8" x2="12.01" y2="8" /></svg>
-          Texto salvo na nuvem · Imagens salvas localmente no navegador · {{ taskNotes.length }} caracteres
+          Texto salvo na nuvem · Imagens salvas localmente · {{ taskNotes.length }} caracteres
+        </span>
+        <span class="notes-shortcuts-hint" *ngIf="isFullscreen">
+          Esc para minimizar
         </span>
       </div>
 
