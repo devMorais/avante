@@ -87,6 +87,8 @@ export class TaskListComponent implements OnInit {
     }
   }
 
+  clearSort() { this.sortField.set(null); }
+
   sortedTasks(tasks: any[]): any[] {
     const field = this.sortField();
     if (!field) return tasks;

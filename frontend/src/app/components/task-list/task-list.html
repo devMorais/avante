@@ -220,6 +220,53 @@
     <div *ngIf="viewMode() === 'table'" class="table-view">
 
       <ng-container *ngIf="!loading(); else loadingTpl">
+
+        <!-- Header global de colunas com ordenação -->
+        <div class="global-columns-header">
+          <div class="gcol gcol-check"></div>
+          <div class="gcol gcol-title sort-col" (click)="setSort('description')">
+            Atividade
+            <span class="sort-icon" [class.active]="sortField() === 'description'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <ng-container *ngIf="sortField() === 'description' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
+                <ng-container *ngIf="sortField() !== 'description' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
+              </svg>
+            </span>
+          </div>
+          <div class="gcol gcol-status sort-col" (click)="setSort('status')">
+            Status
+            <span class="sort-icon" [class.active]="sortField() === 'status'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <ng-container *ngIf="sortField() === 'status' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
+                <ng-container *ngIf="sortField() !== 'status' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
+              </svg>
+            </span>
+          </div>
+          <div class="gcol gcol-priority sort-col" (click)="setSort('priority')">
+            Prioridade
+            <span class="sort-icon" [class.active]="sortField() === 'priority'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <ng-container *ngIf="sortField() === 'priority' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
+                <ng-container *ngIf="sortField() !== 'priority' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
+              </svg>
+            </span>
+          </div>
+          <div class="gcol gcol-assignee sort-col" (click)="setSort('assignee')">
+            Resp.
+            <span class="sort-icon" [class.active]="sortField() === 'assignee'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <ng-container *ngIf="sortField() === 'assignee' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
+                <ng-container *ngIf="sortField() !== 'assignee' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
+              </svg>
+            </span>
+          </div>
+          <div class="gcol"></div>
+          <button *ngIf="sortField()" class="sort-clear-btn" (click)="clearSort()">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Limpar
+          </button>
+        </div>
+
         <ng-container *ngFor="let group of groupedBySprint()">
           <div *ngIf="group.tasks.length > 0" class="sprint-group"
             [class.sprint-group--finished]="isSprintFinished(group.sprint)"
@@ -296,68 +343,6 @@
                 </button>
               </ng-container>
 
-            </div>
-
-            <!-- Cabeçalho de colunas por grupo -->
-            <div class="group-columns-header" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
-              <div class="gcol gcol-check"></div>
-              <div class="gcol gcol-title sort-col" (click)="setSort('description')">
-                Atividade
-                <span class="sort-icon" [class.active]="sortField() === 'description'">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round">
-                    <ng-container *ngIf="sortField() === 'description' && sortDir() === 'desc'">
-                      <path d="m18 15-6-6-6 6" />
-                    </ng-container>
-                    <ng-container *ngIf="sortField() !== 'description' || sortDir() === 'asc'">
-                      <path d="m6 9 6 6 6-6" />
-                    </ng-container>
-                  </svg>
-                </span>
-              </div>
-              <div class="gcol gcol-status sort-col" (click)="setSort('status')">
-                Status
-                <span class="sort-icon" [class.active]="sortField() === 'status'">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round">
-                    <ng-container *ngIf="sortField() === 'status' && sortDir() === 'desc'">
-                      <path d="m18 15-6-6-6 6" />
-                    </ng-container>
-                    <ng-container *ngIf="sortField() !== 'status' || sortDir() === 'asc'">
-                      <path d="m6 9 6 6 6-6" />
-                    </ng-container>
-                  </svg>
-                </span>
-              </div>
-              <div class="gcol gcol-priority sort-col" (click)="setSort('priority')">
-                Prioridade
-                <span class="sort-icon" [class.active]="sortField() === 'priority'">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round">
-                    <ng-container *ngIf="sortField() === 'priority' && sortDir() === 'desc'">
-                      <path d="m18 15-6-6-6 6" />
-                    </ng-container>
-                    <ng-container *ngIf="sortField() !== 'priority' || sortDir() === 'asc'">
-                      <path d="m6 9 6 6 6-6" />
-                    </ng-container>
-                  </svg>
-                </span>
-              </div>
-              <div class="gcol gcol-assignee sort-col" (click)="setSort('assignee')">
-                Resp.
-                <span class="sort-icon" [class.active]="sortField() === 'assignee'">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round">
-                    <ng-container *ngIf="sortField() === 'assignee' && sortDir() === 'desc'">
-                      <path d="m18 15-6-6-6 6" />
-                    </ng-container>
-                    <ng-container *ngIf="sortField() !== 'assignee' || sortDir() === 'asc'">
-                      <path d="m6 9 6 6 6-6" />
-                    </ng-container>
-                  </svg>
-                </span>
-              </div>
-              <div class="gcol"></div>
             </div>
 
             <!-- Linhas de tarefa -->
