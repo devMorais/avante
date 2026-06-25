@@ -161,6 +161,29 @@
           </div>
         </div>
 
+        <!-- Botão Responsável em massa -->
+        <div class="bulk-dropdown-wrap">
+          <button class="selection-action-btn" (click)="toggleBulkDropdown('assignee'); bulkAssigneeSearch.set('')" [disabled]="bulkUpdating()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            Responsável
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="bulk-dropdown bulk-dropdown--assignee" [class.open]="bulkDropdown() === 'assignee'" (click)="$event.stopPropagation()">
+            <div class="bulk-dropdown-label">Adicionar responsável às selecionadas</div>
+            <input class="bulk-assignee-search" type="text" placeholder="Buscar..." [value]="bulkAssigneeSearch()" (input)="bulkAssigneeSearch.set($any($event.target).value)" />
+            <button *ngFor="let u of filteredBulkUsers()" class="bulk-dropdown-item" (click)="bulkAddAssignee(u)">
+              <app-avatar [name]="u.name" [photoUrl]="u.avatar_url" size="sm"></app-avatar>
+              {{ u.name }}
+            </button>
+            <p *ngIf="filteredBulkUsers().length === 0" class="bulk-assignee-empty">Nenhum usuário encontrado.</p>
+          </div>
+        </div>
+
         <!-- Botão Mover para Sprint -->
         <button class="selection-action-btn" (click)="openMoveModal()" [disabled]="bulkUpdating()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

@@ -320,10 +320,10 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Ações em massa ----------
 
-  bulkDropdown = signal<'status' | 'priority' | 'sprint' | null>(null);
+  bulkDropdown = signal<'status' | 'priority' | 'sprint' | 'assignee' | null>(null);
   bulkUpdating = signal(false);
 
-  toggleBulkDropdown(type: 'status' | 'priority' | 'sprint') {
+  toggleBulkDropdown(type: 'status' | 'priority' | 'sprint' | 'assignee') {
     this.bulkDropdown.set(this.bulkDropdown() === type ? null : type);
   }
 
@@ -369,6 +369,44 @@ export class TaskListComponent implements OnInit {
   bulkSetPriority(priority: string) {
     this.bulkUpdateField('priority', priority, priority);
   }
+
+  bulkAssigneeSearch = signal('');
+
+  bulkAddAssignee(user: any) {
+    const ids = Array.from(this.selectedIds());
+    if (!ids.length) return;
+    this.bulkUpdating.set(true);
+    this.closeBulkDropdown();
+    let completed = 0;
+    const updatedTasks = [...this.tasks()];
+    for (const id of ids) {
+      const task = updatedTasks.find(t => t.id === id);
+      const current: number[] = (task?.assignees ?? []).map((u: any) => Number(u.id));
+      const merged = current.includes(Number(user.id)) ? current : [...current, Number(user.id)];
+      this.apiService.updateTask(id, { assignee_ids: merged }).subscribe({
+        next: (updated) => {
+          const idx = updatedTasks.findIndex(t => t.id === id);
+          if (idx !== -1) updatedTasks[idx] = updated;
+          completed++;
+          if (completed === ids.length) {
+            this.tasks.set([...updatedTasks]);
+            this.bulkUpdating.set(false);
+            this.showToast(`${ids.length} tarefa(s) atribuídas para ${user.name}`);
+          }
+        },
+        error: () => {
+          completed++;
+          if (completed === ids.length) { this.bulkUpdating.set(false); this.loadTasks(); }
+        }
+      });
+    }
+  }
+
+  filteredBulkUsers = computed(() => {
+    const term = this.bulkAssigneeSearch().toLowerCase();
+    if (!term) return this.users();
+    return this.users().filter(u => (u.name ?? '').toLowerCase().includes(term));
+  });
 
   // ---------- Mover tarefas selecionadas ----------
 
