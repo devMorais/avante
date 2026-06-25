@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/shared/ui/popover/popover.scss"],
-  "sourcesContent": [".popover-wrapper {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.popover-trigger {\r\n  display: inline-flex;\r\n  cursor: pointer;\r\n}\r\n\r\n.popover-panel {\r\n  position: absolute;\r\n  top: calc(100% + 6px);\r\n  right: 0;\r\n  z-index: 50;\r\n  min-width: 180px;\r\n  background: #FFFFFF;\r\n  border: 1px solid #E8E6E1;\r\n  border-radius: 14px;\r\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.08), 0 2px 8px rgba(28, 28, 31, 0.06);\r\n  padding: 6px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2px;\r\n\r\n  // animação leve de entrada\r\n  animation: popover-in 0.12s ease-out;\r\n}\r\n\r\n@keyframes popover-in {\r\n  from {\r\n    opacity: 0;\r\n    transform: translateY(-4px) scale(0.98);\r\n  }\r\n\r\n  to {\r\n    opacity: 1;\r\n    transform: translateY(0) scale(1);\r\n  }\r\n}\r\n"],
-  "mappings": ";AAAA,CAAA;AACE,YAAA;AACA,WAAA;;AAGF,CAAA;AACE,WAAA;AACA,UAAA;;AAGF,CAAA;AACE,YAAA;AACA,OAAA,KAAA,KAAA,EAAA;AACA,SAAA;AACA,WAAA;AACA,aAAA;AACA,cAAA;AACA,UAAA,IAAA,MAAA;AACA,iBAAA;AACA,cAAA,EAAA,IAAA,KAAA,KAAA,EAAA,EAAA,EAAA,EAAA,EAAA,EAAA,KAAA,EAAA,EAAA,IAAA,IAAA,KAAA,EAAA,EAAA,EAAA,EAAA,EAAA,EAAA;AACA,WAAA;AACA,WAAA;AACA,kBAAA;AACA,OAAA;AAGA,aAAA,WAAA,MAAA;;AAGF,WAHE;AAIA;AACE,aAAA;AACA,eAAA,WAAA,MAAA,MAAA;;AAGF;AACE,aAAA;AACA,eAAA,WAAA,GAAA,MAAA;;;",
-  "names": []
-}
