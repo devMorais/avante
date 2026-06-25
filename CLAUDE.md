@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 24/06/2026 — Análise completa de ponta a ponta do projeto.
+> Última atualização: 25/06/2026 — Caderno rico, JSON import, menus placeholder, toasts motivacionais.
 
 ---
 
@@ -196,15 +196,15 @@ const BACKEND_URL = environment.backendUrl;
 
 ### Tabelas principais
 
-| Tabela    | Campos principais                                                        |
-| --------- | ------------------------------------------------------------------------ |
-| users     | name, email, password, role, bio, position, avatar_url, soft delete      |
-| boards    | name, icon_path, soft delete                                             |
-| tasks     | description, priority, epic, sprint_id, status_id, board_id, soft delete |
-| sprints   | name, start_date, end_date, finished_at, board_id, soft delete           |
-| statuses  | name, color, order, board_id, soft delete                                |
-| task_user | pivot — múltiplos usuários por tarefa (unique task_id + user_id)         |
-| comments  | task_id, user_id, content, soft delete                                   |
+| Tabela    | Campos principais                                                                    |
+| --------- | ------------------------------------------------------------------------------------ |
+| users     | name, email, password, role, bio, position, avatar_url, soft delete                  |
+| boards    | name, icon_path, soft delete                                                         |
+| tasks     | description, priority, epic, **notes** (longText), sprint_id, status_id, board_id, soft delete |
+| sprints   | name, start_date, end_date, finished_at, board_id, soft delete                       |
+| statuses  | name, color, order, board_id, soft delete                                            |
+| task_user | pivot — múltiplos usuários por tarefa (unique task_id + user_id)                    |
+| comments  | task_id, user_id, content, soft delete                                               |
 
 ### Migrations em ordem
 
@@ -226,6 +226,7 @@ const BACKEND_URL = environment.backendUrl;
 2026_06_21_213358 create_comments_table
 2026_06_22_033101 add_profile_fields_to_users_table
 2026_06_23_034204 add_finished_to_sprints_table
+2026_06_24_200000 add_notes_to_tasks_table
 ```
 
 ---
@@ -292,18 +293,30 @@ const BACKEND_URL = environment.backendUrl;
 - Lista quadros com busca
 - Cria/edita/deleta quadros (com ícone)
 - Abre sidebar para gerenciar usuários
+- Sidebar com menus placeholder: Analytics e EduCore (badge "Em breve", toast ao clicar)
 
 **task-list** (página principal)
 - Agrupamento por sprint ordenado por `start_date`
 - Cabeçalho por sprint: nome, contagem, datas, barra de progresso, badge "Vencida/Finalizada", botão "Finalizar Sprint"
 - Seleção individual e por sprint com indeterminate
-- Barra flutuante de ações em lote
+- Barra flutuante de ações em lote (status, prioridade, mover sprint)
 - Mover tarefas entre sprints via modal
-- Sidebar com abas: Tasks, Sprints, Statuses
+- Sidebar com abas: Tasks, Sprints, Statuses + menus Analytics e EduCore (em breve)
 - Paginação 25/página, filtros, ordenação local
+- **Importar JSON em massa**: botão no header, modal com textarea JSON, sprint/status padrão, barra de progresso por tarefa
+- **Toast motivacional** ao mover tarefa para status "Concluída" (7 frases aleatórias)
+- Responsivo: task-row vira card em mobile (meta de status/prioridade inline)
 
 **task-dialog** — modal criar/editar tarefa
 - Campos: description, sprint_id, status_id, priority, epic, assignee_ids[]
+- Aba **Caderno** (notas ricas):
+  - Textarea grande (fundo amarelo-caderno), salva no backend via `PUT /api/tasks/:id { notes }`
+  - Fallback localStorage se backend falhar (`avante-note-{taskId}`)
+  - Upload de até 5 imagens/screenshots por tarefa (base64 em localStorage `avante-imgs-{taskId}`)
+  - Galeria de miniaturas + visualizador fullscreen
+  - Mensagem motivacional ao salvar (5 frases aleatórias)
+- **Timer de execução**: inicia ao abrir a tarefa, persiste em localStorage (`avante-started-{taskId}`), exibido no header do dialog
+- **Export PDF**: gera janela com descrição, meta, notas e imagens inline, dispara `window.print()`
 
 **task-filters** — filtros horizontais
 - Emite: `{ search, status_ids, priorities, assignee_ids }`
@@ -408,6 +421,29 @@ public function getAvatarUrlAttribute($value): ?string {
 - Filtros: `board_id`, `status_ids[]`, `priorities[]`, `assignee_ids[]`, `search`
 - Ordenação local no frontend
 
+### Caderno / Notas por tarefa
+
+- Campo `notes` (longText, nullable) na tabela `tasks`
+- Salvo via `PUT /api/tasks/:id` com `{ notes: string }`
+- Frontend mantém cópia em localStorage (`avante-note-{taskId}`) como rascunho/fallback
+- Imagens (base64) também em localStorage apenas (`avante-imgs-{taskId}`), array de `{ id, data, name }`
+- Timer de execução em localStorage: `avante-started-{taskId}` = ISO timestamp do primeiro acesso
+
+### JSON Bulk Import
+
+- Formato: `[ { "description": "...", "priority": "Alta", "epic": "...", "sprint_id": null } ]`
+- Campos opcionais: `priority` (default "Média"), `epic`, `sprint_id`, `status_id`
+- Sprint/status padrão podem ser selecionados no modal (aplicados quando o item não especifica)
+- Importação sequencial (uma tarefa por vez via `POST /api/tasks`), barra de progresso em tempo real
+- Erros por item são listados mas não interrompem o restante da importação
+
+### Menus placeholder (em breve)
+
+- Sidebars de `board-list` e `task-list` têm itens "Analytics" e "EduCore"
+- Badge âmbar "Em breve" visível quando sidebar expandida
+- Clicar exibe toast roxo gradiente "Funcionalidade em evolução. Em breve!"
+- Implementar ao integrar com EduCore (leitor de PDFs em `C:\Users\UITEC\Herd\EduCore`)
+
 ---
 
 ## 🚫 Limitações do servidor (shared hosting Hostinger)
@@ -497,3 +533,8 @@ DEPLOY.md
 | 23/06/2026 | MySQL via CLI no SSH para operações no banco                  | php artisan tinker bloqueado por shell_exec() no Hostinger  |
 | 23/06/2026 | task_user pivot para múltiplos assignees                      | Uma tarefa pode ter vários responsáveis                     |
 | 23/06/2026 | Componentes shared/ui/ reutilizáveis                          | Consistência visual e redução de duplicação                 |
+| 24/06/2026 | notes salvo no backend (longText) + fallback localStorage     | Notas disponíveis em qualquer dispositivo; offline degrada graciosamente |
+| 24/06/2026 | Imagens do caderno em base64 no localStorage (não no banco)   | Shared hosting bloqueia exec(); banco não tem storage de blobs; IndexedDB seria melhor no futuro |
+| 24/06/2026 | Timer de execução em localStorage por tarefa                  | Sem backend para tempo — persiste entre sessões no mesmo browser |
+| 24/06/2026 | JSON import sequencial (não paralelo)                         | Evita sobrecarga no shared hosting; barra de progresso dá feedback real |
+| 24/06/2026 | Menus Analytics/EduCore como placeholder com badge "Em breve" | Reservar espaço na UI antes de desenvolver; não criar expectativa sem entrega |
