@@ -38,10 +38,7 @@ class TaskController extends Controller
 
         $query->orderBy('created_at', 'desc');
 
-        $perPage = $request->get('per_page', 25);
-        $tasks = $query->paginate($perPage);
-
-        return response()->json($tasks);
+        return response()->json($query->get());
     }
 
     public function store(Request $request)

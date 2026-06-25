@@ -15,7 +15,6 @@ import { SprintManager } from '../sprint-manager/sprint-manager';
 import { StatusManager } from '../status-manager/status-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
-import { Pagination } from '../../shared/ui/pagination/pagination';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
@@ -28,7 +27,7 @@ const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Médi
   imports: [
     CommonModule, FormsModule, Button, Badge, Popover, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, Sidebar,
-    TaskFilters, Pagination
+    TaskFilters
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -65,31 +64,12 @@ export class TaskListComponent implements OnInit {
     this.loadTasks();
   }
 
-  // ---------- Filtros e paginação ----------
+  // ---------- Filtros ----------
 
   currentFilters: TaskFilterValue = { search: '', status_ids: [], priorities: [], assignee_ids: [] };
-  currentPage = signal(1);
-  lastPage = signal(1);
-  total = signal(0);
-  perPage = signal(25);
-  fromItem = signal(1);
-  toItem = signal(25);
 
   onFiltersChange(filters: TaskFilterValue) {
     this.currentFilters = filters;
-    this.currentPage.set(1);
-    this.loadTasks();
-  }
-
-  onPageChange(page: number) {
-    this.currentPage.set(page);
-    this.loadTasks();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  onPerPageChange(perPage: number) {
-    this.perPage.set(perPage);
-    this.currentPage.set(1);
     this.loadTasks();
   }
 
@@ -132,28 +112,13 @@ export class TaskListComponent implements OnInit {
   loadTasks() {
     this.loading.set(true);
     this.apiService.getTasks(this.boardId, {
-      page: this.currentPage(),
-      per_page: this.perPage(),
       search: this.currentFilters.search || undefined,
       status_ids: this.currentFilters.status_ids.length ? this.currentFilters.status_ids : undefined,
       priorities: this.currentFilters.priorities.length ? this.currentFilters.priorities : undefined,
       assignee_ids: this.currentFilters.assignee_ids.length ? this.currentFilters.assignee_ids : undefined,
     }).subscribe({
       next: (res) => {
-        if (res && res.data) {
-          this.tasks.set(res.data);
-          this.currentPage.set(res.current_page);
-          this.lastPage.set(res.last_page);
-          this.total.set(res.total);
-          this.fromItem.set(res.from ?? 1);
-          this.toItem.set(res.to ?? res.data.length);
-        } else {
-          this.tasks.set(res);
-          this.lastPage.set(1);
-          this.total.set(res.length);
-          this.fromItem.set(1);
-          this.toItem.set(res.length);
-        }
+        this.tasks.set(Array.isArray(res) ? res : (res.data ?? []));
         this.selectedIds.set(new Set());
         this.closeBulkDropdown();
         this.loading.set(false);

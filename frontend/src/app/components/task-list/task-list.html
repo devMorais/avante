@@ -452,9 +452,6 @@
         </div>
       </ng-template>
 
-      <app-pagination *ngIf="lastPage() > 1" [currentPage]="currentPage()" [lastPage]="lastPage()" [total]="total()"
-        [perPage]="perPage()" [from]="fromItem()" [to]="toItem()" (pageChange)="onPageChange($event)"
-        (perPageChange)="onPerPageChange($event)"></app-pagination>
     </div>
 
     <div *ngIf="viewMode() === 'kanban'" class="kanban-placeholder">
