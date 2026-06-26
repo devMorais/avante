@@ -30,6 +30,13 @@
     </svg>
     <span>Prioridades</span>
   </button>
+  <button class="sidebar-nav-item" [class.active]="section() === 'types'" (click)="setSection('types')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+    </svg>
+    <span>Tipos</span>
+  </button>
 
   <div class="sidebar-divider"></div>
 
@@ -473,6 +480,11 @@
                   <span class="task-drag-preview-text">{{ summaryFor(task.description) }}</span>
                 </div>
 
+                <!-- Faixa de tipo (cor) — clique abre popover de tipo -->
+                <button class="task-type-strip" [style.background]="task.type ? typeColor(task.type) : '#E8E6E1'"
+                  (click)="openPopover('type', task, $event)"
+                  [appTooltip]="task.type ? ('Tipo: ' + task.type) : 'Definir tipo'"></button>
+
                 <!-- Drag handle -->
                 <div class="task-drag-handle" cdkDragHandle (click)="$event.stopPropagation()"
                   appTooltip="Arrastar para reordenar ou mover de sprint">
@@ -490,6 +502,9 @@
 
                 <div class="task-title-cell">
                   <span class="task-title">{{ summaryFor(task.description) }}</span>
+                  <span *ngIf="task.release" class="task-release-badge" [appTooltip]="'Release: ' + task.release">
+                    {{ task.release }}
+                  </span>
                   <button class="copy-btn" (click)="copyDescription(task, $event)"
                     [appTooltip]="copiedTaskId() === task.id ? 'Copiado!' : 'Copiar descrição'">
                     <svg *ngIf="copiedTaskId() !== task.id" width="13" height="13" viewBox="0 0 24 24" fill="none"
@@ -534,11 +549,10 @@
                 <!-- Responsáveis (popover) -->
                 <div class="task-col">
                   <button class="assignees-trigger" (click)="openPopover('assignee', task, $event)"
-                    appTooltip="Gerenciar responsáveis">
+                    [appTooltip]="task.assignees?.length ? allAssigneeNames(task) : 'Gerenciar responsáveis'">
                     <ng-container *ngIf="task.assignees?.length > 0; else emptyAssignee">
                       <ng-container *ngFor="let a of task.assignees.slice(0,3)">
-                        <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"
-                          [title]="a.name"></app-avatar>
+                        <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
                       </ng-container>
                       <div *ngIf="task.assignees.length > 3" class="assignee-avatar--more">
                         +{{ task.assignees.length - 3 }}
@@ -559,7 +573,6 @@
                 <!-- Épico -->
                 <div class="task-col task-col--epic">
                   <span *ngIf="task.epic" class="task-epic-tag" [appTooltip]="task.epic">{{ task.epic }}</span>
-                  <span *ngIf="!task.epic" class="task-col-empty">—</span>
                 </div>
 
                 <!-- Tags (popover igual responsáveis) -->
@@ -570,7 +583,8 @@
                       <span *ngFor="let tag of task.tags.slice(0,2)" class="task-tag-chip"
                         [style.background]="tag.color + '20'" [style.color]="tag.color"
                         [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
-                      <span *ngIf="task.tags.length > 2" class="task-tag-more">+{{ task.tags.length - 2 }}</span>
+                      <span *ngIf="task.tags.length > 2" class="task-tag-more"
+                        [appTooltip]="extraTagNames(task, 2)">+{{ task.tags.length - 2 }}</span>
                     </ng-container>
                     <ng-template #emptyTags>
                       <span class="tags-empty">
@@ -634,6 +648,10 @@
 
   <ng-container *ngIf="section() === 'priorities'">
     <app-priority-manager [boardId]="boardId" (prioritiesChanged)="reloadPriorities()"></app-priority-manager>
+  </ng-container>
+
+  <ng-container *ngIf="section() === 'types'">
+    <app-type-manager [boardId]="boardId" (typesChanged)="reloadTaskTypes()"></app-type-manager>
   </ng-container>
 
 
@@ -779,6 +797,29 @@
     </div>
   </ng-container>
 
+  <!-- ===== TIPO ===== -->
+  <ng-container *ngIf="pop.type === 'type'">
+    <div class="uni-pop-head">
+      <span>Tipo</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="uni-pop-list">
+      <button *ngFor="let t of taskTypes()" class="uni-pop-item"
+        [class.active]="popoverTask?.type === t.name"
+        (click)="setPopoverField('type', t.name)">
+        <span class="uni-dot" [style.background]="t.color"></span>{{ t.name }}
+        <svg *ngIf="popoverTask?.type === t.name" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </button>
+      <button class="uni-pop-item uni-pop-item--clear" (click)="setPopoverField('type', null)">
+        Remover tipo
+      </button>
+    </div>
+  </ng-container>
+
 </div>
 
 <!-- ===== TOASTS ===== -->
@@ -835,6 +876,7 @@
   [sprints]="sprints()"
   [tags]="tags()"
   [priorities]="priorities()"
+  [taskTypes]="taskTypes()"
   [saving]="saving()"
   [comments]="comments()"
   [savingComment]="savingComment()"

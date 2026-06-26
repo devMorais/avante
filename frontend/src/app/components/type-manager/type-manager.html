@@ -1,0 +1,209 @@
+<div class="status-manager">
+
+  <div class="sm-header">
+    <div class="sm-header-left">
+      <h2 class="sm-title">Tipos de tarefa</h2>
+      <span class="sm-count" *ngIf="!loading() && types().length > 0">{{ types().length }}</span>
+      <span class="sm-reorder-hint" *ngIf="!loading() && types().length > 1">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+        Arraste para reordenar
+      </span>
+      <span *ngIf="reordering()" class="sm-reorder-saving">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        Salvando...
+      </span>
+    </div>
+    <app-button variant="primary" (clicked)="openCreateDialog()">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Novo Tipo
+    </app-button>
+  </div>
+
+  <div class="sm-loading" *ngIf="loading()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" class="sm-spin">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+    Carregando...
+  </div>
+
+  <div class="sm-empty" *ngIf="!loading() && types().length === 0">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2"
+      stroke-linecap="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+    </svg>
+    <p>Nenhum tipo cadastrado.</p>
+    <p class="sm-empty-sub">Crie o primeiro tipo para classificar as atividades (História, Bug…).</p>
+  </div>
+
+  <div class="sm-list-wrap" *ngIf="!loading() && types().length > 0">
+
+    <div class="sm-list-header">
+      <div class="sm-col sm-col--handle"></div>
+      <div class="sm-col sm-col--color">Cor</div>
+      <div class="sm-col sm-col--name">Nome</div>
+      <div class="sm-col sm-col--order">Posição</div>
+      <div class="sm-col sm-col--preview">Preview</div>
+      <div class="sm-col sm-col--actions"></div>
+    </div>
+
+    <div class="sm-list" cdkDropList (cdkDropListDropped)="drop($event)">
+
+      <div *ngFor="let type of types(); let i = index"
+        class="sm-row" cdkDrag [cdkDragData]="type">
+
+        <div *cdkDragPlaceholder class="sm-drag-placeholder"></div>
+
+        <div *cdkDragPreview class="sm-drag-preview">
+          <span class="sm-preview-dot" [style.background]="type.color"></span>
+          {{ type.name }}
+        </div>
+
+        <div class="sm-col sm-col--handle" cdkDragHandle title="Arrastar para reordenar">
+          <svg width="14" height="14" viewBox="0 0 10 16" fill="currentColor">
+            <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/>
+            <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/>
+            <circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/>
+          </svg>
+        </div>
+
+        <div class="sm-col sm-col--color">
+          <span class="status-color-dot" [style.background]="type.color || '#6B6B70'"></span>
+          <span class="status-color-hex">{{ type.color || '—' }}</span>
+        </div>
+
+        <div class="sm-col sm-col--name">
+          <span class="status-name-text">{{ type.name }}</span>
+        </div>
+
+        <div class="sm-col sm-col--order">
+          <span class="status-order-badge">{{ i + 1 }}º</span>
+        </div>
+
+        <div class="sm-col sm-col--preview">
+          <span class="status-preview-chip"
+            [style.background]="(type.color || '#6B6B70') + '18'"
+            [style.color]="type.color || '#6B6B70'"
+            [style.border-color]="(type.color || '#6B6B70') + '40'">
+            {{ type.name }}
+          </span>
+        </div>
+
+        <div class="sm-col sm-col--actions">
+          <button class="sm-action-btn" (click)="openEditDialog(type)" title="Editar">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+          </button>
+          <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(type)" title="Excluir">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== MODAL CRIAR/EDITAR ===== -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()" width="460px">
+  <div class="dialog-inner">
+
+    <div class="dialog-header">
+      <div class="dialog-header-icon" [style.background]="(form.color || '#4F46E5') + '18'"
+        [style.color]="form.color || '#4F46E5'">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+        </svg>
+      </div>
+      <div>
+        <h2>{{ dialogMode === 'edit' ? 'Editar tipo' : 'Novo tipo' }}</h2>
+        <p>{{ dialogMode === 'edit' ? 'Atualize nome e cor.' : 'Defina nome e cor do novo tipo.' }}</p>
+      </div>
+    </div>
+
+    <div class="dialog-content">
+
+      <div class="field-group">
+        <label class="field-label">Nome <span class="required">*</span></label>
+        <input class="field-input" type="text" [(ngModel)]="form.name"
+          placeholder="Ex: História, Bug, Spike" (keyup.enter)="confirmSave()" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Cor</label>
+        <div class="color-picker-wrap">
+          <div class="color-presets">
+            <button *ngFor="let c of presetColors" class="color-preset-btn"
+              [style.background]="c" [class.selected]="form.color === c"
+              (click)="selectColor(c)" [title]="c">
+              <svg *ngIf="form.color === c" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="3.5" stroke-linecap="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div class="color-custom-row">
+            <input type="color" class="color-input-native" [(ngModel)]="form.color" />
+            <span class="color-hex-label">Personalizado: {{ form.color }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Preview</label>
+        <div class="status-preview-live">
+          <span class="status-preview-chip status-preview-chip--live"
+            [style.background]="(form.color || '#6B6B70') + '18'"
+            [style.color]="form.color || '#6B6B70'"
+            [style.border-color]="(form.color || '#6B6B70') + '40'">
+            <span class="status-dot-small" [style.background]="form.color || '#6B6B70'"></span>
+            {{ form.name || 'Nome do tipo' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Posição</label>
+        <input class="field-input field-input--sm" type="number" [(ngModel)]="form.order" min="0" />
+        <span class="field-hint">O drag-and-drop também reordena automaticamente.</span>
+      </div>
+
+    </div>
+
+    <div class="dialog-actions">
+      <button class="dialog-cancel" (click)="closeDialog()">Cancelar</button>
+      <button class="dialog-save" (click)="confirmSave()" [disabled]="!form.name.trim() || saving()">
+        <svg *ngIf="saving()" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar' : 'Criar tipo') }}
+      </button>
+    </div>
+
+  </div>
+</app-modal>
+
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir tipo?"
+  [itemName]="typePendingDelete?.name" [loading]="deleting()"
+  (confirm)="confirmDelete()" (cancel)="cancelDelete()">
+</app-confirm-dialog>

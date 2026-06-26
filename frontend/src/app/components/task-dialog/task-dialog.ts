@@ -23,6 +23,7 @@ export interface TaskFormValue {
   sprint_id: number | null;
   epic: string | null;
   release: string | null;
+  type: string | null;
   tag_ids: number[];
 }
 
@@ -51,6 +52,7 @@ export class TaskDialog implements OnChanges {
   @Input() sprints: any[] = [];
   @Input() tags: any[] = [];
   @Input() priorities: any[] = [];
+  @Input() taskTypes: any[] = [];
   @Input() saving = false;
 
   @Input() comments: any[] = [];
@@ -66,9 +68,9 @@ export class TaskDialog implements OnChanges {
   activeTab: 'details' | 'comments' | 'notes' = 'details';
 
   // Dropdowns inline (popover) — substituem os <select> nativos
-  openField: 'status' | 'priority' | 'sprint' | null = null;
+  openField: 'status' | 'priority' | 'sprint' | 'type' | null = null;
 
-  toggleField(field: 'status' | 'priority' | 'sprint', event: Event) {
+  toggleField(field: 'status' | 'priority' | 'sprint' | 'type', event: Event) {
     event.stopPropagation();
     this.openField = this.openField === field ? null : field;
   }
@@ -80,10 +82,15 @@ export class TaskDialog implements OnChanges {
   selectStatus(id: number | null) { this.formStatusId = id; this.openField = null; }
   selectPriority(p: string) { this.formPriority = p; this.openField = null; }
   selectSprint(id: number | null) { this.formSprintId = id; this.openField = null; }
+  selectType(t: string | null) { this.formType = t; this.openField = null; }
 
   get currentStatus(): any { return this.statuses.find(s => s.id === this.formStatusId) ?? null; }
   get currentSprintName(): string {
     return this.sprints.find(s => s.id === this.formSprintId)?.name ?? 'Sem sprint';
+  }
+  get currentType(): any { return this.taskTypes.find(t => t.name === this.formType) ?? null; }
+  typeColor(name: string): string {
+    return this.taskTypes.find(t => t.name === name)?.color || '#6B6B70';
   }
 
   priorityColor(p: string): string {
@@ -104,6 +111,7 @@ export class TaskDialog implements OnChanges {
   formSprintId: number | null = null;
   formEpic = '';
   formRelease = '';
+  formType: string | null = null;
   formTagIds: number[] = [];
   tagSearchTerm = '';
   commentContent = '';
@@ -168,6 +176,7 @@ export class TaskDialog implements OnChanges {
       this.formSprintId = this.task.sprint_id;
       this.formEpic = this.task.epic ?? '';
       this.formRelease = this.task.release ?? '';
+      this.formType = this.task.type ?? null;
       this.formTagIds = (this.task.tags ?? []).map((t: any) => Number(t.id));
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
@@ -179,6 +188,7 @@ export class TaskDialog implements OnChanges {
       this.formSprintId = null;
       this.formEpic = '';
       this.formRelease = '';
+      this.formType = this.taskTypes[0]?.name ?? null;
       this.formTagIds = [];
       this.taskNotes = '';
       this.noteImages = [];
@@ -610,6 +620,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       sprint_id: this.formSprintId,
       epic: this.formEpic.trim() || null,
       release: this.formRelease.trim() || null,
+      type: this.formType || null,
       tag_ids: this.formTagIds,
     });
   }

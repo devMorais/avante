@@ -24629,12 +24629,12 @@ var Modal = class _Modal {
     if (rf & 2) {
       \u0275\u0275property("ngIf", ctx.isOpen);
     }
-  }, dependencies: [CommonModule, NgIf], styles: ["\n.modal-backdrop[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 1000;\n  background: rgba(28, 28, 31, 0.45);\n  -webkit-backdrop-filter: blur(2px);\n  backdrop-filter: blur(2px);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n  box-sizing: border-box;\n  animation: _ngcontent-%COMP%_backdrop-in 0.15s ease-out;\n}\n.modal-panel[_ngcontent-%COMP%] {\n  background: #FFFFFF;\n  border-radius: 20px;\n  box-shadow: 0 20px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  max-width: 100%;\n  max-height: 90vh;\n  overflow-y: auto;\n  width: 100%;\n  animation: _ngcontent-%COMP%_panel-in 0.18s ease-out;\n}\n@media (max-width: 560px) {\n  .modal-backdrop[_ngcontent-%COMP%] {\n    align-items: flex-end;\n    padding: 0;\n  }\n  .modal-panel[_ngcontent-%COMP%] {\n    border-radius: 20px 20px 0 0;\n    max-height: 92vh;\n    width: 100% !important;\n  }\n}\n@keyframes _ngcontent-%COMP%_backdrop-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes _ngcontent-%COMP%_panel-in {\n  from {\n    opacity: 0;\n    transform: translateY(8px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n/*# sourceMappingURL=modal.css.map */"] });
+  }, dependencies: [CommonModule, NgIf], styles: ["\n.modal-backdrop[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 1000;\n  background: rgba(28, 28, 31, 0.45);\n  -webkit-backdrop-filter: blur(2px);\n  backdrop-filter: blur(2px);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n  box-sizing: border-box;\n  animation: _ngcontent-%COMP%_backdrop-in 0.15s ease-out;\n}\n.modal-panel[_ngcontent-%COMP%] {\n  background: #FFFFFF;\n  border-radius: 20px;\n  box-shadow: 0 20px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  max-width: 100%;\n  max-height: 92vh;\n  overflow-y: auto;\n  width: 100%;\n  animation: _ngcontent-%COMP%_panel-in 0.18s ease-out;\n}\n@media (max-width: 560px) {\n  .modal-backdrop[_ngcontent-%COMP%] {\n    align-items: flex-end;\n    padding: 0;\n  }\n  .modal-panel[_ngcontent-%COMP%] {\n    border-radius: 20px 20px 0 0;\n    max-height: 92vh;\n    width: 100% !important;\n  }\n}\n@keyframes _ngcontent-%COMP%_backdrop-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes _ngcontent-%COMP%_panel-in {\n  from {\n    opacity: 0;\n    transform: translateY(8px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n/*# sourceMappingURL=modal.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Modal, [{
     type: Component,
-    args: [{ selector: "app-modal", standalone: true, imports: [CommonModule], template: '<div class="modal-backdrop" *ngIf="isOpen" (click)="requestClose()">\n  <div class="modal-panel" [style.width]="width" (click)="$event.stopPropagation()">\n    <ng-content></ng-content>\n  </div>\n</div>\n', styles: ["/* src/app/shared/ui/modal/modal.scss */\n.modal-backdrop {\n  position: fixed;\n  inset: 0;\n  z-index: 1000;\n  background: rgba(28, 28, 31, 0.45);\n  -webkit-backdrop-filter: blur(2px);\n  backdrop-filter: blur(2px);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n  box-sizing: border-box;\n  animation: backdrop-in 0.15s ease-out;\n}\n.modal-panel {\n  background: #FFFFFF;\n  border-radius: 20px;\n  box-shadow: 0 20px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  max-width: 100%;\n  max-height: 90vh;\n  overflow-y: auto;\n  width: 100%;\n  animation: panel-in 0.18s ease-out;\n}\n@media (max-width: 560px) {\n  .modal-backdrop {\n    align-items: flex-end;\n    padding: 0;\n  }\n  .modal-panel {\n    border-radius: 20px 20px 0 0;\n    max-height: 92vh;\n    width: 100% !important;\n  }\n}\n@keyframes backdrop-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes panel-in {\n  from {\n    opacity: 0;\n    transform: translateY(8px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n/*# sourceMappingURL=modal.css.map */\n"] }]
+    args: [{ selector: "app-modal", standalone: true, imports: [CommonModule], template: '<div class="modal-backdrop" *ngIf="isOpen" (click)="requestClose()">\n  <div class="modal-panel" [style.width]="width" (click)="$event.stopPropagation()">\n    <ng-content></ng-content>\n  </div>\n</div>\n', styles: ["/* src/app/shared/ui/modal/modal.scss */\n.modal-backdrop {\n  position: fixed;\n  inset: 0;\n  z-index: 1000;\n  background: rgba(28, 28, 31, 0.45);\n  -webkit-backdrop-filter: blur(2px);\n  backdrop-filter: blur(2px);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n  box-sizing: border-box;\n  animation: backdrop-in 0.15s ease-out;\n}\n.modal-panel {\n  background: #FFFFFF;\n  border-radius: 20px;\n  box-shadow: 0 20px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  max-width: 100%;\n  max-height: 92vh;\n  overflow-y: auto;\n  width: 100%;\n  animation: panel-in 0.18s ease-out;\n}\n@media (max-width: 560px) {\n  .modal-backdrop {\n    align-items: flex-end;\n    padding: 0;\n  }\n  .modal-panel {\n    border-radius: 20px 20px 0 0;\n    max-height: 92vh;\n    width: 100% !important;\n  }\n}\n@keyframes backdrop-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes panel-in {\n  from {\n    opacity: 0;\n    transform: translateY(8px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n/*# sourceMappingURL=modal.css.map */\n"] }]
   }], null, { isOpen: [{
     type: Input
   }], width: [{
@@ -25017,6 +25017,22 @@ var ApiService = class _ApiService {
   }
   deletePriority(id) {
     return this.http.delete(`${API_URL}/priorities/${id}`);
+  }
+  // ---------- Task types (tipos) ----------
+  getTaskTypes(boardId) {
+    return this.http.get(`${API_URL}/task-types?board_id=${boardId}`);
+  }
+  createTaskType(data) {
+    return this.http.post(`${API_URL}/task-types`, data);
+  }
+  updateTaskType(id, data) {
+    return this.http.put(`${API_URL}/task-types/${id}`, data);
+  }
+  deleteTaskType(id) {
+    return this.http.delete(`${API_URL}/task-types/${id}`);
+  }
+  reorderTaskTypes(items) {
+    return this.http.put(`${API_URL}/task-types/reorder`, { items });
   }
   // ---------- Tags ----------
   getTags(boardId) {
@@ -31693,46 +31709,94 @@ function TaskDialog_div_10_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r0.taskNotes.trim() || ctx_r0.noteImages.length);
   }
 }
-function TaskDialog_div_11_div_19_button_4_Template(rf, ctx) {
+function TaskDialog_div_11_div_22_button_4_Template(rf, ctx) {
   if (rf & 1) {
     const _r5 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 54);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_19_button_4_Template_button_click_0_listener() {
-      const s_r6 = \u0275\u0275restoreView(_r5).$implicit;
+    \u0275\u0275elementStart(0, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_22_button_4_Template_button_click_0_listener() {
+      const t_r6 = \u0275\u0275restoreView(_r5).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r0.selectStatus(s_r6.id));
+      return \u0275\u0275resetView(ctx_r0.selectType(t_r6.name));
     });
-    \u0275\u0275element(1, "span", 43);
+    \u0275\u0275element(1, "span", 45);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const s_r6 = ctx.$implicit;
+    const t_r6 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("active", ctx_r0.formStatusId === s_r6.id);
+    \u0275\u0275classProp("active", ctx_r0.formType === t_r6.name);
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", s_r6.color || "#6B6B70");
+    \u0275\u0275styleProp("background", t_r6.color);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1("", s_r6.name, " ");
+    \u0275\u0275textInterpolate1("", t_r6.name, " ");
   }
 }
-function TaskDialog_div_11_div_19_Template(rf, ctx) {
+function TaskDialog_div_11_div_22_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 53);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_19_Template_div_click_0_listener($event) {
+    \u0275\u0275elementStart(0, "div", 55);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_22_Template_div_click_0_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(1, "button", 54);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_19_Template_button_click_1_listener() {
+    \u0275\u0275elementStart(1, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_22_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r4);
+      const ctx_r0 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r0.selectType(null));
+    });
+    \u0275\u0275element(2, "span", 57);
+    \u0275\u0275text(3, "Sem tipo ");
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(4, TaskDialog_div_11_div_22_button_4_Template, 3, 5, "button", 58);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(4);
+    \u0275\u0275property("ngForOf", ctx_r0.taskTypes);
+  }
+}
+function TaskDialog_div_11_div_33_button_4_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r8 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_33_button_4_Template_button_click_0_listener() {
+      const s_r9 = \u0275\u0275restoreView(_r8).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(3);
+      return \u0275\u0275resetView(ctx_r0.selectStatus(s_r9.id));
+    });
+    \u0275\u0275element(1, "span", 45);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const s_r9 = ctx.$implicit;
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275classProp("active", ctx_r0.formStatusId === s_r9.id);
+    \u0275\u0275advance();
+    \u0275\u0275styleProp("background", s_r9.color || "#6B6B70");
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1("", s_r9.name, " ");
+  }
+}
+function TaskDialog_div_11_div_33_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r7 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 55);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_33_Template_div_click_0_listener($event) {
+      return $event.stopPropagation();
+    });
+    \u0275\u0275elementStart(1, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_33_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r7);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.selectStatus(null));
     });
-    \u0275\u0275element(2, "span", 55);
+    \u0275\u0275element(2, "span", 57);
     \u0275\u0275text(3, "Sem status ");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(4, TaskDialog_div_11_div_19_button_4_Template, 3, 5, "button", 56);
+    \u0275\u0275template(4, TaskDialog_div_11_div_33_button_4_Template, 3, 5, "button", 58);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -31741,36 +31805,36 @@ function TaskDialog_div_11_div_19_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.statuses);
   }
 }
-function TaskDialog_div_11_div_30_button_1_Template(rf, ctx) {
+function TaskDialog_div_11_div_44_button_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r7 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 54);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_30_button_1_Template_button_click_0_listener() {
-      const p_r8 = \u0275\u0275restoreView(_r7).$implicit;
+    const _r10 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_44_button_1_Template_button_click_0_listener() {
+      const p_r11 = \u0275\u0275restoreView(_r10).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r0.selectPriority(p_r8.name));
+      return \u0275\u0275resetView(ctx_r0.selectPriority(p_r11.name));
     });
-    \u0275\u0275element(1, "span", 43);
+    \u0275\u0275element(1, "span", 45);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const p_r8 = ctx.$implicit;
+    const p_r11 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("active", ctx_r0.formPriority === p_r8.name);
+    \u0275\u0275classProp("active", ctx_r0.formPriority === p_r11.name);
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", p_r8.color);
+    \u0275\u0275styleProp("background", p_r11.color);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1("", p_r8.name, " ");
+    \u0275\u0275textInterpolate1("", p_r11.name, " ");
   }
 }
-function TaskDialog_div_11_div_30_Template(rf, ctx) {
+function TaskDialog_div_11_div_44_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 53);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_30_Template_div_click_0_listener($event) {
+    \u0275\u0275elementStart(0, "div", 55);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_44_Template_div_click_0_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275template(1, TaskDialog_div_11_div_30_button_1_Template, 3, 5, "button", 56);
+    \u0275\u0275template(1, TaskDialog_div_11_div_44_button_1_Template, 3, 5, "button", 58);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -31779,42 +31843,42 @@ function TaskDialog_div_11_div_30_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.priorities);
   }
 }
-function TaskDialog_div_11_div_42_button_3_Template(rf, ctx) {
+function TaskDialog_div_11_div_56_button_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r10 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 54);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_42_button_3_Template_button_click_0_listener() {
-      const sp_r11 = \u0275\u0275restoreView(_r10).$implicit;
+    const _r13 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_56_button_3_Template_button_click_0_listener() {
+      const sp_r14 = \u0275\u0275restoreView(_r13).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r0.selectSprint(sp_r11.id));
+      return \u0275\u0275resetView(ctx_r0.selectSprint(sp_r14.id));
     });
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const sp_r11 = ctx.$implicit;
+    const sp_r14 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("active", ctx_r0.formSprintId === sp_r11.id);
+    \u0275\u0275classProp("active", ctx_r0.formSprintId === sp_r14.id);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate(sp_r11.name);
+    \u0275\u0275textInterpolate(sp_r14.name);
   }
 }
-function TaskDialog_div_11_div_42_Template(rf, ctx) {
+function TaskDialog_div_11_div_56_Template(rf, ctx) {
   if (rf & 1) {
-    const _r9 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 53);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_42_Template_div_click_0_listener($event) {
+    const _r12 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 55);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_56_Template_div_click_0_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(1, "button", 54);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_42_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r9);
+    \u0275\u0275elementStart(1, "button", 56);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_56_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r12);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.selectSprint(null));
     });
     \u0275\u0275text(2, "Sem sprint");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(3, TaskDialog_div_11_div_42_button_3_Template, 2, 3, "button", 56);
+    \u0275\u0275template(3, TaskDialog_div_11_div_56_button_3_Template, 2, 3, "button", 58);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -31823,26 +31887,26 @@ function TaskDialog_div_11_div_42_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.sprints);
   }
 }
-function TaskDialog_div_11_div_51_ng_container_4_span_1_Template(rf, ctx) {
+function TaskDialog_div_11_div_65_ng_container_4_span_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 60);
-    \u0275\u0275element(1, "app-avatar", 61);
+    \u0275\u0275elementStart(0, "span", 62);
+    \u0275\u0275element(1, "app-avatar", 63);
     \u0275\u0275elementStart(2, "span");
     \u0275\u0275text(3);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const a_r13 = ctx.$implicit;
+    const a_r16 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275property("name", a_r13.name)("photoUrl", a_r13.avatar_url);
+    \u0275\u0275property("name", a_r16.name)("photoUrl", a_r16.avatar_url);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(a_r13.name);
+    \u0275\u0275textInterpolate(a_r16.name);
   }
 }
-function TaskDialog_div_11_div_51_ng_container_4_Template(rf, ctx) {
+function TaskDialog_div_11_div_65_ng_container_4_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskDialog_div_11_div_51_ng_container_4_span_1_Template, 4, 3, "span", 59);
+    \u0275\u0275template(1, TaskDialog_div_11_div_65_ng_container_4_span_1_Template, 4, 3, "span", 61);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -31851,60 +31915,60 @@ function TaskDialog_div_11_div_51_ng_container_4_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.task.assignees);
   }
 }
-function TaskDialog_div_11_div_51_ng_template_5_Template(rf, ctx) {
+function TaskDialog_div_11_div_65_ng_template_5_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 62);
+    \u0275\u0275elementStart(0, "span", 64);
     \u0275\u0275text(1, "+ Adicionar respons\xE1veis");
     \u0275\u0275elementEnd();
   }
 }
-function TaskDialog_div_11_div_51_Template(rf, ctx) {
+function TaskDialog_div_11_div_65_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 40)(1, "span", 36);
+    const _r15 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 42)(1, "span", 37);
     \u0275\u0275text(2, "Respons\xE1veis");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "button", 57);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_51_Template_button_click_3_listener() {
-      \u0275\u0275restoreView(_r12);
+    \u0275\u0275elementStart(3, "button", 59);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_65_Template_button_click_3_listener() {
+      \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onManageAssignees());
     });
-    \u0275\u0275template(4, TaskDialog_div_11_div_51_ng_container_4_Template, 2, 1, "ng-container", 58)(5, TaskDialog_div_11_div_51_ng_template_5_Template, 2, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
+    \u0275\u0275template(4, TaskDialog_div_11_div_65_ng_container_4_Template, 2, 1, "ng-container", 60)(5, TaskDialog_div_11_div_65_ng_template_5_Template, 2, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const noAssignees_r14 = \u0275\u0275reference(6);
+    const noAssignees_r17 = \u0275\u0275reference(6);
     const ctx_r0 = \u0275\u0275nextContext(2);
     \u0275\u0275advance(4);
-    \u0275\u0275property("ngIf", ctx_r0.task == null ? null : ctx_r0.task.assignees == null ? null : ctx_r0.task.assignees.length)("ngIfElse", noAssignees_r14);
+    \u0275\u0275property("ngIf", ctx_r0.task == null ? null : ctx_r0.task.assignees == null ? null : ctx_r0.task.assignees.length)("ngIfElse", noAssignees_r17);
   }
 }
-function TaskDialog_div_11_div_52_div_4_span_1_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_div_4_span_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r16 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "span", 72);
+    const _r19 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "span", 74);
     \u0275\u0275text(1);
-    \u0275\u0275elementStart(2, "button", 73);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_52_div_4_span_1_Template_button_click_2_listener() {
-      const tag_r17 = \u0275\u0275restoreView(_r16).$implicit;
+    \u0275\u0275elementStart(2, "button", 75);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_66_div_4_span_1_Template_button_click_2_listener() {
+      const tag_r20 = \u0275\u0275restoreView(_r19).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r0.toggleTag(tag_r17.id));
+      return \u0275\u0275resetView(ctx_r0.toggleTag(tag_r20.id));
     });
     \u0275\u0275text(3, "\xD7");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const tag_r17 = ctx.$implicit;
-    \u0275\u0275styleProp("background", tag_r17.color + "20")("color", tag_r17.color)("border-color", tag_r17.color + "50");
+    const tag_r20 = ctx.$implicit;
+    \u0275\u0275styleProp("background", tag_r20.color + "20")("color", tag_r20.color)("border-color", tag_r20.color + "50");
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", tag_r17.name, " ");
+    \u0275\u0275textInterpolate1(" ", tag_r20.name, " ");
   }
 }
-function TaskDialog_div_11_div_52_div_4_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_div_4_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 70);
-    \u0275\u0275template(1, TaskDialog_div_11_div_52_div_4_span_1_Template, 4, 7, "span", 71);
+    \u0275\u0275elementStart(0, "div", 72);
+    \u0275\u0275template(1, TaskDialog_div_11_div_66_div_4_span_1_Template, 4, 7, "span", 73);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -31913,67 +31977,67 @@ function TaskDialog_div_11_div_52_div_4_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.selectedTagObjects());
   }
 }
-function TaskDialog_div_11_div_52_button_8__svg_svg_4_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_button_8__svg_svg_4_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 78);
-    \u0275\u0275element(1, "path", 79);
+    \u0275\u0275elementStart(0, "svg", 80);
+    \u0275\u0275element(1, "path", 81);
     \u0275\u0275elementEnd();
   }
 }
-function TaskDialog_div_11_div_52_button_8_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_button_8_Template(rf, ctx) {
   if (rf & 1) {
-    const _r18 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 74);
-    \u0275\u0275listener("click", function TaskDialog_div_11_div_52_button_8_Template_button_click_0_listener() {
-      const tag_r19 = \u0275\u0275restoreView(_r18).$implicit;
+    const _r21 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 76);
+    \u0275\u0275listener("click", function TaskDialog_div_11_div_66_button_8_Template_button_click_0_listener() {
+      const tag_r22 = \u0275\u0275restoreView(_r21).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r0.toggleTag(tag_r19.id));
+      return \u0275\u0275resetView(ctx_r0.toggleTag(tag_r22.id));
     });
-    \u0275\u0275element(1, "span", 75);
-    \u0275\u0275elementStart(2, "span", 76);
+    \u0275\u0275element(1, "span", 77);
+    \u0275\u0275elementStart(2, "span", 78);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(4, TaskDialog_div_11_div_52_button_8__svg_svg_4_Template, 2, 0, "svg", 77);
+    \u0275\u0275template(4, TaskDialog_div_11_div_66_button_8__svg_svg_4_Template, 2, 0, "svg", 79);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const tag_r19 = ctx.$implicit;
+    const tag_r22 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("selected", ctx_r0.isTagSelected(tag_r19.id));
+    \u0275\u0275classProp("selected", ctx_r0.isTagSelected(tag_r22.id));
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", tag_r19.color);
+    \u0275\u0275styleProp("background", tag_r22.color);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(tag_r19.name);
+    \u0275\u0275textInterpolate(tag_r22.name);
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", ctx_r0.isTagSelected(tag_r19.id));
+    \u0275\u0275property("ngIf", ctx_r0.isTagSelected(tag_r22.id));
   }
 }
-function TaskDialog_div_11_div_52_div_9_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_div_9_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 80);
+    \u0275\u0275elementStart(0, "div", 82);
     \u0275\u0275text(1, "Nenhuma tag encontrada");
     \u0275\u0275elementEnd();
   }
 }
-function TaskDialog_div_11_div_52_Template(rf, ctx) {
+function TaskDialog_div_11_div_66_Template(rf, ctx) {
   if (rf & 1) {
-    const _r15 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 40)(1, "span", 36);
+    const _r18 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 42)(1, "span", 37);
     \u0275\u0275text(2, "Tags");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "div", 63);
-    \u0275\u0275template(4, TaskDialog_div_11_div_52_div_4_Template, 2, 1, "div", 64);
-    \u0275\u0275elementStart(5, "div", 65)(6, "input", 66);
-    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_div_52_Template_input_ngModelChange_6_listener($event) {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275elementStart(3, "div", 65);
+    \u0275\u0275template(4, TaskDialog_div_11_div_66_div_4_Template, 2, 1, "div", 66);
+    \u0275\u0275elementStart(5, "div", 67)(6, "input", 68);
+    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_div_66_Template_input_ngModelChange_6_listener($event) {
+      \u0275\u0275restoreView(_r18);
       const ctx_r0 = \u0275\u0275nextContext(2);
       \u0275\u0275twoWayBindingSet(ctx_r0.tagSearchTerm, $event) || (ctx_r0.tagSearchTerm = $event);
       return \u0275\u0275resetView($event);
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "div", 67);
-    \u0275\u0275template(8, TaskDialog_div_11_div_52_button_8_Template, 5, 6, "button", 68)(9, TaskDialog_div_11_div_52_div_9_Template, 2, 0, "div", 69);
+    \u0275\u0275elementStart(7, "div", 69);
+    \u0275\u0275template(8, TaskDialog_div_11_div_66_button_8_Template, 5, 6, "button", 70)(9, TaskDialog_div_11_div_66_div_9_Template, 2, 0, "div", 71);
     \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
@@ -31991,116 +32055,145 @@ function TaskDialog_div_11_div_52_Template(rf, ctx) {
 function TaskDialog_div_11_Template(rf, ctx) {
   if (rf & 1) {
     const _r3 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 33)(1, "div", 34)(2, "div", 35)(3, "span", 36);
-    \u0275\u0275text(4, "Hist\xF3ria / Descri\xE7\xE3o");
+    \u0275\u0275elementStart(0, "div", 33)(1, "div", 34)(2, "div", 35)(3, "div", 36)(4, "span", 37);
+    \u0275\u0275text(5, "Hist\xF3ria / Descri\xE7\xE3o");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "span", 37);
-    \u0275\u0275text(6);
+    \u0275\u0275elementStart(6, "span", 38);
+    \u0275\u0275text(7);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(7, "textarea", 38);
-    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_textarea_ngModelChange_7_listener($event) {
+    \u0275\u0275elementStart(8, "textarea", 39);
+    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_textarea_ngModelChange_8_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       \u0275\u0275twoWayBindingSet(ctx_r0.formDescription, $event) || (ctx_r0.formDescription = $event);
       return \u0275\u0275resetView($event);
     });
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(8, "div", 39)(9, "div", 40)(10, "span", 36);
-    \u0275\u0275text(11, "Status");
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(9, "aside", 40)(10, "h3", 41);
+    \u0275\u0275text(11, "Vis\xE3o Geral");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "div", 41)(13, "button", 42);
-    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_13_listener($event) {
+    \u0275\u0275elementStart(12, "div", 42)(13, "span", 37);
+    \u0275\u0275text(14, "Tipo");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(15, "div", 43)(16, "button", 44);
+    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_16_listener($event) {
+      \u0275\u0275restoreView(_r3);
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.toggleField("type", $event));
+    });
+    \u0275\u0275element(17, "span", 45);
+    \u0275\u0275elementStart(18, "span", 46);
+    \u0275\u0275text(19);
+    \u0275\u0275elementEnd();
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(20, "svg", 47);
+    \u0275\u0275element(21, "polyline", 48);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275template(22, TaskDialog_div_11_div_22_Template, 5, 1, "div", 49);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(23, "div", 42)(24, "span", 37);
+    \u0275\u0275text(25, "Status");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(26, "div", 43)(27, "button", 44);
+    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_27_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleField("status", $event));
     });
-    \u0275\u0275element(14, "span", 43);
-    \u0275\u0275elementStart(15, "span", 44);
-    \u0275\u0275text(16);
+    \u0275\u0275element(28, "span", 45);
+    \u0275\u0275elementStart(29, "span", 46);
+    \u0275\u0275text(30);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(17, "svg", 45);
-    \u0275\u0275element(18, "polyline", 46);
+    \u0275\u0275elementStart(31, "svg", 47);
+    \u0275\u0275element(32, "polyline", 48);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(19, TaskDialog_div_11_div_19_Template, 5, 1, "div", 47);
+    \u0275\u0275template(33, TaskDialog_div_11_div_33_Template, 5, 1, "div", 49);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(20, "div", 40)(21, "span", 36);
-    \u0275\u0275text(22, "Prioridade");
+    \u0275\u0275elementStart(34, "div", 42)(35, "span", 37);
+    \u0275\u0275text(36, "Prioridade");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(23, "div", 41)(24, "button", 42);
-    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_24_listener($event) {
+    \u0275\u0275elementStart(37, "div", 43)(38, "button", 44);
+    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_38_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleField("priority", $event));
     });
-    \u0275\u0275element(25, "span", 43);
-    \u0275\u0275elementStart(26, "span", 44);
-    \u0275\u0275text(27);
+    \u0275\u0275element(39, "span", 45);
+    \u0275\u0275elementStart(40, "span", 46);
+    \u0275\u0275text(41);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(28, "svg", 45);
-    \u0275\u0275element(29, "polyline", 46);
+    \u0275\u0275elementStart(42, "svg", 47);
+    \u0275\u0275element(43, "polyline", 48);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(30, TaskDialog_div_11_div_30_Template, 2, 1, "div", 47);
+    \u0275\u0275template(44, TaskDialog_div_11_div_44_Template, 2, 1, "div", 49);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(31, "div", 40)(32, "span", 36);
-    \u0275\u0275text(33, "Sprint");
+    \u0275\u0275elementStart(45, "div", 42)(46, "span", 37);
+    \u0275\u0275text(47, "Sprint");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(34, "div", 41)(35, "button", 42);
-    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_35_listener($event) {
+    \u0275\u0275elementStart(48, "div", 43)(49, "button", 44);
+    \u0275\u0275listener("click", function TaskDialog_div_11_Template_button_click_49_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleField("sprint", $event));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(36, "svg", 48);
-    \u0275\u0275element(37, "polygon", 49);
+    \u0275\u0275elementStart(50, "svg", 50);
+    \u0275\u0275element(51, "polygon", 51);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(38, "span", 44);
-    \u0275\u0275text(39);
+    \u0275\u0275elementStart(52, "span", 46);
+    \u0275\u0275text(53);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(40, "svg", 45);
-    \u0275\u0275element(41, "polyline", 46);
+    \u0275\u0275elementStart(54, "svg", 47);
+    \u0275\u0275element(55, "polyline", 48);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(42, TaskDialog_div_11_div_42_Template, 4, 1, "div", 47);
+    \u0275\u0275template(56, TaskDialog_div_11_div_56_Template, 4, 1, "div", 49);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(43, "label", 40)(44, "span", 36);
-    \u0275\u0275text(45, "\xC9pico");
+    \u0275\u0275elementStart(57, "div", 42)(58, "span", 37);
+    \u0275\u0275text(59, "\xC9pico");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(46, "input", 50);
-    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_input_ngModelChange_46_listener($event) {
+    \u0275\u0275elementStart(60, "input", 52);
+    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_input_ngModelChange_60_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       \u0275\u0275twoWayBindingSet(ctx_r0.formEpic, $event) || (ctx_r0.formEpic = $event);
       return \u0275\u0275resetView($event);
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(47, "label", 40)(48, "span", 36);
-    \u0275\u0275text(49, "Release");
+    \u0275\u0275elementStart(61, "div", 42)(62, "span", 37);
+    \u0275\u0275text(63, "Release");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(50, "input", 51);
-    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_input_ngModelChange_50_listener($event) {
+    \u0275\u0275elementStart(64, "input", 53);
+    \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_11_Template_input_ngModelChange_64_listener($event) {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       \u0275\u0275twoWayBindingSet(ctx_r0.formRelease, $event) || (ctx_r0.formRelease = $event);
       return \u0275\u0275resetView($event);
     });
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275template(51, TaskDialog_div_11_div_51_Template, 7, 2, "div", 52)(52, TaskDialog_div_11_div_52_Template, 10, 4, "div", 52);
-    \u0275\u0275elementEnd();
+    \u0275\u0275elementEnd()();
+    \u0275\u0275template(65, TaskDialog_div_11_div_65_Template, 7, 2, "div", 54)(66, TaskDialog_div_11_div_66_Template, 10, 4, "div", 54);
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance(6);
+    \u0275\u0275advance(7);
     \u0275\u0275textInterpolate2("", ctx_r0.charCount, " chars \xB7 ", ctx_r0.wordCount, " palavras");
     \u0275\u0275advance();
     \u0275\u0275twoWayProperty("ngModel", ctx_r0.formDescription);
-    \u0275\u0275advance(7);
+    \u0275\u0275advance(9);
+    \u0275\u0275styleProp("background", (ctx_r0.currentType == null ? null : ctx_r0.currentType.color) || "#C4C4CC");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(ctx_r0.formType || "Sem tipo");
+    \u0275\u0275advance(3);
+    \u0275\u0275property("ngIf", ctx_r0.openField === "type");
+    \u0275\u0275advance(6);
     \u0275\u0275styleProp("background", (ctx_r0.currentStatus == null ? null : ctx_r0.currentStatus.color) || "#C4C4CC");
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate((ctx_r0.currentStatus == null ? null : ctx_r0.currentStatus.name) || "Sem status");
@@ -32128,43 +32221,43 @@ function TaskDialog_div_11_Template(rf, ctx) {
 }
 function TaskDialog_div_12_div_1_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r21 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 92)(1, "div", 93)(2, "span", 94);
+    const _r24 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 94)(1, "div", 95)(2, "span", 96);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "span", 95);
+    \u0275\u0275elementStart(4, "span", 97);
     \u0275\u0275text(5);
     \u0275\u0275pipe(6, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 96);
+    \u0275\u0275elementStart(7, "button", 98);
     \u0275\u0275listener("click", function TaskDialog_div_12_div_1_div_1_Template_button_click_7_listener() {
-      const c_r22 = \u0275\u0275restoreView(_r21).$implicit;
+      const c_r25 = \u0275\u0275restoreView(_r24).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r0.onDeleteComment(c_r22.id));
+      return \u0275\u0275resetView(ctx_r0.onDeleteComment(c_r25.id));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(8, "svg", 97);
-    \u0275\u0275element(9, "path", 98);
+    \u0275\u0275elementStart(8, "svg", 99);
+    \u0275\u0275element(9, "path", 100);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(10, "p", 99);
+    \u0275\u0275elementStart(10, "p", 101);
     \u0275\u0275text(11);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const c_r22 = ctx.$implicit;
+    const c_r25 = ctx.$implicit;
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate((c_r22.user == null ? null : c_r22.user.name) || "Usu\xE1rio");
+    \u0275\u0275textInterpolate((c_r25.user == null ? null : c_r25.user.name) || "Usu\xE1rio");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(6, 3, c_r22.created_at, "dd/MM/yyyy HH:mm"));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(6, 3, c_r25.created_at, "dd/MM/yyyy HH:mm"));
     \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate(c_r22.content);
+    \u0275\u0275textInterpolate(c_r25.content);
   }
 }
 function TaskDialog_div_12_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 90);
-    \u0275\u0275template(1, TaskDialog_div_12_div_1_div_1_Template, 12, 6, "div", 91);
+    \u0275\u0275elementStart(0, "div", 92);
+    \u0275\u0275template(1, TaskDialog_div_12_div_1_div_1_Template, 12, 6, "div", 93);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -32175,51 +32268,51 @@ function TaskDialog_div_12_div_1_Template(rf, ctx) {
 }
 function TaskDialog_div_12_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 100);
+    \u0275\u0275elementStart(0, "div", 102);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 101);
+    \u0275\u0275elementStart(1, "svg", 103);
     \u0275\u0275element(2, "path", 26);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(3, "p");
     \u0275\u0275text(4, "Nenhum coment\xE1rio ainda.");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 102);
+    \u0275\u0275elementStart(5, "p", 104);
     \u0275\u0275text(6, "Seja o primeiro a comentar nesta atividade.");
     \u0275\u0275elementEnd()();
   }
 }
 function TaskDialog_div_12_Template(rf, ctx) {
   if (rf & 1) {
-    const _r20 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 81);
-    \u0275\u0275template(1, TaskDialog_div_12_div_1_Template, 2, 1, "div", 82)(2, TaskDialog_div_12_ng_template_2_Template, 7, 0, "ng-template", null, 1, \u0275\u0275templateRefExtractor);
-    \u0275\u0275elementStart(4, "div", 83)(5, "textarea", 84);
+    const _r23 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 83);
+    \u0275\u0275template(1, TaskDialog_div_12_div_1_Template, 2, 1, "div", 84)(2, TaskDialog_div_12_ng_template_2_Template, 7, 0, "ng-template", null, 1, \u0275\u0275templateRefExtractor);
+    \u0275\u0275elementStart(4, "div", 85)(5, "textarea", 86);
     \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_12_Template_textarea_ngModelChange_5_listener($event) {
-      \u0275\u0275restoreView(_r20);
+      \u0275\u0275restoreView(_r23);
       const ctx_r0 = \u0275\u0275nextContext();
       \u0275\u0275twoWayBindingSet(ctx_r0.commentContent, $event) || (ctx_r0.commentContent = $event);
       return \u0275\u0275resetView($event);
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "div", 85)(7, "app-button", 86);
+    \u0275\u0275elementStart(6, "div", 87)(7, "app-button", 88);
     \u0275\u0275listener("clicked", function TaskDialog_div_12_Template_app_button_clicked_7_listener() {
-      \u0275\u0275restoreView(_r20);
+      \u0275\u0275restoreView(_r23);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.onAddComment());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(8, "svg", 87);
-    \u0275\u0275element(9, "line", 88)(10, "polygon", 89);
+    \u0275\u0275elementStart(8, "svg", 89);
+    \u0275\u0275element(9, "line", 90)(10, "polygon", 91);
     \u0275\u0275elementEnd();
     \u0275\u0275text(11);
     \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
-    const noComments_r23 = \u0275\u0275reference(3);
+    const noComments_r26 = \u0275\u0275reference(3);
     const ctx_r0 = \u0275\u0275nextContext();
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", ctx_r0.comments.length)("ngIfElse", noComments_r23);
+    \u0275\u0275property("ngIf", ctx_r0.comments.length)("ngIfElse", noComments_r26);
     \u0275\u0275advance(4);
     \u0275\u0275twoWayProperty("ngModel", ctx_r0.commentContent);
     \u0275\u0275advance(2);
@@ -32231,15 +32324,15 @@ function TaskDialog_div_12_Template(rf, ctx) {
 function TaskDialog_div_13__svg_svg_21_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 139);
-    \u0275\u0275element(1, "path", 140)(2, "circle", 141);
+    \u0275\u0275elementStart(0, "svg", 141);
+    \u0275\u0275element(1, "path", 142)(2, "circle", 143);
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13__svg_svg_22_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 139);
+    \u0275\u0275elementStart(0, "svg", 141);
     \u0275\u0275element(1, "path", 28)(2, "path", 29);
     \u0275\u0275elementEnd();
   }
@@ -32247,24 +32340,24 @@ function TaskDialog_div_13__svg_svg_22_Template(rf, ctx) {
 function TaskDialog_div_13__svg_svg_25_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 121);
-    \u0275\u0275element(1, "path", 142)(2, "polyline", 143)(3, "polyline", 144);
+    \u0275\u0275elementStart(0, "svg", 123);
+    \u0275\u0275element(1, "path", 144)(2, "polyline", 145)(3, "polyline", 146);
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13__svg_svg_26_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 121);
-    \u0275\u0275element(1, "polyline", 145);
+    \u0275\u0275elementStart(0, "svg", 123);
+    \u0275\u0275element(1, "polyline", 147);
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13__svg_svg_27_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 146);
-    \u0275\u0275element(1, "path", 147);
+    \u0275\u0275elementStart(0, "svg", 148);
+    \u0275\u0275element(1, "path", 149);
     \u0275\u0275elementEnd();
   }
 }
@@ -32272,7 +32365,7 @@ function TaskDialog_div_13__svg_svg_37_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 23);
-    \u0275\u0275element(1, "path", 148);
+    \u0275\u0275element(1, "path", 150);
     \u0275\u0275elementEnd();
   }
 }
@@ -32280,146 +32373,146 @@ function TaskDialog_div_13__svg_svg_38_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 23);
-    \u0275\u0275element(1, "path", 149);
+    \u0275\u0275element(1, "path", 151);
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13_div_39_Template(rf, ctx) {
   if (rf & 1) {
-    const _r25 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 150)(1, "div", 151)(2, "button", 152);
+    const _r28 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 152)(1, "div", 153)(2, "button", 154);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_2_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("h1"));
     });
     \u0275\u0275text(3, "H1");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 153);
+    \u0275\u0275elementStart(4, "button", 155);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("h2"));
     });
     \u0275\u0275text(5, "H2");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "button", 154);
+    \u0275\u0275elementStart(6, "button", 156);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_6_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("h3"));
     });
     \u0275\u0275text(7, "H3");
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(8, "span", 155);
-    \u0275\u0275elementStart(9, "div", 151)(10, "button", 156);
+    \u0275\u0275element(8, "span", 157);
+    \u0275\u0275elementStart(9, "div", 153)(10, "button", 158);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_10_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("bold"));
     });
     \u0275\u0275text(11, "B");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "button", 157);
+    \u0275\u0275elementStart(12, "button", 159);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_12_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("italic"));
     });
     \u0275\u0275text(13, "I");
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(14, "span", 155);
-    \u0275\u0275elementStart(15, "div", 151)(16, "button", 158);
+    \u0275\u0275element(14, "span", 157);
+    \u0275\u0275elementStart(15, "div", 153)(16, "button", 160);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_16_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("code"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(17, "svg", 159);
-    \u0275\u0275element(18, "polyline", 160)(19, "polyline", 161);
+    \u0275\u0275elementStart(17, "svg", 161);
+    \u0275\u0275element(18, "polyline", 162)(19, "polyline", 163);
     \u0275\u0275elementEnd();
     \u0275\u0275text(20, " inline ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(21, "button", 162);
+    \u0275\u0275elementStart(21, "button", 164);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_21_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("codeblock"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(22, "svg", 159);
-    \u0275\u0275element(23, "polyline", 160)(24, "polyline", 161);
+    \u0275\u0275elementStart(22, "svg", 161);
+    \u0275\u0275element(23, "polyline", 162)(24, "polyline", 163);
     \u0275\u0275elementEnd();
     \u0275\u0275text(25, " block ");
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275element(26, "span", 155);
-    \u0275\u0275elementStart(27, "div", 151)(28, "button", 163);
+    \u0275\u0275element(26, "span", 157);
+    \u0275\u0275elementStart(27, "div", 153)(28, "button", 165);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_28_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("bullet"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(29, "svg", 159);
-    \u0275\u0275element(30, "line", 164)(31, "line", 165)(32, "line", 166)(33, "line", 167)(34, "line", 168)(35, "line", 169);
+    \u0275\u0275elementStart(29, "svg", 161);
+    \u0275\u0275element(30, "line", 166)(31, "line", 167)(32, "line", 168)(33, "line", 169)(34, "line", 170)(35, "line", 171);
     \u0275\u0275elementEnd();
     \u0275\u0275text(36, " Lista ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(37, "button", 170);
+    \u0275\u0275elementStart(37, "button", 172);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_37_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("numbered"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(38, "svg", 159);
-    \u0275\u0275element(39, "line", 171)(40, "line", 172)(41, "line", 173)(42, "path", 174);
+    \u0275\u0275elementStart(38, "svg", 161);
+    \u0275\u0275element(39, "line", 173)(40, "line", 174)(41, "line", 175)(42, "path", 176);
     \u0275\u0275elementEnd();
     \u0275\u0275text(43, " 1. Lista ");
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275element(44, "span", 155);
-    \u0275\u0275elementStart(45, "div", 151)(46, "button", 175);
+    \u0275\u0275element(44, "span", 157);
+    \u0275\u0275elementStart(45, "div", 153)(46, "button", 177);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_46_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("quote"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(47, "svg", 159);
-    \u0275\u0275element(48, "path", 176)(49, "path", 177);
+    \u0275\u0275elementStart(47, "svg", 161);
+    \u0275\u0275element(48, "path", 178)(49, "path", 179);
     \u0275\u0275elementEnd();
     \u0275\u0275text(50, " Nota ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(51, "button", 178);
+    \u0275\u0275elementStart(51, "button", 180);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_51_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("hr"));
     });
     \u0275\u0275text(52, "\u2014");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(53, "button", 179);
+    \u0275\u0275elementStart(53, "button", 181);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_39_Template_button_click_53_listener() {
-      \u0275\u0275restoreView(_r25);
+      \u0275\u0275restoreView(_r28);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.insertFormat("math"));
     });
     \u0275\u0275text(54, " \u2211 Math ");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(55, "span", 180);
+    \u0275\u0275elementStart(55, "span", 182);
     \u0275\u0275text(56, "Ctrl+B \xB7 I \xB7 K \xB7 S \xA0|\xA0 Tab = indent");
     \u0275\u0275elementEnd()();
   }
 }
 function TaskDialog_div_13_div_40_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 181);
+    \u0275\u0275elementStart(0, "div", 183);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -32431,24 +32524,24 @@ function TaskDialog_div_13_div_40_Template(rf, ctx) {
 }
 function TaskDialog_div_13_textarea_42_Template(rf, ctx) {
   if (rf & 1) {
-    const _r26 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "textarea", 182);
+    const _r29 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "textarea", 184);
     \u0275\u0275twoWayListener("ngModelChange", function TaskDialog_div_13_textarea_42_Template_textarea_ngModelChange_0_listener($event) {
-      \u0275\u0275restoreView(_r26);
+      \u0275\u0275restoreView(_r29);
       const ctx_r0 = \u0275\u0275nextContext(2);
       \u0275\u0275twoWayBindingSet(ctx_r0.taskNotes, $event) || (ctx_r0.taskNotes = $event);
       return \u0275\u0275resetView($event);
     });
     \u0275\u0275listener("ngModelChange", function TaskDialog_div_13_textarea_42_Template_textarea_ngModelChange_0_listener() {
-      \u0275\u0275restoreView(_r26);
+      \u0275\u0275restoreView(_r29);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onNotesChange());
     })("blur", function TaskDialog_div_13_textarea_42_Template_textarea_blur_0_listener() {
-      \u0275\u0275restoreView(_r26);
+      \u0275\u0275restoreView(_r29);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onNotesBlur());
     })("keydown", function TaskDialog_div_13_textarea_42_Template_textarea_keydown_0_listener($event) {
-      \u0275\u0275restoreView(_r26);
+      \u0275\u0275restoreView(_r29);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onNotesKeydown($event));
     });
@@ -32463,7 +32556,7 @@ function TaskDialog_div_13_textarea_42_Template(rf, ctx) {
 }
 function TaskDialog_div_13_div_43_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275element(0, "div", 183);
+    \u0275\u0275element(0, "div", 185);
   }
   if (rf & 2) {
     const ctx_r0 = \u0275\u0275nextContext(2);
@@ -32473,10 +32566,10 @@ function TaskDialog_div_13_div_43_Template(rf, ctx) {
 }
 function TaskDialog_div_13_div_44_label_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "label", 195);
+    \u0275\u0275elementStart(0, "label", 197);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 196);
-    \u0275\u0275element(2, "path", 197)(3, "polyline", 198)(4, "line", 199);
+    \u0275\u0275elementStart(1, "svg", 198);
+    \u0275\u0275element(2, "path", 199)(3, "polyline", 200)(4, "line", 201);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
@@ -32489,38 +32582,38 @@ function TaskDialog_div_13_div_44_label_10_Template(rf, ctx) {
 }
 function TaskDialog_div_13_div_44_div_12_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r28 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 203);
+    const _r31 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 205);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_44_div_12_div_1_Template_div_click_0_listener() {
-      const img_r29 = \u0275\u0275restoreView(_r28).$implicit;
+      const img_r32 = \u0275\u0275restoreView(_r31).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r0.openImageViewer(img_r29));
+      return \u0275\u0275resetView(ctx_r0.openImageViewer(img_r32));
     });
-    \u0275\u0275element(1, "img", 204);
-    \u0275\u0275elementStart(2, "button", 205);
+    \u0275\u0275element(1, "img", 206);
+    \u0275\u0275elementStart(2, "button", 207);
     \u0275\u0275listener("click", function TaskDialog_div_13_div_44_div_12_div_1_Template_button_click_2_listener($event) {
-      const img_r29 = \u0275\u0275restoreView(_r28).$implicit;
+      const img_r32 = \u0275\u0275restoreView(_r31).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(4);
-      ctx_r0.deleteImage(img_r29.id);
+      ctx_r0.deleteImage(img_r32.id);
       return \u0275\u0275resetView($event.stopPropagation());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(3, "svg", 196);
-    \u0275\u0275element(4, "path", 206);
+    \u0275\u0275elementStart(3, "svg", 198);
+    \u0275\u0275element(4, "path", 208);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
-    const img_r29 = ctx.$implicit;
+    const img_r32 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275property("src", img_r29.data, \u0275\u0275sanitizeUrl)("alt", img_r29.name);
+    \u0275\u0275property("src", img_r32.data, \u0275\u0275sanitizeUrl)("alt", img_r32.name);
   }
 }
 function TaskDialog_div_13_div_44_div_12_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 207)(1, "label", 208);
+    \u0275\u0275elementStart(0, "div", 209)(1, "label", 210);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 209);
-    \u0275\u0275element(3, "path", 197)(4, "polyline", 198)(5, "line", 199);
+    \u0275\u0275elementStart(2, "svg", 211);
+    \u0275\u0275element(3, "path", 199)(4, "polyline", 200)(5, "line", 201);
     \u0275\u0275elementEnd();
     \u0275\u0275text(6, " Adicionar ");
     \u0275\u0275elementEnd()();
@@ -32528,8 +32621,8 @@ function TaskDialog_div_13_div_44_div_12_div_2_Template(rf, ctx) {
 }
 function TaskDialog_div_13_div_44_div_12_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 200);
-    \u0275\u0275template(1, TaskDialog_div_13_div_44_div_12_div_1_Template, 5, 2, "div", 201)(2, TaskDialog_div_13_div_44_div_12_div_2_Template, 7, 0, "div", 202);
+    \u0275\u0275elementStart(0, "div", 202);
+    \u0275\u0275template(1, TaskDialog_div_13_div_44_div_12_div_1_Template, 5, 2, "div", 203)(2, TaskDialog_div_13_div_44_div_12_div_2_Template, 7, 0, "div", 204);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -32542,33 +32635,33 @@ function TaskDialog_div_13_div_44_div_12_Template(rf, ctx) {
 }
 function TaskDialog_div_13_div_44_p_13_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 210);
+    \u0275\u0275elementStart(0, "p", 212);
     \u0275\u0275text(1, " Tire foto do caderno f\xEDsico, whiteboard ou prints de tela e importe aqui. As imagens ficam salvas no navegador. ");
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13_div_44_Template(rf, ctx) {
   if (rf & 1) {
-    const _r27 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 184)(1, "div", 185)(2, "span", 186);
+    const _r30 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 186)(1, "div", 187)(2, "span", 188);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(3, "svg", 139);
-    \u0275\u0275element(4, "rect", 187)(5, "circle", 188)(6, "polyline", 189);
+    \u0275\u0275elementStart(3, "svg", 141);
+    \u0275\u0275element(4, "rect", 189)(5, "circle", 190)(6, "polyline", 191);
     \u0275\u0275elementEnd();
     \u0275\u0275text(7, " Fotos do caderno / prints ");
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(8, "span", 190);
+    \u0275\u0275elementStart(8, "span", 192);
     \u0275\u0275text(9);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(10, TaskDialog_div_13_div_44_label_10_Template, 6, 1, "label", 191);
-    \u0275\u0275elementStart(11, "input", 192);
+    \u0275\u0275template(10, TaskDialog_div_13_div_44_label_10_Template, 6, 1, "label", 193);
+    \u0275\u0275elementStart(11, "input", 194);
     \u0275\u0275listener("change", function TaskDialog_div_13_div_44_Template_input_change_11_listener($event) {
-      \u0275\u0275restoreView(_r27);
+      \u0275\u0275restoreView(_r30);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onImageUpload($event));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(12, TaskDialog_div_13_div_44_div_12_Template, 3, 2, "div", 193)(13, TaskDialog_div_13_div_44_p_13_Template, 2, 0, "p", 194);
+    \u0275\u0275template(12, TaskDialog_div_13_div_44_div_12_Template, 3, 2, "div", 195)(13, TaskDialog_div_13_div_44_p_13_Template, 2, 0, "p", 196);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -32585,103 +32678,103 @@ function TaskDialog_div_13_div_44_Template(rf, ctx) {
 }
 function TaskDialog_div_13_span_52_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 211);
+    \u0275\u0275elementStart(0, "span", 213);
     \u0275\u0275text(1, " Esc para minimizar ");
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_13_Template(rf, ctx) {
   if (rf & 1) {
-    const _r24 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 103)(1, "div", 104)(2, "div", 105)(3, "h3", 106);
+    const _r27 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 105)(1, "div", 106)(2, "div", 107)(3, "h3", 108);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(4, "svg", 107);
+    \u0275\u0275elementStart(4, "svg", 109);
     \u0275\u0275element(5, "path", 28)(6, "path", 29);
     \u0275\u0275elementEnd();
     \u0275\u0275text(7, " Caderno de Estudos ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(8, "p", 108);
+    \u0275\u0275elementStart(8, "p", 110);
     \u0275\u0275text(9);
-    \u0275\u0275elementStart(10, "span", 109);
+    \u0275\u0275elementStart(10, "span", 111);
     \u0275\u0275text(11);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(12, "div", 110)(13, "div", 111)(14, "button", 112);
+    \u0275\u0275elementStart(12, "div", 112)(13, "div", 113)(14, "button", 114);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_14_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.noteFont = "inter");
     });
     \u0275\u0275text(15, "Aa");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "button", 113);
+    \u0275\u0275elementStart(16, "button", 115);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_16_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.noteFont = "mono");
     });
     \u0275\u0275text(17, "Aa");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(18, "button", 114);
+    \u0275\u0275elementStart(18, "button", 116);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_18_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.noteFont = "lora");
     });
     \u0275\u0275text(19, "Aa");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(20, "button", 115);
+    \u0275\u0275elementStart(20, "button", 117);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_20_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.togglePreview());
     });
-    \u0275\u0275template(21, TaskDialog_div_13__svg_svg_21_Template, 3, 0, "svg", 116)(22, TaskDialog_div_13__svg_svg_22_Template, 3, 0, "svg", 116);
+    \u0275\u0275template(21, TaskDialog_div_13__svg_svg_21_Template, 3, 0, "svg", 118)(22, TaskDialog_div_13__svg_svg_22_Template, 3, 0, "svg", 118);
     \u0275\u0275text(23);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "button", 117);
+    \u0275\u0275elementStart(24, "button", 119);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_24_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.saveNotes());
     });
-    \u0275\u0275template(25, TaskDialog_div_13__svg_svg_25_Template, 4, 0, "svg", 118)(26, TaskDialog_div_13__svg_svg_26_Template, 2, 0, "svg", 118)(27, TaskDialog_div_13__svg_svg_27_Template, 2, 0, "svg", 119);
+    \u0275\u0275template(25, TaskDialog_div_13__svg_svg_25_Template, 4, 0, "svg", 120)(26, TaskDialog_div_13__svg_svg_26_Template, 2, 0, "svg", 120)(27, TaskDialog_div_13__svg_svg_27_Template, 2, 0, "svg", 121);
     \u0275\u0275text(28);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(29, "button", 120);
+    \u0275\u0275elementStart(29, "button", 122);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_29_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.exportPDF());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(30, "svg", 121);
-    \u0275\u0275element(31, "path", 24)(32, "polyline", 25)(33, "line", 122)(34, "line", 123);
+    \u0275\u0275elementStart(30, "svg", 123);
+    \u0275\u0275element(31, "path", 24)(32, "polyline", 25)(33, "line", 124)(34, "line", 125);
     \u0275\u0275elementEnd();
     \u0275\u0275text(35, " PDF ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(36, "button", 124);
+    \u0275\u0275elementStart(36, "button", 126);
     \u0275\u0275listener("click", function TaskDialog_div_13_Template_button_click_36_listener() {
-      \u0275\u0275restoreView(_r24);
+      \u0275\u0275restoreView(_r27);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleFullscreen());
     });
-    \u0275\u0275template(37, TaskDialog_div_13__svg_svg_37_Template, 2, 0, "svg", 125)(38, TaskDialog_div_13__svg_svg_38_Template, 2, 0, "svg", 125);
+    \u0275\u0275template(37, TaskDialog_div_13__svg_svg_37_Template, 2, 0, "svg", 127)(38, TaskDialog_div_13__svg_svg_38_Template, 2, 0, "svg", 127);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275template(39, TaskDialog_div_13_div_39_Template, 57, 0, "div", 126)(40, TaskDialog_div_13_div_40_Template, 2, 1, "div", 127);
-    \u0275\u0275elementStart(41, "div", 128);
-    \u0275\u0275template(42, TaskDialog_div_13_textarea_42_Template, 2, 5, "textarea", 129)(43, TaskDialog_div_13_div_43_Template, 1, 5, "div", 130);
+    \u0275\u0275template(39, TaskDialog_div_13_div_39_Template, 57, 0, "div", 128)(40, TaskDialog_div_13_div_40_Template, 2, 1, "div", 129);
+    \u0275\u0275elementStart(41, "div", 130);
+    \u0275\u0275template(42, TaskDialog_div_13_textarea_42_Template, 2, 5, "textarea", 131)(43, TaskDialog_div_13_div_43_Template, 1, 5, "div", 132);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(44, TaskDialog_div_13_div_44_Template, 14, 4, "div", 131);
-    \u0275\u0275elementStart(45, "div", 132)(46, "span", 133);
+    \u0275\u0275template(44, TaskDialog_div_13_div_44_Template, 14, 4, "div", 133);
+    \u0275\u0275elementStart(45, "div", 134)(46, "span", 135);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(47, "svg", 134);
-    \u0275\u0275element(48, "circle", 135)(49, "line", 136)(50, "line", 137);
+    \u0275\u0275elementStart(47, "svg", 136);
+    \u0275\u0275element(48, "circle", 137)(49, "line", 138)(50, "line", 139);
     \u0275\u0275elementEnd();
     \u0275\u0275text(51);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(52, TaskDialog_div_13_span_52_Template, 2, 0, "span", 138);
+    \u0275\u0275template(52, TaskDialog_div_13_span_52_Template, 2, 0, "span", 140);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -32740,27 +32833,27 @@ function TaskDialog_div_13_Template(rf, ctx) {
 }
 function TaskDialog_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    const _r30 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 212);
+    const _r33 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 214);
     \u0275\u0275listener("click", function TaskDialog_div_14_Template_div_click_0_listener() {
-      \u0275\u0275restoreView(_r30);
+      \u0275\u0275restoreView(_r33);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.closeImageViewer());
     });
-    \u0275\u0275elementStart(1, "img", 213);
+    \u0275\u0275elementStart(1, "img", 215);
     \u0275\u0275listener("click", function TaskDialog_div_14_Template_img_click_1_listener($event) {
       return $event.stopPropagation();
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(2, "button", 214);
+    \u0275\u0275elementStart(2, "button", 216);
     \u0275\u0275listener("click", function TaskDialog_div_14_Template_button_click_2_listener() {
-      \u0275\u0275restoreView(_r30);
+      \u0275\u0275restoreView(_r33);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.closeImageViewer());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(3, "svg", 215);
-    \u0275\u0275element(4, "path", 206);
+    \u0275\u0275elementStart(3, "svg", 217);
+    \u0275\u0275element(4, "path", 208);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -32771,16 +32864,16 @@ function TaskDialog_div_14_Template(rf, ctx) {
 }
 function TaskDialog_div_15_button_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r32 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 221);
+    const _r35 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 223);
     \u0275\u0275listener("click", function TaskDialog_div_15_button_1_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r32);
+      \u0275\u0275restoreView(_r35);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.onDelete());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 222);
-    \u0275\u0275element(2, "path", 223);
+    \u0275\u0275elementStart(1, "svg", 224);
+    \u0275\u0275element(2, "path", 225);
     \u0275\u0275elementEnd();
     \u0275\u0275text(3, " Excluir ");
     \u0275\u0275elementEnd();
@@ -32789,32 +32882,32 @@ function TaskDialog_div_15_button_1_Template(rf, ctx) {
 function TaskDialog_div_15__svg_svg_6_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 87);
-    \u0275\u0275element(1, "path", 142)(2, "polyline", 143);
+    \u0275\u0275elementStart(0, "svg", 89);
+    \u0275\u0275element(1, "path", 144)(2, "polyline", 145);
     \u0275\u0275elementEnd();
   }
 }
 function TaskDialog_div_15_Template(rf, ctx) {
   if (rf & 1) {
-    const _r31 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 216);
-    \u0275\u0275template(1, TaskDialog_div_15_button_1_Template, 4, 0, "button", 217);
-    \u0275\u0275element(2, "span", 218);
-    \u0275\u0275elementStart(3, "app-button", 219);
+    const _r34 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 218);
+    \u0275\u0275template(1, TaskDialog_div_15_button_1_Template, 4, 0, "button", 219);
+    \u0275\u0275element(2, "span", 220);
+    \u0275\u0275elementStart(3, "app-button", 221);
     \u0275\u0275listener("clicked", function TaskDialog_div_15_Template_app_button_clicked_3_listener() {
-      \u0275\u0275restoreView(_r31);
+      \u0275\u0275restoreView(_r34);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.onClose());
     });
     \u0275\u0275text(4, "Cancelar");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "app-button", 86);
+    \u0275\u0275elementStart(5, "app-button", 88);
     \u0275\u0275listener("clicked", function TaskDialog_div_15_Template_app_button_clicked_5_listener() {
-      \u0275\u0275restoreView(_r31);
+      \u0275\u0275restoreView(_r34);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.onSave());
     });
-    \u0275\u0275template(6, TaskDialog_div_15__svg_svg_6_Template, 3, 0, "svg", 220);
+    \u0275\u0275template(6, TaskDialog_div_15__svg_svg_6_Template, 3, 0, "svg", 222);
     \u0275\u0275text(7);
     \u0275\u0275elementEnd()();
   }
@@ -32847,6 +32940,7 @@ var TaskDialog = class _TaskDialog {
   sprints = [];
   tags = [];
   priorities = [];
+  taskTypes = [];
   saving = false;
   comments = [];
   savingComment = false;
@@ -32881,11 +32975,21 @@ var TaskDialog = class _TaskDialog {
     this.formSprintId = id;
     this.openField = null;
   }
+  selectType(t) {
+    this.formType = t;
+    this.openField = null;
+  }
   get currentStatus() {
     return this.statuses.find((s) => s.id === this.formStatusId) ?? null;
   }
   get currentSprintName() {
     return this.sprints.find((s) => s.id === this.formSprintId)?.name ?? "Sem sprint";
+  }
+  get currentType() {
+    return this.taskTypes.find((t) => t.name === this.formType) ?? null;
+  }
+  typeColor(name) {
+    return this.taskTypes.find((t) => t.name === name)?.color || "#6B6B70";
   }
   priorityColor(p) {
     if (!p)
@@ -32910,6 +33014,7 @@ var TaskDialog = class _TaskDialog {
   formSprintId = null;
   formEpic = "";
   formRelease = "";
+  formType = null;
   formTagIds = [];
   tagSearchTerm = "";
   commentContent = "";
@@ -32969,6 +33074,7 @@ var TaskDialog = class _TaskDialog {
       this.formSprintId = this.task.sprint_id;
       this.formEpic = this.task.epic ?? "";
       this.formRelease = this.task.release ?? "";
+      this.formType = this.task.type ?? null;
       this.formTagIds = (this.task.tags ?? []).map((t) => Number(t.id));
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
@@ -32980,6 +33086,7 @@ var TaskDialog = class _TaskDialog {
       this.formSprintId = null;
       this.formEpic = "";
       this.formRelease = "";
+      this.formType = this.taskTypes[0]?.name ?? null;
       this.formTagIds = [];
       this.taskNotes = "";
       this.noteImages = [];
@@ -33393,6 +33500,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       sprint_id: this.formSprintId,
       epic: this.formEpic.trim() || null,
       release: this.formRelease.trim() || null,
+      type: this.formType || null,
       tag_ids: this.formTagIds
     });
   }
@@ -33425,7 +33533,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
         return ctx.onDocKeydown($event);
       }, \u0275\u0275resolveDocument);
     }
-  }, inputs: { isOpen: "isOpen", mode: "mode", task: "task", statuses: "statuses", sprints: "sprints", tags: "tags", priorities: "priorities", saving: "saving", comments: "comments", savingComment: "savingComment" }, outputs: { closeDialog: "closeDialog", save: "save", addComment: "addComment", removeComment: "removeComment", manageAssignees: "manageAssignees", deleteTask: "deleteTask" }, features: [\u0275\u0275NgOnChangesFeature], decls: 16, vars: 13, consts: [["noAssignees", ""], ["noComments", ""], ["width", "1080px", 3, "closeModal", "isOpen"], [1, "task-dialog"], [1, "dialog-header"], [1, "dialog-header-left"], [1, "dialog-mode-badge"], ["class", "dialog-timer", 4, "ngIf"], ["class", "dialog-header-meta", 4, "ngIf"], ["class", "dialog-tabs", 4, "ngIf"], ["class", "dialog-content", 4, "ngIf"], ["class", "comments-section", 4, "ngIf"], ["class", "notes-section", 3, "notes-fullscreen", 4, "ngIf"], ["class", "image-viewer-overlay", 3, "click", 4, "ngIf"], ["class", "dialog-actions", 4, "ngIf"], [1, "dialog-timer"], [1, "dialog-header-meta"], ["class", "meta-badge", 3, "color", 4, "ngIf"], [1, "meta-badge", "priority-badge"], [1, "meta-badge"], [1, "meta-dot"], [1, "dialog-tabs"], [1, "tab-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["d", "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"], ["class", "tab-count", 4, "ngIf"], ["d", "M12 20h9"], ["d", "M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"], ["class", "tab-dot-notes", 4, "ngIf"], [1, "tab-count"], [1, "tab-dot-notes"], [1, "dialog-content"], [1, "field", "field--full"], [1, "field-label-row"], [1, "field-label"], [1, "field-counter"], ["rows", "10", "placeholder", "Descreva a atividade com o m\xE1ximo de detalhe poss\xEDvel...", 1, "field-input", 3, "ngModelChange", "ngModel"], [1, "field-grid"], [1, "field"], [1, "td-dropdown"], ["type", "button", 1, "td-dropdown-trigger", 3, "click"], [1, "td-dot"], [1, "td-dropdown-value"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "td-chevron"], ["points", "6 9 12 15 18 9"], ["class", "td-dropdown-panel", 3, "click", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["points", "13 2 3 14 12 14 11 22 21 10 12 10 13 2"], ["type", "text", "placeholder", "ex: Admin, Real-time, IA\u2026", 1, "field-input", 3, "ngModelChange", "ngModel"], ["type", "text", "placeholder", "ex: v1.2, Sprint Q3\u2026", 1, "field-input", 3, "ngModelChange", "ngModel"], ["class", "field", 4, "ngIf"], [1, "td-dropdown-panel", 3, "click"], ["type", "button", 1, "td-dropdown-item", 3, "click"], [1, "td-dot", 2, "background", "#C4C4CC"], ["type", "button", "class", "td-dropdown-item", 3, "active", "click", 4, "ngFor", "ngForOf"], ["type", "button", 1, "assignees-field-trigger", 3, "click"], [4, "ngIf", "ngIfElse"], ["class", "assignees-field-person", 4, "ngFor", "ngForOf"], [1, "assignees-field-person"], ["size", "sm", 3, "name", "photoUrl"], [1, "assignees-field-empty"], [1, "tags-selector"], ["class", "tags-selected", 4, "ngIf"], [1, "tags-dropdown-wrap"], ["type", "text", "placeholder", "Buscar tag...", 1, "tags-search-input", 3, "ngModelChange", "ngModel"], [1, "tags-list"], ["type", "button", "class", "tags-list-item", 3, "selected", "click", 4, "ngFor", "ngForOf"], ["class", "tags-list-empty", 4, "ngIf"], [1, "tags-selected"], ["class", "td-tag-chip td-tag-chip--selected", 3, "background", "color", "border-color", 4, "ngFor", "ngForOf"], [1, "td-tag-chip", "td-tag-chip--selected"], ["type", "button", 1, "td-tag-remove", 3, "click"], ["type", "button", 1, "tags-list-item", 3, "click"], [1, "td-tag-dot"], [1, "td-tag-name"], ["class", "td-tag-check", "width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 4, "ngIf"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 1, "td-tag-check"], ["d", "M20 6 9 17l-5-5"], [1, "tags-list-empty"], [1, "comments-section"], ["class", "comments-list", 4, "ngIf", "ngIfElse"], [1, "comment-form"], ["rows", "3", "placeholder", "Escreva um coment\xE1rio...", 1, "field-input", 3, "ngModelChange", "ngModel"], [1, "comment-form-actions"], ["variant", "primary", 3, "clicked", "disabled"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"], [1, "comments-list"], ["class", "comment", 4, "ngFor", "ngForOf"], [1, "comment"], [1, "comment-header"], [1, "comment-author"], [1, "comment-date"], ["title", "Excluir", 1, "comment-delete", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z"], [1, "comment-content"], [1, "comments-empty-state"], ["width", "32", "height", "32", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.5", "stroke-linecap", "round", "stroke-linejoin", "round"], [1, "comments-empty-sub"], [1, "notes-section"], [1, "notes-header"], [1, "notes-header-left"], [1, "notes-title"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], [1, "notes-subtitle"], [1, "notes-char-count"], [1, "notes-header-actions"], ["title", "Fonte do editor", 1, "notes-font-picker"], ["title", "Inter (sans-serif)", 1, "font-btn", 3, "click"], ["title", "JetBrains Mono", 1, "font-btn", "font-btn--mono", 3, "click"], ["title", "Lora (serif)", 1, "font-btn", "font-btn--lora", 3, "click"], ["type", "button", 1, "notes-mode-btn", 3, "click"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["type", "button", 1, "notes-save-btn", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["type", "button", "title", "Exportar PDF", 1, "notes-pdf-btn", 3, "click"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "16", "y1", "13", "x2", "8", "y2", "13"], ["x1", "16", "y1", "17", "x2", "8", "y2", "17"], ["type", "button", 1, "notes-fs-btn", 3, "click", "title"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "notes-toolbar", 4, "ngIf"], ["class", "notes-save-toast", 4, "ngIf"], [1, "notes-editor-area"], ["id", "notes-editor", "class", "notes-textarea", "placeholder", "Escreva aqui suas anota\xE7\xF5es...\n\n# T\xEDtulo da se\xE7\xE3o\n## Subt\xEDtulo\n\n**Negrito**, *it\xE1lico*, `c\xF3digo inline`\n\n\\`\\`\\`javascript\nconst exemplo = 'bloco de c\xF3digo com syntax';\n\\`\\`\\`\n\n$$\nf(x) = ax\xB2 + bx + c\n$$\n\n- Item da lista\n- Outro item\n\n> \u{1F4A1} Nota de destaque ou cita\xE7\xE3o importante", 3, "font-mono", "font-lora", "ngModel", "ngModelChange", "blur", "keydown", 4, "ngIf"], ["class", "notes-preview", 3, "font-mono", "font-lora", "innerHTML", 4, "ngIf"], ["class", "notes-images-section", 4, "ngIf"], [1, "notes-footer"], [1, "notes-info"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "16", "x2", "12", "y2", "12"], ["x1", "12", "y1", "8", "x2", "12.01", "y2", "8"], ["class", "notes-shortcuts-hint", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], ["points", "20 6 9 17 4 12"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], ["d", "M21 12a9 9 0 1 1-6.219-8.56"], ["d", "M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"], ["d", "M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"], [1, "notes-toolbar"], [1, "tb-group"], ["title", "T\xEDtulo principal (H1)", 1, "tb-btn", "tb-btn--label", 3, "click"], ["title", "Subt\xEDtulo (H2)", 1, "tb-btn", "tb-btn--label", 3, "click"], ["title", "Se\xE7\xE3o (H3)", 1, "tb-btn", "tb-btn--label", 3, "click"], [1, "tb-sep"], ["title", "Negrito (Ctrl+B)", 1, "tb-btn", "tb-btn--bold", 3, "click"], ["title", "It\xE1lico (Ctrl+I)", 1, "tb-btn", "tb-btn--italic", 3, "click"], ["title", "C\xF3digo inline (Ctrl+K)", 1, "tb-btn", "tb-btn--code", 3, "click"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["title", "Bloco de c\xF3digo (```)", 1, "tb-btn", "tb-btn--code", 3, "click"], ["title", "Lista com marcadores", 1, "tb-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["x1", "3", "y1", "6", "x2", "3.01", "y2", "6"], ["x1", "3", "y1", "12", "x2", "3.01", "y2", "12"], ["x1", "3", "y1", "18", "x2", "3.01", "y2", "18"], ["title", "Lista numerada", 1, "tb-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Cita\xE7\xE3o / destaque", 1, "tb-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], ["title", "Linha divis\xF3ria", 1, "tb-btn", 3, "click"], ["title", "Bloco matem\xE1tico / f\xF3rmula ($$)", 1, "tb-btn", "tb-btn--math", 3, "click"], [1, "tb-hint"], [1, "notes-save-toast"], ["id", "notes-editor", "placeholder", "Escreva aqui suas anota\xE7\xF5es...\n\n# T\xEDtulo da se\xE7\xE3o\n## Subt\xEDtulo\n\n**Negrito**, *it\xE1lico*, `c\xF3digo inline`\n\n\\`\\`\\`javascript\nconst exemplo = 'bloco de c\xF3digo com syntax';\n\\`\\`\\`\n\n$$\nf(x) = ax\xB2 + bx + c\n$$\n\n- Item da lista\n- Outro item\n\n> \u{1F4A1} Nota de destaque ou cita\xE7\xE3o importante", 1, "notes-textarea", 3, "ngModelChange", "blur", "keydown", "ngModel"], [1, "notes-preview", 3, "innerHTML"], [1, "notes-images-section"], [1, "notes-images-header"], [1, "notes-images-title"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2"], ["cx", "8.5", "cy", "8.5", "r", "1.5"], ["points", "21 15 16 10 5 21"], [1, "notes-images-count"], ["class", "notes-add-img-btn", "for", "notes-img-input", 4, "ngIf"], ["id", "notes-img-input", "type", "file", "accept", "image/*", "multiple", "", 1, "notes-img-input", 3, "change"], ["class", "notes-images-gallery", 4, "ngIf"], ["class", "notes-img-hint", 4, "ngIf"], ["for", "notes-img-input", 1, "notes-add-img-btn"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["points", "17 8 12 3 7 8"], ["x1", "12", "y1", "3", "x2", "12", "y2", "15"], [1, "notes-images-gallery"], ["class", "notes-img-thumb", 3, "click", 4, "ngFor", "ngForOf"], ["class", "notes-img-placeholder", 4, "ngIf"], [1, "notes-img-thumb", 3, "click"], [3, "src", "alt"], ["type", "button", 1, "notes-img-delete", 3, "click"], ["d", "M18 6 6 18M6 6l12 12"], [1, "notes-img-placeholder"], ["for", "notes-img-input", 2, "cursor", "pointer", "opacity", ".35", "font-size", "11px", "text-align", "center"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.5", "stroke-linecap", "round"], [1, "notes-img-hint"], [1, "notes-shortcuts-hint"], [1, "image-viewer-overlay", 3, "click"], [3, "click", "src", "alt"], ["type", "button", 1, "image-viewer-close", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "white", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "dialog-actions"], ["type", "button", "class", "dialog-delete-btn", 3, "click", 4, "ngIf"], [1, "dialog-actions-spacer"], ["variant", "text", 3, "clicked"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["type", "button", 1, "dialog-delete-btn", 3, "click"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["d", "M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"]], template: function TaskDialog_Template(rf, ctx) {
+  }, inputs: { isOpen: "isOpen", mode: "mode", task: "task", statuses: "statuses", sprints: "sprints", tags: "tags", priorities: "priorities", taskTypes: "taskTypes", saving: "saving", comments: "comments", savingComment: "savingComment" }, outputs: { closeDialog: "closeDialog", save: "save", addComment: "addComment", removeComment: "removeComment", manageAssignees: "manageAssignees", deleteTask: "deleteTask" }, features: [\u0275\u0275NgOnChangesFeature], decls: 16, vars: 13, consts: [["noAssignees", ""], ["noComments", ""], ["width", "1080px", 3, "closeModal", "isOpen"], [1, "task-dialog"], [1, "dialog-header"], [1, "dialog-header-left"], [1, "dialog-mode-badge"], ["class", "dialog-timer", 4, "ngIf"], ["class", "dialog-header-meta", 4, "ngIf"], ["class", "dialog-tabs", 4, "ngIf"], ["class", "dialog-content details-2col", 4, "ngIf"], ["class", "comments-section", 4, "ngIf"], ["class", "notes-section", 3, "notes-fullscreen", 4, "ngIf"], ["class", "image-viewer-overlay", 3, "click", 4, "ngIf"], ["class", "dialog-actions", 4, "ngIf"], [1, "dialog-timer"], [1, "dialog-header-meta"], ["class", "meta-badge", 3, "color", 4, "ngIf"], [1, "meta-badge", "priority-badge"], [1, "meta-badge"], [1, "meta-dot"], [1, "dialog-tabs"], [1, "tab-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["d", "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"], ["class", "tab-count", 4, "ngIf"], ["d", "M12 20h9"], ["d", "M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"], ["class", "tab-dot-notes", 4, "ngIf"], [1, "tab-count"], [1, "tab-dot-notes"], [1, "dialog-content", "details-2col"], [1, "details-main"], [1, "field", "field--full"], [1, "field-label-row"], [1, "field-label"], [1, "field-counter"], ["rows", "16", "placeholder", "Descreva a atividade com o m\xE1ximo de detalhe poss\xEDvel...", 1, "field-input", "details-desc", 3, "ngModelChange", "ngModel"], [1, "details-side"], [1, "side-title"], [1, "side-field"], [1, "td-dropdown"], ["type", "button", 1, "td-dropdown-trigger", 3, "click"], [1, "td-dot"], [1, "td-dropdown-value"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "td-chevron"], ["points", "6 9 12 15 18 9"], ["class", "td-dropdown-panel", 3, "click", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["points", "13 2 3 14 12 14 11 22 21 10 12 10 13 2"], ["type", "text", "placeholder", "ex: Admin, Real-time, IA\u2026", 1, "field-input", 3, "ngModelChange", "ngModel"], ["type", "text", "placeholder", "ex: v1.2, Sprint Q3\u2026", 1, "field-input", 3, "ngModelChange", "ngModel"], ["class", "side-field", 4, "ngIf"], [1, "td-dropdown-panel", 3, "click"], ["type", "button", 1, "td-dropdown-item", 3, "click"], [1, "td-dot", 2, "background", "#C4C4CC"], ["type", "button", "class", "td-dropdown-item", 3, "active", "click", 4, "ngFor", "ngForOf"], ["type", "button", 1, "assignees-field-trigger", 3, "click"], [4, "ngIf", "ngIfElse"], ["class", "assignees-field-person", 4, "ngFor", "ngForOf"], [1, "assignees-field-person"], ["size", "sm", 3, "name", "photoUrl"], [1, "assignees-field-empty"], [1, "tags-selector"], ["class", "tags-selected", 4, "ngIf"], [1, "tags-dropdown-wrap"], ["type", "text", "placeholder", "Buscar tag...", 1, "tags-search-input", 3, "ngModelChange", "ngModel"], [1, "tags-list"], ["type", "button", "class", "tags-list-item", 3, "selected", "click", 4, "ngFor", "ngForOf"], ["class", "tags-list-empty", 4, "ngIf"], [1, "tags-selected"], ["class", "td-tag-chip td-tag-chip--selected", 3, "background", "color", "border-color", 4, "ngFor", "ngForOf"], [1, "td-tag-chip", "td-tag-chip--selected"], ["type", "button", 1, "td-tag-remove", 3, "click"], ["type", "button", 1, "tags-list-item", 3, "click"], [1, "td-tag-dot"], [1, "td-tag-name"], ["class", "td-tag-check", "width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 4, "ngIf"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 1, "td-tag-check"], ["d", "M20 6 9 17l-5-5"], [1, "tags-list-empty"], [1, "comments-section"], ["class", "comments-list", 4, "ngIf", "ngIfElse"], [1, "comment-form"], ["rows", "3", "placeholder", "Escreva um coment\xE1rio...", 1, "field-input", 3, "ngModelChange", "ngModel"], [1, "comment-form-actions"], ["variant", "primary", 3, "clicked", "disabled"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"], [1, "comments-list"], ["class", "comment", 4, "ngFor", "ngForOf"], [1, "comment"], [1, "comment-header"], [1, "comment-author"], [1, "comment-date"], ["title", "Excluir", 1, "comment-delete", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z"], [1, "comment-content"], [1, "comments-empty-state"], ["width", "32", "height", "32", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.5", "stroke-linecap", "round", "stroke-linejoin", "round"], [1, "comments-empty-sub"], [1, "notes-section"], [1, "notes-header"], [1, "notes-header-left"], [1, "notes-title"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], [1, "notes-subtitle"], [1, "notes-char-count"], [1, "notes-header-actions"], ["title", "Fonte do editor", 1, "notes-font-picker"], ["title", "Inter (sans-serif)", 1, "font-btn", 3, "click"], ["title", "JetBrains Mono", 1, "font-btn", "font-btn--mono", 3, "click"], ["title", "Lora (serif)", 1, "font-btn", "font-btn--lora", 3, "click"], ["type", "button", 1, "notes-mode-btn", 3, "click"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["type", "button", 1, "notes-save-btn", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["type", "button", "title", "Exportar PDF", 1, "notes-pdf-btn", 3, "click"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "16", "y1", "13", "x2", "8", "y2", "13"], ["x1", "16", "y1", "17", "x2", "8", "y2", "17"], ["type", "button", 1, "notes-fs-btn", 3, "click", "title"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "notes-toolbar", 4, "ngIf"], ["class", "notes-save-toast", 4, "ngIf"], [1, "notes-editor-area"], ["id", "notes-editor", "class", "notes-textarea", "placeholder", "Escreva aqui suas anota\xE7\xF5es...\n\n# T\xEDtulo da se\xE7\xE3o\n## Subt\xEDtulo\n\n**Negrito**, *it\xE1lico*, `c\xF3digo inline`\n\n\\`\\`\\`javascript\nconst exemplo = 'bloco de c\xF3digo com syntax';\n\\`\\`\\`\n\n$$\nf(x) = ax\xB2 + bx + c\n$$\n\n- Item da lista\n- Outro item\n\n> \u{1F4A1} Nota de destaque ou cita\xE7\xE3o importante", 3, "font-mono", "font-lora", "ngModel", "ngModelChange", "blur", "keydown", 4, "ngIf"], ["class", "notes-preview", 3, "font-mono", "font-lora", "innerHTML", 4, "ngIf"], ["class", "notes-images-section", 4, "ngIf"], [1, "notes-footer"], [1, "notes-info"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "16", "x2", "12", "y2", "12"], ["x1", "12", "y1", "8", "x2", "12.01", "y2", "8"], ["class", "notes-shortcuts-hint", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], ["points", "20 6 9 17 4 12"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], ["d", "M21 12a9 9 0 1 1-6.219-8.56"], ["d", "M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"], ["d", "M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"], [1, "notes-toolbar"], [1, "tb-group"], ["title", "T\xEDtulo principal (H1)", 1, "tb-btn", "tb-btn--label", 3, "click"], ["title", "Subt\xEDtulo (H2)", 1, "tb-btn", "tb-btn--label", 3, "click"], ["title", "Se\xE7\xE3o (H3)", 1, "tb-btn", "tb-btn--label", 3, "click"], [1, "tb-sep"], ["title", "Negrito (Ctrl+B)", 1, "tb-btn", "tb-btn--bold", 3, "click"], ["title", "It\xE1lico (Ctrl+I)", 1, "tb-btn", "tb-btn--italic", 3, "click"], ["title", "C\xF3digo inline (Ctrl+K)", 1, "tb-btn", "tb-btn--code", 3, "click"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["title", "Bloco de c\xF3digo (```)", 1, "tb-btn", "tb-btn--code", 3, "click"], ["title", "Lista com marcadores", 1, "tb-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["x1", "3", "y1", "6", "x2", "3.01", "y2", "6"], ["x1", "3", "y1", "12", "x2", "3.01", "y2", "12"], ["x1", "3", "y1", "18", "x2", "3.01", "y2", "18"], ["title", "Lista numerada", 1, "tb-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Cita\xE7\xE3o / destaque", 1, "tb-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], ["title", "Linha divis\xF3ria", 1, "tb-btn", 3, "click"], ["title", "Bloco matem\xE1tico / f\xF3rmula ($$)", 1, "tb-btn", "tb-btn--math", 3, "click"], [1, "tb-hint"], [1, "notes-save-toast"], ["id", "notes-editor", "placeholder", "Escreva aqui suas anota\xE7\xF5es...\n\n# T\xEDtulo da se\xE7\xE3o\n## Subt\xEDtulo\n\n**Negrito**, *it\xE1lico*, `c\xF3digo inline`\n\n\\`\\`\\`javascript\nconst exemplo = 'bloco de c\xF3digo com syntax';\n\\`\\`\\`\n\n$$\nf(x) = ax\xB2 + bx + c\n$$\n\n- Item da lista\n- Outro item\n\n> \u{1F4A1} Nota de destaque ou cita\xE7\xE3o importante", 1, "notes-textarea", 3, "ngModelChange", "blur", "keydown", "ngModel"], [1, "notes-preview", 3, "innerHTML"], [1, "notes-images-section"], [1, "notes-images-header"], [1, "notes-images-title"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2"], ["cx", "8.5", "cy", "8.5", "r", "1.5"], ["points", "21 15 16 10 5 21"], [1, "notes-images-count"], ["class", "notes-add-img-btn", "for", "notes-img-input", 4, "ngIf"], ["id", "notes-img-input", "type", "file", "accept", "image/*", "multiple", "", 1, "notes-img-input", 3, "change"], ["class", "notes-images-gallery", 4, "ngIf"], ["class", "notes-img-hint", 4, "ngIf"], ["for", "notes-img-input", 1, "notes-add-img-btn"], ["width", "12", "height", "12", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["points", "17 8 12 3 7 8"], ["x1", "12", "y1", "3", "x2", "12", "y2", "15"], [1, "notes-images-gallery"], ["class", "notes-img-thumb", 3, "click", 4, "ngFor", "ngForOf"], ["class", "notes-img-placeholder", 4, "ngIf"], [1, "notes-img-thumb", 3, "click"], [3, "src", "alt"], ["type", "button", 1, "notes-img-delete", 3, "click"], ["d", "M18 6 6 18M6 6l12 12"], [1, "notes-img-placeholder"], ["for", "notes-img-input", 2, "cursor", "pointer", "opacity", ".35", "font-size", "11px", "text-align", "center"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.5", "stroke-linecap", "round"], [1, "notes-img-hint"], [1, "notes-shortcuts-hint"], [1, "image-viewer-overlay", 3, "click"], [3, "click", "src", "alt"], ["type", "button", 1, "image-viewer-close", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "white", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "dialog-actions"], ["type", "button", "class", "dialog-delete-btn", 3, "click", 4, "ngIf"], [1, "dialog-actions-spacer"], ["variant", "text", 3, "clicked"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["type", "button", 1, "dialog-delete-btn", 3, "click"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["d", "M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"]], template: function TaskDialog_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "app-modal", 2);
       \u0275\u0275listener("closeModal", function TaskDialog_Template_app_modal_closeModal_0_listener() {
@@ -33441,7 +33549,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       \u0275\u0275elementEnd();
       \u0275\u0275template(9, TaskDialog_div_9_Template, 4, 3, "div", 8);
       \u0275\u0275elementEnd();
-      \u0275\u0275template(10, TaskDialog_div_10_Template, 17, 8, "div", 9)(11, TaskDialog_div_11_Template, 53, 17, "div", 10)(12, TaskDialog_div_12_Template, 12, 5, "div", 11)(13, TaskDialog_div_13_Template, 53, 32, "div", 12)(14, TaskDialog_div_14_Template, 5, 2, "div", 13)(15, TaskDialog_div_15_Template, 8, 4, "div", 14);
+      \u0275\u0275template(10, TaskDialog_div_10_Template, 17, 8, "div", 9)(11, TaskDialog_div_11_Template, 67, 21, "div", 10)(12, TaskDialog_div_12_Template, 12, 5, "div", 11)(13, TaskDialog_div_13_Template, 53, 32, "div", 12)(14, TaskDialog_div_14_Template, 5, 2, "div", 13)(15, TaskDialog_div_15_Template, 8, 4, "div", 14);
       \u0275\u0275elementEnd()();
     }
     if (rf & 2) {
@@ -33469,7 +33577,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.activeTab !== "notes");
     }
-  }, dependencies: [CommonModule, NgForOf, NgIf, FormsModule, DefaultValueAccessor, NgControlStatus, NgModel, Modal, Button, Avatar, DatePipe], styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap";\n\n\n[_nghost-%COMP%] {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-sm: 10px;\n  --radius-md: 14px;\n}\n.task-dialog[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  font-family: "Inter", sans-serif;\n  position: relative;\n}\n.dialog-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n  padding: 24px 28px 16px;\n  border-bottom: 1px solid var(--border);\n}\n.dialog-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dialog-mode-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.dialog-mode-badge.badge--edit[_ngcontent-%COMP%] {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.dialog-header-left[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.dialog-timer[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n  background: rgba(79, 70, 229, 0.06);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 999px;\n  padding: 2px 10px;\n  display: inline-flex;\n  align-items: center;\n  width: fit-content;\n}\n.dialog-header-meta[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-shrink: 0;\n  margin-top: 4px;\n}\n.meta-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  padding: 4px 10px;\n  border-radius: 20px;\n  background: rgba(28, 28, 31, 0.05);\n  color: var(--text-primary);\n}\n.meta-dot[_ngcontent-%COMP%] {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.priority-badge[data-priority=Urgente][_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.priority-badge[data-priority=Alta][_ngcontent-%COMP%] {\n  background: rgba(234, 88, 12, 0.08);\n  color: #EA580C;\n}\n.priority-badge[data-priority=M\\e9 dia][_ngcontent-%COMP%] {\n  background: rgba(2, 132, 199, 0.08);\n  color: #0284C7;\n}\n.priority-badge[data-priority=Baixa][_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.08);\n  color: #059669;\n}\n.dialog-tabs[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  padding: 0 28px;\n  border-bottom: 1px solid var(--border);\n  background: var(--surface);\n}\n.tab-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  background: none;\n  border: none;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  padding: 14px 0;\n  margin-right: 24px;\n  cursor: pointer;\n  position: relative;\n  white-space: nowrap;\n  transition: color 0.15s ease;\n}\n.tab-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.65;\n}\n.tab-btn[_ngcontent-%COMP%]:hover {\n  color: var(--text-primary);\n}\n.tab-btn[_ngcontent-%COMP%]:hover   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.tab-btn.active[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.tab-btn.active[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.tab-btn.active[_ngcontent-%COMP%]::after {\n  content: "";\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: -1px;\n  height: 2px;\n  background: var(--accent);\n  border-radius: 2px 2px 0 0;\n}\n.tab-count[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 999px;\n  font-size: 10px;\n  font-weight: 700;\n  padding: 1px 6px;\n  color: var(--text-secondary);\n}\n.tab-dot-notes[_ngcontent-%COMP%] {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: #F59E0B;\n  flex-shrink: 0;\n}\n.dialog-content[_ngcontent-%COMP%] {\n  padding: 20px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.field-label-row[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 6px;\n}\n.field-counter[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.field--full[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.field-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n}\n.field[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.field-label[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  margin-bottom: 6px;\n  display: block;\n}\n.field-input[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 12px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.field-input[_ngcontent-%COMP%]::placeholder {\n  color: #B0AEA8;\n  font-size: 13px;\n}\ntextarea.field-input[_ngcontent-%COMP%] {\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  line-height: 1.6;\n}\nselect.field-input[_ngcontent-%COMP%] {\n  cursor: pointer;\n  height: 40px;\n  padding: 0 12px;\n}\n.td-dropdown[_ngcontent-%COMP%] {\n  position: relative;\n}\n.td-dropdown-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  height: 40px;\n  padding: 0 12px;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n}\n.td-dropdown-trigger[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n}\n.td-dropdown-trigger[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%]:first-child {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-value[_ngcontent-%COMP%] {\n  flex: 1;\n  text-align: left;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.td-chevron[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-panel[_ngcontent-%COMP%] {\n  position: absolute;\n  top: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 50;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  box-shadow: 0 12px 32px rgba(28, 28, 31, 0.16);\n  padding: 5px;\n  max-height: 240px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.td-dropdown-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.td-dropdown-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.td-dropdown-item.active[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.1);\n  font-weight: 600;\n}\n.td-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.assignees-field-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  padding: 8px 12px;\n  cursor: pointer;\n  text-align: left;\n  min-height: 42px;\n  box-sizing: border-box;\n  font-family: "Inter", sans-serif;\n  transition: border-color 0.15s ease;\n}\n.assignees-field-trigger[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n}\n.assignees-field-person[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n}\n.assignees-field-empty[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.tags-selector[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  overflow: hidden;\n}\n.tags-selected[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 0;\n}\n.td-tag-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  padding: 2px 8px;\n  border-radius: 99px;\n  font-size: 11px;\n  font-weight: 600;\n  border: 1px solid transparent;\n}\n.td-tag-remove[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: 14px;\n  line-height: 1;\n  padding: 0;\n  color: currentColor;\n  opacity: 0.7;\n  margin-left: 2px;\n}\n.td-tag-remove[_ngcontent-%COMP%]:hover {\n  opacity: 1;\n}\n.tags-dropdown-wrap[_ngcontent-%COMP%] {\n  padding: 8px;\n}\n.tags-search-input[_ngcontent-%COMP%] {\n  width: 100%;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 7px 12px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  background: var(--bg);\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease;\n}\n.tags-search-input[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n}\n.tags-search-input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.tags-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n  margin-top: 8px;\n  max-height: 120px;\n  overflow-y: auto;\n}\n.tags-list-item[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 4px 10px;\n  border-radius: 99px;\n  border: 1px solid var(--border);\n  background: var(--bg);\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.tags-list-item[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.tags-list-item.selected[_ngcontent-%COMP%] {\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n}\n.td-tag-dot[_ngcontent-%COMP%] {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.td-tag-check[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.tags-list-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.dialog-actions[_ngcontent-%COMP%] {\n  padding: 12px 28px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  border-top: 1px solid var(--border);\n}\n.dialog-actions-spacer[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.dialog-delete-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1px solid rgba(220, 38, 38, 0.25);\n  background: transparent;\n  color: #DC2626;\n  padding: 8px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.dialog-delete-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.08);\n  border-color: #DC2626;\n}\n.dialog-delete-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.comments-section[_ngcontent-%COMP%] {\n  padding: 16px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  min-height: 360px;\n}\n.comments-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-height: 300px;\n  overflow-y: auto;\n  padding-right: 4px;\n}\n.comment[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 12px 14px;\n}\n.comment[_ngcontent-%COMP%]:hover {\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.comment-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin-bottom: 6px;\n}\n.comment-author[_ngcontent-%COMP%] {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.comment-date[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  margin-left: auto;\n}\n.comment-delete[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  padding: 3px;\n  cursor: pointer;\n  color: var(--text-secondary);\n  display: flex;\n  align-items: center;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.comment-delete[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.comment-content[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-primary);\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.5;\n}\n.comments-empty-state[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 32px 16px;\n  color: var(--text-secondary);\n  gap: 8px;\n}\n.comments-empty-state[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 0.35;\n}\n.comments-empty-state[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  margin: 0;\n}\n.comments-empty-sub[_ngcontent-%COMP%] {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n}\n.comment-form[_ngcontent-%COMP%] {\n  margin-top: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.comment-form-actions[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n}\n.notes-section[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  padding: 16px 28px 12px;\n  gap: 12px;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 2500;\n  background: var(--surface);\n  padding: 20px 32px 16px;\n  overflow: hidden;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-editor-area[_ngcontent-%COMP%] {\n  flex: 1;\n  min-height: 0;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-textarea[_ngcontent-%COMP%] {\n  min-height: unset;\n  resize: none;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-preview[_ngcontent-%COMP%] {\n  min-height: unset;\n}\n.notes-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n  flex-shrink: 0;\n}\n.notes-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.notes-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n.notes-title[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.notes-subtitle[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n  margin: 0;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.notes-char-count[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n}\n.notes-header-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-shrink: 0;\n  flex-wrap: wrap;\n}\n.notes-font-picker[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 2px;\n  gap: 2px;\n}\n.font-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 3px 8px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  line-height: 1;\n  height: 24px;\n}\n.font-btn.active[_ngcontent-%COMP%] {\n  background: var(--surface);\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.font-btn[_ngcontent-%COMP%]:hover:not(.active) {\n  color: var(--text-primary);\n  background: rgba(255, 255, 255, 0.6);\n}\n.font-btn.font-btn--mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n}\n.font-btn.font-btn--lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-style: italic;\n}\n.notes-mode-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 5px 11px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.notes-mode-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.notes-mode-btn.active[_ngcontent-%COMP%] {\n  background: var(--accent);\n  border-color: var(--accent);\n  color: white;\n}\n.notes-save-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.notes-save-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.notes-save-btn.saved[_ngcontent-%COMP%] {\n  border-color: #059669;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.06);\n}\n.notes-save-btn[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: default;\n}\n.notes-pdf-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.notes-pdf-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.notes-fs-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  flex-shrink: 0;\n}\n.notes-fs-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.notes-save-toast[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.25);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 8px 14px;\n  font-size: 13px;\n  font-weight: 600;\n  flex-shrink: 0;\n  animation: _ngcontent-%COMP%_toast-in 0.2s ease;\n}\n@keyframes _ngcontent-%COMP%_toast-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.notes-toolbar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 3px;\n  padding: 6px 10px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  flex-wrap: wrap;\n  flex-shrink: 0;\n}\n.tb-group[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n.tb-sep[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 18px;\n  background: var(--border);\n  margin: 0 4px;\n  flex-shrink: 0;\n}\n.tb-hint[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n  white-space: nowrap;\n}\n.tb-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 3px;\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 4px 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition:\n    background 0.1s ease,\n    color 0.1s ease,\n    box-shadow 0.1s ease;\n  white-space: nowrap;\n  height: 26px;\n}\n.tb-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.tb-btn[_ngcontent-%COMP%]:hover {\n  background: white;\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.tb-btn.tb-btn--label[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 12px;\n  font-weight: 800;\n  min-width: 28px;\n}\n.tb-btn.tb-btn--bold[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-weight: 800;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--italic[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--code[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 500;\n  color: #7C3AED;\n}\n.tb-btn.tb-btn--code[_ngcontent-%COMP%]:hover {\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  box-shadow: none;\n}\n.tb-btn.tb-btn--math[_ngcontent-%COMP%] {\n  color: var(--accent);\n  font-weight: 700;\n}\n.tb-btn.tb-btn--math[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  box-shadow: none;\n}\n.notes-editor-area[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  min-height: 0;\n}\n.notes-textarea[_ngcontent-%COMP%] {\n  width: 100%;\n  flex: 1;\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1.5px solid #E8D58A;\n  border-radius: var(--radius-sm);\n  padding: 18px 20px;\n  background: #FFFDF0;\n  outline: none;\n  line-height: 1.8;\n  min-height: 260px;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  tab-size: 4;\n}\n.notes-textarea[_ngcontent-%COMP%]:focus {\n  border-color: #F59E0B;\n  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);\n  background: #FFFEF8;\n}\n.notes-textarea[_ngcontent-%COMP%]::placeholder {\n  color: #C9B97A;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview[_ngcontent-%COMP%] {\n  width: 100%;\n  flex: 1;\n  min-height: 260px;\n  padding: 20px 24px;\n  background: var(--surface);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  overflow-y: auto;\n  box-sizing: border-box;\n  line-height: 1.7;\n  color: var(--text-primary);\n}\n.notes-preview.font-mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n}\n.notes-preview.font-lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-empty {\n  color: var(--text-secondary);\n  font-size: 14px;\n  font-style: italic;\n  text-align: center;\n  padding: 40px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 22px;\n  font-weight: 800;\n  color: var(--text-primary);\n  margin: 0 0 14px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid var(--border);\n  line-height: 1.3;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 17px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 20px 0 8px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h3 {\n  font-family: "Inter", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n  margin: 16px 0 6px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-p {\n  font-size: 14px;\n  line-height: 1.75;\n  color: var(--text-primary);\n  margin: 0 0 12px;\n  word-break: break-word;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-hr {\n  border: none;\n  border-top: 2px solid var(--border);\n  margin: 20px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul, \n.notes-preview[_ngcontent-%COMP%]     .md-ol {\n  margin: 4px 0 14px 22px;\n  padding: 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul li, \n.notes-preview[_ngcontent-%COMP%]     .md-ol li {\n  font-size: 14px;\n  line-height: 1.7;\n  color: var(--text-primary);\n  margin-bottom: 4px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul {\n  list-style-type: disc;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ol {\n  list-style-type: decimal;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-inline-code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  border: 1px solid rgba(124, 58, 237, 0.15);\n  border-radius: 4px;\n  padding: 1px 5px;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-inline-math {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.07);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 4px;\n  padding: 1px 6px;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block {\n  position: relative;\n  background: #1E1E2E;\n  border-radius: 10px;\n  margin: 14px 0;\n  overflow: hidden;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block .code-lang {\n  position: absolute;\n  top: 8px;\n  right: 12px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 600;\n  color: #6C7086;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block pre {\n  margin: 0;\n  padding: 18px 18px 16px;\n  overflow-x: auto;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  color: #CDD6F4;\n  line-height: 1.65;\n  white-space: pre;\n  display: block;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block {\n  background: #F5F3FF;\n  border: 1.5px solid #DDD6FE;\n  border-radius: 10px;\n  padding: 14px 18px;\n  margin: 14px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block .md-math-label {\n  display: block;\n  font-size: 9px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.07em;\n  margin-bottom: 8px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block .md-math-pre {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 14px;\n  color: #3730A3;\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.6;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-quote {\n  border-left: 3px solid var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 0 8px 8px 0;\n  padding: 10px 14px;\n  margin: 10px 0;\n  font-size: 14px;\n  color: var(--text-primary);\n  line-height: 1.65;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     strong {\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.notes-preview[_ngcontent-%COMP%]     em {\n  font-style: italic;\n  color: #374151;\n}\n.notes-images-section[_ngcontent-%COMP%] {\n  border: 1.5px dashed var(--border);\n  border-radius: var(--radius-md);\n  padding: 12px 14px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  background: rgba(250, 250, 248, 0.7);\n  flex-shrink: 0;\n}\n.notes-images-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.notes-images-title[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n}\n.notes-images-count[_ngcontent-%COMP%] {\n  font-size: 10px;\n  font-weight: 600;\n  background: var(--border);\n  color: var(--text-secondary);\n  border-radius: 999px;\n  padding: 1px 6px;\n}\n.notes-add-img-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--accent);\n  border: 1.5px solid rgba(79, 70, 229, 0.25);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 999px;\n  padding: 4px 10px;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.notes-add-img-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.1);\n  border-color: var(--accent);\n}\n.notes-img-input[_ngcontent-%COMP%] {\n  display: none;\n}\n.notes-images-gallery[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.notes-img-thumb[_ngcontent-%COMP%] {\n  position: relative;\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  overflow: hidden;\n  border: 2px solid var(--border);\n  cursor: pointer;\n  flex-shrink: 0;\n  transition: border-color 0.15s ease, transform 0.12s ease;\n}\n.notes-img-thumb[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.notes-img-thumb[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  transform: scale(1.04);\n}\n.notes-img-thumb[_ngcontent-%COMP%]:hover   .notes-img-delete[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.notes-img-delete[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  width: 20px;\n  height: 20px;\n  background: rgba(0, 0, 0, 0.6);\n  color: white;\n  border: none;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.15s ease;\n}\n.notes-img-delete[_ngcontent-%COMP%]:hover {\n  background: #DC2626;\n}\n.notes-img-placeholder[_ngcontent-%COMP%] {\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  border: 2px dashed var(--border);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.notes-img-hint[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.5;\n}\n.notes-footer[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.notes-info[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.notes-info[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.5;\n}\n.notes-shortcuts-hint[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n}\n.image-viewer-overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 3000;\n  background: rgba(0, 0, 0, 0.9);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n}\n.image-viewer-overlay[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  max-width: 90vw;\n  max-height: 90vh;\n  object-fit: contain;\n  border-radius: 10px;\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);\n}\n.image-viewer-close[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  width: 40px;\n  height: 40px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 1.5px solid rgba(255, 255, 255, 0.25);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.image-viewer-close[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.22);\n}\n.spin[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_spin 1s linear infinite;\n}\n@keyframes _ngcontent-%COMP%_spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (max-width: 720px) {\n  .field-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n  .dialog-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .notes-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n  .notes-header-actions[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n  }\n  .notes-textarea[_ngcontent-%COMP%] {\n    min-height: 200px;\n  }\n  .tb-hint[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n/*# sourceMappingURL=task-dialog.css.map */'] });
+  }, dependencies: [CommonModule, NgForOf, NgIf, FormsModule, DefaultValueAccessor, NgControlStatus, NgModel, Modal, Button, Avatar, DatePipe], styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap";\n\n\n[_nghost-%COMP%] {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-sm: 10px;\n  --radius-md: 14px;\n}\n.task-dialog[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  font-family: "Inter", sans-serif;\n  position: relative;\n}\n.dialog-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n  padding: 24px 28px 16px;\n  border-bottom: 1px solid var(--border);\n}\n.dialog-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dialog-mode-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.dialog-mode-badge.badge--edit[_ngcontent-%COMP%] {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.dialog-header-left[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.dialog-timer[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n  background: rgba(79, 70, 229, 0.06);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 999px;\n  padding: 2px 10px;\n  display: inline-flex;\n  align-items: center;\n  width: fit-content;\n}\n.dialog-header-meta[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-shrink: 0;\n  margin-top: 4px;\n}\n.meta-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  padding: 4px 10px;\n  border-radius: 20px;\n  background: rgba(28, 28, 31, 0.05);\n  color: var(--text-primary);\n}\n.meta-dot[_ngcontent-%COMP%] {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.priority-badge[data-priority=Urgente][_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.priority-badge[data-priority=Alta][_ngcontent-%COMP%] {\n  background: rgba(234, 88, 12, 0.08);\n  color: #EA580C;\n}\n.priority-badge[data-priority=M\\e9 dia][_ngcontent-%COMP%] {\n  background: rgba(2, 132, 199, 0.08);\n  color: #0284C7;\n}\n.priority-badge[data-priority=Baixa][_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.08);\n  color: #059669;\n}\n.dialog-tabs[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  padding: 0 28px;\n  border-bottom: 1px solid var(--border);\n  background: var(--surface);\n}\n.tab-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  background: none;\n  border: none;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  padding: 14px 0;\n  margin-right: 24px;\n  cursor: pointer;\n  position: relative;\n  white-space: nowrap;\n  transition: color 0.15s ease;\n}\n.tab-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.65;\n}\n.tab-btn[_ngcontent-%COMP%]:hover {\n  color: var(--text-primary);\n}\n.tab-btn[_ngcontent-%COMP%]:hover   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.tab-btn.active[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.tab-btn.active[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.tab-btn.active[_ngcontent-%COMP%]::after {\n  content: "";\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: -1px;\n  height: 2px;\n  background: var(--accent);\n  border-radius: 2px 2px 0 0;\n}\n.tab-count[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 999px;\n  font-size: 10px;\n  font-weight: 700;\n  padding: 1px 6px;\n  color: var(--text-secondary);\n}\n.tab-dot-notes[_ngcontent-%COMP%] {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: #F59E0B;\n  flex-shrink: 0;\n}\n.dialog-content[_ngcontent-%COMP%] {\n  padding: 20px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.details-2col[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) 320px;\n  gap: 24px;\n  align-items: start;\n}\n.details-main[_ngcontent-%COMP%] {\n  min-width: 0;\n}\n.details-desc[_ngcontent-%COMP%] {\n  min-height: 360px;\n}\n.details-side[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  padding: 16px;\n  position: sticky;\n  top: 0;\n}\n.side-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0 0 2px;\n}\n.side-field[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n@media (max-width: 820px) {\n  .details-2col[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n  .details-side[_ngcontent-%COMP%] {\n    position: static;\n  }\n}\n.field-label-row[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 6px;\n}\n.field-counter[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.field--full[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.field-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n}\n.field[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.field-label[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  margin-bottom: 6px;\n  display: block;\n}\n.field-input[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 12px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.field-input[_ngcontent-%COMP%]::placeholder {\n  color: #B0AEA8;\n  font-size: 13px;\n}\ntextarea.field-input[_ngcontent-%COMP%] {\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  line-height: 1.6;\n}\nselect.field-input[_ngcontent-%COMP%] {\n  cursor: pointer;\n  height: 40px;\n  padding: 0 12px;\n}\n.td-dropdown[_ngcontent-%COMP%] {\n  position: relative;\n}\n.td-dropdown-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  height: 40px;\n  padding: 0 12px;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n}\n.td-dropdown-trigger[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n}\n.td-dropdown-trigger[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%]:first-child {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-value[_ngcontent-%COMP%] {\n  flex: 1;\n  text-align: left;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.td-chevron[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-panel[_ngcontent-%COMP%] {\n  position: absolute;\n  top: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 50;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  box-shadow: 0 12px 32px rgba(28, 28, 31, 0.16);\n  padding: 5px;\n  max-height: 240px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.td-dropdown-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.td-dropdown-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.td-dropdown-item.active[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.1);\n  font-weight: 600;\n}\n.td-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.assignees-field-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  padding: 8px 12px;\n  cursor: pointer;\n  text-align: left;\n  min-height: 42px;\n  box-sizing: border-box;\n  font-family: "Inter", sans-serif;\n  transition: border-color 0.15s ease;\n}\n.assignees-field-trigger[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n}\n.assignees-field-person[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n}\n.assignees-field-empty[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.tags-selector[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  overflow: hidden;\n}\n.tags-selected[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 0;\n}\n.td-tag-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  padding: 2px 8px;\n  border-radius: 99px;\n  font-size: 11px;\n  font-weight: 600;\n  border: 1px solid transparent;\n}\n.td-tag-remove[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: 14px;\n  line-height: 1;\n  padding: 0;\n  color: currentColor;\n  opacity: 0.7;\n  margin-left: 2px;\n}\n.td-tag-remove[_ngcontent-%COMP%]:hover {\n  opacity: 1;\n}\n.tags-dropdown-wrap[_ngcontent-%COMP%] {\n  padding: 8px;\n}\n.tags-search-input[_ngcontent-%COMP%] {\n  width: 100%;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 7px 12px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  background: var(--bg);\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease;\n}\n.tags-search-input[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n}\n.tags-search-input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.tags-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n  margin-top: 8px;\n  max-height: 120px;\n  overflow-y: auto;\n}\n.tags-list-item[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 4px 10px;\n  border-radius: 99px;\n  border: 1px solid var(--border);\n  background: var(--bg);\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.tags-list-item[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.tags-list-item.selected[_ngcontent-%COMP%] {\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n}\n.td-tag-dot[_ngcontent-%COMP%] {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.td-tag-check[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.tags-list-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.dialog-actions[_ngcontent-%COMP%] {\n  padding: 12px 28px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  border-top: 1px solid var(--border);\n}\n.dialog-actions-spacer[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.dialog-delete-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1px solid rgba(220, 38, 38, 0.25);\n  background: transparent;\n  color: #DC2626;\n  padding: 8px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.dialog-delete-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.08);\n  border-color: #DC2626;\n}\n.dialog-delete-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.comments-section[_ngcontent-%COMP%] {\n  padding: 16px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  min-height: 360px;\n}\n.comments-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-height: 300px;\n  overflow-y: auto;\n  padding-right: 4px;\n}\n.comment[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 12px 14px;\n}\n.comment[_ngcontent-%COMP%]:hover {\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.comment-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin-bottom: 6px;\n}\n.comment-author[_ngcontent-%COMP%] {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.comment-date[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  margin-left: auto;\n}\n.comment-delete[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  padding: 3px;\n  cursor: pointer;\n  color: var(--text-secondary);\n  display: flex;\n  align-items: center;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.comment-delete[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.comment-content[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-primary);\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.5;\n}\n.comments-empty-state[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 32px 16px;\n  color: var(--text-secondary);\n  gap: 8px;\n}\n.comments-empty-state[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 0.35;\n}\n.comments-empty-state[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  margin: 0;\n}\n.comments-empty-sub[_ngcontent-%COMP%] {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n}\n.comment-form[_ngcontent-%COMP%] {\n  margin-top: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.comment-form-actions[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n}\n.notes-section[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  padding: 16px 28px 12px;\n  gap: 12px;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 2500;\n  background: var(--surface);\n  padding: 20px 32px 16px;\n  overflow: hidden;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-editor-area[_ngcontent-%COMP%] {\n  flex: 1;\n  min-height: 0;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-textarea[_ngcontent-%COMP%] {\n  min-height: unset;\n  resize: none;\n}\n.notes-section.notes-fullscreen[_ngcontent-%COMP%]   .notes-preview[_ngcontent-%COMP%] {\n  min-height: unset;\n}\n.notes-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n  flex-shrink: 0;\n}\n.notes-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.notes-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n.notes-title[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.notes-subtitle[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n  margin: 0;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.notes-char-count[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n}\n.notes-header-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-shrink: 0;\n  flex-wrap: wrap;\n}\n.notes-font-picker[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 2px;\n  gap: 2px;\n}\n.font-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 3px 8px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  line-height: 1;\n  height: 24px;\n}\n.font-btn.active[_ngcontent-%COMP%] {\n  background: var(--surface);\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.font-btn[_ngcontent-%COMP%]:hover:not(.active) {\n  color: var(--text-primary);\n  background: rgba(255, 255, 255, 0.6);\n}\n.font-btn.font-btn--mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n}\n.font-btn.font-btn--lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-style: italic;\n}\n.notes-mode-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 5px 11px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.notes-mode-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.notes-mode-btn.active[_ngcontent-%COMP%] {\n  background: var(--accent);\n  border-color: var(--accent);\n  color: white;\n}\n.notes-save-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.notes-save-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.notes-save-btn.saved[_ngcontent-%COMP%] {\n  border-color: #059669;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.06);\n}\n.notes-save-btn[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: default;\n}\n.notes-pdf-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.notes-pdf-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.notes-fs-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  flex-shrink: 0;\n}\n.notes-fs-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.notes-save-toast[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.25);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 8px 14px;\n  font-size: 13px;\n  font-weight: 600;\n  flex-shrink: 0;\n  animation: _ngcontent-%COMP%_toast-in 0.2s ease;\n}\n@keyframes _ngcontent-%COMP%_toast-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.notes-toolbar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 3px;\n  padding: 6px 10px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  flex-wrap: wrap;\n  flex-shrink: 0;\n}\n.tb-group[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n.tb-sep[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 18px;\n  background: var(--border);\n  margin: 0 4px;\n  flex-shrink: 0;\n}\n.tb-hint[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n  white-space: nowrap;\n}\n.tb-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 3px;\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 4px 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition:\n    background 0.1s ease,\n    color 0.1s ease,\n    box-shadow 0.1s ease;\n  white-space: nowrap;\n  height: 26px;\n}\n.tb-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.tb-btn[_ngcontent-%COMP%]:hover {\n  background: white;\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.tb-btn.tb-btn--label[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 12px;\n  font-weight: 800;\n  min-width: 28px;\n}\n.tb-btn.tb-btn--bold[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-weight: 800;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--italic[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--code[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 500;\n  color: #7C3AED;\n}\n.tb-btn.tb-btn--code[_ngcontent-%COMP%]:hover {\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  box-shadow: none;\n}\n.tb-btn.tb-btn--math[_ngcontent-%COMP%] {\n  color: var(--accent);\n  font-weight: 700;\n}\n.tb-btn.tb-btn--math[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  box-shadow: none;\n}\n.notes-editor-area[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  min-height: 0;\n}\n.notes-textarea[_ngcontent-%COMP%] {\n  width: 100%;\n  flex: 1;\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1.5px solid #E8D58A;\n  border-radius: var(--radius-sm);\n  padding: 18px 20px;\n  background: #FFFDF0;\n  outline: none;\n  line-height: 1.8;\n  min-height: 260px;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  tab-size: 4;\n}\n.notes-textarea[_ngcontent-%COMP%]:focus {\n  border-color: #F59E0B;\n  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);\n  background: #FFFEF8;\n}\n.notes-textarea[_ngcontent-%COMP%]::placeholder {\n  color: #C9B97A;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview[_ngcontent-%COMP%] {\n  width: 100%;\n  flex: 1;\n  min-height: 260px;\n  padding: 20px 24px;\n  background: var(--surface);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  overflow-y: auto;\n  box-sizing: border-box;\n  line-height: 1.7;\n  color: var(--text-primary);\n}\n.notes-preview.font-mono[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n}\n.notes-preview.font-lora[_ngcontent-%COMP%] {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-empty {\n  color: var(--text-secondary);\n  font-size: 14px;\n  font-style: italic;\n  text-align: center;\n  padding: 40px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 22px;\n  font-weight: 800;\n  color: var(--text-primary);\n  margin: 0 0 14px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid var(--border);\n  line-height: 1.3;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 17px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 20px 0 8px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-h3 {\n  font-family: "Inter", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n  margin: 16px 0 6px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-p {\n  font-size: 14px;\n  line-height: 1.75;\n  color: var(--text-primary);\n  margin: 0 0 12px;\n  word-break: break-word;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-hr {\n  border: none;\n  border-top: 2px solid var(--border);\n  margin: 20px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul, \n.notes-preview[_ngcontent-%COMP%]     .md-ol {\n  margin: 4px 0 14px 22px;\n  padding: 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul li, \n.notes-preview[_ngcontent-%COMP%]     .md-ol li {\n  font-size: 14px;\n  line-height: 1.7;\n  color: var(--text-primary);\n  margin-bottom: 4px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ul {\n  list-style-type: disc;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-ol {\n  list-style-type: decimal;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-inline-code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  border: 1px solid rgba(124, 58, 237, 0.15);\n  border-radius: 4px;\n  padding: 1px 5px;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-inline-math {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.07);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 4px;\n  padding: 1px 6px;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block {\n  position: relative;\n  background: #1E1E2E;\n  border-radius: 10px;\n  margin: 14px 0;\n  overflow: hidden;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block .code-lang {\n  position: absolute;\n  top: 8px;\n  right: 12px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 600;\n  color: #6C7086;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block pre {\n  margin: 0;\n  padding: 18px 18px 16px;\n  overflow-x: auto;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-code-block code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  color: #CDD6F4;\n  line-height: 1.65;\n  white-space: pre;\n  display: block;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block {\n  background: #F5F3FF;\n  border: 1.5px solid #DDD6FE;\n  border-radius: 10px;\n  padding: 14px 18px;\n  margin: 14px 0;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block .md-math-label {\n  display: block;\n  font-size: 9px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.07em;\n  margin-bottom: 8px;\n}\n.notes-preview[_ngcontent-%COMP%]     .md-math-block .md-math-pre {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 14px;\n  color: #3730A3;\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.6;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     .md-quote {\n  border-left: 3px solid var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 0 8px 8px 0;\n  padding: 10px 14px;\n  margin: 10px 0;\n  font-size: 14px;\n  color: var(--text-primary);\n  line-height: 1.65;\n}\n.notes-preview[_ngcontent-%COMP%] {\n}\n.notes-preview[_ngcontent-%COMP%]     strong {\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.notes-preview[_ngcontent-%COMP%]     em {\n  font-style: italic;\n  color: #374151;\n}\n.notes-images-section[_ngcontent-%COMP%] {\n  border: 1.5px dashed var(--border);\n  border-radius: var(--radius-md);\n  padding: 12px 14px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  background: rgba(250, 250, 248, 0.7);\n  flex-shrink: 0;\n}\n.notes-images-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.notes-images-title[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n}\n.notes-images-count[_ngcontent-%COMP%] {\n  font-size: 10px;\n  font-weight: 600;\n  background: var(--border);\n  color: var(--text-secondary);\n  border-radius: 999px;\n  padding: 1px 6px;\n}\n.notes-add-img-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--accent);\n  border: 1.5px solid rgba(79, 70, 229, 0.25);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 999px;\n  padding: 4px 10px;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.notes-add-img-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.1);\n  border-color: var(--accent);\n}\n.notes-img-input[_ngcontent-%COMP%] {\n  display: none;\n}\n.notes-images-gallery[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.notes-img-thumb[_ngcontent-%COMP%] {\n  position: relative;\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  overflow: hidden;\n  border: 2px solid var(--border);\n  cursor: pointer;\n  flex-shrink: 0;\n  transition: border-color 0.15s ease, transform 0.12s ease;\n}\n.notes-img-thumb[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.notes-img-thumb[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  transform: scale(1.04);\n}\n.notes-img-thumb[_ngcontent-%COMP%]:hover   .notes-img-delete[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.notes-img-delete[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  width: 20px;\n  height: 20px;\n  background: rgba(0, 0, 0, 0.6);\n  color: white;\n  border: none;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.15s ease;\n}\n.notes-img-delete[_ngcontent-%COMP%]:hover {\n  background: #DC2626;\n}\n.notes-img-placeholder[_ngcontent-%COMP%] {\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  border: 2px dashed var(--border);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.notes-img-hint[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.5;\n}\n.notes-footer[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.notes-info[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.notes-info[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.5;\n}\n.notes-shortcuts-hint[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n}\n.image-viewer-overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 3000;\n  background: rgba(0, 0, 0, 0.9);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n}\n.image-viewer-overlay[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  max-width: 90vw;\n  max-height: 90vh;\n  object-fit: contain;\n  border-radius: 10px;\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);\n}\n.image-viewer-close[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  width: 40px;\n  height: 40px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 1.5px solid rgba(255, 255, 255, 0.25);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.image-viewer-close[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.22);\n}\n.spin[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_spin 1s linear infinite;\n}\n@keyframes _ngcontent-%COMP%_spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (max-width: 720px) {\n  .field-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n  .dialog-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .notes-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n  .notes-header-actions[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n  }\n  .notes-textarea[_ngcontent-%COMP%] {\n    min-height: 200px;\n  }\n  .tb-hint[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n/*# sourceMappingURL=task-dialog.css.map */'] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TaskDialog, [{
@@ -33524,21 +33632,49 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       </button>
     </div>
 
-    <!-- ===== ABA DETALHES ===== -->
-    <div class="dialog-content" *ngIf="mode === 'create' || activeTab === 'details'">
+    <!-- ===== ABA DETALHES (duas colunas) ===== -->
+    <div class="dialog-content details-2col" *ngIf="mode === 'create' || activeTab === 'details'">
 
-      <div class="field field--full">
-        <div class="field-label-row">
-          <span class="field-label">Hist\xF3ria / Descri\xE7\xE3o</span>
-          <span class="field-counter">{{ charCount }} chars \xB7 {{ wordCount }} palavras</span>
+      <!-- Coluna esquerda: descri\xE7\xE3o -->
+      <div class="details-main">
+        <div class="field field--full">
+          <div class="field-label-row">
+            <span class="field-label">Hist\xF3ria / Descri\xE7\xE3o</span>
+            <span class="field-counter">{{ charCount }} chars \xB7 {{ wordCount }} palavras</span>
+          </div>
+          <textarea [(ngModel)]="formDescription" rows="16" class="field-input details-desc"
+            placeholder="Descreva a atividade com o m\xE1ximo de detalhe poss\xEDvel..."></textarea>
         </div>
-        <textarea [(ngModel)]="formDescription" rows="10" class="field-input"
-          placeholder="Descreva a atividade com o m\xE1ximo de detalhe poss\xEDvel..."></textarea>
       </div>
 
-      <div class="field-grid">
-        <!-- Status (popover) -->
-        <div class="field">
+      <!-- Coluna direita: Vis\xE3o Geral -->
+      <aside class="details-side">
+        <h3 class="side-title">Vis\xE3o Geral</h3>
+
+        <!-- Tipo -->
+        <div class="side-field">
+          <span class="field-label">Tipo</span>
+          <div class="td-dropdown">
+            <button type="button" class="td-dropdown-trigger" (click)="toggleField('type', $event)">
+              <span class="td-dot" [style.background]="currentType?.color || '#C4C4CC'"></span>
+              <span class="td-dropdown-value">{{ formType || 'Sem tipo' }}</span>
+              <svg class="td-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="td-dropdown-panel" *ngIf="openField === 'type'" (click)="$event.stopPropagation()">
+              <button type="button" class="td-dropdown-item" (click)="selectType(null)">
+                <span class="td-dot" style="background:#C4C4CC"></span>Sem tipo
+              </button>
+              <button type="button" *ngFor="let t of taskTypes" class="td-dropdown-item"
+                [class.active]="formType === t.name" (click)="selectType(t.name)">
+                <span class="td-dot" [style.background]="t.color"></span>{{ t.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="side-field">
           <span class="field-label">Status</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('status', $event)">
@@ -33559,8 +33695,8 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
           </div>
         </div>
 
-        <!-- Prioridade (popover) -->
-        <div class="field">
+        <!-- Prioridade -->
+        <div class="side-field">
           <span class="field-label">Prioridade</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('priority', $event)">
@@ -33578,8 +33714,8 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
           </div>
         </div>
 
-        <!-- Sprint (popover) -->
-        <div class="field">
+        <!-- Sprint -->
+        <div class="side-field">
           <span class="field-label">Sprint</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('sprint', $event)">
@@ -33597,66 +33733,67 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
           </div>
         </div>
 
-        <label class="field">
+        <!-- \xC9pico -->
+        <div class="side-field">
           <span class="field-label">\xC9pico</span>
           <input type="text" [(ngModel)]="formEpic" class="field-input"
             placeholder="ex: Admin, Real-time, IA\u2026" />
-        </label>
-        <label class="field">
+        </div>
+
+        <!-- Release -->
+        <div class="side-field">
           <span class="field-label">Release</span>
           <input type="text" [(ngModel)]="formRelease" class="field-input"
             placeholder="ex: v1.2, Sprint Q3\u2026" />
-        </label>
-      </div>
+        </div>
 
-      <div class="field" *ngIf="mode === 'edit'">
-        <span class="field-label">Respons\xE1veis</span>
-        <button type="button" class="assignees-field-trigger" (click)="onManageAssignees()">
-          <ng-container *ngIf="task?.assignees?.length; else noAssignees">
-            <span class="assignees-field-person" *ngFor="let a of task.assignees">
-              <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
-              <span>{{ a.name }}</span>
-            </span>
-          </ng-container>
-          <ng-template #noAssignees>
-            <span class="assignees-field-empty">+ Adicionar respons\xE1veis</span>
-          </ng-template>
-        </button>
-      </div>
+        <!-- Respons\xE1veis -->
+        <div class="side-field" *ngIf="mode === 'edit'">
+          <span class="field-label">Respons\xE1veis</span>
+          <button type="button" class="assignees-field-trigger" (click)="onManageAssignees()">
+            <ng-container *ngIf="task?.assignees?.length; else noAssignees">
+              <span class="assignees-field-person" *ngFor="let a of task.assignees">
+                <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+                <span>{{ a.name }}</span>
+              </span>
+            </ng-container>
+            <ng-template #noAssignees>
+              <span class="assignees-field-empty">+ Adicionar respons\xE1veis</span>
+            </ng-template>
+          </button>
+        </div>
 
-      <!-- Tags -->
-      <div class="field" *ngIf="tags.length > 0">
-        <span class="field-label">Tags</span>
-        <div class="tags-selector">
-          <!-- chips selecionadas -->
-          <div class="tags-selected" *ngIf="formTagIds.length > 0">
-            <span *ngFor="let tag of selectedTagObjects()" class="td-tag-chip td-tag-chip--selected"
-              [style.background]="tag.color + '20'"
-              [style.color]="tag.color"
-              [style.border-color]="tag.color + '50'">
-              {{ tag.name }}
-              <button type="button" class="td-tag-remove" (click)="toggleTag(tag.id)">\xD7</button>
-            </span>
-          </div>
-          <!-- busca + lista -->
-          <div class="tags-dropdown-wrap">
-            <input type="text" class="tags-search-input" placeholder="Buscar tag..." [(ngModel)]="tagSearchTerm" />
-            <div class="tags-list">
-              <button type="button" *ngFor="let tag of filteredTags" class="tags-list-item"
-                [class.selected]="isTagSelected(tag.id)"
-                (click)="toggleTag(tag.id)">
-                <span class="td-tag-dot" [style.background]="tag.color"></span>
-                <span class="td-tag-name">{{ tag.name }}</span>
-                <svg *ngIf="isTagSelected(tag.id)" class="td-tag-check" width="12" height="12" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </button>
-              <div *ngIf="filteredTags.length === 0" class="tags-list-empty">Nenhuma tag encontrada</div>
+        <!-- Tags -->
+        <div class="side-field" *ngIf="tags.length > 0">
+          <span class="field-label">Tags</span>
+          <div class="tags-selector">
+            <div class="tags-selected" *ngIf="formTagIds.length > 0">
+              <span *ngFor="let tag of selectedTagObjects()" class="td-tag-chip td-tag-chip--selected"
+                [style.background]="tag.color + '20'" [style.color]="tag.color"
+                [style.border-color]="tag.color + '50'">
+                {{ tag.name }}
+                <button type="button" class="td-tag-remove" (click)="toggleTag(tag.id)">\xD7</button>
+              </span>
+            </div>
+            <div class="tags-dropdown-wrap">
+              <input type="text" class="tags-search-input" placeholder="Buscar tag..." [(ngModel)]="tagSearchTerm" />
+              <div class="tags-list">
+                <button type="button" *ngFor="let tag of filteredTags" class="tags-list-item"
+                  [class.selected]="isTagSelected(tag.id)" (click)="toggleTag(tag.id)">
+                  <span class="td-tag-dot" [style.background]="tag.color"></span>
+                  <span class="td-tag-name">{{ tag.name }}</span>
+                  <svg *ngIf="isTagSelected(tag.id)" class="td-tag-check" width="12" height="12" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </button>
+                <div *ngIf="filteredTags.length === 0" class="tags-list-empty">Nenhuma tag encontrada</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+
+      </aside>
 
     </div>
 
@@ -34024,7 +34161,7 @@ $$
 
   </div>
 </app-modal>
-`, styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap";\n\n/* src/app/components/task-dialog/task-dialog.scss */\n:host {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-sm: 10px;\n  --radius-md: 14px;\n}\n.task-dialog {\n  display: flex;\n  flex-direction: column;\n  font-family: "Inter", sans-serif;\n  position: relative;\n}\n.dialog-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n  padding: 24px 28px 16px;\n  border-bottom: 1px solid var(--border);\n}\n.dialog-header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dialog-mode-badge {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.dialog-mode-badge.badge--edit {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.dialog-header-left h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.dialog-timer {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n  background: rgba(79, 70, 229, 0.06);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 999px;\n  padding: 2px 10px;\n  display: inline-flex;\n  align-items: center;\n  width: fit-content;\n}\n.dialog-header-meta {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-shrink: 0;\n  margin-top: 4px;\n}\n.meta-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  padding: 4px 10px;\n  border-radius: 20px;\n  background: rgba(28, 28, 31, 0.05);\n  color: var(--text-primary);\n}\n.meta-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.priority-badge[data-priority=Urgente] {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.priority-badge[data-priority=Alta] {\n  background: rgba(234, 88, 12, 0.08);\n  color: #EA580C;\n}\n.priority-badge[data-priority=M\\e9 dia] {\n  background: rgba(2, 132, 199, 0.08);\n  color: #0284C7;\n}\n.priority-badge[data-priority=Baixa] {\n  background: rgba(5, 150, 105, 0.08);\n  color: #059669;\n}\n.dialog-tabs {\n  display: flex;\n  align-items: center;\n  padding: 0 28px;\n  border-bottom: 1px solid var(--border);\n  background: var(--surface);\n}\n.tab-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  background: none;\n  border: none;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  padding: 14px 0;\n  margin-right: 24px;\n  cursor: pointer;\n  position: relative;\n  white-space: nowrap;\n  transition: color 0.15s ease;\n}\n.tab-btn svg {\n  flex-shrink: 0;\n  opacity: 0.65;\n}\n.tab-btn:hover {\n  color: var(--text-primary);\n}\n.tab-btn:hover svg {\n  opacity: 1;\n}\n.tab-btn.active {\n  color: var(--accent);\n}\n.tab-btn.active svg {\n  opacity: 1;\n}\n.tab-btn.active::after {\n  content: "";\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: -1px;\n  height: 2px;\n  background: var(--accent);\n  border-radius: 2px 2px 0 0;\n}\n.tab-count {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 999px;\n  font-size: 10px;\n  font-weight: 700;\n  padding: 1px 6px;\n  color: var(--text-secondary);\n}\n.tab-dot-notes {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: #F59E0B;\n  flex-shrink: 0;\n}\n.dialog-content {\n  padding: 20px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.field-label-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 6px;\n}\n.field-counter {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.field--full {\n  width: 100%;\n}\n.field-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n}\n.field {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.field-label {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  margin-bottom: 6px;\n  display: block;\n}\n.field-input {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 12px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.field-input::placeholder {\n  color: #B0AEA8;\n  font-size: 13px;\n}\ntextarea.field-input {\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  line-height: 1.6;\n}\nselect.field-input {\n  cursor: pointer;\n  height: 40px;\n  padding: 0 12px;\n}\n.td-dropdown {\n  position: relative;\n}\n.td-dropdown-trigger {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  height: 40px;\n  padding: 0 12px;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n}\n.td-dropdown-trigger:hover {\n  border-color: var(--accent);\n}\n.td-dropdown-trigger svg:first-child {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-value {\n  flex: 1;\n  text-align: left;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.td-chevron {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-panel {\n  position: absolute;\n  top: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 50;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  box-shadow: 0 12px 32px rgba(28, 28, 31, 0.16);\n  padding: 5px;\n  max-height: 240px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.td-dropdown-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.td-dropdown-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.td-dropdown-item.active {\n  background: rgba(79, 70, 229, 0.1);\n  font-weight: 600;\n}\n.td-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.assignees-field-trigger {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  padding: 8px 12px;\n  cursor: pointer;\n  text-align: left;\n  min-height: 42px;\n  box-sizing: border-box;\n  font-family: "Inter", sans-serif;\n  transition: border-color 0.15s ease;\n}\n.assignees-field-trigger:hover {\n  border-color: var(--accent);\n}\n.assignees-field-person {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n}\n.assignees-field-empty {\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.tags-selector {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  overflow: hidden;\n}\n.tags-selected {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 0;\n}\n.td-tag-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  padding: 2px 8px;\n  border-radius: 99px;\n  font-size: 11px;\n  font-weight: 600;\n  border: 1px solid transparent;\n}\n.td-tag-remove {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: 14px;\n  line-height: 1;\n  padding: 0;\n  color: currentColor;\n  opacity: 0.7;\n  margin-left: 2px;\n}\n.td-tag-remove:hover {\n  opacity: 1;\n}\n.tags-dropdown-wrap {\n  padding: 8px;\n}\n.tags-search-input {\n  width: 100%;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 7px 12px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  background: var(--bg);\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease;\n}\n.tags-search-input:focus {\n  border-color: var(--accent);\n}\n.tags-search-input::placeholder {\n  color: var(--text-secondary);\n}\n.tags-list {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n  margin-top: 8px;\n  max-height: 120px;\n  overflow-y: auto;\n}\n.tags-list-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 4px 10px;\n  border-radius: 99px;\n  border: 1px solid var(--border);\n  background: var(--bg);\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.tags-list-item:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.tags-list-item.selected {\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n}\n.td-tag-dot {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.td-tag-check {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.tags-list-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.dialog-actions {\n  padding: 12px 28px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  border-top: 1px solid var(--border);\n}\n.dialog-actions-spacer {\n  flex: 1;\n}\n.dialog-delete-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1px solid rgba(220, 38, 38, 0.25);\n  background: transparent;\n  color: #DC2626;\n  padding: 8px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.dialog-delete-btn:hover {\n  background: rgba(220, 38, 38, 0.08);\n  border-color: #DC2626;\n}\n.dialog-delete-btn svg {\n  flex-shrink: 0;\n}\n.comments-section {\n  padding: 16px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  min-height: 360px;\n}\n.comments-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-height: 300px;\n  overflow-y: auto;\n  padding-right: 4px;\n}\n.comment {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 12px 14px;\n}\n.comment:hover {\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.comment-header {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin-bottom: 6px;\n}\n.comment-author {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.comment-date {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  margin-left: auto;\n}\n.comment-delete {\n  background: none;\n  border: none;\n  padding: 3px;\n  cursor: pointer;\n  color: var(--text-secondary);\n  display: flex;\n  align-items: center;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.comment-delete:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.comment-content {\n  font-size: 13px;\n  color: var(--text-primary);\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.5;\n}\n.comments-empty-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 32px 16px;\n  color: var(--text-secondary);\n  gap: 8px;\n}\n.comments-empty-state svg {\n  opacity: 0.35;\n}\n.comments-empty-state p {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  margin: 0;\n}\n.comments-empty-sub {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n}\n.comment-form {\n  margin-top: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.comment-form-actions {\n  display: flex;\n  justify-content: flex-end;\n}\n.notes-section {\n  display: flex;\n  flex-direction: column;\n  padding: 16px 28px 12px;\n  gap: 12px;\n}\n.notes-section.notes-fullscreen {\n  position: fixed;\n  inset: 0;\n  z-index: 2500;\n  background: var(--surface);\n  padding: 20px 32px 16px;\n  overflow: hidden;\n}\n.notes-section.notes-fullscreen .notes-editor-area {\n  flex: 1;\n  min-height: 0;\n}\n.notes-section.notes-fullscreen .notes-textarea {\n  min-height: unset;\n  resize: none;\n}\n.notes-section.notes-fullscreen .notes-preview {\n  min-height: unset;\n}\n.notes-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n  flex-shrink: 0;\n}\n.notes-header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.notes-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n.notes-title svg {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.notes-subtitle {\n  font-size: 11px;\n  color: var(--text-secondary);\n  margin: 0;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.notes-char-count {\n  font-family: "JetBrains Mono", monospace;\n}\n.notes-header-actions {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-shrink: 0;\n  flex-wrap: wrap;\n}\n.notes-font-picker {\n  display: flex;\n  align-items: center;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 2px;\n  gap: 2px;\n}\n.font-btn {\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 3px 8px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  line-height: 1;\n  height: 24px;\n}\n.font-btn.active {\n  background: var(--surface);\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.font-btn:hover:not(.active) {\n  color: var(--text-primary);\n  background: rgba(255, 255, 255, 0.6);\n}\n.font-btn.font-btn--mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n}\n.font-btn.font-btn--lora {\n  font-family: "Lora", serif;\n  font-style: italic;\n}\n.notes-mode-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 5px 11px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.notes-mode-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.notes-mode-btn.active {\n  background: var(--accent);\n  border-color: var(--accent);\n  color: white;\n}\n.notes-save-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.notes-save-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.notes-save-btn.saved {\n  border-color: #059669;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.06);\n}\n.notes-save-btn:disabled {\n  opacity: 0.6;\n  cursor: default;\n}\n.notes-pdf-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.notes-pdf-btn:hover {\n  background: var(--accent-hover);\n}\n.notes-fs-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  flex-shrink: 0;\n}\n.notes-fs-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.notes-save-toast {\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.25);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 8px 14px;\n  font-size: 13px;\n  font-weight: 600;\n  flex-shrink: 0;\n  animation: toast-in 0.2s ease;\n}\n@keyframes toast-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.notes-toolbar {\n  display: flex;\n  align-items: center;\n  gap: 3px;\n  padding: 6px 10px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  flex-wrap: wrap;\n  flex-shrink: 0;\n}\n.tb-group {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n.tb-sep {\n  width: 1px;\n  height: 18px;\n  background: var(--border);\n  margin: 0 4px;\n  flex-shrink: 0;\n}\n.tb-hint {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n  white-space: nowrap;\n}\n.tb-btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 3px;\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 4px 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition:\n    background 0.1s ease,\n    color 0.1s ease,\n    box-shadow 0.1s ease;\n  white-space: nowrap;\n  height: 26px;\n}\n.tb-btn svg {\n  flex-shrink: 0;\n}\n.tb-btn:hover {\n  background: white;\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.tb-btn.tb-btn--label {\n  font-family: "Outfit", sans-serif;\n  font-size: 12px;\n  font-weight: 800;\n  min-width: 28px;\n}\n.tb-btn.tb-btn--bold {\n  font-family: "Inter", sans-serif;\n  font-weight: 800;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--italic {\n  font-family: "Lora", serif;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 500;\n  color: #7C3AED;\n}\n.tb-btn.tb-btn--code:hover {\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  box-shadow: none;\n}\n.tb-btn.tb-btn--math {\n  color: var(--accent);\n  font-weight: 700;\n}\n.tb-btn.tb-btn--math:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  box-shadow: none;\n}\n.notes-editor-area {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  min-height: 0;\n}\n.notes-textarea {\n  width: 100%;\n  flex: 1;\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1.5px solid #E8D58A;\n  border-radius: var(--radius-sm);\n  padding: 18px 20px;\n  background: #FFFDF0;\n  outline: none;\n  line-height: 1.8;\n  min-height: 260px;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  tab-size: 4;\n}\n.notes-textarea:focus {\n  border-color: #F59E0B;\n  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);\n  background: #FFFEF8;\n}\n.notes-textarea::placeholder {\n  color: #C9B97A;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-lora {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview {\n  width: 100%;\n  flex: 1;\n  min-height: 260px;\n  padding: 20px 24px;\n  background: var(--surface);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  overflow-y: auto;\n  box-sizing: border-box;\n  line-height: 1.7;\n  color: var(--text-primary);\n}\n.notes-preview.font-mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n}\n.notes-preview.font-lora {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-empty {\n  color: var(--text-secondary);\n  font-size: 14px;\n  font-style: italic;\n  text-align: center;\n  padding: 40px 0;\n}\n.notes-preview ::ng-deep .md-h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 22px;\n  font-weight: 800;\n  color: var(--text-primary);\n  margin: 0 0 14px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid var(--border);\n  line-height: 1.3;\n}\n.notes-preview ::ng-deep .md-h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 17px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 20px 0 8px;\n}\n.notes-preview ::ng-deep .md-h3 {\n  font-family: "Inter", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n  margin: 16px 0 6px;\n}\n.notes-preview ::ng-deep .md-p {\n  font-size: 14px;\n  line-height: 1.75;\n  color: var(--text-primary);\n  margin: 0 0 12px;\n  word-break: break-word;\n}\n.notes-preview ::ng-deep .md-hr {\n  border: none;\n  border-top: 2px solid var(--border);\n  margin: 20px 0;\n}\n.notes-preview ::ng-deep .md-ul,\n.notes-preview ::ng-deep .md-ol {\n  margin: 4px 0 14px 22px;\n  padding: 0;\n}\n.notes-preview ::ng-deep .md-ul li,\n.notes-preview ::ng-deep .md-ol li {\n  font-size: 14px;\n  line-height: 1.7;\n  color: var(--text-primary);\n  margin-bottom: 4px;\n}\n.notes-preview ::ng-deep .md-ul {\n  list-style-type: disc;\n}\n.notes-preview ::ng-deep .md-ol {\n  list-style-type: decimal;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-inline-code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  border: 1px solid rgba(124, 58, 237, 0.15);\n  border-radius: 4px;\n  padding: 1px 5px;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-inline-math {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.07);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 4px;\n  padding: 1px 6px;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-code-block {\n  position: relative;\n  background: #1E1E2E;\n  border-radius: 10px;\n  margin: 14px 0;\n  overflow: hidden;\n}\n.notes-preview ::ng-deep .md-code-block .code-lang {\n  position: absolute;\n  top: 8px;\n  right: 12px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 600;\n  color: #6C7086;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.notes-preview ::ng-deep .md-code-block pre {\n  margin: 0;\n  padding: 18px 18px 16px;\n  overflow-x: auto;\n}\n.notes-preview ::ng-deep .md-code-block code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  color: #CDD6F4;\n  line-height: 1.65;\n  white-space: pre;\n  display: block;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-math-block {\n  background: #F5F3FF;\n  border: 1.5px solid #DDD6FE;\n  border-radius: 10px;\n  padding: 14px 18px;\n  margin: 14px 0;\n}\n.notes-preview ::ng-deep .md-math-block .md-math-label {\n  display: block;\n  font-size: 9px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.07em;\n  margin-bottom: 8px;\n}\n.notes-preview ::ng-deep .md-math-block .md-math-pre {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 14px;\n  color: #3730A3;\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.6;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-quote {\n  border-left: 3px solid var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 0 8px 8px 0;\n  padding: 10px 14px;\n  margin: 10px 0;\n  font-size: 14px;\n  color: var(--text-primary);\n  line-height: 1.65;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep strong {\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.notes-preview ::ng-deep em {\n  font-style: italic;\n  color: #374151;\n}\n.notes-images-section {\n  border: 1.5px dashed var(--border);\n  border-radius: var(--radius-md);\n  padding: 12px 14px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  background: rgba(250, 250, 248, 0.7);\n  flex-shrink: 0;\n}\n.notes-images-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.notes-images-title {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n}\n.notes-images-count {\n  font-size: 10px;\n  font-weight: 600;\n  background: var(--border);\n  color: var(--text-secondary);\n  border-radius: 999px;\n  padding: 1px 6px;\n}\n.notes-add-img-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--accent);\n  border: 1.5px solid rgba(79, 70, 229, 0.25);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 999px;\n  padding: 4px 10px;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.notes-add-img-btn:hover {\n  background: rgba(79, 70, 229, 0.1);\n  border-color: var(--accent);\n}\n.notes-img-input {\n  display: none;\n}\n.notes-images-gallery {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.notes-img-thumb {\n  position: relative;\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  overflow: hidden;\n  border: 2px solid var(--border);\n  cursor: pointer;\n  flex-shrink: 0;\n  transition: border-color 0.15s ease, transform 0.12s ease;\n}\n.notes-img-thumb img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.notes-img-thumb:hover {\n  border-color: var(--accent);\n  transform: scale(1.04);\n}\n.notes-img-thumb:hover .notes-img-delete {\n  opacity: 1;\n}\n.notes-img-delete {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  width: 20px;\n  height: 20px;\n  background: rgba(0, 0, 0, 0.6);\n  color: white;\n  border: none;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.15s ease;\n}\n.notes-img-delete:hover {\n  background: #DC2626;\n}\n.notes-img-placeholder {\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  border: 2px dashed var(--border);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.notes-img-hint {\n  font-size: 12px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.5;\n}\n.notes-footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.notes-info {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.notes-info svg {\n  flex-shrink: 0;\n  opacity: 0.5;\n}\n.notes-shortcuts-hint {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n}\n.image-viewer-overlay {\n  position: fixed;\n  inset: 0;\n  z-index: 3000;\n  background: rgba(0, 0, 0, 0.9);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n}\n.image-viewer-overlay img {\n  max-width: 90vw;\n  max-height: 90vh;\n  object-fit: contain;\n  border-radius: 10px;\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);\n}\n.image-viewer-close {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  width: 40px;\n  height: 40px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 1.5px solid rgba(255, 255, 255, 0.25);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.image-viewer-close:hover {\n  background: rgba(255, 255, 255, 0.22);\n}\n.spin {\n  animation: spin 1s linear infinite;\n}\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (max-width: 720px) {\n  .field-grid {\n    grid-template-columns: 1fr;\n  }\n  .dialog-header {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .notes-header {\n    flex-direction: column;\n  }\n  .notes-header-actions {\n    flex-wrap: wrap;\n  }\n  .notes-textarea {\n    min-height: 200px;\n  }\n  .tb-hint {\n    display: none;\n  }\n}\n/*# sourceMappingURL=task-dialog.css.map */\n'] }]
+`, styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap";\n\n/* src/app/components/task-dialog/task-dialog.scss */\n:host {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-sm: 10px;\n  --radius-md: 14px;\n}\n.task-dialog {\n  display: flex;\n  flex-direction: column;\n  font-family: "Inter", sans-serif;\n  position: relative;\n}\n.dialog-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n  padding: 24px 28px 16px;\n  border-bottom: 1px solid var(--border);\n}\n.dialog-header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dialog-mode-badge {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.dialog-mode-badge.badge--edit {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.dialog-header-left h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.dialog-timer {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n  background: rgba(79, 70, 229, 0.06);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 999px;\n  padding: 2px 10px;\n  display: inline-flex;\n  align-items: center;\n  width: fit-content;\n}\n.dialog-header-meta {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-shrink: 0;\n  margin-top: 4px;\n}\n.meta-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  padding: 4px 10px;\n  border-radius: 20px;\n  background: rgba(28, 28, 31, 0.05);\n  color: var(--text-primary);\n}\n.meta-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.priority-badge[data-priority=Urgente] {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.priority-badge[data-priority=Alta] {\n  background: rgba(234, 88, 12, 0.08);\n  color: #EA580C;\n}\n.priority-badge[data-priority=M\\e9 dia] {\n  background: rgba(2, 132, 199, 0.08);\n  color: #0284C7;\n}\n.priority-badge[data-priority=Baixa] {\n  background: rgba(5, 150, 105, 0.08);\n  color: #059669;\n}\n.dialog-tabs {\n  display: flex;\n  align-items: center;\n  padding: 0 28px;\n  border-bottom: 1px solid var(--border);\n  background: var(--surface);\n}\n.tab-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  background: none;\n  border: none;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  padding: 14px 0;\n  margin-right: 24px;\n  cursor: pointer;\n  position: relative;\n  white-space: nowrap;\n  transition: color 0.15s ease;\n}\n.tab-btn svg {\n  flex-shrink: 0;\n  opacity: 0.65;\n}\n.tab-btn:hover {\n  color: var(--text-primary);\n}\n.tab-btn:hover svg {\n  opacity: 1;\n}\n.tab-btn.active {\n  color: var(--accent);\n}\n.tab-btn.active svg {\n  opacity: 1;\n}\n.tab-btn.active::after {\n  content: "";\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: -1px;\n  height: 2px;\n  background: var(--accent);\n  border-radius: 2px 2px 0 0;\n}\n.tab-count {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 999px;\n  font-size: 10px;\n  font-weight: 700;\n  padding: 1px 6px;\n  color: var(--text-secondary);\n}\n.tab-dot-notes {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: #F59E0B;\n  flex-shrink: 0;\n}\n.dialog-content {\n  padding: 20px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.details-2col {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) 320px;\n  gap: 24px;\n  align-items: start;\n}\n.details-main {\n  min-width: 0;\n}\n.details-desc {\n  min-height: 360px;\n}\n.details-side {\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  padding: 16px;\n  position: sticky;\n  top: 0;\n}\n.side-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0 0 2px;\n}\n.side-field {\n  display: flex;\n  flex-direction: column;\n}\n@media (max-width: 820px) {\n  .details-2col {\n    grid-template-columns: 1fr;\n  }\n  .details-side {\n    position: static;\n  }\n}\n.field-label-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 6px;\n}\n.field-counter {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.field--full {\n  width: 100%;\n}\n.field-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n}\n.field {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.field-label {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  margin-bottom: 6px;\n  display: block;\n}\n.field-input {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 12px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.field-input::placeholder {\n  color: #B0AEA8;\n  font-size: 13px;\n}\ntextarea.field-input {\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  line-height: 1.6;\n}\nselect.field-input {\n  cursor: pointer;\n  height: 40px;\n  padding: 0 12px;\n}\n.td-dropdown {\n  position: relative;\n}\n.td-dropdown-trigger {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  height: 40px;\n  padding: 0 12px;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n}\n.td-dropdown-trigger:hover {\n  border-color: var(--accent);\n}\n.td-dropdown-trigger svg:first-child {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-value {\n  flex: 1;\n  text-align: left;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.td-chevron {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.td-dropdown-panel {\n  position: absolute;\n  top: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 50;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  box-shadow: 0 12px 32px rgba(28, 28, 31, 0.16);\n  padding: 5px;\n  max-height: 240px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.td-dropdown-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.td-dropdown-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.td-dropdown-item.active {\n  background: rgba(79, 70, 229, 0.1);\n  font-weight: 600;\n}\n.td-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.assignees-field-trigger {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  padding: 8px 12px;\n  cursor: pointer;\n  text-align: left;\n  min-height: 42px;\n  box-sizing: border-box;\n  font-family: "Inter", sans-serif;\n  transition: border-color 0.15s ease;\n}\n.assignees-field-trigger:hover {\n  border-color: var(--accent);\n}\n.assignees-field-person {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n}\n.assignees-field-empty {\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.tags-selector {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  overflow: hidden;\n}\n.tags-selected {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 0;\n}\n.td-tag-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  padding: 2px 8px;\n  border-radius: 99px;\n  font-size: 11px;\n  font-weight: 600;\n  border: 1px solid transparent;\n}\n.td-tag-remove {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: 14px;\n  line-height: 1;\n  padding: 0;\n  color: currentColor;\n  opacity: 0.7;\n  margin-left: 2px;\n}\n.td-tag-remove:hover {\n  opacity: 1;\n}\n.tags-dropdown-wrap {\n  padding: 8px;\n}\n.tags-search-input {\n  width: 100%;\n  box-sizing: border-box;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 7px 12px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  background: var(--bg);\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease;\n}\n.tags-search-input:focus {\n  border-color: var(--accent);\n}\n.tags-search-input::placeholder {\n  color: var(--text-secondary);\n}\n.tags-list {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n  margin-top: 8px;\n  max-height: 120px;\n  overflow-y: auto;\n}\n.tags-list-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 4px 10px;\n  border-radius: 99px;\n  border: 1px solid var(--border);\n  background: var(--bg);\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.tags-list-item:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.tags-list-item.selected {\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n}\n.td-tag-dot {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.td-tag-check {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.tags-list-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.dialog-actions {\n  padding: 12px 28px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  border-top: 1px solid var(--border);\n}\n.dialog-actions-spacer {\n  flex: 1;\n}\n.dialog-delete-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1px solid rgba(220, 38, 38, 0.25);\n  background: transparent;\n  color: #DC2626;\n  padding: 8px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.dialog-delete-btn:hover {\n  background: rgba(220, 38, 38, 0.08);\n  border-color: #DC2626;\n}\n.dialog-delete-btn svg {\n  flex-shrink: 0;\n}\n.comments-section {\n  padding: 16px 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  min-height: 360px;\n}\n.comments-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-height: 300px;\n  overflow-y: auto;\n  padding-right: 4px;\n}\n.comment {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 12px 14px;\n}\n.comment:hover {\n  border-color: rgba(79, 70, 229, 0.2);\n}\n.comment-header {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin-bottom: 6px;\n}\n.comment-author {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.comment-date {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  margin-left: auto;\n}\n.comment-delete {\n  background: none;\n  border: none;\n  padding: 3px;\n  cursor: pointer;\n  color: var(--text-secondary);\n  display: flex;\n  align-items: center;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.comment-delete:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.comment-content {\n  font-size: 13px;\n  color: var(--text-primary);\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.5;\n}\n.comments-empty-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 32px 16px;\n  color: var(--text-secondary);\n  gap: 8px;\n}\n.comments-empty-state svg {\n  opacity: 0.35;\n}\n.comments-empty-state p {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  margin: 0;\n}\n.comments-empty-sub {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n}\n.comment-form {\n  margin-top: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.comment-form-actions {\n  display: flex;\n  justify-content: flex-end;\n}\n.notes-section {\n  display: flex;\n  flex-direction: column;\n  padding: 16px 28px 12px;\n  gap: 12px;\n}\n.notes-section.notes-fullscreen {\n  position: fixed;\n  inset: 0;\n  z-index: 2500;\n  background: var(--surface);\n  padding: 20px 32px 16px;\n  overflow: hidden;\n}\n.notes-section.notes-fullscreen .notes-editor-area {\n  flex: 1;\n  min-height: 0;\n}\n.notes-section.notes-fullscreen .notes-textarea {\n  min-height: unset;\n  resize: none;\n}\n.notes-section.notes-fullscreen .notes-preview {\n  min-height: unset;\n}\n.notes-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n  flex-shrink: 0;\n}\n.notes-header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.notes-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n.notes-title svg {\n  flex-shrink: 0;\n  color: var(--accent);\n}\n.notes-subtitle {\n  font-size: 11px;\n  color: var(--text-secondary);\n  margin: 0;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.notes-char-count {\n  font-family: "JetBrains Mono", monospace;\n}\n.notes-header-actions {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-shrink: 0;\n  flex-wrap: wrap;\n}\n.notes-font-picker {\n  display: flex;\n  align-items: center;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 2px;\n  gap: 2px;\n}\n.font-btn {\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 3px 8px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  line-height: 1;\n  height: 24px;\n}\n.font-btn.active {\n  background: var(--surface);\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.font-btn:hover:not(.active) {\n  color: var(--text-primary);\n  background: rgba(255, 255, 255, 0.6);\n}\n.font-btn.font-btn--mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n}\n.font-btn.font-btn--lora {\n  font-family: "Lora", serif;\n  font-style: italic;\n}\n.notes-mode-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 5px 11px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.notes-mode-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.notes-mode-btn.active {\n  background: var(--accent);\n  border-color: var(--accent);\n  color: white;\n}\n.notes-save-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.notes-save-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.notes-save-btn.saved {\n  border-color: #059669;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.06);\n}\n.notes-save-btn:disabled {\n  opacity: 0.6;\n  cursor: default;\n}\n.notes-pdf-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 12px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.notes-pdf-btn:hover {\n  background: var(--accent-hover);\n}\n.notes-fs-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: all 0.12s ease;\n  flex-shrink: 0;\n}\n.notes-fs-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.05);\n}\n.notes-save-toast {\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.25);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 8px 14px;\n  font-size: 13px;\n  font-weight: 600;\n  flex-shrink: 0;\n  animation: toast-in 0.2s ease;\n}\n@keyframes toast-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.notes-toolbar {\n  display: flex;\n  align-items: center;\n  gap: 3px;\n  padding: 6px 10px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  flex-wrap: wrap;\n  flex-shrink: 0;\n}\n.tb-group {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n.tb-sep {\n  width: 1px;\n  height: 18px;\n  background: var(--border);\n  margin: 0 4px;\n  flex-shrink: 0;\n}\n.tb-hint {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n  white-space: nowrap;\n}\n.tb-btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 3px;\n  background: none;\n  border: none;\n  border-radius: 6px;\n  padding: 4px 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition:\n    background 0.1s ease,\n    color 0.1s ease,\n    box-shadow 0.1s ease;\n  white-space: nowrap;\n  height: 26px;\n}\n.tb-btn svg {\n  flex-shrink: 0;\n}\n.tb-btn:hover {\n  background: white;\n  color: var(--text-primary);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.tb-btn.tb-btn--label {\n  font-family: "Outfit", sans-serif;\n  font-size: 12px;\n  font-weight: 800;\n  min-width: 28px;\n}\n.tb-btn.tb-btn--bold {\n  font-family: "Inter", sans-serif;\n  font-weight: 800;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--italic {\n  font-family: "Lora", serif;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 13px;\n}\n.tb-btn.tb-btn--code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 500;\n  color: #7C3AED;\n}\n.tb-btn.tb-btn--code:hover {\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  box-shadow: none;\n}\n.tb-btn.tb-btn--math {\n  color: var(--accent);\n  font-weight: 700;\n}\n.tb-btn.tb-btn--math:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n  box-shadow: none;\n}\n.notes-editor-area {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  min-height: 0;\n}\n.notes-textarea {\n  width: 100%;\n  flex: 1;\n  resize: vertical;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  border: 1.5px solid #E8D58A;\n  border-radius: var(--radius-sm);\n  padding: 18px 20px;\n  background: #FFFDF0;\n  outline: none;\n  line-height: 1.8;\n  min-height: 260px;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  tab-size: 4;\n}\n.notes-textarea:focus {\n  border-color: #F59E0B;\n  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);\n  background: #FFFEF8;\n}\n.notes-textarea::placeholder {\n  color: #C9B97A;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  line-height: 1.7;\n}\n.notes-textarea.font-lora {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview {\n  width: 100%;\n  flex: 1;\n  min-height: 260px;\n  padding: 20px 24px;\n  background: var(--surface);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  overflow-y: auto;\n  box-sizing: border-box;\n  line-height: 1.7;\n  color: var(--text-primary);\n}\n.notes-preview.font-mono {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n}\n.notes-preview.font-lora {\n  font-family: "Lora", serif;\n  font-size: 15px;\n  line-height: 1.85;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-empty {\n  color: var(--text-secondary);\n  font-size: 14px;\n  font-style: italic;\n  text-align: center;\n  padding: 40px 0;\n}\n.notes-preview ::ng-deep .md-h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 22px;\n  font-weight: 800;\n  color: var(--text-primary);\n  margin: 0 0 14px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid var(--border);\n  line-height: 1.3;\n}\n.notes-preview ::ng-deep .md-h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 17px;\n  font-weight: 700;\n  color: var(--text-primary);\n  margin: 20px 0 8px;\n}\n.notes-preview ::ng-deep .md-h3 {\n  font-family: "Inter", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n  margin: 16px 0 6px;\n}\n.notes-preview ::ng-deep .md-p {\n  font-size: 14px;\n  line-height: 1.75;\n  color: var(--text-primary);\n  margin: 0 0 12px;\n  word-break: break-word;\n}\n.notes-preview ::ng-deep .md-hr {\n  border: none;\n  border-top: 2px solid var(--border);\n  margin: 20px 0;\n}\n.notes-preview ::ng-deep .md-ul,\n.notes-preview ::ng-deep .md-ol {\n  margin: 4px 0 14px 22px;\n  padding: 0;\n}\n.notes-preview ::ng-deep .md-ul li,\n.notes-preview ::ng-deep .md-ol li {\n  font-size: 14px;\n  line-height: 1.7;\n  color: var(--text-primary);\n  margin-bottom: 4px;\n}\n.notes-preview ::ng-deep .md-ul {\n  list-style-type: disc;\n}\n.notes-preview ::ng-deep .md-ol {\n  list-style-type: decimal;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-inline-code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: #7C3AED;\n  background: rgba(124, 58, 237, 0.08);\n  border: 1px solid rgba(124, 58, 237, 0.15);\n  border-radius: 4px;\n  padding: 1px 5px;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-inline-math {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12.5px;\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.07);\n  border: 1px solid rgba(79, 70, 229, 0.15);\n  border-radius: 4px;\n  padding: 1px 6px;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-code-block {\n  position: relative;\n  background: #1E1E2E;\n  border-radius: 10px;\n  margin: 14px 0;\n  overflow: hidden;\n}\n.notes-preview ::ng-deep .md-code-block .code-lang {\n  position: absolute;\n  top: 8px;\n  right: 12px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 600;\n  color: #6C7086;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.notes-preview ::ng-deep .md-code-block pre {\n  margin: 0;\n  padding: 18px 18px 16px;\n  overflow-x: auto;\n}\n.notes-preview ::ng-deep .md-code-block code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 13px;\n  color: #CDD6F4;\n  line-height: 1.65;\n  white-space: pre;\n  display: block;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-math-block {\n  background: #F5F3FF;\n  border: 1.5px solid #DDD6FE;\n  border-radius: 10px;\n  padding: 14px 18px;\n  margin: 14px 0;\n}\n.notes-preview ::ng-deep .md-math-block .md-math-label {\n  display: block;\n  font-size: 9px;\n  font-weight: 700;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.07em;\n  margin-bottom: 8px;\n}\n.notes-preview ::ng-deep .md-math-block .md-math-pre {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 14px;\n  color: #3730A3;\n  margin: 0;\n  white-space: pre-wrap;\n  line-height: 1.6;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep .md-quote {\n  border-left: 3px solid var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 0 8px 8px 0;\n  padding: 10px 14px;\n  margin: 10px 0;\n  font-size: 14px;\n  color: var(--text-primary);\n  line-height: 1.65;\n}\n.notes-preview {\n}\n.notes-preview ::ng-deep strong {\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.notes-preview ::ng-deep em {\n  font-style: italic;\n  color: #374151;\n}\n.notes-images-section {\n  border: 1.5px dashed var(--border);\n  border-radius: var(--radius-md);\n  padding: 12px 14px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  background: rgba(250, 250, 248, 0.7);\n  flex-shrink: 0;\n}\n.notes-images-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.notes-images-title {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n}\n.notes-images-count {\n  font-size: 10px;\n  font-weight: 600;\n  background: var(--border);\n  color: var(--text-secondary);\n  border-radius: 999px;\n  padding: 1px 6px;\n}\n.notes-add-img-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--accent);\n  border: 1.5px solid rgba(79, 70, 229, 0.25);\n  background: rgba(79, 70, 229, 0.04);\n  border-radius: 999px;\n  padding: 4px 10px;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.notes-add-img-btn:hover {\n  background: rgba(79, 70, 229, 0.1);\n  border-color: var(--accent);\n}\n.notes-img-input {\n  display: none;\n}\n.notes-images-gallery {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.notes-img-thumb {\n  position: relative;\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  overflow: hidden;\n  border: 2px solid var(--border);\n  cursor: pointer;\n  flex-shrink: 0;\n  transition: border-color 0.15s ease, transform 0.12s ease;\n}\n.notes-img-thumb img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.notes-img-thumb:hover {\n  border-color: var(--accent);\n  transform: scale(1.04);\n}\n.notes-img-thumb:hover .notes-img-delete {\n  opacity: 1;\n}\n.notes-img-delete {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  width: 20px;\n  height: 20px;\n  background: rgba(0, 0, 0, 0.6);\n  color: white;\n  border: none;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.15s ease;\n}\n.notes-img-delete:hover {\n  background: #DC2626;\n}\n.notes-img-placeholder {\n  width: 88px;\n  height: 88px;\n  border-radius: 10px;\n  border: 2px dashed var(--border);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.notes-img-hint {\n  font-size: 12px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.5;\n}\n.notes-footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.notes-info {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n}\n.notes-info svg {\n  flex-shrink: 0;\n  opacity: 0.5;\n}\n.notes-shortcuts-hint {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  opacity: 0.6;\n}\n.image-viewer-overlay {\n  position: fixed;\n  inset: 0;\n  z-index: 3000;\n  background: rgba(0, 0, 0, 0.9);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n}\n.image-viewer-overlay img {\n  max-width: 90vw;\n  max-height: 90vh;\n  object-fit: contain;\n  border-radius: 10px;\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);\n}\n.image-viewer-close {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  width: 40px;\n  height: 40px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 1.5px solid rgba(255, 255, 255, 0.25);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background 0.15s ease;\n}\n.image-viewer-close:hover {\n  background: rgba(255, 255, 255, 0.22);\n}\n.spin {\n  animation: spin 1s linear infinite;\n}\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (max-width: 720px) {\n  .field-grid {\n    grid-template-columns: 1fr;\n  }\n  .dialog-header {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .notes-header {\n    flex-direction: column;\n  }\n  .notes-header-actions {\n    flex-wrap: wrap;\n  }\n  .notes-textarea {\n    min-height: 200px;\n  }\n  .tb-hint {\n    display: none;\n  }\n}\n/*# sourceMappingURL=task-dialog.css.map */\n'] }]
   }], () => [{ type: ApiService }, { type: DomSanitizer }], { isOpen: [{
     type: Input
   }], mode: [{
@@ -34038,6 +34175,8 @@ $$
   }], tags: [{
     type: Input
   }], priorities: [{
+    type: Input
+  }], taskTypes: [{
     type: Input
   }], saving: [{
     type: Input
@@ -34066,7 +34205,7 @@ $$
   }] });
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TaskDialog, { className: "TaskDialog", filePath: "src/app/components/task-dialog/task-dialog.ts", lineNumber: 46 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TaskDialog, { className: "TaskDialog", filePath: "src/app/components/task-dialog/task-dialog.ts", lineNumber: 47 });
 })();
 
 // src/app/components/sprint-manager/sprint-manager.ts
@@ -36336,6 +36475,757 @@ var PriorityManager = class _PriorityManager {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PriorityManager, { className: "PriorityManager", filePath: "src/app/components/priority-manager/priority-manager.ts", lineNumber: 23 });
 })();
 
+// src/app/components/type-manager/type-manager.ts
+function TypeManager_span_5_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 42);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(ctx_r0.types().length);
+  }
+}
+function TypeManager_span_6_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 43);
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(1, "svg", 44);
+    \u0275\u0275element(2, "path", 45);
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3, " Arraste para reordenar ");
+    \u0275\u0275elementEnd();
+  }
+}
+function TypeManager_span_7_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 46);
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(1, "svg", 47);
+    \u0275\u0275element(2, "path", 48);
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3, " Salvando... ");
+    \u0275\u0275elementEnd();
+  }
+}
+function TypeManager_div_13_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 49);
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(1, "svg", 50);
+    \u0275\u0275element(2, "path", 48);
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3, " Carregando... ");
+    \u0275\u0275elementEnd();
+  }
+}
+function TypeManager_div_14_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 51);
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(1, "svg", 52);
+    \u0275\u0275element(2, "path", 19)(3, "polyline", 20);
+    \u0275\u0275elementEnd();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(4, "p");
+    \u0275\u0275text(5, "Nenhum tipo cadastrado.");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(6, "p", 53);
+    \u0275\u0275text(7, "Crie o primeiro tipo para classificar as atividades (Hist\xF3ria, Bug\u2026).");
+    \u0275\u0275elementEnd()();
+  }
+}
+function TypeManager_div_15_div_13_div_1_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "div", 87);
+  }
+}
+function TypeManager_div_15_div_13_div_2_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 88);
+    \u0275\u0275element(1, "span", 89);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const type_r4 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275styleProp("background", type_r4.color);
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", type_r4.name, " ");
+  }
+}
+function TypeManager_div_15_div_13_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r3 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 64);
+    \u0275\u0275template(1, TypeManager_div_15_div_13_div_1_Template, 1, 0, "div", 65)(2, TypeManager_div_15_div_13_div_2_Template, 3, 3, "div", 66);
+    \u0275\u0275elementStart(3, "div", 67);
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(4, "svg", 68);
+    \u0275\u0275element(5, "circle", 69)(6, "circle", 70)(7, "circle", 71)(8, "circle", 72)(9, "circle", 73)(10, "circle", 74);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(11, "div", 57);
+    \u0275\u0275element(12, "span", 75);
+    \u0275\u0275elementStart(13, "span", 76);
+    \u0275\u0275text(14);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(15, "div", 58)(16, "span", 77);
+    \u0275\u0275text(17);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(18, "div", 59)(19, "span", 78);
+    \u0275\u0275text(20);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(21, "div", 60)(22, "span", 79);
+    \u0275\u0275text(23);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(24, "div", 61)(25, "button", 80);
+    \u0275\u0275listener("click", function TypeManager_div_15_div_13_Template_button_click_25_listener() {
+      const type_r4 = \u0275\u0275restoreView(_r3).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r0.openEditDialog(type_r4));
+    });
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(26, "svg", 81);
+    \u0275\u0275element(27, "path", 82)(28, "path", 83);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(29, "button", 84);
+    \u0275\u0275listener("click", function TypeManager_div_15_div_13_Template_button_click_29_listener() {
+      const type_r4 = \u0275\u0275restoreView(_r3).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r0.askDelete(type_r4));
+    });
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(30, "svg", 81);
+    \u0275\u0275element(31, "polyline", 85)(32, "path", 86);
+    \u0275\u0275elementEnd()()()();
+  }
+  if (rf & 2) {
+    const type_r4 = ctx.$implicit;
+    const i_r5 = ctx.index;
+    \u0275\u0275property("cdkDragData", type_r4);
+    \u0275\u0275advance(12);
+    \u0275\u0275styleProp("background", type_r4.color || "#6B6B70");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(type_r4.color || "\u2014");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(type_r4.name);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1("", i_r5 + 1, "\xBA");
+    \u0275\u0275advance(2);
+    \u0275\u0275styleProp("background", (type_r4.color || "#6B6B70") + "18")("color", type_r4.color || "#6B6B70")("border-color", (type_r4.color || "#6B6B70") + "40");
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", type_r4.name, " ");
+  }
+}
+function TypeManager_div_15_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r2 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 54)(1, "div", 55);
+    \u0275\u0275element(2, "div", 56);
+    \u0275\u0275elementStart(3, "div", 57);
+    \u0275\u0275text(4, "Cor");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "div", 58);
+    \u0275\u0275text(6, "Nome");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(7, "div", 59);
+    \u0275\u0275text(8, "Posi\xE7\xE3o");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(9, "div", 60);
+    \u0275\u0275text(10, "Preview");
+    \u0275\u0275elementEnd();
+    \u0275\u0275element(11, "div", 61);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(12, "div", 62);
+    \u0275\u0275listener("cdkDropListDropped", function TypeManager_div_15_Template_div_cdkDropListDropped_12_listener($event) {
+      \u0275\u0275restoreView(_r2);
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.drop($event));
+    });
+    \u0275\u0275template(13, TypeManager_div_15_div_13_Template, 33, 13, "div", 63);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(13);
+    \u0275\u0275property("ngForOf", ctx_r0.types());
+  }
+}
+function TypeManager_button_40__svg_svg_1_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 92);
+    \u0275\u0275element(1, "path", 93);
+    \u0275\u0275elementEnd();
+  }
+}
+function TypeManager_button_40_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 90);
+    \u0275\u0275listener("click", function TypeManager_button_40_Template_button_click_0_listener() {
+      const c_r7 = \u0275\u0275restoreView(_r6).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.selectColor(c_r7));
+    });
+    \u0275\u0275template(1, TypeManager_button_40__svg_svg_1_Template, 2, 0, "svg", 91);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const c_r7 = ctx.$implicit;
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275styleProp("background", c_r7);
+    \u0275\u0275classProp("selected", ctx_r0.form.color === c_r7);
+    \u0275\u0275property("title", c_r7);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.form.color === c_r7);
+  }
+}
+function TypeManager__svg_svg_62_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 94);
+    \u0275\u0275element(1, "path", 48);
+    \u0275\u0275elementEnd();
+  }
+}
+var PRESET_COLORS3 = [
+  "#6B6B70",
+  "#4F46E5",
+  "#0284C7",
+  "#059669",
+  "#D97706",
+  "#DC2626",
+  "#7C3AED",
+  "#DB2777",
+  "#0891B2",
+  "#16A34A",
+  "#EA580C",
+  "#9333EA"
+];
+var TypeManager = class _TypeManager {
+  apiService;
+  boardId;
+  typesChanged = new EventEmitter();
+  types = signal([], ...ngDevMode ? [{ debugName: "types" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  loading = signal(true, ...ngDevMode ? [{ debugName: "loading" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  saving = signal(false, ...ngDevMode ? [{ debugName: "saving" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  reordering = signal(false, ...ngDevMode ? [{ debugName: "reordering" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  dialogOpen = signal(false, ...ngDevMode ? [{ debugName: "dialogOpen" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  dialogMode = "create";
+  editingType = null;
+  form = { name: "", color: "#4F46E5", order: 0 };
+  deleteDialogOpen = signal(false, ...ngDevMode ? [{ debugName: "deleteDialogOpen" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  typePendingDelete = null;
+  deleting = signal(false, ...ngDevMode ? [{ debugName: "deleting" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  presetColors = PRESET_COLORS3;
+  constructor(apiService) {
+    this.apiService = apiService;
+  }
+  ngOnInit() {
+    this.loadTypes();
+  }
+  loadTypes() {
+    this.loading.set(true);
+    this.apiService.getTaskTypes(this.boardId).subscribe({
+      next: (data) => {
+        this.types.set(data);
+        this.loading.set(false);
+      },
+      error: () => this.loading.set(false)
+    });
+  }
+  drop(event) {
+    const list = [...this.types()];
+    moveItemInArray(list, event.previousIndex, event.currentIndex);
+    this.types.set(list);
+    this.persistOrder(list);
+  }
+  persistOrder(list) {
+    this.reordering.set(true);
+    const items = list.map((s, i) => ({ id: s.id, order: i }));
+    this.apiService.reorderTaskTypes(items).subscribe({
+      next: () => {
+        this.reordering.set(false);
+        this.types.set(list.map((s, i) => __spreadProps(__spreadValues({}, s), { order: i })));
+        this.typesChanged.emit();
+      },
+      error: () => {
+        this.reordering.set(false);
+        this.loadTypes();
+      }
+    });
+  }
+  openCreateDialog() {
+    this.dialogMode = "create";
+    this.editingType = null;
+    const maxOrder = this.types().length > 0 ? Math.max(...this.types().map((s) => s.order ?? 0)) + 1 : 0;
+    this.form = { name: "", color: "#4F46E5", order: maxOrder };
+    this.dialogOpen.set(true);
+  }
+  openEditDialog(type) {
+    this.dialogMode = "edit";
+    this.editingType = type;
+    this.form = { name: type.name, color: type.color ?? "#6B6B70", order: type.order ?? 0 };
+    this.dialogOpen.set(true);
+  }
+  closeDialog() {
+    this.dialogOpen.set(false);
+  }
+  confirmSave() {
+    if (!this.form.name.trim() || this.saving())
+      return;
+    this.saving.set(true);
+    const payload = {
+      board_id: this.boardId,
+      name: this.form.name.trim(),
+      color: this.form.color || "#6B6B70",
+      order: Number(this.form.order)
+    };
+    const req$ = this.dialogMode === "edit" && this.editingType ? this.apiService.updateTaskType(this.editingType.id, payload) : this.apiService.createTaskType(payload);
+    req$.subscribe({
+      next: () => {
+        this.saving.set(false);
+        this.dialogOpen.set(false);
+        this.loadTypes();
+        this.typesChanged.emit();
+      },
+      error: () => this.saving.set(false)
+    });
+  }
+  askDelete(type) {
+    this.typePendingDelete = type;
+    this.deleteDialogOpen.set(true);
+  }
+  cancelDelete() {
+    if (this.deleting())
+      return;
+    this.deleteDialogOpen.set(false);
+    this.typePendingDelete = null;
+  }
+  confirmDelete() {
+    if (!this.typePendingDelete || this.deleting())
+      return;
+    this.deleting.set(true);
+    this.apiService.deleteTaskType(this.typePendingDelete.id).subscribe({
+      next: () => {
+        this.types.set(this.types().filter((s) => s.id !== this.typePendingDelete.id));
+        this.deleting.set(false);
+        this.deleteDialogOpen.set(false);
+        this.typePendingDelete = null;
+        this.typesChanged.emit();
+      },
+      error: () => this.deleting.set(false)
+    });
+  }
+  selectColor(c) {
+    this.form.color = c;
+  }
+  static \u0275fac = function TypeManager_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _TypeManager)(\u0275\u0275directiveInject(ApiService));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TypeManager, selectors: [["app-type-manager"]], inputs: { boardId: "boardId" }, outputs: { typesChanged: "typesChanged" }, decls: 65, vars: 33, consts: [[1, "status-manager"], [1, "sm-header"], [1, "sm-header-left"], [1, "sm-title"], ["class", "sm-count", 4, "ngIf"], ["class", "sm-reorder-hint", 4, "ngIf"], ["class", "sm-reorder-saving", 4, "ngIf"], ["variant", "primary", 3, "clicked"], ["viewBox", "0 0 24 24", "width", "14", "height", "14", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["x1", "12", "y1", "5", "x2", "12", "y2", "19"], ["x1", "5", "y1", "12", "x2", "19", "y2", "12"], ["class", "sm-loading", 4, "ngIf"], ["class", "sm-empty", 4, "ngIf"], ["class", "sm-list-wrap", 4, "ngIf"], ["width", "460px", 3, "closeModal", "isOpen"], [1, "dialog-inner"], [1, "dialog-header"], [1, "dialog-header-icon"], ["viewBox", "0 0 24 24", "width", "18", "height", "18", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], [1, "dialog-content"], [1, "field-group"], [1, "field-label"], [1, "required"], ["type", "text", "placeholder", "Ex: Hist\xF3ria, Bug, Spike", 1, "field-input", 3, "ngModelChange", "keyup.enter", "ngModel"], [1, "color-picker-wrap"], [1, "color-presets"], ["class", "color-preset-btn", 3, "background", "selected", "title", "click", 4, "ngFor", "ngForOf"], [1, "color-custom-row"], ["type", "color", 1, "color-input-native", 3, "ngModelChange", "ngModel"], [1, "color-hex-label"], [1, "status-preview-live"], [1, "status-preview-chip", "status-preview-chip--live"], [1, "status-dot-small"], ["type", "number", "min", "0", 1, "field-input", "field-input--sm", 3, "ngModelChange", "ngModel"], [1, "field-hint"], [1, "dialog-actions"], [1, "dialog-cancel", 3, "click"], [1, "dialog-save", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "sm-spin", 4, "ngIf"], ["title", "Excluir tipo?", 3, "confirm", "cancel", "isOpen", "itemName", "loading"], [1, "sm-count"], [1, "sm-reorder-hint"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["d", "M3 12h18M3 6h18M3 18h18"], [1, "sm-reorder-saving"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "sm-spin"], ["d", "M21 12a9 9 0 1 1-6.219-8.56"], [1, "sm-loading"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "sm-spin"], [1, "sm-empty"], ["viewBox", "0 0 24 24", "width", "40", "height", "40", "fill", "none", "stroke", "currentColor", "stroke-width", "1.2", "stroke-linecap", "round"], [1, "sm-empty-sub"], [1, "sm-list-wrap"], [1, "sm-list-header"], [1, "sm-col", "sm-col--handle"], [1, "sm-col", "sm-col--color"], [1, "sm-col", "sm-col--name"], [1, "sm-col", "sm-col--order"], [1, "sm-col", "sm-col--preview"], [1, "sm-col", "sm-col--actions"], ["cdkDropList", "", 1, "sm-list", 3, "cdkDropListDropped"], ["class", "sm-row", "cdkDrag", "", 3, "cdkDragData", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "sm-row", 3, "cdkDragData"], ["class", "sm-drag-placeholder", 4, "cdkDragPlaceholder"], ["class", "sm-drag-preview", 4, "cdkDragPreview"], ["cdkDragHandle", "", "title", "Arrastar para reordenar", 1, "sm-col", "sm-col--handle"], ["width", "14", "height", "14", "viewBox", "0 0 10 16", "fill", "currentColor"], ["cx", "2", "cy", "2", "r", "1.5"], ["cx", "8", "cy", "2", "r", "1.5"], ["cx", "2", "cy", "8", "r", "1.5"], ["cx", "8", "cy", "8", "r", "1.5"], ["cx", "2", "cy", "14", "r", "1.5"], ["cx", "8", "cy", "14", "r", "1.5"], [1, "status-color-dot"], [1, "status-color-hex"], [1, "status-name-text"], [1, "status-order-badge"], [1, "status-preview-chip"], ["title", "Editar", 1, "sm-action-btn", 3, "click"], ["viewBox", "0 0 24 24", "width", "14", "height", "14", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["d", "M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"], ["d", "M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"], ["title", "Excluir", 1, "sm-action-btn", "sm-action-btn--danger", 3, "click"], ["points", "3 6 5 6 21 6"], ["d", "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"], [1, "sm-drag-placeholder"], [1, "sm-drag-preview"], [1, "sm-preview-dot"], [1, "color-preset-btn", 3, "click", "title"], ["width", "10", "height", "10", "viewBox", "0 0 24 24", "fill", "none", "stroke", "white", "stroke-width", "3.5", "stroke-linecap", "round", 4, "ngIf"], ["width", "10", "height", "10", "viewBox", "0 0 24 24", "fill", "none", "stroke", "white", "stroke-width", "3.5", "stroke-linecap", "round"], ["d", "M20 6 9 17l-5-5"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "sm-spin"]], template: function TypeManager_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "h2", 3);
+      \u0275\u0275text(4, "Tipos de tarefa");
+      \u0275\u0275elementEnd();
+      \u0275\u0275template(5, TypeManager_span_5_Template, 2, 1, "span", 4)(6, TypeManager_span_6_Template, 4, 0, "span", 5)(7, TypeManager_span_7_Template, 4, 0, "span", 6);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(8, "app-button", 7);
+      \u0275\u0275listener("clicked", function TypeManager_Template_app_button_clicked_8_listener() {
+        return ctx.openCreateDialog();
+      });
+      \u0275\u0275namespaceSVG();
+      \u0275\u0275elementStart(9, "svg", 8);
+      \u0275\u0275element(10, "line", 9)(11, "line", 10);
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(12, " Novo Tipo ");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275template(13, TypeManager_div_13_Template, 4, 0, "div", 11)(14, TypeManager_div_14_Template, 8, 0, "div", 12)(15, TypeManager_div_15_Template, 14, 1, "div", 13);
+      \u0275\u0275elementEnd();
+      \u0275\u0275namespaceHTML();
+      \u0275\u0275elementStart(16, "app-modal", 14);
+      \u0275\u0275listener("closeModal", function TypeManager_Template_app_modal_closeModal_16_listener() {
+        return ctx.closeDialog();
+      });
+      \u0275\u0275elementStart(17, "div", 15)(18, "div", 16)(19, "div", 17);
+      \u0275\u0275namespaceSVG();
+      \u0275\u0275elementStart(20, "svg", 18);
+      \u0275\u0275element(21, "path", 19)(22, "polyline", 20);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275namespaceHTML();
+      \u0275\u0275elementStart(23, "div")(24, "h2");
+      \u0275\u0275text(25);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(26, "p");
+      \u0275\u0275text(27);
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(28, "div", 21)(29, "div", 22)(30, "label", 23);
+      \u0275\u0275text(31, "Nome ");
+      \u0275\u0275elementStart(32, "span", 24);
+      \u0275\u0275text(33, "*");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(34, "input", 25);
+      \u0275\u0275twoWayListener("ngModelChange", function TypeManager_Template_input_ngModelChange_34_listener($event) {
+        \u0275\u0275twoWayBindingSet(ctx.form.name, $event) || (ctx.form.name = $event);
+        return $event;
+      });
+      \u0275\u0275listener("keyup.enter", function TypeManager_Template_input_keyup_enter_34_listener() {
+        return ctx.confirmSave();
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(35, "div", 22)(36, "label", 23);
+      \u0275\u0275text(37, "Cor");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(38, "div", 26)(39, "div", 27);
+      \u0275\u0275template(40, TypeManager_button_40_Template, 2, 6, "button", 28);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(41, "div", 29)(42, "input", 30);
+      \u0275\u0275twoWayListener("ngModelChange", function TypeManager_Template_input_ngModelChange_42_listener($event) {
+        \u0275\u0275twoWayBindingSet(ctx.form.color, $event) || (ctx.form.color = $event);
+        return $event;
+      });
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(43, "span", 31);
+      \u0275\u0275text(44);
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(45, "div", 22)(46, "label", 23);
+      \u0275\u0275text(47, "Preview");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(48, "div", 32)(49, "span", 33);
+      \u0275\u0275element(50, "span", 34);
+      \u0275\u0275text(51);
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(52, "div", 22)(53, "label", 23);
+      \u0275\u0275text(54, "Posi\xE7\xE3o");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(55, "input", 35);
+      \u0275\u0275twoWayListener("ngModelChange", function TypeManager_Template_input_ngModelChange_55_listener($event) {
+        \u0275\u0275twoWayBindingSet(ctx.form.order, $event) || (ctx.form.order = $event);
+        return $event;
+      });
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(56, "span", 36);
+      \u0275\u0275text(57, "O drag-and-drop tamb\xE9m reordena automaticamente.");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(58, "div", 37)(59, "button", 38);
+      \u0275\u0275listener("click", function TypeManager_Template_button_click_59_listener() {
+        return ctx.closeDialog();
+      });
+      \u0275\u0275text(60, "Cancelar");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(61, "button", 39);
+      \u0275\u0275listener("click", function TypeManager_Template_button_click_61_listener() {
+        return ctx.confirmSave();
+      });
+      \u0275\u0275template(62, TypeManager__svg_svg_62_Template, 2, 0, "svg", 40);
+      \u0275\u0275text(63);
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(64, "app-confirm-dialog", 41);
+      \u0275\u0275listener("confirm", function TypeManager_Template_app_confirm_dialog_confirm_64_listener() {
+        return ctx.confirmDelete();
+      })("cancel", function TypeManager_Template_app_confirm_dialog_cancel_64_listener() {
+        return ctx.cancelDelete();
+      });
+      \u0275\u0275elementEnd();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance(5);
+      \u0275\u0275property("ngIf", !ctx.loading() && ctx.types().length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", !ctx.loading() && ctx.types().length > 1);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.reordering());
+      \u0275\u0275advance(6);
+      \u0275\u0275property("ngIf", ctx.loading());
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", !ctx.loading() && ctx.types().length === 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", !ctx.loading() && ctx.types().length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("isOpen", ctx.dialogOpen());
+      \u0275\u0275advance(3);
+      \u0275\u0275styleProp("background", (ctx.form.color || "#4F46E5") + "18")("color", ctx.form.color || "#4F46E5");
+      \u0275\u0275advance(6);
+      \u0275\u0275textInterpolate(ctx.dialogMode === "edit" ? "Editar tipo" : "Novo tipo");
+      \u0275\u0275advance(2);
+      \u0275\u0275textInterpolate(ctx.dialogMode === "edit" ? "Atualize nome e cor." : "Defina nome e cor do novo tipo.");
+      \u0275\u0275advance(7);
+      \u0275\u0275twoWayProperty("ngModel", ctx.form.name);
+      \u0275\u0275advance(6);
+      \u0275\u0275property("ngForOf", ctx.presetColors);
+      \u0275\u0275advance(2);
+      \u0275\u0275twoWayProperty("ngModel", ctx.form.color);
+      \u0275\u0275advance(2);
+      \u0275\u0275textInterpolate1("Personalizado: ", ctx.form.color);
+      \u0275\u0275advance(5);
+      \u0275\u0275styleProp("background", (ctx.form.color || "#6B6B70") + "18")("color", ctx.form.color || "#6B6B70")("border-color", (ctx.form.color || "#6B6B70") + "40");
+      \u0275\u0275advance();
+      \u0275\u0275styleProp("background", ctx.form.color || "#6B6B70");
+      \u0275\u0275advance();
+      \u0275\u0275textInterpolate1(" ", ctx.form.name || "Nome do tipo", " ");
+      \u0275\u0275advance(4);
+      \u0275\u0275twoWayProperty("ngModel", ctx.form.order);
+      \u0275\u0275advance(6);
+      \u0275\u0275property("disabled", !ctx.form.name.trim() || ctx.saving());
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.saving());
+      \u0275\u0275advance();
+      \u0275\u0275textInterpolate1(" ", ctx.saving() ? "Salvando..." : ctx.dialogMode === "edit" ? "Salvar" : "Criar tipo", " ");
+      \u0275\u0275advance();
+      \u0275\u0275property("isOpen", ctx.deleteDialogOpen())("itemName", ctx.typePendingDelete == null ? null : ctx.typePendingDelete.name)("loading", ctx.deleting());
+    }
+  }, dependencies: [CommonModule, NgForOf, NgIf, FormsModule, DefaultValueAccessor, NumberValueAccessor, NgControlStatus, MinValidator, NgModel, DragDropModule, CdkDropList, CdkDrag, CdkDragHandle, CdkDragPreview, CdkDragPlaceholder, Button, Modal, ConfirmDialog], styles: ['@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n\n[_nghost-%COMP%] {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28,28,31,.04), 0 1px 3px rgba(28,28,31,.06);\n}\n@keyframes _ngcontent-%COMP%_spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.sm-spin[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n.status-manager[_ngcontent-%COMP%] {\n  padding: 28px 32px 64px;\n  max-width: 1100px;\n}\n.sm-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 24px;\n}\n.sm-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.sm-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 24px;\n  font-weight: 700;\n  margin: 0;\n}\n.sm-count[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 10px;\n}\n.sm-reorder-hint[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 11px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px dashed var(--border);\n  border-radius: 20px;\n  padding: 3px 10px;\n}\n.sm-reorder-hint[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.sm-reorder-saving[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n}\n.sm-loading[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 60px 0;\n  font-size: 14px;\n  color: var(--text-secondary);\n  justify-content: center;\n}\n.sm-empty[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 72px 24px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px dashed var(--border);\n  border-radius: var(--radius-md);\n  gap: 10px;\n}\n.sm-empty[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 0.3;\n  margin-bottom: 4px;\n}\n.sm-empty[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 15px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.sm-empty-sub[_ngcontent-%COMP%] {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.sm-list-wrap[_ngcontent-%COMP%] {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n  overflow: hidden;\n}\n.sm-list-header[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 40px 100px 1fr 70px 160px 80px;\n  background: rgba(28, 28, 31, 0.025);\n  border-bottom: 1px solid var(--border);\n}\n.sm-list-header[_ngcontent-%COMP%]   .sm-col[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 9px 14px;\n  display: flex;\n  align-items: center;\n}\n.sm-list-header[_ngcontent-%COMP%]   .sm-col--handle[_ngcontent-%COMP%], \n.sm-list-header[_ngcontent-%COMP%]   .sm-col--actions[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.sm-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n.sm-row[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 40px 100px 1fr 70px 160px 80px;\n  align-items: center;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.1s ease;\n}\n.sm-row[_ngcontent-%COMP%]:last-child {\n  border-bottom: none;\n}\n.sm-row[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.025);\n}\n.sm-row[_ngcontent-%COMP%]:hover   .sm-col--actions[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.sm-row.cdk-drag-animating[_ngcontent-%COMP%] {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.sm-col[_ngcontent-%COMP%] {\n  padding: 12px 14px;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.sm-col--handle[_ngcontent-%COMP%] {\n  justify-content: center;\n  padding: 0;\n}\n.sm-col--order[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.sm-col--actions[_ngcontent-%COMP%] {\n  justify-content: center;\n  gap: 4px;\n}\n.sm-col--actions[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  opacity: 0.3;\n  transition: opacity 0.12s ease;\n}\n.sm-col--handle[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  cursor: grab;\n  opacity: 0.45;\n  transition: opacity 0.12s ease;\n}\n.sm-col--handle[_ngcontent-%COMP%]:hover {\n  opacity: 1;\n  color: var(--accent);\n}\n.sm-col--handle[_ngcontent-%COMP%]:active {\n  cursor: grabbing;\n}\n.sm-drag-placeholder[_ngcontent-%COMP%] {\n  height: 52px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 8px;\n}\n.sm-drag-preview[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 10px;\n  padding: 10px 16px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.16);\n  color: var(--text-primary);\n}\n.sm-preview-dot[_ngcontent-%COMP%] {\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.cdk-drag-preview[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n.cdk-drop-list-dragging[_ngcontent-%COMP%]   .sm-row[_ngcontent-%COMP%]:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.status-color-dot[_ngcontent-%COMP%] {\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);\n}\n.status-color-hex[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.status-name-text[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.status-order-badge[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.status-preview-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 20px;\n  border: 1px solid;\n  padding: 3px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  white-space: nowrap;\n}\n.sm-action-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 7px;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.sm-action-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.sm-action-btn.sm-action-btn--danger[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.dialog-inner[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.dialog-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n  margin-bottom: 20px;\n}\n.dialog-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0 0 3px;\n}\n.dialog-header[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.dialog-header-icon[_ngcontent-%COMP%] {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.dialog-content[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  margin-bottom: 20px;\n}\n.field-group[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.field-label[_ngcontent-%COMP%] {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.field-label[_ngcontent-%COMP%]   .required[_ngcontent-%COMP%] {\n  color: #DC2626;\n  margin-left: 2px;\n}\n.field-input[_ngcontent-%COMP%] {\n  height: 42px;\n  padding: 0 14px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.field-input[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);\n}\n.field-input--sm[_ngcontent-%COMP%] {\n  height: 36px;\n  width: 100px;\n}\n.field-hint[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.color-picker-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.color-presets[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 7px;\n}\n.color-preset-btn[_ngcontent-%COMP%] {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: transform 0.1s ease, border-color 0.1s ease;\n}\n.color-preset-btn[_ngcontent-%COMP%]:hover {\n  transform: scale(1.12);\n}\n.color-preset-btn.selected[_ngcontent-%COMP%] {\n  border-color: white;\n  box-shadow: 0 0 0 2px var(--accent);\n  transform: scale(1.08);\n}\n.color-custom-row[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.color-input-native[_ngcontent-%COMP%] {\n  width: 36px;\n  height: 36px;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 2px;\n  cursor: pointer;\n  background: var(--surface);\n}\n.color-hex-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n}\n.status-preview-live[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.status-preview-chip--live[_ngcontent-%COMP%] {\n  font-size: 13px;\n  padding: 5px 12px;\n}\n.status-dot-small[_ngcontent-%COMP%] {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.dialog-actions[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n}\n.dialog-cancel[_ngcontent-%COMP%] {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.dialog-cancel[_ngcontent-%COMP%]:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.dialog-save[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.dialog-save[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.dialog-save[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=type-manager.css.map */'] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TypeManager, [{
+    type: Component,
+    args: [{ selector: "app-type-manager", standalone: true, imports: [CommonModule, FormsModule, DragDropModule, Button, Modal, ConfirmDialog], template: `<div class="status-manager">
+
+  <div class="sm-header">
+    <div class="sm-header-left">
+      <h2 class="sm-title">Tipos de tarefa</h2>
+      <span class="sm-count" *ngIf="!loading() && types().length > 0">{{ types().length }}</span>
+      <span class="sm-reorder-hint" *ngIf="!loading() && types().length > 1">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+        Arraste para reordenar
+      </span>
+      <span *ngIf="reordering()" class="sm-reorder-saving">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        Salvando...
+      </span>
+    </div>
+    <app-button variant="primary" (clicked)="openCreateDialog()">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      Novo Tipo
+    </app-button>
+  </div>
+
+  <div class="sm-loading" *ngIf="loading()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" class="sm-spin">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+    Carregando...
+  </div>
+
+  <div class="sm-empty" *ngIf="!loading() && types().length === 0">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2"
+      stroke-linecap="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+    </svg>
+    <p>Nenhum tipo cadastrado.</p>
+    <p class="sm-empty-sub">Crie o primeiro tipo para classificar as atividades (Hist\xF3ria, Bug\u2026).</p>
+  </div>
+
+  <div class="sm-list-wrap" *ngIf="!loading() && types().length > 0">
+
+    <div class="sm-list-header">
+      <div class="sm-col sm-col--handle"></div>
+      <div class="sm-col sm-col--color">Cor</div>
+      <div class="sm-col sm-col--name">Nome</div>
+      <div class="sm-col sm-col--order">Posi\xE7\xE3o</div>
+      <div class="sm-col sm-col--preview">Preview</div>
+      <div class="sm-col sm-col--actions"></div>
+    </div>
+
+    <div class="sm-list" cdkDropList (cdkDropListDropped)="drop($event)">
+
+      <div *ngFor="let type of types(); let i = index"
+        class="sm-row" cdkDrag [cdkDragData]="type">
+
+        <div *cdkDragPlaceholder class="sm-drag-placeholder"></div>
+
+        <div *cdkDragPreview class="sm-drag-preview">
+          <span class="sm-preview-dot" [style.background]="type.color"></span>
+          {{ type.name }}
+        </div>
+
+        <div class="sm-col sm-col--handle" cdkDragHandle title="Arrastar para reordenar">
+          <svg width="14" height="14" viewBox="0 0 10 16" fill="currentColor">
+            <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/>
+            <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/>
+            <circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/>
+          </svg>
+        </div>
+
+        <div class="sm-col sm-col--color">
+          <span class="status-color-dot" [style.background]="type.color || '#6B6B70'"></span>
+          <span class="status-color-hex">{{ type.color || '\u2014' }}</span>
+        </div>
+
+        <div class="sm-col sm-col--name">
+          <span class="status-name-text">{{ type.name }}</span>
+        </div>
+
+        <div class="sm-col sm-col--order">
+          <span class="status-order-badge">{{ i + 1 }}\xBA</span>
+        </div>
+
+        <div class="sm-col sm-col--preview">
+          <span class="status-preview-chip"
+            [style.background]="(type.color || '#6B6B70') + '18'"
+            [style.color]="type.color || '#6B6B70'"
+            [style.border-color]="(type.color || '#6B6B70') + '40'">
+            {{ type.name }}
+          </span>
+        </div>
+
+        <div class="sm-col sm-col--actions">
+          <button class="sm-action-btn" (click)="openEditDialog(type)" title="Editar">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+          </button>
+          <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(type)" title="Excluir">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== MODAL CRIAR/EDITAR ===== -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()" width="460px">
+  <div class="dialog-inner">
+
+    <div class="dialog-header">
+      <div class="dialog-header-icon" [style.background]="(form.color || '#4F46E5') + '18'"
+        [style.color]="form.color || '#4F46E5'">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+        </svg>
+      </div>
+      <div>
+        <h2>{{ dialogMode === 'edit' ? 'Editar tipo' : 'Novo tipo' }}</h2>
+        <p>{{ dialogMode === 'edit' ? 'Atualize nome e cor.' : 'Defina nome e cor do novo tipo.' }}</p>
+      </div>
+    </div>
+
+    <div class="dialog-content">
+
+      <div class="field-group">
+        <label class="field-label">Nome <span class="required">*</span></label>
+        <input class="field-input" type="text" [(ngModel)]="form.name"
+          placeholder="Ex: Hist\xF3ria, Bug, Spike" (keyup.enter)="confirmSave()" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Cor</label>
+        <div class="color-picker-wrap">
+          <div class="color-presets">
+            <button *ngFor="let c of presetColors" class="color-preset-btn"
+              [style.background]="c" [class.selected]="form.color === c"
+              (click)="selectColor(c)" [title]="c">
+              <svg *ngIf="form.color === c" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="3.5" stroke-linecap="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div class="color-custom-row">
+            <input type="color" class="color-input-native" [(ngModel)]="form.color" />
+            <span class="color-hex-label">Personalizado: {{ form.color }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Preview</label>
+        <div class="status-preview-live">
+          <span class="status-preview-chip status-preview-chip--live"
+            [style.background]="(form.color || '#6B6B70') + '18'"
+            [style.color]="form.color || '#6B6B70'"
+            [style.border-color]="(form.color || '#6B6B70') + '40'">
+            <span class="status-dot-small" [style.background]="form.color || '#6B6B70'"></span>
+            {{ form.name || 'Nome do tipo' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Posi\xE7\xE3o</label>
+        <input class="field-input field-input--sm" type="number" [(ngModel)]="form.order" min="0" />
+        <span class="field-hint">O drag-and-drop tamb\xE9m reordena automaticamente.</span>
+      </div>
+
+    </div>
+
+    <div class="dialog-actions">
+      <button class="dialog-cancel" (click)="closeDialog()">Cancelar</button>
+      <button class="dialog-save" (click)="confirmSave()" [disabled]="!form.name.trim() || saving()">
+        <svg *ngIf="saving()" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar' : 'Criar tipo') }}
+      </button>
+    </div>
+
+  </div>
+</app-modal>
+
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir tipo?"
+  [itemName]="typePendingDelete?.name" [loading]="deleting()"
+  (confirm)="confirmDelete()" (cancel)="cancelDelete()">
+</app-confirm-dialog>
+`, styles: ['@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n/* src/app/components/type-manager/type-manager.scss */\n:host {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28,28,31,.04), 0 1px 3px rgba(28,28,31,.06);\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.sm-spin {\n  animation: spin 0.8s linear infinite;\n}\n.status-manager {\n  padding: 28px 32px 64px;\n  max-width: 1100px;\n}\n.sm-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 24px;\n}\n.sm-header-left {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.sm-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 24px;\n  font-weight: 700;\n  margin: 0;\n}\n.sm-count {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 10px;\n}\n.sm-reorder-hint {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 11px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px dashed var(--border);\n  border-radius: 20px;\n  padding: 3px 10px;\n}\n.sm-reorder-hint svg {\n  flex-shrink: 0;\n}\n.sm-reorder-saving {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-size: 11px;\n  color: var(--accent);\n  font-weight: 600;\n}\n.sm-loading {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 60px 0;\n  font-size: 14px;\n  color: var(--text-secondary);\n  justify-content: center;\n}\n.sm-empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 72px 24px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px dashed var(--border);\n  border-radius: var(--radius-md);\n  gap: 10px;\n}\n.sm-empty svg {\n  opacity: 0.3;\n  margin-bottom: 4px;\n}\n.sm-empty p {\n  margin: 0;\n  font-size: 15px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.sm-empty-sub {\n  font-size: 13px !important;\n  font-weight: 400 !important;\n  color: var(--text-secondary) !important;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.sm-list-wrap {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n  overflow: hidden;\n}\n.sm-list-header {\n  display: grid;\n  grid-template-columns: 40px 100px 1fr 70px 160px 80px;\n  background: rgba(28, 28, 31, 0.025);\n  border-bottom: 1px solid var(--border);\n}\n.sm-list-header .sm-col {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 9px 14px;\n  display: flex;\n  align-items: center;\n}\n.sm-list-header .sm-col--handle,\n.sm-list-header .sm-col--actions {\n  justify-content: center;\n}\n.sm-list {\n  display: flex;\n  flex-direction: column;\n}\n.sm-row {\n  display: grid;\n  grid-template-columns: 40px 100px 1fr 70px 160px 80px;\n  align-items: center;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.1s ease;\n}\n.sm-row:last-child {\n  border-bottom: none;\n}\n.sm-row:hover {\n  background: rgba(79, 70, 229, 0.025);\n}\n.sm-row:hover .sm-col--actions button {\n  opacity: 1;\n}\n.sm-row.cdk-drag-animating {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.sm-col {\n  padding: 12px 14px;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.sm-col--handle {\n  justify-content: center;\n  padding: 0;\n}\n.sm-col--order {\n  justify-content: center;\n}\n.sm-col--actions {\n  justify-content: center;\n  gap: 4px;\n}\n.sm-col--actions button {\n  opacity: 0.3;\n  transition: opacity 0.12s ease;\n}\n.sm-col--handle {\n  color: var(--text-secondary);\n  cursor: grab;\n  opacity: 0.45;\n  transition: opacity 0.12s ease;\n}\n.sm-col--handle:hover {\n  opacity: 1;\n  color: var(--accent);\n}\n.sm-col--handle:active {\n  cursor: grabbing;\n}\n.sm-drag-placeholder {\n  height: 52px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 8px;\n}\n.sm-drag-preview {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 10px;\n  padding: 10px 16px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.16);\n  color: var(--text-primary);\n}\n.sm-preview-dot {\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.cdk-drag-preview {\n  box-sizing: border-box;\n}\n.cdk-drop-list-dragging .sm-row:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.status-color-dot {\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);\n}\n.status-color-hex {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.status-name-text {\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.status-order-badge {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 2px 8px;\n}\n.status-preview-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 20px;\n  border: 1px solid;\n  padding: 3px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  white-space: nowrap;\n}\n.sm-action-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 7px;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.sm-action-btn:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.sm-action-btn.sm-action-btn--danger:hover {\n  background: rgba(220, 38, 38, 0.08);\n  color: #DC2626;\n}\n.dialog-inner {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n}\n.dialog-header {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n  margin-bottom: 20px;\n}\n.dialog-header h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0 0 3px;\n}\n.dialog-header p {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.dialog-header-icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.dialog-content {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  margin-bottom: 20px;\n}\n.field-group {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.field-label {\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n}\n.field-label .required {\n  color: #DC2626;\n  margin-left: 2px;\n}\n.field-input {\n  height: 42px;\n  padding: 0 14px;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  background: var(--surface);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  outline: none;\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n  width: 100%;\n  box-sizing: border-box;\n}\n.field-input::placeholder {\n  color: var(--text-secondary);\n}\n.field-input:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);\n}\n.field-input--sm {\n  height: 36px;\n  width: 100px;\n}\n.field-hint {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.color-picker-wrap {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.color-presets {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 7px;\n}\n.color-preset-btn {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: transform 0.1s ease, border-color 0.1s ease;\n}\n.color-preset-btn:hover {\n  transform: scale(1.12);\n}\n.color-preset-btn.selected {\n  border-color: white;\n  box-shadow: 0 0 0 2px var(--accent);\n  transform: scale(1.08);\n}\n.color-custom-row {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.color-input-native {\n  width: 36px;\n  height: 36px;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 2px;\n  cursor: pointer;\n  background: var(--surface);\n}\n.color-hex-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n}\n.status-preview-live {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.status-preview-chip--live {\n  font-size: 13px;\n  padding: 5px 12px;\n}\n.status-dot-small {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.dialog-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n}\n.dialog-cancel {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.dialog-cancel:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.dialog-save {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.dialog-save:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.dialog-save:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=type-manager.css.map */\n'] }]
+  }], () => [{ type: ApiService }], { boardId: [{
+    type: Input
+  }], typesChanged: [{
+    type: Output
+  }] });
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TypeManager, { className: "TypeManager", filePath: "src/app/components/type-manager/type-manager.ts", lineNumber: 23 });
+})();
+
 // src/app/components/task-filters/task-filters.ts
 function TaskFilters_button_7_Template(rf, ctx) {
   if (rf & 1) {
@@ -37720,26 +38610,26 @@ var TooltipDirective = class _TooltipDirective {
 })();
 
 // src/app/components/task-list/task-list.ts
-function TaskListComponent_span_32_Template(rf, ctx) {
+function TaskListComponent_span_38_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 81);
+    \u0275\u0275elementStart(0, "span", 83);
     \u0275\u0275text(1, "Em breve");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_span_39_Template(rf, ctx) {
+function TaskListComponent_span_45_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 81);
+    \u0275\u0275elementStart(0, "span", 83);
     \u0275\u0275text(1, "Em breve");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_8_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 136);
+    \u0275\u0275elementStart(0, "div", 138);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 113);
-    \u0275\u0275element(2, "rect", 137)(3, "rect", 138)(4, "rect", 139)(5, "rect", 140);
+    \u0275\u0275elementStart(1, "svg", 115);
+    \u0275\u0275element(2, "rect", 139)(3, "rect", 140)(4, "rect", 141)(5, "rect", 142);
     \u0275\u0275elementEnd();
     \u0275\u0275text(6);
     \u0275\u0275elementEnd();
@@ -37750,20 +38640,7 @@ function TaskListComponent_ng_container_41_div_8_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", ctx_r1.board().name, " ");
   }
 }
-function TaskListComponent_ng_container_41_div_11_span_5_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 147);
-    \u0275\u0275element(1, "span", 148);
-    \u0275\u0275text(2);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r1 = \u0275\u0275nextContext(3);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", ctx_r1.statsDone(), " conclu\xEDdas ");
-  }
-}
-function TaskListComponent_ng_container_41_div_11_span_6_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_11_span_5_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "span", 149);
     \u0275\u0275element(1, "span", 150);
@@ -37773,12 +38650,25 @@ function TaskListComponent_ng_container_41_div_11_span_6_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r1 = \u0275\u0275nextContext(3);
     \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", ctx_r1.statsDone(), " conclu\xEDdas ");
+  }
+}
+function TaskListComponent_ng_container_47_div_11_span_6_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 151);
+    \u0275\u0275element(1, "span", 152);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(2);
     \u0275\u0275textInterpolate1(" ", ctx_r1.statsInProgress(), " em andamento ");
   }
 }
-function TaskListComponent_ng_container_41_div_11_span_7_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_11_span_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 151);
+    \u0275\u0275elementStart(0, "span", 153);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -37788,14 +38678,14 @@ function TaskListComponent_ng_container_41_div_11_span_7_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", ctx_r1.statsDonePct(), "% feito ");
   }
 }
-function TaskListComponent_ng_container_41_div_11_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_11_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 141)(1, "span", 142)(2, "span", 143);
+    \u0275\u0275elementStart(0, "div", 143)(1, "span", 144)(2, "span", 145);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
     \u0275\u0275text(4, " total ");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(5, TaskListComponent_ng_container_41_div_11_span_5_Template, 3, 1, "span", 144)(6, TaskListComponent_ng_container_41_div_11_span_6_Template, 3, 1, "span", 145)(7, TaskListComponent_ng_container_41_div_11_span_7_Template, 2, 1, "span", 146);
+    \u0275\u0275template(5, TaskListComponent_ng_container_47_div_11_span_5_Template, 3, 1, "span", 146)(6, TaskListComponent_ng_container_47_div_11_span_6_Template, 3, 1, "span", 147)(7, TaskListComponent_ng_container_47_div_11_span_7_Template, 2, 1, "span", 148);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -37810,16 +38700,16 @@ function TaskListComponent_ng_container_41_div_11_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r1.statsDonePct() > 0);
   }
 }
-function TaskListComponent_ng_container_41_button_57_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_button_57_Template(rf, ctx) {
   if (rf & 1) {
     const _r3 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 152);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_button_57_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 154);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_button_57_Template_button_click_0_listener() {
       const s_r4 = \u0275\u0275restoreView(_r3).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.bulkSetStatus(s_r4));
     });
-    \u0275\u0275element(1, "span", 153);
+    \u0275\u0275element(1, "span", 155);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
@@ -37831,17 +38721,17 @@ function TaskListComponent_ng_container_41_button_57_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", s_r4.name, " ");
   }
 }
-function TaskListComponent_ng_container_41_button_70_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_button_70_Template(rf, ctx) {
   if (rf & 1) {
     const _r5 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 152);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_button_70_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 154);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_button_70_Template_button_click_0_listener() {
       const p_r6 = \u0275\u0275restoreView(_r5).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.bulkSetPriority(p_r6.name));
     });
-    \u0275\u0275element(1, "span", 153);
-    \u0275\u0275elementStart(2, "span", 154);
+    \u0275\u0275element(1, "span", 155);
+    \u0275\u0275elementStart(2, "span", 156);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd()();
   }
@@ -37855,17 +38745,17 @@ function TaskListComponent_ng_container_41_button_70_Template(rf, ctx) {
     \u0275\u0275textInterpolate(p_r6.name);
   }
 }
-function TaskListComponent_ng_container_41_button_88_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_button_88_Template(rf, ctx) {
   if (rf & 1) {
     const _r7 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 152);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_button_88_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 154);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_button_88_Template_button_click_0_listener() {
       const u_r8 = \u0275\u0275restoreView(_r7).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.bulkAddAssignee(u_r8));
     });
-    \u0275\u0275element(1, "app-avatar", 155);
-    \u0275\u0275elementStart(2, "span", 156);
+    \u0275\u0275element(1, "app-avatar", 157);
+    \u0275\u0275elementStart(2, "span", 158);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd()();
   }
@@ -37877,29 +38767,29 @@ function TaskListComponent_ng_container_41_button_88_Template(rf, ctx) {
     \u0275\u0275textInterpolate(u_r8.name);
   }
 }
-function TaskListComponent_ng_container_41_p_89_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_p_89_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 157);
+    \u0275\u0275elementStart(0, "p", 159);
     \u0275\u0275text(1, " Nenhum usu\xE1rio encontrado. ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_span_94_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_span_94_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 158);
+    \u0275\u0275elementStart(0, "span", 160);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 159);
-    \u0275\u0275element(2, "path", 160);
+    \u0275\u0275elementStart(1, "svg", 161);
+    \u0275\u0275element(2, "path", 162);
     \u0275\u0275elementEnd();
     \u0275\u0275text(3, " Atualizando... ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_99_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_99_Template(rf, ctx) {
   if (rf & 1) {
     const _r9 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 161);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_99_Template_div_click_0_listener() {
+    \u0275\u0275elementStart(0, "div", 163);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_99_Template_div_click_0_listener() {
       \u0275\u0275restoreView(_r9);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.closeBulkDropdown());
@@ -37907,32 +38797,32 @@ function TaskListComponent_ng_container_41_div_99_Template(rf, ctx) {
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_10_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 185);
+    \u0275\u0275elementStart(0, "span", 187);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 186);
-    \u0275\u0275element(2, "circle", 9)(3, "line", 187)(4, "line", 188);
+    \u0275\u0275elementStart(1, "svg", 188);
+    \u0275\u0275element(2, "circle", 9)(3, "line", 189)(4, "line", 190);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5, " Vencida ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
     \u0275\u0275text(1, "hoje");
     \u0275\u0275elementContainerEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
     \u0275\u0275text(1, "1 dia");
     \u0275\u0275elementContainerEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_3_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
     \u0275\u0275text(1);
@@ -37945,10 +38835,10 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate1(" ", ctx_r1.sprintDaysRemaining(group_r11.sprint), " dias ");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 190);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_1_Template, 2, 0, "ng-container", 22)(2, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_2_Template, 2, 0, "ng-container", 22)(3, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_3_Template, 2, 1, "ng-container", 22);
+    \u0275\u0275elementStart(0, "span", 192);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_1_Template, 2, 0, "ng-container", 24)(2, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_2_Template, 2, 0, "ng-container", 24)(3, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_ng_container_3_Template, 2, 1, "ng-container", 24);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -37962,10 +38852,10 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", ctx_r1.sprintDaysRemaining(group_r11.sprint) > 1);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_Template, 4, 3, "span", 189);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_span_1_Template, 4, 3, "span", 191);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -37975,30 +38865,30 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", ctx_r1.sprintDaysRemaining(group_r11.sprint) !== null);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_12_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_12_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 191);
+    \u0275\u0275elementStart(0, "span", 193);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 186);
-    \u0275\u0275element(2, "path", 26);
+    \u0275\u0275elementStart(1, "svg", 188);
+    \u0275\u0275element(2, "path", 28);
     \u0275\u0275elementEnd();
     \u0275\u0275text(3, " Finalizada ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "span", 177);
+    \u0275\u0275elementStart(1, "span", 179);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 178);
-    \u0275\u0275element(3, "rect", 179)(4, "line", 180)(5, "line", 181)(6, "line", 182);
+    \u0275\u0275elementStart(2, "svg", 180);
+    \u0275\u0275element(3, "rect", 181)(4, "line", 182)(5, "line", 183)(6, "line", 184);
     \u0275\u0275elementEnd();
     \u0275\u0275text(7);
     \u0275\u0275pipe(8, "date");
     \u0275\u0275pipe(9, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(10, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_10_Template, 6, 0, "span", 183)(11, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_Template, 2, 1, "ng-container", 22)(12, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_12_Template, 4, 0, "span", 184);
+    \u0275\u0275template(10, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_10_Template, 6, 0, "span", 185)(11, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_ng_container_11_Template, 2, 1, "ng-container", 24)(12, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_span_12_Template, 4, 0, "span", 186);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38014,9 +38904,9 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", ctx_r1.isSprintFinished(group_r11.sprint));
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_div_3_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_div_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275element(0, "div", 197);
+    \u0275\u0275element(0, "div", 199);
   }
   if (rf & 2) {
     const seg_r12 = ctx.$implicit;
@@ -38024,20 +38914,20 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("title", seg_r12.name + ": " + seg_r12.count);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 192);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template_div_click_1_listener($event) {
+    \u0275\u0275elementStart(1, "div", 194);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template_div_click_1_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(2, "div", 193);
-    \u0275\u0275template(3, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_div_3_Template, 1, 5, "div", 194);
+    \u0275\u0275elementStart(2, "div", 195);
+    \u0275\u0275template(3, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_div_3_Template, 1, 5, "div", 196);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "span", 195);
+    \u0275\u0275elementStart(4, "span", 197);
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "span", 196);
+    \u0275\u0275elementStart(6, "span", 198);
     \u0275\u0275text(7);
     \u0275\u0275elementEnd()();
     \u0275\u0275elementContainerEnd();
@@ -38057,50 +38947,50 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate1(" ", ctx_r1.sprintRemainingCount(group_r11.tasks), " restantes ");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_button_12_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_button_12_Template(rf, ctx) {
   if (rf & 1) {
     const _r13 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 198);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_button_12_Template_button_click_0_listener($event) {
+    \u0275\u0275elementStart(0, "button", 200);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_button_12_Template_button_click_0_listener($event) {
       \u0275\u0275restoreView(_r13);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.resetOrder(ctx_r1.groupKey(group_r11.sprint), $event));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 100);
-    \u0275\u0275element(2, "path", 199)(3, "path", 200);
+    \u0275\u0275elementStart(1, "svg", 102);
+    \u0275\u0275element(2, "path", 201)(3, "path", 202);
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 204);
-    \u0275\u0275element(1, "path", 26);
+    \u0275\u0275elementStart(0, "svg", 206);
+    \u0275\u0275element(1, "path", 28);
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_3_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 159);
-    \u0275\u0275element(1, "path", 160);
+    \u0275\u0275elementStart(0, "svg", 161);
+    \u0275\u0275element(1, "path", 162);
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template(rf, ctx) {
   if (rf & 1) {
     const _r14 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "button", 201);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template_button_click_1_listener($event) {
+    \u0275\u0275elementStart(1, "button", 203);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template_button_click_1_listener($event) {
       \u0275\u0275restoreView(_r14);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.openFinishConfirm(group_r11.sprint, group_r11.tasks, $event));
     });
-    \u0275\u0275template(2, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_2_Template, 2, 0, "svg", 202)(3, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_3_Template, 2, 0, "svg", 203);
+    \u0275\u0275template(2, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_2_Template, 2, 0, "svg", 204)(3, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13__svg_svg_3_Template, 2, 0, "svg", 205);
     \u0275\u0275text(4);
     \u0275\u0275elementEnd();
     \u0275\u0275elementContainerEnd();
@@ -38119,130 +39009,130 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate1(" ", ctx_r1.finishingSprintId() === group_r11.sprint.id ? "Finalizando..." : "Finalizar Sprint", " ");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_8_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_8_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 219);
+    \u0275\u0275element(0, "path", 221);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_9_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_9_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 115);
+    \u0275\u0275element(0, "path", 117);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_14_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_14_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 219);
+    \u0275\u0275element(0, "path", 221);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_15_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_15_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 115);
+    \u0275\u0275element(0, "path", 117);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_20_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_20_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 219);
+    \u0275\u0275element(0, "path", 221);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_21_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_21_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 115);
+    \u0275\u0275element(0, "path", 117);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_26_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_26_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 219);
+    \u0275\u0275element(0, "path", 221);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_27_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_27_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275element(0, "path", 115);
+    \u0275\u0275element(0, "path", 117);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template(rf, ctx) {
   if (rf & 1) {
     const _r15 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 205)(1, "div", 206);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_1_listener($event) {
+    \u0275\u0275elementStart(0, "div", 207)(1, "div", 208);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_1_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(2, "input", 207);
-    \u0275\u0275listener("change", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_input_change_2_listener($event) {
+    \u0275\u0275elementStart(2, "input", 209);
+    \u0275\u0275listener("change", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_input_change_2_listener($event) {
       \u0275\u0275restoreView(_r15);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.toggleSelectGroup(group_r11.tasks, $event));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(3, "div", 208);
-    \u0275\u0275elementStart(4, "div", 209);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_4_listener() {
+    \u0275\u0275element(3, "div", 210);
+    \u0275\u0275elementStart(4, "div", 211);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_4_listener() {
       \u0275\u0275restoreView(_r15);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.setSortFor(ctx_r1.groupKey(group_r11.sprint), "description"));
     });
     \u0275\u0275text(5, " Atividade ");
-    \u0275\u0275elementStart(6, "span", 210);
+    \u0275\u0275elementStart(6, "span", 212);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(7, "svg", 211);
-    \u0275\u0275template(8, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_8_Template, 1, 0, "path", 212)(9, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_9_Template, 1, 0, "path", 213);
+    \u0275\u0275elementStart(7, "svg", 213);
+    \u0275\u0275template(8, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_8_Template, 1, 0, "path", 214)(9, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_9_Template, 1, 0, "path", 215);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(10, "div", 214);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_10_listener() {
+    \u0275\u0275elementStart(10, "div", 216);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_10_listener() {
       \u0275\u0275restoreView(_r15);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.setSortFor(ctx_r1.groupKey(group_r11.sprint), "status"));
     });
     \u0275\u0275text(11, " Status ");
-    \u0275\u0275elementStart(12, "span", 210);
+    \u0275\u0275elementStart(12, "span", 212);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(13, "svg", 211);
-    \u0275\u0275template(14, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_14_Template, 1, 0, "path", 212)(15, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_15_Template, 1, 0, "path", 213);
+    \u0275\u0275elementStart(13, "svg", 213);
+    \u0275\u0275template(14, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_14_Template, 1, 0, "path", 214)(15, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_15_Template, 1, 0, "path", 215);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(16, "div", 215);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_16_listener() {
+    \u0275\u0275elementStart(16, "div", 217);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_16_listener() {
       \u0275\u0275restoreView(_r15);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.setSortFor(ctx_r1.groupKey(group_r11.sprint), "priority"));
     });
     \u0275\u0275text(17, " Prioridade ");
-    \u0275\u0275elementStart(18, "span", 210);
+    \u0275\u0275elementStart(18, "span", 212);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(19, "svg", 211);
-    \u0275\u0275template(20, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_20_Template, 1, 0, "path", 212)(21, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_21_Template, 1, 0, "path", 213);
+    \u0275\u0275elementStart(19, "svg", 213);
+    \u0275\u0275template(20, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_20_Template, 1, 0, "path", 214)(21, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_21_Template, 1, 0, "path", 215);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(22, "div", 216);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_22_listener() {
+    \u0275\u0275elementStart(22, "div", 218);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template_div_click_22_listener() {
       \u0275\u0275restoreView(_r15);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.setSortFor(ctx_r1.groupKey(group_r11.sprint), "assignee"));
     });
     \u0275\u0275text(23, " Resp. ");
-    \u0275\u0275elementStart(24, "span", 210);
+    \u0275\u0275elementStart(24, "span", 212);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(25, "svg", 211);
-    \u0275\u0275template(26, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_26_Template, 1, 0, "path", 212)(27, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_27_Template, 1, 0, "path", 213);
+    \u0275\u0275elementStart(25, "svg", 213);
+    \u0275\u0275template(26, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_26_Template, 1, 0, "path", 214)(27, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14__svg_path_27_Template, 1, 0, "path", 215);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(28, "div", 217);
+    \u0275\u0275elementStart(28, "div", 219);
     \u0275\u0275text(29, "\xC9pico");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(30, "div", 218);
+    \u0275\u0275elementStart(30, "div", 220);
     \u0275\u0275text(31, "Tags");
     \u0275\u0275elementEnd()();
   }
@@ -38277,14 +39167,14 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", ctx_r1.getSort(ctx_r1.groupKey(group_r11.sprint)).field !== "assignee" || ctx_r1.getSort(ctx_r1.groupKey(group_r11.sprint)).dir === "asc");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275element(0, "div", 253);
+    \u0275\u0275element(0, "div", 256);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 254)(1, "span", 255);
+    \u0275\u0275elementStart(0, "div", 257)(1, "span", 258);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd()();
   }
@@ -38295,26 +39185,39 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate(ctx_r1.summaryFor(task_r18.description));
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_17_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 113);
-    \u0275\u0275element(1, "rect", 256)(2, "path", 257);
-    \u0275\u0275elementEnd();
-  }
-}
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_18_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 258);
-    \u0275\u0275element(1, "path", 26);
-    \u0275\u0275elementEnd();
-  }
-}
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_20_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_17_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "span", 259);
-    \u0275\u0275element(1, "span", 260);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const task_r18 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275property("appTooltip", "Release: " + task_r18.release);
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", task_r18.release, " ");
+  }
+}
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_19_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 115);
+    \u0275\u0275element(1, "rect", 260)(2, "path", 261);
+    \u0275\u0275elementEnd();
+  }
+}
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_20_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 262);
+    \u0275\u0275element(1, "path", 28);
+    \u0275\u0275elementEnd();
+  }
+}
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_22_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 263);
+    \u0275\u0275element(1, "span", 264);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
@@ -38327,21 +39230,21 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate1(" ", task_r18.status.name, " ");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_ng_container_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275element(1, "app-avatar", 262);
+    \u0275\u0275element(1, "app-avatar", 157);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
     const a_r19 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275property("name", a_r19.name)("photoUrl", a_r19.avatar_url)("title", a_r19.name);
+    \u0275\u0275property("name", a_r19.name)("photoUrl", a_r19.avatar_url);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_div_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 263);
+    \u0275\u0275elementStart(0, "div", 266);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -38351,10 +39254,10 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate1(" +", task_r18.assignees.length - 3, " ");
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_ng_container_1_Template, 2, 3, "ng-container", 164)(2, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_div_2_Template, 2, 1, "div", 261);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_ng_container_1_Template, 2, 2, "ng-container", 166)(2, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_div_2_Template, 2, 1, "div", 265);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38365,18 +39268,18 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", task_r18.assignees.length > 3);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_34_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_36_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 264);
+    \u0275\u0275elementStart(0, "div", 267);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 113);
-    \u0275\u0275element(2, "path", 120)(3, "circle", 121);
+    \u0275\u0275elementStart(1, "svg", 115);
+    \u0275\u0275element(2, "path", 122)(3, "circle", 123);
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_37_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_39_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 265);
+    \u0275\u0275elementStart(0, "span", 268);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -38387,16 +39290,9 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate(task_r18.epic);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_38_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_span_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 266);
-    \u0275\u0275text(1, "\u2014");
-    \u0275\u0275elementEnd();
-  }
-}
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_span_1_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 269);
+    \u0275\u0275elementStart(0, "span", 271);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -38407,22 +39303,24 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275textInterpolate(tag_r20.name);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_span_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_span_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 270);
+    \u0275\u0275elementStart(0, "span", 272);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
     const task_r18 = \u0275\u0275nextContext(2).$implicit;
+    const ctx_r1 = \u0275\u0275nextContext(7);
+    \u0275\u0275property("appTooltip", ctx_r1.extraTagNames(task_r18, 2));
     \u0275\u0275advance();
     \u0275\u0275textInterpolate1("+", task_r18.tags.length - 2);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_span_1_Template, 2, 7, "span", 267)(2, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_span_2_Template, 2, 1, "span", 268);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_span_1_Template, 2, 7, "span", 269)(2, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_span_2_Template, 2, 2, "span", 270);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38433,112 +39331,125 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", task_r18.tags.length > 2);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_42_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_43_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 271);
+    \u0275\u0275elementStart(0, "span", 273);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 113);
-    \u0275\u0275element(2, "path", 272)(3, "line", 273);
+    \u0275\u0275elementStart(1, "svg", 115);
+    \u0275\u0275element(2, "path", 274)(3, "line", 275);
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template(rf, ctx) {
   if (rf & 1) {
     const _r17 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 222);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_0_listener() {
+    \u0275\u0275elementStart(0, "div", 224);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_0_listener() {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.openEditTaskDialog(task_r18));
     });
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_1_Template, 1, 0, "div", 223)(2, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_2_Template, 3, 1, "div", 224);
-    \u0275\u0275elementStart(3, "div", 225);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_3_listener($event) {
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_1_Template, 1, 0, "div", 225)(2, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_div_2_Template, 3, 1, "div", 226);
+    \u0275\u0275elementStart(3, "button", 227);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_3_listener($event) {
+      const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
+      const ctx_r1 = \u0275\u0275nextContext(7);
+      return \u0275\u0275resetView(ctx_r1.openPopover("type", task_r18, $event));
+    });
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "div", 228);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_4_listener($event) {
       return $event.stopPropagation();
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(4, "svg", 226);
-    \u0275\u0275element(5, "circle", 227)(6, "circle", 228)(7, "circle", 229)(8, "circle", 230)(9, "circle", 231)(10, "circle", 232);
+    \u0275\u0275elementStart(5, "svg", 229);
+    \u0275\u0275element(6, "circle", 230)(7, "circle", 231)(8, "circle", 232)(9, "circle", 233)(10, "circle", 234)(11, "circle", 235);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(11, "div", 233);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_11_listener($event) {
+    \u0275\u0275elementStart(12, "div", 236);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_div_click_12_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(12, "input", 234);
-    \u0275\u0275listener("change", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_input_change_12_listener($event) {
+    \u0275\u0275elementStart(13, "input", 237);
+    \u0275\u0275listener("change", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_input_change_13_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.toggleSelect(task_r18.id, $event));
-    })("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_input_click_12_listener($event) {
+    })("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_input_click_13_listener($event) {
       return $event.stopPropagation();
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(13, "div", 235)(14, "span", 236);
-    \u0275\u0275text(15);
+    \u0275\u0275elementStart(14, "div", 238)(15, "span", 239);
+    \u0275\u0275text(16);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "button", 237);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_16_listener($event) {
+    \u0275\u0275template(17, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_17_Template, 2, 2, "span", 240);
+    \u0275\u0275elementStart(18, "button", 241);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_18_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.copyDescription(task_r18, $event));
     });
-    \u0275\u0275template(17, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_17_Template, 3, 0, "svg", 238)(18, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_18_Template, 2, 0, "svg", 239);
+    \u0275\u0275template(19, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_19_Template, 3, 0, "svg", 242)(20, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1__svg_svg_20_Template, 2, 0, "svg", 243);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(19, "div", 240);
-    \u0275\u0275template(20, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_20_Template, 3, 5, "span", 241);
-    \u0275\u0275elementStart(21, "span", 242);
-    \u0275\u0275text(22);
+    \u0275\u0275elementStart(21, "div", 244);
+    \u0275\u0275template(22, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_22_Template, 3, 5, "span", 245);
+    \u0275\u0275elementStart(23, "span", 246);
+    \u0275\u0275text(24);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(23, "div", 243)(24, "button", 244);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_24_listener($event) {
+    \u0275\u0275elementStart(25, "div", 247)(26, "button", 248);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_26_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.openPopover("status", task_r18, $event));
     });
-    \u0275\u0275elementStart(25, "app-badge", 245);
-    \u0275\u0275text(26);
+    \u0275\u0275elementStart(27, "app-badge", 249);
+    \u0275\u0275text(28);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(27, "div", 243)(28, "button", 246);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_28_listener($event) {
+    \u0275\u0275elementStart(29, "div", 247)(30, "button", 250);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_30_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.openPopover("priority", task_r18, $event));
     });
-    \u0275\u0275elementStart(29, "app-badge", 245);
-    \u0275\u0275text(30);
+    \u0275\u0275elementStart(31, "app-badge", 249);
+    \u0275\u0275text(32);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(31, "div", 243)(32, "button", 247);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_32_listener($event) {
+    \u0275\u0275elementStart(33, "div", 247)(34, "button", 251);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_34_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.openPopover("assignee", task_r18, $event));
     });
-    \u0275\u0275template(33, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_33_Template, 3, 2, "ng-container", 163)(34, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_34_Template, 4, 0, "ng-template", null, 1, \u0275\u0275templateRefExtractor);
+    \u0275\u0275template(35, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_35_Template, 3, 2, "ng-container", 165)(36, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_36_Template, 4, 0, "ng-template", null, 1, \u0275\u0275templateRefExtractor);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(36, "div", 248);
-    \u0275\u0275template(37, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_37_Template, 2, 2, "span", 249)(38, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_38_Template, 2, 0, "span", 250);
+    \u0275\u0275elementStart(38, "div", 252);
+    \u0275\u0275template(39, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_span_39_Template, 2, 2, "span", 253);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(39, "div", 251)(40, "button", 252);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_40_listener($event) {
+    \u0275\u0275elementStart(40, "div", 254)(41, "button", 255);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template_button_click_41_listener($event) {
       const task_r18 = \u0275\u0275restoreView(_r17).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r1.openPopover("tags", task_r18, $event));
     });
-    \u0275\u0275template(41, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_41_Template, 3, 2, "ng-container", 163)(42, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_42_Template, 4, 0, "ng-template", null, 2, \u0275\u0275templateRefExtractor);
+    \u0275\u0275template(42, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_container_42_Template, 3, 2, "ng-container", 165)(43, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_ng_template_43_Template, 4, 0, "ng-template", null, 2, \u0275\u0275templateRefExtractor);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
     const task_r18 = ctx.$implicit;
-    const emptyAssignee_r21 = \u0275\u0275reference(35);
-    const emptyTags_r22 = \u0275\u0275reference(43);
+    const emptyAssignee_r21 = \u0275\u0275reference(37);
+    const emptyTags_r22 = \u0275\u0275reference(44);
     const ctx_r1 = \u0275\u0275nextContext(7);
     \u0275\u0275classProp("selected", ctx_r1.isSelected(task_r18.id));
     \u0275\u0275property("cdkDragData", task_r18);
-    \u0275\u0275advance(12);
+    \u0275\u0275advance(3);
+    \u0275\u0275styleProp("background", task_r18.type ? ctx_r1.typeColor(task_r18.type) : "#E8E6E1");
+    \u0275\u0275property("appTooltip", task_r18.type ? "Tipo: " + task_r18.type : "Definir tipo");
+    \u0275\u0275advance(10);
     \u0275\u0275property("checked", ctx_r1.isSelected(task_r18.id));
     \u0275\u0275advance(3);
     \u0275\u0275textInterpolate(ctx_r1.summaryFor(task_r18.description));
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", task_r18.release);
     \u0275\u0275advance();
     \u0275\u0275property("appTooltip", ctx_r1.copiedTaskId() === task_r18.id ? "Copiado!" : "Copiar descri\xE7\xE3o");
     \u0275\u0275advance();
@@ -38559,29 +39470,29 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("color", ctx_r1.priorityColor(task_r18.priority));
     \u0275\u0275advance();
     \u0275\u0275textInterpolate1(" ", task_r18.priority || "Sem prioridade", " ");
-    \u0275\u0275advance(3);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("appTooltip", (task_r18.assignees == null ? null : task_r18.assignees.length) ? ctx_r1.allAssigneeNames(task_r18) : "Gerenciar respons\xE1veis");
+    \u0275\u0275advance();
     \u0275\u0275property("ngIf", (task_r18.assignees == null ? null : task_r18.assignees.length) > 0)("ngIfElse", emptyAssignee_r21);
     \u0275\u0275advance(4);
     \u0275\u0275property("ngIf", task_r18.epic);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", !task_r18.epic);
     \u0275\u0275advance(2);
     \u0275\u0275property("appTooltip", (task_r18.tags == null ? null : task_r18.tags.length) ? "Editar tags" : "Adicionar tags");
     \u0275\u0275advance();
     \u0275\u0275property("ngIf", (task_r18.tags == null ? null : task_r18.tags.length) > 0)("ngIfElse", emptyTags_r22);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_Template(rf, ctx) {
   if (rf & 1) {
     const _r16 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 220);
-    \u0275\u0275listener("cdkDropListDropped", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_Template_div_cdkDropListDropped_0_listener($event) {
+    \u0275\u0275elementStart(0, "div", 222);
+    \u0275\u0275listener("cdkDropListDropped", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_Template_div_cdkDropListDropped_0_listener($event) {
       \u0275\u0275restoreView(_r16);
       const group_r11 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.onTaskDrop($event, group_r11));
     });
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template, 44, 23, "div", 221);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_div_1_Template, 45, 27, "div", 223);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -38592,32 +39503,32 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngForOf", group_r11.tasks);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_Template(rf, ctx) {
   if (rf & 1) {
     const _r10 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 167)(1, "div", 168);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_Template_div_click_1_listener() {
+    \u0275\u0275elementStart(0, "div", 169)(1, "div", 170);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_Template_div_click_1_listener() {
       \u0275\u0275restoreView(_r10);
       const group_r11 = \u0275\u0275nextContext().$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
       return \u0275\u0275resetView(ctx_r1.toggleGroup((group_r11.sprint == null ? null : group_r11.sprint.id) ?? "backlog"));
     });
-    \u0275\u0275elementStart(2, "span", 169);
+    \u0275\u0275elementStart(2, "span", 171);
     \u0275\u0275text(3, "\u25BE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "div", 170)(5, "div", 171)(6, "span", 172);
+    \u0275\u0275elementStart(4, "div", 172)(5, "div", 173)(6, "span", 174);
     \u0275\u0275text(7);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "span", 173);
+    \u0275\u0275elementStart(8, "span", 175);
     \u0275\u0275text(9);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(10, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_Template, 13, 11, "ng-container", 22);
+    \u0275\u0275template(10, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_10_Template, 13, 11, "ng-container", 24);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(11, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template, 8, 6, "ng-container", 22);
+    \u0275\u0275template(11, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_11_Template, 8, 6, "ng-container", 24);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(12, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_button_12_Template, 4, 0, "button", 174)(13, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template, 5, 7, "ng-container", 22);
+    \u0275\u0275template(12, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_button_12_Template, 4, 0, "button", 176)(13, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_ng_container_13_Template, 5, 7, "ng-container", 24);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(14, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_14_Template, 32, 18, "div", 175)(15, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_div_15_Template, 2, 4, "div", 176);
+    \u0275\u0275template(14, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_14_Template, 32, 18, "div", 177)(15, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_div_15_Template, 2, 4, "div", 178);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -38644,10 +39555,10 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", !ctx_r1.isGroupCollapsed((group_r11.sprint == null ? null : group_r11.sprint.id) ?? "backlog"));
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_div_1_Template, 16, 14, "div", 166);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_div_1_Template, 16, 14, "div", 168);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38656,11 +39567,11 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1
     \u0275\u0275property("ngIf", group_r11.tasks.length > 0);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_div_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 274);
+    \u0275\u0275elementStart(0, "div", 276);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 275);
+    \u0275\u0275elementStart(1, "svg", 277);
     \u0275\u0275element(2, "path", 6)(3, "path", 7);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
@@ -38672,10 +39583,10 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_div_2_Template
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_container_1_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_ng_container_1_Template, 2, 1, "ng-container", 164)(2, TaskListComponent_ng_container_41_div_100_ng_container_1_div_2_Template, 8, 0, "div", 165);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_ng_container_1_Template, 2, 1, "ng-container", 166)(2, TaskListComponent_ng_container_47_div_100_ng_container_1_div_2_Template, 8, 0, "div", 167);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38686,12 +39597,12 @@ function TaskListComponent_ng_container_41_div_100_ng_container_1_Template(rf, c
     \u0275\u0275property("ngIf", ctx_r1.tasks().length === 0);
   }
 }
-function TaskListComponent_ng_container_41_div_100_ng_template_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_ng_template_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 276);
+    \u0275\u0275elementStart(0, "div", 278);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 277);
-    \u0275\u0275element(2, "path", 160);
+    \u0275\u0275elementStart(1, "svg", 279);
+    \u0275\u0275element(2, "path", 162);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(3, "span");
@@ -38699,10 +39610,10 @@ function TaskListComponent_ng_container_41_div_100_ng_template_2_Template(rf, ct
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_div_100_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_100_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 162);
-    \u0275\u0275template(1, TaskListComponent_ng_container_41_div_100_ng_container_1_Template, 3, 2, "ng-container", 163)(2, TaskListComponent_ng_container_41_div_100_ng_template_2_Template, 5, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
+    \u0275\u0275elementStart(0, "div", 164);
+    \u0275\u0275template(1, TaskListComponent_ng_container_47_div_100_ng_container_1_Template, 3, 2, "ng-container", 165)(2, TaskListComponent_ng_container_47_div_100_ng_template_2_Template, 5, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -38712,12 +39623,12 @@ function TaskListComponent_ng_container_41_div_100_Template(rf, ctx) {
     \u0275\u0275property("ngIf", !ctx_r1.loading())("ngIfElse", loadingTpl_r23);
   }
 }
-function TaskListComponent_ng_container_41_div_101_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_div_101_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 278);
+    \u0275\u0275elementStart(0, "div", 280);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 279);
-    \u0275\u0275element(2, "rect", 96)(3, "rect", 97)(4, "rect", 98);
+    \u0275\u0275elementStart(1, "svg", 281);
+    \u0275\u0275element(2, "rect", 98)(3, "rect", 99)(4, "rect", 100);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(5, "p");
@@ -38725,150 +39636,150 @@ function TaskListComponent_ng_container_41_div_101_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
   }
 }
-function TaskListComponent_ng_container_41_Template(rf, ctx) {
+function TaskListComponent_ng_container_47_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 82)(2, "div", 83)(3, "button", 84);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_3_listener() {
+    \u0275\u0275elementStart(1, "div", 84)(2, "div", 85)(3, "button", 86);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_3_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.goBack());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(4, "svg", 35);
-    \u0275\u0275element(5, "path", 85);
+    \u0275\u0275elementStart(4, "svg", 37);
+    \u0275\u0275element(5, "path", 87);
     \u0275\u0275elementEnd();
     \u0275\u0275text(6, " Quadros ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(7, "div", 86);
-    \u0275\u0275template(8, TaskListComponent_ng_container_41_div_8_Template, 7, 1, "div", 87);
-    \u0275\u0275elementStart(9, "h1", 88);
+    \u0275\u0275elementStart(7, "div", 88);
+    \u0275\u0275template(8, TaskListComponent_ng_container_47_div_8_Template, 7, 1, "div", 89);
+    \u0275\u0275elementStart(9, "h1", 90);
     \u0275\u0275text(10, "Atividades");
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(11, TaskListComponent_ng_container_41_div_11_Template, 8, 4, "div", 89);
+    \u0275\u0275template(11, TaskListComponent_ng_container_47_div_11_Template, 8, 4, "div", 91);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "div", 90)(13, "div", 91)(14, "button", 92);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_14_listener() {
+    \u0275\u0275elementStart(12, "div", 92)(13, "div", 93)(14, "button", 94);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_14_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.setViewMode("table"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(15, "svg", 47);
-    \u0275\u0275element(16, "rect", 93)(17, "path", 94);
+    \u0275\u0275elementStart(15, "svg", 49);
+    \u0275\u0275element(16, "rect", 95)(17, "path", 96);
     \u0275\u0275elementEnd();
     \u0275\u0275text(18, " Tabela ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(19, "button", 95);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_19_listener() {
+    \u0275\u0275elementStart(19, "button", 97);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_19_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.setViewMode("kanban"));
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(20, "svg", 47);
-    \u0275\u0275element(21, "rect", 96)(22, "rect", 97)(23, "rect", 98);
+    \u0275\u0275elementStart(20, "svg", 49);
+    \u0275\u0275element(21, "rect", 98)(22, "rect", 99)(23, "rect", 100);
     \u0275\u0275elementEnd();
     \u0275\u0275text(24, " Kanban ");
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(25, "button", 99);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_25_listener() {
+    \u0275\u0275elementStart(25, "button", 101);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_25_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.openImportJsonModal());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(26, "svg", 100);
-    \u0275\u0275element(27, "path", 61)(28, "polyline", 62)(29, "line", 63);
+    \u0275\u0275elementStart(26, "svg", 102);
+    \u0275\u0275element(27, "path", 63)(28, "polyline", 64)(29, "line", 65);
     \u0275\u0275elementEnd();
     \u0275\u0275text(30, " Importar JSON ");
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(31, "app-button", 101);
-    \u0275\u0275listener("clicked", function TaskListComponent_ng_container_41_Template_app_button_clicked_31_listener() {
+    \u0275\u0275elementStart(31, "app-button", 103);
+    \u0275\u0275listener("clicked", function TaskListComponent_ng_container_47_Template_app_button_clicked_31_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.openCreateTaskDialog());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(32, "svg", 35);
-    \u0275\u0275element(33, "path", 102);
+    \u0275\u0275elementStart(32, "svg", 37);
+    \u0275\u0275element(33, "path", 104);
     \u0275\u0275elementEnd();
     \u0275\u0275text(34, " Nova Atividade ");
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(35, "div", 103)(36, "app-task-filters", 104);
-    \u0275\u0275listener("filtersChange", function TaskListComponent_ng_container_41_Template_app_task_filters_filtersChange_36_listener($event) {
+    \u0275\u0275elementStart(35, "div", 105)(36, "app-task-filters", 106);
+    \u0275\u0275listener("filtersChange", function TaskListComponent_ng_container_47_Template_app_task_filters_filtersChange_36_listener($event) {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.onFiltersChange($event));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(37, "div", 105)(38, "div", 106)(39, "span", 107);
+    \u0275\u0275elementStart(37, "div", 107)(38, "div", 108)(39, "span", 109);
     \u0275\u0275text(40);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(41, "span", 108);
+    \u0275\u0275elementStart(41, "span", 110);
     \u0275\u0275text(42);
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(43, "div", 109);
-    \u0275\u0275elementStart(44, "div", 110)(45, "div", 111)(46, "button", 112);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_46_listener($event) {
+    \u0275\u0275element(43, "div", 111);
+    \u0275\u0275elementStart(44, "div", 112)(45, "div", 113)(46, "button", 114);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_46_listener($event) {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       ctx_r1.toggleBulkDropdown("status");
       return \u0275\u0275resetView($event.stopPropagation());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(47, "svg", 113);
+    \u0275\u0275elementStart(47, "svg", 115);
     \u0275\u0275element(48, "circle", 9)(49, "polyline", 10);
     \u0275\u0275elementEnd();
     \u0275\u0275text(50, " Status ");
-    \u0275\u0275elementStart(51, "svg", 114);
-    \u0275\u0275element(52, "path", 115);
+    \u0275\u0275elementStart(51, "svg", 116);
+    \u0275\u0275element(52, "path", 117);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(53, "div", 116);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_div_click_53_listener($event) {
+    \u0275\u0275elementStart(53, "div", 118);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_div_click_53_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(54, "div", 117);
+    \u0275\u0275elementStart(54, "div", 119);
     \u0275\u0275text(55, "Definir status");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(56, "div", 118);
-    \u0275\u0275template(57, TaskListComponent_ng_container_41_button_57_Template, 3, 3, "button", 119);
+    \u0275\u0275elementStart(56, "div", 120);
+    \u0275\u0275template(57, TaskListComponent_ng_container_47_button_57_Template, 3, 3, "button", 121);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(58, "div", 111)(59, "button", 112);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_59_listener($event) {
+    \u0275\u0275elementStart(58, "div", 113)(59, "button", 114);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_59_listener($event) {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       ctx_r1.toggleBulkDropdown("priority");
       return \u0275\u0275resetView($event.stopPropagation());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(60, "svg", 113);
+    \u0275\u0275elementStart(60, "svg", 115);
     \u0275\u0275element(61, "path", 11)(62, "line", 12);
     \u0275\u0275elementEnd();
     \u0275\u0275text(63, " Prioridade ");
-    \u0275\u0275elementStart(64, "svg", 114);
-    \u0275\u0275element(65, "path", 115);
+    \u0275\u0275elementStart(64, "svg", 116);
+    \u0275\u0275element(65, "path", 117);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(66, "div", 116);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_div_click_66_listener($event) {
+    \u0275\u0275elementStart(66, "div", 118);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_div_click_66_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(67, "div", 117);
+    \u0275\u0275elementStart(67, "div", 119);
     \u0275\u0275text(68, "Definir prioridade");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(69, "div", 118);
-    \u0275\u0275template(70, TaskListComponent_ng_container_41_button_70_Template, 4, 5, "button", 119);
+    \u0275\u0275elementStart(69, "div", 120);
+    \u0275\u0275template(70, TaskListComponent_ng_container_47_button_70_Template, 4, 5, "button", 121);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(71, "div", 111)(72, "button", 112);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_72_listener($event) {
+    \u0275\u0275elementStart(71, "div", 113)(72, "button", 114);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_72_listener($event) {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       ctx_r1.toggleBulkDropdown("assignee");
@@ -38876,65 +39787,65 @@ function TaskListComponent_ng_container_41_Template(rf, ctx) {
       return \u0275\u0275resetView($event.stopPropagation());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(73, "svg", 113);
-    \u0275\u0275element(74, "path", 120)(75, "circle", 121);
+    \u0275\u0275elementStart(73, "svg", 115);
+    \u0275\u0275element(74, "path", 122)(75, "circle", 123);
     \u0275\u0275elementEnd();
     \u0275\u0275text(76, " Respons\xE1vel ");
-    \u0275\u0275elementStart(77, "svg", 114);
-    \u0275\u0275element(78, "path", 115);
+    \u0275\u0275elementStart(77, "svg", 116);
+    \u0275\u0275element(78, "path", 117);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(79, "div", 122);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_div_click_79_listener($event) {
+    \u0275\u0275elementStart(79, "div", 124);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_div_click_79_listener($event) {
       return $event.stopPropagation();
     });
-    \u0275\u0275elementStart(80, "div", 117);
+    \u0275\u0275elementStart(80, "div", 119);
     \u0275\u0275text(81, "Adicionar respons\xE1vel");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(82, "div", 123);
+    \u0275\u0275elementStart(82, "div", 125);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(83, "svg", 113);
-    \u0275\u0275element(84, "circle", 124)(85, "path", 125);
+    \u0275\u0275elementStart(83, "svg", 115);
+    \u0275\u0275element(84, "circle", 126)(85, "path", 127);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(86, "input", 126);
-    \u0275\u0275listener("input", function TaskListComponent_ng_container_41_Template_input_input_86_listener($event) {
+    \u0275\u0275elementStart(86, "input", 128);
+    \u0275\u0275listener("input", function TaskListComponent_ng_container_47_Template_input_input_86_listener($event) {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.bulkAssigneeSearch.set($event.target.value));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(87, "div", 118);
-    \u0275\u0275template(88, TaskListComponent_ng_container_41_button_88_Template, 4, 3, "button", 119)(89, TaskListComponent_ng_container_41_p_89_Template, 2, 0, "p", 127);
+    \u0275\u0275elementStart(87, "div", 120);
+    \u0275\u0275template(88, TaskListComponent_ng_container_47_button_88_Template, 4, 3, "button", 121)(89, TaskListComponent_ng_container_47_p_89_Template, 2, 0, "p", 129);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(90, "button", 128);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_90_listener() {
+    \u0275\u0275elementStart(90, "button", 130);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_90_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.openMoveModal());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(91, "svg", 129);
-    \u0275\u0275element(92, "path", 130);
+    \u0275\u0275elementStart(91, "svg", 131);
+    \u0275\u0275element(92, "path", 132);
     \u0275\u0275elementEnd();
     \u0275\u0275text(93, " Mover Sprint ");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(94, TaskListComponent_ng_container_41_span_94_Template, 4, 0, "span", 131);
+    \u0275\u0275template(94, TaskListComponent_ng_container_47_span_94_Template, 4, 0, "span", 133);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(95, "button", 132);
-    \u0275\u0275listener("click", function TaskListComponent_ng_container_41_Template_button_click_95_listener() {
+    \u0275\u0275elementStart(95, "button", 134);
+    \u0275\u0275listener("click", function TaskListComponent_ng_container_47_Template_button_click_95_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.clearSelection());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(96, "svg", 35);
-    \u0275\u0275element(97, "path", 43);
+    \u0275\u0275elementStart(96, "svg", 37);
+    \u0275\u0275element(97, "path", 45);
     \u0275\u0275elementEnd();
     \u0275\u0275text(98, " Limpar ");
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(99, TaskListComponent_ng_container_41_div_99_Template, 1, 0, "div", 133)(100, TaskListComponent_ng_container_41_div_100_Template, 4, 2, "div", 134)(101, TaskListComponent_ng_container_41_div_101_Template, 7, 0, "div", 135);
+    \u0275\u0275template(99, TaskListComponent_ng_container_47_div_99_Template, 1, 0, "div", 135)(100, TaskListComponent_ng_container_47_div_100_Template, 4, 2, "div", 136)(101, TaskListComponent_ng_container_47_div_101_Template, 7, 0, "div", 137);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -38997,12 +39908,12 @@ function TaskListComponent_ng_container_41_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r1.viewMode() === "kanban");
   }
 }
-function TaskListComponent_ng_container_42_Template(rf, ctx) {
+function TaskListComponent_ng_container_48_Template(rf, ctx) {
   if (rf & 1) {
     const _r24 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "app-sprint-manager", 280);
-    \u0275\u0275listener("sprintsChanged", function TaskListComponent_ng_container_42_Template_app_sprint_manager_sprintsChanged_1_listener() {
+    \u0275\u0275elementStart(1, "app-sprint-manager", 282);
+    \u0275\u0275listener("sprintsChanged", function TaskListComponent_ng_container_48_Template_app_sprint_manager_sprintsChanged_1_listener() {
       \u0275\u0275restoreView(_r24);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.reloadSprints());
@@ -39016,12 +39927,12 @@ function TaskListComponent_ng_container_42_Template(rf, ctx) {
     \u0275\u0275property("boardId", ctx_r1.boardId);
   }
 }
-function TaskListComponent_ng_container_43_Template(rf, ctx) {
+function TaskListComponent_ng_container_49_Template(rf, ctx) {
   if (rf & 1) {
     const _r25 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "app-status-manager", 281);
-    \u0275\u0275listener("statusesChanged", function TaskListComponent_ng_container_43_Template_app_status_manager_statusesChanged_1_listener() {
+    \u0275\u0275elementStart(1, "app-status-manager", 283);
+    \u0275\u0275listener("statusesChanged", function TaskListComponent_ng_container_49_Template_app_status_manager_statusesChanged_1_listener() {
       \u0275\u0275restoreView(_r25);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.reloadStatuses());
@@ -39035,12 +39946,12 @@ function TaskListComponent_ng_container_43_Template(rf, ctx) {
     \u0275\u0275property("boardId", ctx_r1.boardId);
   }
 }
-function TaskListComponent_ng_container_44_Template(rf, ctx) {
+function TaskListComponent_ng_container_50_Template(rf, ctx) {
   if (rf & 1) {
     const _r26 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "app-priority-manager", 282);
-    \u0275\u0275listener("prioritiesChanged", function TaskListComponent_ng_container_44_Template_app_priority_manager_prioritiesChanged_1_listener() {
+    \u0275\u0275elementStart(1, "app-priority-manager", 284);
+    \u0275\u0275listener("prioritiesChanged", function TaskListComponent_ng_container_50_Template_app_priority_manager_prioritiesChanged_1_listener() {
       \u0275\u0275restoreView(_r26);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.reloadPriorities());
@@ -39054,63 +39965,82 @@ function TaskListComponent_ng_container_44_Template(rf, ctx) {
     \u0275\u0275property("boardId", ctx_r1.boardId);
   }
 }
-function TaskListComponent_div_45_ng_container_2_button_8__svg_svg_3_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 293);
-    \u0275\u0275element(1, "path", 26);
-    \u0275\u0275elementEnd();
-  }
-}
-function TaskListComponent_div_45_ng_container_2_button_8_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r28 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 290);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_2_button_8_Template_button_click_0_listener() {
-      const s_r29 = \u0275\u0275restoreView(_r28).$implicit;
-      const ctx_r1 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r1.setPopoverField("status_id", s_r29.id));
-    });
-    \u0275\u0275element(1, "span", 291);
-    \u0275\u0275text(2);
-    \u0275\u0275template(3, TaskListComponent_div_45_ng_container_2_button_8__svg_svg_3_Template, 2, 0, "svg", 292);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const s_r29 = ctx.$implicit;
-    const ctx_r1 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("active", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.status_id) === s_r29.id);
-    \u0275\u0275advance();
-    \u0275\u0275styleProp("background", s_r29.color || "#6B6B70");
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1("", s_r29.name, " ");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.status_id) === s_r29.id);
-  }
-}
-function TaskListComponent_div_45_ng_container_2_Template(rf, ctx) {
+function TaskListComponent_ng_container_51_Template(rf, ctx) {
   if (rf & 1) {
     const _r27 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 285)(2, "span");
+    \u0275\u0275elementStart(1, "app-type-manager", 285);
+    \u0275\u0275listener("typesChanged", function TaskListComponent_ng_container_51_Template_app_type_manager_typesChanged_1_listener() {
+      \u0275\u0275restoreView(_r27);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.reloadTaskTypes());
+    });
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementContainerEnd();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("boardId", ctx_r1.boardId);
+  }
+}
+function TaskListComponent_div_52_ng_container_2_button_8__svg_svg_3_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 296);
+    \u0275\u0275element(1, "path", 28);
+    \u0275\u0275elementEnd();
+  }
+}
+function TaskListComponent_div_52_ng_container_2_button_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r29 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 293);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_2_button_8_Template_button_click_0_listener() {
+      const s_r30 = \u0275\u0275restoreView(_r29).$implicit;
+      const ctx_r1 = \u0275\u0275nextContext(3);
+      return \u0275\u0275resetView(ctx_r1.setPopoverField("status_id", s_r30.id));
+    });
+    \u0275\u0275element(1, "span", 294);
+    \u0275\u0275text(2);
+    \u0275\u0275template(3, TaskListComponent_div_52_ng_container_2_button_8__svg_svg_3_Template, 2, 0, "svg", 295);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const s_r30 = ctx.$implicit;
+    const ctx_r1 = \u0275\u0275nextContext(3);
+    \u0275\u0275classProp("active", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.status_id) === s_r30.id);
+    \u0275\u0275advance();
+    \u0275\u0275styleProp("background", s_r30.color || "#6B6B70");
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1("", s_r30.name, " ");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.status_id) === s_r30.id);
+  }
+}
+function TaskListComponent_div_52_ng_container_2_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r28 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275elementStart(1, "div", 288)(2, "span");
     \u0275\u0275text(3, "Status");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 286);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_2_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r27);
+    \u0275\u0275elementStart(4, "button", 289);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_2_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r28);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.closePopover());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(5, "svg", 204);
-    \u0275\u0275element(6, "path", 43);
+    \u0275\u0275elementStart(5, "svg", 206);
+    \u0275\u0275element(6, "path", 45);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(7, "div", 287);
-    \u0275\u0275template(8, TaskListComponent_div_45_ng_container_2_button_8_Template, 4, 6, "button", 288);
-    \u0275\u0275elementStart(9, "button", 289);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_2_Template_button_click_9_listener() {
-      \u0275\u0275restoreView(_r27);
+    \u0275\u0275elementStart(7, "div", 290);
+    \u0275\u0275template(8, TaskListComponent_div_52_ng_container_2_button_8_Template, 4, 6, "button", 291);
+    \u0275\u0275elementStart(9, "button", 292);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_2_Template_button_click_9_listener() {
+      \u0275\u0275restoreView(_r28);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.setPopoverField("status_id", null));
     });
@@ -39124,63 +40054,63 @@ function TaskListComponent_div_45_ng_container_2_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r1.statuses());
   }
 }
-function TaskListComponent_div_45_ng_container_3_button_8__svg_svg_3_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_3_button_8__svg_svg_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 293);
-    \u0275\u0275element(1, "path", 26);
+    \u0275\u0275elementStart(0, "svg", 296);
+    \u0275\u0275element(1, "path", 28);
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_3_button_8_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_3_button_8_Template(rf, ctx) {
   if (rf & 1) {
-    const _r31 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 290);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_3_button_8_Template_button_click_0_listener() {
-      const p_r32 = \u0275\u0275restoreView(_r31).$implicit;
+    const _r32 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 293);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_3_button_8_Template_button_click_0_listener() {
+      const p_r33 = \u0275\u0275restoreView(_r32).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r1.setPopoverField("priority", p_r32.name));
+      return \u0275\u0275resetView(ctx_r1.setPopoverField("priority", p_r33.name));
     });
-    \u0275\u0275element(1, "span", 291);
+    \u0275\u0275element(1, "span", 294);
     \u0275\u0275text(2);
-    \u0275\u0275template(3, TaskListComponent_div_45_ng_container_3_button_8__svg_svg_3_Template, 2, 0, "svg", 292);
+    \u0275\u0275template(3, TaskListComponent_div_52_ng_container_3_button_8__svg_svg_3_Template, 2, 0, "svg", 295);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const p_r32 = ctx.$implicit;
+    const p_r33 = ctx.$implicit;
     const ctx_r1 = \u0275\u0275nextContext(3);
-    \u0275\u0275classProp("active", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.priority) === p_r32.name);
+    \u0275\u0275classProp("active", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.priority) === p_r33.name);
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", p_r32.color);
+    \u0275\u0275styleProp("background", p_r33.color);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1("", p_r32.name, " ");
+    \u0275\u0275textInterpolate1("", p_r33.name, " ");
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.priority) === p_r32.name);
+    \u0275\u0275property("ngIf", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.priority) === p_r33.name);
   }
 }
-function TaskListComponent_div_45_ng_container_3_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r30 = \u0275\u0275getCurrentView();
+    const _r31 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 285)(2, "span");
+    \u0275\u0275elementStart(1, "div", 288)(2, "span");
     \u0275\u0275text(3, "Prioridade");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 286);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_3_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r30);
+    \u0275\u0275elementStart(4, "button", 289);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_3_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r31);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.closePopover());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(5, "svg", 204);
-    \u0275\u0275element(6, "path", 43);
+    \u0275\u0275elementStart(5, "svg", 206);
+    \u0275\u0275element(6, "path", 45);
     \u0275\u0275elementEnd()()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(7, "div", 287);
-    \u0275\u0275template(8, TaskListComponent_div_45_ng_container_3_button_8_Template, 4, 6, "button", 288);
-    \u0275\u0275elementStart(9, "button", 289);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_3_Template_button_click_9_listener() {
-      \u0275\u0275restoreView(_r30);
+    \u0275\u0275elementStart(7, "div", 290);
+    \u0275\u0275template(8, TaskListComponent_div_52_ng_container_3_button_8_Template, 4, 6, "button", 291);
+    \u0275\u0275elementStart(9, "button", 292);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_3_Template_button_click_9_listener() {
+      \u0275\u0275restoreView(_r31);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.setPopoverField("priority", null));
     });
@@ -39194,37 +40124,37 @@ function TaskListComponent_div_45_ng_container_3_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r1.priorities());
   }
 }
-function TaskListComponent_div_45_ng_container_4_div_7_button_1_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_div_7_button_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r34 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 303);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_4_div_7_button_1_Template_button_click_0_listener($event) {
-      const a_r35 = \u0275\u0275restoreView(_r34).$implicit;
+    const _r35 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 306);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_4_div_7_button_1_Template_button_click_0_listener($event) {
+      const a_r36 = \u0275\u0275restoreView(_r35).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r1.removeAssignee(a_r35.id, $event));
+      return \u0275\u0275resetView(ctx_r1.removeAssignee(a_r36.id, $event));
     });
-    \u0275\u0275element(1, "app-avatar", 155);
+    \u0275\u0275element(1, "app-avatar", 157);
     \u0275\u0275elementStart(2, "span");
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(4, "svg", 211);
-    \u0275\u0275element(5, "path", 43);
+    \u0275\u0275elementStart(4, "svg", 213);
+    \u0275\u0275element(5, "path", 45);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const a_r35 = ctx.$implicit;
-    \u0275\u0275property("title", "Remover " + a_r35.name);
+    const a_r36 = ctx.$implicit;
+    \u0275\u0275property("title", "Remover " + a_r36.name);
     \u0275\u0275advance();
-    \u0275\u0275property("name", a_r35.name)("photoUrl", a_r35.avatar_url);
+    \u0275\u0275property("name", a_r36.name)("photoUrl", a_r36.avatar_url);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(a_r35.name);
+    \u0275\u0275textInterpolate(a_r36.name);
   }
 }
-function TaskListComponent_div_45_ng_container_4_div_7_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_div_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 301);
-    \u0275\u0275template(1, TaskListComponent_div_45_ng_container_4_div_7_button_1_Template, 6, 4, "button", 302);
+    \u0275\u0275elementStart(0, "div", 304);
+    \u0275\u0275template(1, TaskListComponent_div_52_ng_container_4_div_7_button_1_Template, 6, 4, "button", 305);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -39233,92 +40163,92 @@ function TaskListComponent_div_45_ng_container_4_div_7_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r1.popoverTask.assignees);
   }
 }
-function TaskListComponent_div_45_ng_container_4_div_14_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 304);
+    \u0275\u0275elementStart(0, "div", 307);
     \u0275\u0275text(1, "Pessoas dispon\xEDveis");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_4_button_15_span_5_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_button_15_span_5_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 309);
+    \u0275\u0275elementStart(0, "span", 312);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const u_r37 = \u0275\u0275nextContext().$implicit;
+    const u_r38 = \u0275\u0275nextContext().$implicit;
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate(u_r37.position);
+    \u0275\u0275textInterpolate(u_r38.position);
   }
 }
-function TaskListComponent_div_45_ng_container_4_button_15_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_button_15_Template(rf, ctx) {
   if (rf & 1) {
-    const _r36 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 305);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_4_button_15_Template_button_click_0_listener() {
-      const u_r37 = \u0275\u0275restoreView(_r36).$implicit;
+    const _r37 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 308);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_4_button_15_Template_button_click_0_listener() {
+      const u_r38 = \u0275\u0275restoreView(_r37).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r1.toggleAssignee(u_r37.id));
+      return \u0275\u0275resetView(ctx_r1.toggleAssignee(u_r38.id));
     });
-    \u0275\u0275element(1, "app-avatar", 155);
-    \u0275\u0275elementStart(2, "div", 306)(3, "span", 307);
+    \u0275\u0275element(1, "app-avatar", 157);
+    \u0275\u0275elementStart(2, "div", 309)(3, "span", 310);
     \u0275\u0275text(4);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(5, TaskListComponent_div_45_ng_container_4_button_15_span_5_Template, 2, 1, "span", 308);
+    \u0275\u0275template(5, TaskListComponent_div_52_ng_container_4_button_15_span_5_Template, 2, 1, "span", 311);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const u_r37 = ctx.$implicit;
+    const u_r38 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275property("name", u_r37.name)("photoUrl", u_r37.avatar_url);
+    \u0275\u0275property("name", u_r38.name)("photoUrl", u_r38.avatar_url);
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(u_r37.name);
+    \u0275\u0275textInterpolate(u_r38.name);
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", u_r37.position);
+    \u0275\u0275property("ngIf", u_r38.position);
   }
 }
-function TaskListComponent_div_45_ng_container_4_p_16_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_p_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 310);
+    \u0275\u0275elementStart(0, "p", 313);
     \u0275\u0275text(1, "Nenhum usu\xE1rio dispon\xEDvel.");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_4_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r33 = \u0275\u0275getCurrentView();
+    const _r34 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 285)(2, "span");
+    \u0275\u0275elementStart(1, "div", 288)(2, "span");
     \u0275\u0275text(3, "Respons\xE1veis");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 286);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_4_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r33);
+    \u0275\u0275elementStart(4, "button", 289);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_4_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r34);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.closePopover());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(5, "svg", 204);
-    \u0275\u0275element(6, "path", 43);
+    \u0275\u0275elementStart(5, "svg", 206);
+    \u0275\u0275element(6, "path", 45);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275template(7, TaskListComponent_div_45_ng_container_4_div_7_Template, 2, 1, "div", 294);
+    \u0275\u0275template(7, TaskListComponent_div_52_ng_container_4_div_7_Template, 2, 1, "div", 297);
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(8, "div", 295);
+    \u0275\u0275elementStart(8, "div", 298);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(9, "svg", 113);
-    \u0275\u0275element(10, "circle", 124)(11, "path", 125);
+    \u0275\u0275elementStart(9, "svg", 115);
+    \u0275\u0275element(10, "circle", 126)(11, "path", 127);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(12, "input", 296);
-    \u0275\u0275listener("input", function TaskListComponent_div_45_ng_container_4_Template_input_input_12_listener($event) {
-      \u0275\u0275restoreView(_r33);
+    \u0275\u0275elementStart(12, "input", 299);
+    \u0275\u0275listener("input", function TaskListComponent_div_52_ng_container_4_Template_input_input_12_listener($event) {
+      \u0275\u0275restoreView(_r34);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.popoverSearch.set($event.target.value));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(13, "div", 297);
-    \u0275\u0275template(14, TaskListComponent_div_45_ng_container_4_div_14_Template, 2, 0, "div", 298)(15, TaskListComponent_div_45_ng_container_4_button_15_Template, 6, 4, "button", 299)(16, TaskListComponent_div_45_ng_container_4_p_16_Template, 2, 0, "p", 300);
+    \u0275\u0275elementStart(13, "div", 300);
+    \u0275\u0275template(14, TaskListComponent_div_52_ng_container_4_div_14_Template, 2, 0, "div", 301)(15, TaskListComponent_div_52_ng_container_4_button_15_Template, 6, 4, "button", 302)(16, TaskListComponent_div_52_ng_container_4_p_16_Template, 2, 0, "p", 303);
     \u0275\u0275elementEnd();
     \u0275\u0275elementContainerEnd();
   }
@@ -39336,38 +40266,38 @@ function TaskListComponent_div_45_ng_container_4_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r1.suggestedUsers().length === 0);
   }
 }
-function TaskListComponent_div_45_ng_container_5_div_7_button_1_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_div_7_button_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r39 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 314);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_5_div_7_button_1_Template_button_click_0_listener($event) {
-      const t_r40 = \u0275\u0275restoreView(_r39).$implicit;
+    const _r40 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 317);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_5_div_7_button_1_Template_button_click_0_listener($event) {
+      const t_r41 = \u0275\u0275restoreView(_r40).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r1.removeTaskTag(t_r40.id, $event));
+      return \u0275\u0275resetView(ctx_r1.removeTaskTag(t_r41.id, $event));
     });
-    \u0275\u0275element(1, "span", 291);
+    \u0275\u0275element(1, "span", 294);
     \u0275\u0275elementStart(2, "span");
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(4, "svg", 211);
-    \u0275\u0275element(5, "path", 43);
+    \u0275\u0275elementStart(4, "svg", 213);
+    \u0275\u0275element(5, "path", 45);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const t_r40 = ctx.$implicit;
-    \u0275\u0275styleProp("background", t_r40.color + "20")("color", t_r40.color)("border-color", t_r40.color + "50");
-    \u0275\u0275property("title", "Remover " + t_r40.name);
+    const t_r41 = ctx.$implicit;
+    \u0275\u0275styleProp("background", t_r41.color + "20")("color", t_r41.color)("border-color", t_r41.color + "50");
+    \u0275\u0275property("title", "Remover " + t_r41.name);
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", t_r40.color);
+    \u0275\u0275styleProp("background", t_r41.color);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(t_r40.name);
+    \u0275\u0275textInterpolate(t_r41.name);
   }
 }
-function TaskListComponent_div_45_ng_container_5_div_7_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_div_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 301);
-    \u0275\u0275template(1, TaskListComponent_div_45_ng_container_5_div_7_button_1_Template, 6, 10, "button", 313);
+    \u0275\u0275elementStart(0, "div", 304);
+    \u0275\u0275template(1, TaskListComponent_div_52_ng_container_5_div_7_button_1_Template, 6, 10, "button", 316);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -39376,47 +40306,47 @@ function TaskListComponent_div_45_ng_container_5_div_7_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r1.popoverTask.tags);
   }
 }
-function TaskListComponent_div_45_ng_container_5_div_14_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 304);
+    \u0275\u0275elementStart(0, "div", 307);
     \u0275\u0275text(1, "Tags dispon\xEDveis");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_5_button_15_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_button_15_Template(rf, ctx) {
   if (rf & 1) {
-    const _r41 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 305);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_5_button_15_Template_button_click_0_listener() {
-      const t_r42 = \u0275\u0275restoreView(_r41).$implicit;
+    const _r42 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 308);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_5_button_15_Template_button_click_0_listener() {
+      const t_r43 = \u0275\u0275restoreView(_r42).$implicit;
       const ctx_r1 = \u0275\u0275nextContext(3);
-      return \u0275\u0275resetView(ctx_r1.toggleTaskTag(t_r42.id));
+      return \u0275\u0275resetView(ctx_r1.toggleTaskTag(t_r43.id));
     });
-    \u0275\u0275element(1, "span", 291);
-    \u0275\u0275elementStart(2, "span", 307);
+    \u0275\u0275element(1, "span", 294);
+    \u0275\u0275elementStart(2, "span", 310);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const t_r42 = ctx.$implicit;
+    const t_r43 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275styleProp("background", t_r42.color);
+    \u0275\u0275styleProp("background", t_r43.color);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(t_r42.name);
+    \u0275\u0275textInterpolate(t_r43.name);
   }
 }
-function TaskListComponent_div_45_ng_container_5_button_16_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_button_16_Template(rf, ctx) {
   if (rf & 1) {
-    const _r43 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 315);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_5_button_16_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r43);
+    const _r44 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 318);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_5_button_16_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r44);
       const ctx_r1 = \u0275\u0275nextContext(3);
       return \u0275\u0275resetView(ctx_r1.createTagInline());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 204);
-    \u0275\u0275element(2, "path", 102);
+    \u0275\u0275elementStart(1, "svg", 206);
+    \u0275\u0275element(2, "path", 104);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(3, "span");
@@ -39434,54 +40364,54 @@ function TaskListComponent_div_45_ng_container_5_button_16_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r1.popoverSearch().trim());
   }
 }
-function TaskListComponent_div_45_ng_container_5_p_17_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_p_17_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 310);
+    \u0275\u0275elementStart(0, "p", 313);
     \u0275\u0275text(1, " Digite para criar a primeira tag. ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_5_p_18_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_p_18_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 310);
+    \u0275\u0275elementStart(0, "p", 313);
     \u0275\u0275text(1, " Todas as tags j\xE1 aplicadas. ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_div_45_ng_container_5_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r38 = \u0275\u0275getCurrentView();
+    const _r39 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "div", 285)(2, "span");
+    \u0275\u0275elementStart(1, "div", 288)(2, "span");
     \u0275\u0275text(3, "Tags");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 286);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_ng_container_5_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r38);
+    \u0275\u0275elementStart(4, "button", 289);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_5_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r39);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.closePopover());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(5, "svg", 204);
-    \u0275\u0275element(6, "path", 43);
+    \u0275\u0275elementStart(5, "svg", 206);
+    \u0275\u0275element(6, "path", 45);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275template(7, TaskListComponent_div_45_ng_container_5_div_7_Template, 2, 1, "div", 294);
+    \u0275\u0275template(7, TaskListComponent_div_52_ng_container_5_div_7_Template, 2, 1, "div", 297);
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(8, "div", 295);
+    \u0275\u0275elementStart(8, "div", 298);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(9, "svg", 113);
-    \u0275\u0275element(10, "circle", 124)(11, "path", 125);
+    \u0275\u0275elementStart(9, "svg", 115);
+    \u0275\u0275element(10, "circle", 126)(11, "path", 127);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(12, "input", 311);
-    \u0275\u0275listener("input", function TaskListComponent_div_45_ng_container_5_Template_input_input_12_listener($event) {
-      \u0275\u0275restoreView(_r38);
+    \u0275\u0275elementStart(12, "input", 314);
+    \u0275\u0275listener("input", function TaskListComponent_div_52_ng_container_5_Template_input_input_12_listener($event) {
+      \u0275\u0275restoreView(_r39);
       const ctx_r1 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r1.popoverSearch.set($event.target.value));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(13, "div", 297);
-    \u0275\u0275template(14, TaskListComponent_div_45_ng_container_5_div_14_Template, 2, 0, "div", 298)(15, TaskListComponent_div_45_ng_container_5_button_15_Template, 4, 3, "button", 299)(16, TaskListComponent_div_45_ng_container_5_button_16_Template, 8, 2, "button", 312)(17, TaskListComponent_div_45_ng_container_5_p_17_Template, 2, 0, "p", 300)(18, TaskListComponent_div_45_ng_container_5_p_18_Template, 2, 0, "p", 300);
+    \u0275\u0275elementStart(13, "div", 300);
+    \u0275\u0275template(14, TaskListComponent_div_52_ng_container_5_div_14_Template, 2, 0, "div", 301)(15, TaskListComponent_div_52_ng_container_5_button_15_Template, 4, 3, "button", 302)(16, TaskListComponent_div_52_ng_container_5_button_16_Template, 8, 2, "button", 315)(17, TaskListComponent_div_52_ng_container_5_p_17_Template, 2, 0, "p", 303)(18, TaskListComponent_div_52_ng_container_5_p_18_Template, 2, 0, "p", 303);
     \u0275\u0275elementEnd();
     \u0275\u0275elementContainerEnd();
   }
@@ -39503,34 +40433,106 @@ function TaskListComponent_div_45_ng_container_5_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r1.suggestedTags().length === 0 && !ctx_r1.canCreateTag() && ctx_r1.tags().length > 0);
   }
 }
-function TaskListComponent_div_45_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_6_button_8__svg_svg_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 283);
-    \u0275\u0275listener("click", function TaskListComponent_div_45_Template_div_click_0_listener($event) {
-      return $event.stopPropagation();
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(0, "svg", 296);
+    \u0275\u0275element(1, "path", 28);
+    \u0275\u0275elementEnd();
+  }
+}
+function TaskListComponent_div_52_ng_container_6_button_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r46 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 293);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_6_button_8_Template_button_click_0_listener() {
+      const t_r47 = \u0275\u0275restoreView(_r46).$implicit;
+      const ctx_r1 = \u0275\u0275nextContext(3);
+      return \u0275\u0275resetView(ctx_r1.setPopoverField("type", t_r47.name));
     });
-    \u0275\u0275element(1, "span", 284);
-    \u0275\u0275template(2, TaskListComponent_div_45_ng_container_2_Template, 11, 1, "ng-container", 22)(3, TaskListComponent_div_45_ng_container_3_Template, 11, 1, "ng-container", 22)(4, TaskListComponent_div_45_ng_container_4_Template, 17, 5, "ng-container", 22)(5, TaskListComponent_div_45_ng_container_5_Template, 19, 7, "ng-container", 22);
+    \u0275\u0275element(1, "span", 294);
+    \u0275\u0275text(2);
+    \u0275\u0275template(3, TaskListComponent_div_52_ng_container_6_button_8__svg_svg_3_Template, 2, 0, "svg", 295);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const pop_r44 = ctx.ngIf;
-    const ctx_r1 = \u0275\u0275nextContext();
-    \u0275\u0275styleProp("top", pop_r44.top, "px")("left", pop_r44.left, "px")("width", ctx_r1.popWidth(pop_r44.type), "px");
-    \u0275\u0275classProp("uni-popover--top", pop_r44.placement === "top");
+    const t_r47 = ctx.$implicit;
+    const ctx_r1 = \u0275\u0275nextContext(3);
+    \u0275\u0275classProp("active", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.type) === t_r47.name);
     \u0275\u0275advance();
-    \u0275\u0275styleProp("left", pop_r44.arrowLeft, "px");
+    \u0275\u0275styleProp("background", t_r47.color);
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", pop_r44.type === "status");
+    \u0275\u0275textInterpolate1("", t_r47.name, " ");
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", pop_r44.type === "priority");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", pop_r44.type === "assignee");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", pop_r44.type === "tags");
+    \u0275\u0275property("ngIf", (ctx_r1.popoverTask == null ? null : ctx_r1.popoverTask.type) === t_r47.name);
   }
 }
-function TaskListComponent_p_59_ng_container_1_Template(rf, ctx) {
+function TaskListComponent_div_52_ng_container_6_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r45 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275elementStart(1, "div", 288)(2, "span");
+    \u0275\u0275text(3, "Tipo");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "button", 289);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_6_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r45);
+      const ctx_r1 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r1.closePopover());
+    });
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(5, "svg", 206);
+    \u0275\u0275element(6, "path", 45);
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(7, "div", 290);
+    \u0275\u0275template(8, TaskListComponent_div_52_ng_container_6_button_8_Template, 4, 6, "button", 291);
+    \u0275\u0275elementStart(9, "button", 292);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_ng_container_6_Template_button_click_9_listener() {
+      \u0275\u0275restoreView(_r45);
+      const ctx_r1 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r1.setPopoverField("type", null));
+    });
+    \u0275\u0275text(10, " Remover tipo ");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementContainerEnd();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(8);
+    \u0275\u0275property("ngForOf", ctx_r1.taskTypes());
+  }
+}
+function TaskListComponent_div_52_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 286);
+    \u0275\u0275listener("click", function TaskListComponent_div_52_Template_div_click_0_listener($event) {
+      return $event.stopPropagation();
+    });
+    \u0275\u0275element(1, "span", 287);
+    \u0275\u0275template(2, TaskListComponent_div_52_ng_container_2_Template, 11, 1, "ng-container", 24)(3, TaskListComponent_div_52_ng_container_3_Template, 11, 1, "ng-container", 24)(4, TaskListComponent_div_52_ng_container_4_Template, 17, 5, "ng-container", 24)(5, TaskListComponent_div_52_ng_container_5_Template, 19, 7, "ng-container", 24)(6, TaskListComponent_div_52_ng_container_6_Template, 11, 1, "ng-container", 24);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const pop_r48 = ctx.ngIf;
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275styleProp("top", pop_r48.top, "px")("left", pop_r48.left, "px")("width", ctx_r1.popWidth(pop_r48.type), "px");
+    \u0275\u0275classProp("uni-popover--top", pop_r48.placement === "top");
+    \u0275\u0275advance();
+    \u0275\u0275styleProp("left", pop_r48.arrowLeft, "px");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", pop_r48.type === "status");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", pop_r48.type === "priority");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", pop_r48.type === "assignee");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", pop_r48.type === "tags");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", pop_r48.type === "type");
+  }
+}
+function TaskListComponent_p_66_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
     \u0275\u0275elementStart(1, "strong");
@@ -39546,7 +40548,7 @@ function TaskListComponent_p_59_ng_container_1_Template(rf, ctx) {
     \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(3, 1, ctx_r1.sprintToFinishTasks.length - ctx_r1.sprintCompletionPct(ctx_r1.sprintToFinishTasks) * ctx_r1.sprintToFinishTasks.length / 100, "1.0-0"));
   }
 }
-function TaskListComponent_p_59_ng_container_2_Template(rf, ctx) {
+function TaskListComponent_p_66_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
     \u0275\u0275text(1, " Todas as ");
@@ -39562,10 +40564,10 @@ function TaskListComponent_p_59_ng_container_2_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r1.sprintToFinishTasks.length);
   }
 }
-function TaskListComponent_p_59_Template(rf, ctx) {
+function TaskListComponent_p_66_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "p");
-    \u0275\u0275template(1, TaskListComponent_p_59_ng_container_1_Template, 5, 4, "ng-container", 22)(2, TaskListComponent_p_59_ng_container_2_Template, 5, 1, "ng-container", 22);
+    \u0275\u0275template(1, TaskListComponent_p_66_ng_container_1_Template, 5, 4, "ng-container", 24)(2, TaskListComponent_p_66_ng_container_2_Template, 5, 1, "ng-container", 24);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -39576,115 +40578,115 @@ function TaskListComponent_p_59_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r1.sprintCompletionPct(ctx_r1.sprintToFinishTasks) === 100);
   }
 }
-function TaskListComponent_button_91_span_7_Template(rf, ctx) {
+function TaskListComponent_button_98_span_7_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 51);
+    \u0275\u0275elementStart(0, "span", 53);
     \u0275\u0275text(1);
     \u0275\u0275pipe(2, "date");
     \u0275\u0275pipe(3, "date");
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const s_r46 = \u0275\u0275nextContext().$implicit;
+    const s_r50 = \u0275\u0275nextContext().$implicit;
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate2(" ", \u0275\u0275pipeBind2(2, 2, s_r46.start_date, "dd/MM"), " \u2013 ", \u0275\u0275pipeBind2(3, 5, s_r46.end_date, "dd/MM/yy"), " ");
+    \u0275\u0275textInterpolate2(" ", \u0275\u0275pipeBind2(2, 2, s_r50.start_date, "dd/MM"), " \u2013 ", \u0275\u0275pipeBind2(3, 5, s_r50.end_date, "dd/MM/yy"), " ");
   }
 }
-function TaskListComponent_button_91_span_8_Template(rf, ctx) {
+function TaskListComponent_button_98_span_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 319);
+    \u0275\u0275elementStart(0, "span", 322);
     \u0275\u0275text(1, "Finalizada");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_button_91_Template(rf, ctx) {
+function TaskListComponent_button_98_Template(rf, ctx) {
   if (rf & 1) {
-    const _r45 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 45);
-    \u0275\u0275listener("click", function TaskListComponent_button_91_Template_button_click_0_listener() {
-      const s_r46 = \u0275\u0275restoreView(_r45).$implicit;
+    const _r49 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 47);
+    \u0275\u0275listener("click", function TaskListComponent_button_98_Template_button_click_0_listener() {
+      const s_r50 = \u0275\u0275restoreView(_r49).$implicit;
       const ctx_r1 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r1.moveSelectedToSprint(s_r46.id));
+      return \u0275\u0275resetView(ctx_r1.moveSelectedToSprint(s_r50.id));
     });
-    \u0275\u0275elementStart(1, "div", 316);
+    \u0275\u0275elementStart(1, "div", 319);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 47);
+    \u0275\u0275elementStart(2, "svg", 49);
     \u0275\u0275element(3, "polygon", 8);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(4, "div", 49)(5, "span", 50);
+    \u0275\u0275elementStart(4, "div", 51)(5, "span", 52);
     \u0275\u0275text(6);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(7, TaskListComponent_button_91_span_7_Template, 4, 8, "span", 317);
+    \u0275\u0275template(7, TaskListComponent_button_98_span_7_Template, 4, 8, "span", 320);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(8, TaskListComponent_button_91_span_8_Template, 2, 0, "span", 318);
+    \u0275\u0275template(8, TaskListComponent_button_98_span_8_Template, 2, 0, "span", 321);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const s_r46 = ctx.$implicit;
+    const s_r50 = ctx.$implicit;
     const ctx_r1 = \u0275\u0275nextContext();
     \u0275\u0275property("disabled", ctx_r1.movingToSprint());
     \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate(s_r46.name);
+    \u0275\u0275textInterpolate(s_r50.name);
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", s_r46.start_date);
+    \u0275\u0275property("ngIf", s_r50.start_date);
     \u0275\u0275advance();
-    \u0275\u0275property("ngIf", s_r46.finished_at);
+    \u0275\u0275property("ngIf", s_r50.finished_at);
   }
 }
-function TaskListComponent_div_92_Template(rf, ctx) {
+function TaskListComponent_div_99_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 320);
+    \u0275\u0275elementStart(0, "div", 323);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 321);
-    \u0275\u0275element(2, "path", 160);
+    \u0275\u0275elementStart(1, "svg", 324);
+    \u0275\u0275element(2, "path", 162);
     \u0275\u0275elementEnd();
     \u0275\u0275text(3, " Movendo atividades... ");
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_option_126_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 71);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const s_r47 = ctx.$implicit;
-    \u0275\u0275property("ngValue", s_r47.id);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(s_r47.name);
-  }
-}
 function TaskListComponent_option_133_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 71);
+    \u0275\u0275elementStart(0, "option", 73);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const s_r48 = ctx.$implicit;
-    \u0275\u0275property("ngValue", s_r48.id);
+    const s_r51 = ctx.$implicit;
+    \u0275\u0275property("ngValue", s_r51.id);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate(s_r48.name);
+    \u0275\u0275textInterpolate(s_r51.name);
   }
 }
-function TaskListComponent_div_135_div_1_Template(rf, ctx) {
+function TaskListComponent_option_140_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 324);
+    \u0275\u0275elementStart(0, "option", 73);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const err_r49 = ctx.$implicit;
+    const s_r52 = ctx.$implicit;
+    \u0275\u0275property("ngValue", s_r52.id);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1("\u26A0 ", err_r49);
+    \u0275\u0275textInterpolate(s_r52.name);
   }
 }
-function TaskListComponent_div_135_Template(rf, ctx) {
+function TaskListComponent_div_142_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 322);
-    \u0275\u0275template(1, TaskListComponent_div_135_div_1_Template, 2, 1, "div", 323);
+    \u0275\u0275elementStart(0, "div", 327);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const err_r53 = ctx.$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1("\u26A0 ", err_r53);
+  }
+}
+function TaskListComponent_div_142_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 325);
+    \u0275\u0275template(1, TaskListComponent_div_142_div_1_Template, 2, 1, "div", 326);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -39693,12 +40695,12 @@ function TaskListComponent_div_135_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r1.importJsonErrors);
   }
 }
-function TaskListComponent_div_136_Template(rf, ctx) {
+function TaskListComponent_div_143_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 325)(1, "div", 326);
-    \u0275\u0275element(2, "div", 327);
+    \u0275\u0275elementStart(0, "div", 328)(1, "div", 329);
+    \u0275\u0275element(2, "div", 330);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "span", 328);
+    \u0275\u0275elementStart(3, "span", 331);
     \u0275\u0275text(4);
     \u0275\u0275elementEnd()();
   }
@@ -39710,9 +40712,9 @@ function TaskListComponent_div_136_Template(rf, ctx) {
     \u0275\u0275textInterpolate2(" ", ctx_r1.importJsonProgress(), " / ", ctx_r1.importJsonTotal(), " tarefas ");
   }
 }
-function TaskListComponent_div_137_Template(rf, ctx) {
+function TaskListComponent_div_144_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 329);
+    \u0275\u0275elementStart(0, "div", 332);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -39722,32 +40724,32 @@ function TaskListComponent_div_137_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" \u{1F389} Importa\xE7\xE3o conclu\xEDda! ", ctx_r1.importJsonTotal() - ctx_r1.importJsonErrors.length, " tarefas criadas. ");
   }
 }
-function TaskListComponent_button_141__svg_svg_1_Template(rf, ctx) {
+function TaskListComponent_button_148__svg_svg_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 25);
-    \u0275\u0275element(1, "polyline", 62)(2, "line", 63);
+    \u0275\u0275elementStart(0, "svg", 27);
+    \u0275\u0275element(1, "polyline", 64)(2, "line", 65);
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_button_141__svg_svg_2_Template(rf, ctx) {
+function TaskListComponent_button_148__svg_svg_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 333);
-    \u0275\u0275element(1, "path", 160);
+    \u0275\u0275elementStart(0, "svg", 336);
+    \u0275\u0275element(1, "path", 162);
     \u0275\u0275elementEnd();
   }
 }
-function TaskListComponent_button_141_Template(rf, ctx) {
+function TaskListComponent_button_148_Template(rf, ctx) {
   if (rf & 1) {
-    const _r50 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 330);
-    \u0275\u0275listener("click", function TaskListComponent_button_141_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r50);
+    const _r54 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 333);
+    \u0275\u0275listener("click", function TaskListComponent_button_148_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r54);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.startJsonImport());
     });
-    \u0275\u0275template(1, TaskListComponent_button_141__svg_svg_1_Template, 3, 0, "svg", 331)(2, TaskListComponent_button_141__svg_svg_2_Template, 2, 0, "svg", 332);
+    \u0275\u0275template(1, TaskListComponent_button_148__svg_svg_1_Template, 3, 0, "svg", 334)(2, TaskListComponent_button_148__svg_svg_2_Template, 2, 0, "svg", 335);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
   }
@@ -39762,18 +40764,18 @@ function TaskListComponent_button_141_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", ctx_r1.importJsonRunning() ? "Importando..." : "Importar Tarefas", " ");
   }
 }
-function TaskListComponent_button_142_Template(rf, ctx) {
+function TaskListComponent_button_149_Template(rf, ctx) {
   if (rf & 1) {
-    const _r51 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 334);
-    \u0275\u0275listener("click", function TaskListComponent_button_142_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r51);
+    const _r55 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 337);
+    \u0275\u0275listener("click", function TaskListComponent_button_149_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r55);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.closeImportJsonModal());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 25);
-    \u0275\u0275element(2, "path", 26);
+    \u0275\u0275elementStart(1, "svg", 27);
+    \u0275\u0275element(2, "path", 28);
     \u0275\u0275elementEnd();
     \u0275\u0275text(3, " Concluir ");
     \u0275\u0275elementEnd();
@@ -39809,6 +40811,10 @@ var TaskListComponent = class _TaskListComponent {
     []
   ));
   priorities = signal([], ...ngDevMode ? [{ debugName: "priorities" }] : (
+    /* istanbul ignore next */
+    []
+  ));
+  taskTypes = signal([], ...ngDevMode ? [{ debugName: "taskTypes" }] : (
     /* istanbul ignore next */
     []
   ));
@@ -39852,6 +40858,7 @@ var TaskListComponent = class _TaskListComponent {
     this.loadTasks();
     this.loadTags();
     this.loadPriorities();
+    this.loadTaskTypes();
   }
   // ---------- Filtros ----------
   currentFilters = { search: "", status_ids: [], priorities: [], assignee_ids: [], epics: [], tag_ids: [] };
@@ -40067,6 +41074,31 @@ var TaskListComponent = class _TaskListComponent {
       error: () => {
       }
     });
+  }
+  loadTaskTypes() {
+    this.apiService.getTaskTypes(this.boardId).subscribe({
+      next: (data) => this.taskTypes.set(data),
+      error: () => {
+      }
+    });
+  }
+  reloadTaskTypes() {
+    this.loadTaskTypes();
+  }
+  typeColor(name) {
+    if (!name)
+      return "#6B6B70";
+    return this.taskTypes().find((t) => t.name === name)?.color || "#6B6B70";
+  }
+  // Nomes dos responsáveis além dos exibidos (para tooltip do +N)
+  extraAssigneeNames(task, shown) {
+    return (task.assignees ?? []).slice(shown).map((a) => a.name).join(", ");
+  }
+  allAssigneeNames(task) {
+    return (task.assignees ?? []).map((a) => a.name).join(", ");
+  }
+  extraTagNames(task, shown) {
+    return (task.tags ?? []).slice(shown).map((t) => t.name).join(", ");
   }
   // ---------- Agrupamentos ----------
   groupedBySprint = computed(() => {
@@ -40575,7 +41607,8 @@ Conclu\xEDdo: ${pct}%`);
     status: { w: 240, h: 290 },
     priority: { w: 230, h: 240 },
     assignee: { w: 300, h: 380 },
-    tags: { w: 300, h: 360 }
+    tags: { w: 300, h: 360 },
+    type: { w: 230, h: 260 }
   };
   popWidth(type) {
     return this.POP_DIMS[type]?.w ?? 260;
@@ -40626,7 +41659,7 @@ Conclu\xEDdo: ${pct}%`);
     if (this.activePopover())
       this.closePopover();
   }
-  // Status / prioridade no popover unificado
+  // Status / prioridade / tipo no popover unificado
   setPopoverField(field, value) {
     if (!this.popoverTask)
       return;
@@ -40993,7 +42026,7 @@ Conclu\xEDdo: ${pct}%`);
         return ctx.onDocumentClick();
       }, \u0275\u0275resolveDocument);
     }
-  }, decls: 143, vars: 59, consts: [["loadingTpl", ""], ["emptyAssignee", ""], ["emptyTags", ""], [3, "toggle", "collapsed"], [1, "sidebar-nav-item", 3, "click"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M9 11l3 3L22 4"], ["d", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"], ["points", "13 2 3 14 12 14 11 22 21 10 12 10 13 2"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], ["d", "M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"], ["x1", "4", "y1", "22", "x2", "4", "y2", "15"], [1, "sidebar-divider"], [1, "sidebar-nav-item", "sidebar-nav-item--soon", 3, "click"], ["x1", "18", "y1", "20", "x2", "18", "y2", "10"], ["x1", "12", "y1", "20", "x2", "12", "y2", "4"], ["x1", "6", "y1", "20", "x2", "6", "y2", "14"], ["class", "sidebar-soon-badge", 4, "ngIf"], ["d", "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"], ["d", "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"], [1, "page"], [4, "ngIf"], ["class", "uni-popover", 3, "uni-popover--top", "top", "left", "width", "click", 4, "ngIf"], [1, "toast"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M20 6 9 17l-5-5"], [1, "toast", "toast--soon"], ["width", "440px", 3, "closeModal", "isOpen"], [1, "finish-sprint-modal"], [1, "finish-sprint-icon"], ["width", "26", "height", "26", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], [1, "finish-sprint-actions"], [1, "finish-sprint-cancel", 3, "click"], [1, "finish-sprint-confirm", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], [3, "closeDialog", "save", "addComment", "removeComment", "manageAssignees", "deleteTask", "isOpen", "mode", "task", "statuses", "sprints", "tags", "priorities", "saving", "comments", "savingComment"], ["width", "400px", 3, "closeModal", "isOpen"], [1, "move-sprint-modal"], [1, "move-sprint-header"], [1, "move-sprint-subtitle"], [1, "assignee-modal-close", 3, "click"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M18 6 6 18M6 6l12 12"], [1, "move-sprint-list"], [1, "move-sprint-item", 3, "click", "disabled"], [1, "move-sprint-icon", "move-sprint-icon--backlog"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["cx", "12", "cy", "12", "r", "10", "stroke-dasharray", "4 2"], [1, "move-sprint-info"], [1, "move-sprint-name"], [1, "move-sprint-sub"], ["class", "move-sprint-item", 3, "disabled", "click", 4, "ngFor", "ngForOf"], ["class", "move-sprint-loading", 4, "ngIf"], ["title", "Excluir atividade", 3, "confirm", "cancel", "isOpen", "itemName", "loading"], ["width", "600px", 3, "closeModal", "isOpen"], [1, "import-json-modal"], [1, "import-json-header"], [1, "import-json-header-left"], [1, "import-json-icon"], ["width", "22", "height", "22", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["points", "17 8 12 3 7 8"], ["x1", "12", "y1", "3", "x2", "12", "y2", "15"], [1, "import-json-format"], [1, "import-json-format-label"], [1, "import-json-example"], [1, "import-json-defaults"], [1, "import-json-field"], [1, "import-json-label"], [1, "import-json-select", 3, "ngModelChange", "ngModel"], [3, "ngValue"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["placeholder", '[\n  { "description": "Minha primeira tarefa", "priority": "Alta" },\n  { "description": "Segunda tarefa", "priority": "M\xE9dia", "epic": "MVP" }\n]', 1, "import-json-textarea", 3, "ngModelChange", "ngModel", "disabled"], ["class", "import-json-errors", 4, "ngIf"], ["class", "import-json-progress-wrap", 4, "ngIf"], ["class", "import-json-done", 4, "ngIf"], [1, "import-json-actions"], [1, "import-json-cancel", 3, "click", "disabled"], ["class", "import-json-confirm", 3, "disabled", "click", 4, "ngIf"], ["class", "import-json-confirm", 3, "click", 4, "ngIf"], [1, "sidebar-soon-badge"], [1, "page-header"], [1, "header-left"], [1, "back-link", 3, "click"], ["d", "m15 18-6-6 6-6"], [1, "header-title-block"], ["class", "header-board-name", 4, "ngIf"], [1, "header-title"], ["class", "header-stats", 4, "ngIf"], [1, "header-actions"], [1, "view-toggle"], ["title", "Vis\xE3o tabela", 1, "toggle-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2"], ["d", "M3 9h18M3 15h18M9 3v18"], ["title", "Vis\xE3o kanban", 1, "toggle-btn", 3, "click"], ["x", "3", "y", "3", "width", "5", "height", "18", "rx", "1"], ["x", "10", "y", "3", "width", "5", "height", "12", "rx", "1"], ["x", "17", "y", "3", "width", "5", "height", "15", "rx", "1"], ["title", "Importar tarefas via JSON", 1, "import-json-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["variant", "primary", 3, "clicked"], ["d", "M12 5v14M5 12h14"], [1, "filters-wrap"], [3, "filtersChange", "statuses", "users", "epics", "tags", "priorities"], [1, "selection-bar"], [1, "selection-bar-left"], [1, "selection-count-badge"], [1, "selection-count-label"], [1, "selection-bar-sep"], [1, "selection-bar-actions"], [1, "bulk-dropdown-wrap"], [1, "selection-action-btn", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["width", "10", "height", "10", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "m6 9 6 6 6-6"], [1, "bulk-dropdown", 3, "click"], [1, "bulk-dropdown-header"], [1, "bulk-dropdown-list"], ["class", "bulk-dropdown-item", 3, "click", 4, "ngFor", "ngForOf"], ["d", "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"], ["cx", "12", "cy", "7", "r", "4"], [1, "bulk-dropdown", "bulk-dropdown--assignee", 3, "click"], [1, "bulk-assignee-search-wrap"], ["cx", "11", "cy", "11", "r", "8"], ["d", "m21 21-4.35-4.35"], ["type", "text", "placeholder", "Buscar pessoa...", 1, "bulk-assignee-search", 3, "input", "value"], ["class", "bulk-assignee-empty", 4, "ngIf"], [1, "selection-action-btn", "selection-action-btn--move", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M5 12h14M12 5l7 7-7 7"], ["class", "bulk-updating-hint", 4, "ngIf"], [1, "selection-clear-btn", 3, "click", "disabled"], ["class", "bulk-overlay", 3, "click", 4, "ngIf"], ["class", "table-view", 4, "ngIf"], ["class", "kanban-placeholder", 4, "ngIf"], [1, "header-board-name"], ["x", "3", "y", "3", "width", "7", "height", "7", "rx", "1"], ["x", "14", "y", "3", "width", "7", "height", "7", "rx", "1"], ["x", "3", "y", "14", "width", "7", "height", "7", "rx", "1"], ["x", "14", "y", "14", "width", "7", "height", "7", "rx", "1"], [1, "header-stats"], [1, "stat-chip", "stat-chip--total"], [1, "stat-chip-num"], ["class", "stat-chip stat-chip--done", 4, "ngIf"], ["class", "stat-chip stat-chip--progress", 4, "ngIf"], ["class", "stat-chip stat-chip--pct", 4, "ngIf"], [1, "stat-chip", "stat-chip--done"], [1, "stat-chip-dot", 2, "background", "#059669"], [1, "stat-chip", "stat-chip--progress"], [1, "stat-chip-dot", 2, "background", "#4F46E5"], [1, "stat-chip", "stat-chip--pct"], [1, "bulk-dropdown-item", 3, "click"], [1, "bulk-status-dot"], [2, "font-weight", "600"], ["size", "sm", 3, "name", "photoUrl"], [1, "bulk-user-name"], [1, "bulk-assignee-empty"], [1, "bulk-updating-hint"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], ["d", "M21 12a9 9 0 1 1-6.219-8.56"], [1, "bulk-overlay", 3, "click"], [1, "table-view"], [4, "ngIf", "ngIfElse"], [4, "ngFor", "ngForOf"], ["class", "empty-state", 4, "ngIf"], ["class", "sprint-group", 3, "sprint-group--finished", "sprint-group--overdue", 4, "ngIf"], [1, "sprint-group"], [1, "sprint-group-header", 3, "click"], [1, "chevron"], [1, "sprint-header-info"], [1, "sprint-header-top"], [1, "sprint-name"], [1, "sprint-count"], ["class", "order-reset-btn", "appTooltip", "Restaurar ordem original (desfaz ordena\xE7\xE3o e movimenta\xE7\xF5es)", 3, "click", 4, "ngIf"], ["class", "sprint-cols-header", 4, "ngIf"], ["class", "task-rows", "cdkDropList", "", 3, "cdkDropListData", "id", "cdkDropListConnectedTo", "cdkDropListDropped", 4, "ngIf"], [1, "sprint-dates"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["x", "3", "y", "4", "width", "18", "height", "18", "rx", "2"], ["x1", "16", "y1", "2", "x2", "16", "y2", "6"], ["x1", "8", "y1", "2", "x2", "8", "y2", "6"], ["x1", "3", "y1", "10", "x2", "21", "y2", "10"], ["class", "sprint-overdue-badge", 4, "ngIf"], ["class", "sprint-finished-badge", 4, "ngIf"], [1, "sprint-overdue-badge"], ["width", "9", "height", "9", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], ["class", "sprint-days-remaining", 4, "ngIf"], [1, "sprint-days-remaining"], [1, "sprint-finished-badge"], [1, "sprint-progress-wrap", 3, "click", "title"], [1, "sprint-progress-bar"], ["class", "sprint-progress-seg", 3, "width", "background", "title", 4, "ngFor", "ngForOf"], [1, "sprint-progress-pct"], [1, "sprint-progress-detail"], [1, "sprint-progress-seg", 3, "title"], ["appTooltip", "Restaurar ordem original (desfaz ordena\xE7\xE3o e movimenta\xE7\xF5es)", 1, "order-reset-btn", 3, "click"], ["d", "M3 2v6h6"], ["d", "M3 13a9 9 0 1 0 3-7.7L3 8"], [1, "sprint-finish-btn", 3, "click", "disabled", "appTooltip"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "sprint-cols-header"], [1, "gcol", "gcol-drag", 3, "click"], ["type", "checkbox", "appTooltip", "Selecionar todas desta sprint", 1, "row-checkbox", 3, "change", "checked", "indeterminate"], [1, "gcol", "gcol-check"], [1, "gcol", "gcol-title", "sort-col", 3, "click"], [1, "sort-icon"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "m18 15-6-6-6 6", 4, "ngIf"], ["d", "m6 9 6 6 6-6", 4, "ngIf"], [1, "gcol", "gcol-status", "sort-col", 3, "click"], [1, "gcol", "gcol-priority", "sort-col", 3, "click"], [1, "gcol", "gcol-assignee", "sort-col", 3, "click"], [1, "gcol", "gcol-epic"], [1, "gcol", "gcol-tags"], ["d", "m18 15-6-6-6 6"], ["cdkDropList", "", 1, "task-rows", 3, "cdkDropListDropped", "cdkDropListData", "id", "cdkDropListConnectedTo"], ["class", "task-row", "cdkDrag", "", 3, "selected", "cdkDragData", "click", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "task-row", 3, "click", "cdkDragData"], ["class", "task-drag-placeholder", 4, "cdkDragPlaceholder"], ["class", "task-drag-preview", 4, "cdkDragPreview"], ["cdkDragHandle", "", "appTooltip", "Arrastar para reordenar ou mover de sprint", 1, "task-drag-handle", 3, "click"], ["width", "12", "height", "12", "viewBox", "0 0 10 16", "fill", "currentColor"], ["cx", "2", "cy", "2", "r", "1.5"], ["cx", "8", "cy", "2", "r", "1.5"], ["cx", "2", "cy", "8", "r", "1.5"], ["cx", "8", "cy", "8", "r", "1.5"], ["cx", "2", "cy", "14", "r", "1.5"], ["cx", "8", "cy", "14", "r", "1.5"], [1, "task-check-cell", 3, "click"], ["type", "checkbox", 1, "row-checkbox", 3, "change", "click", "checked"], [1, "task-title-cell"], [1, "task-title"], [1, "copy-btn", 3, "click", "appTooltip"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "#059669", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], [1, "task-mobile-meta"], ["class", "task-mobile-status", 3, "color", 4, "ngIf"], [1, "task-mobile-priority"], [1, "task-col"], ["appTooltip", "Alterar status", 1, "meta-trigger", 3, "click"], [3, "color"], ["appTooltip", "Alterar prioridade", 1, "meta-trigger", 3, "click"], ["appTooltip", "Gerenciar respons\xE1veis", 1, "assignees-trigger", 3, "click"], [1, "task-col", "task-col--epic"], ["class", "task-epic-tag", 3, "appTooltip", 4, "ngIf"], ["class", "task-col-empty", 4, "ngIf"], [1, "task-col", "task-col--tags"], [1, "tags-trigger", 3, "click", "appTooltip"], [1, "task-drag-placeholder"], [1, "task-drag-preview"], [1, "task-drag-preview-text"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "#059669", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "task-mobile-status"], [1, "task-mobile-dot"], ["class", "assignee-avatar--more", 4, "ngIf"], ["size", "sm", 3, "name", "photoUrl", "title"], [1, "assignee-avatar--more"], [1, "assignee-avatar", "assignee-avatar--empty"], [1, "task-epic-tag", 3, "appTooltip"], [1, "task-col-empty"], ["class", "task-tag-chip", 3, "background", "color", "border-color", 4, "ngFor", "ngForOf"], ["class", "task-tag-more", 4, "ngIf"], [1, "task-tag-chip"], [1, "task-tag-more"], [1, "tags-empty"], ["d", "M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"], ["x1", "7", "y1", "7", "x2", "7.01", "y2", "7"], [1, "empty-state"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.2", "stroke-linecap", "round", 2, "opacity", ".25", "margin-bottom", "12px"], [1, "loading-state"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin", 2, "color", "var(--accent)"], [1, "kanban-placeholder"], ["width", "40", "height", "40", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.2", "stroke-linecap", "round", 2, "opacity", ".25", "margin-bottom", "12px"], [3, "sprintsChanged", "boardId"], [3, "statusesChanged", "boardId"], [3, "prioritiesChanged", "boardId"], [1, "uni-popover", 3, "click"], [1, "uni-popover-arrow"], [1, "uni-pop-head"], [1, "uni-pop-close", 3, "click"], [1, "uni-pop-list"], ["class", "uni-pop-item", 3, "active", "click", 4, "ngFor", "ngForOf"], [1, "uni-pop-item", "uni-pop-item--clear", 3, "click"], [1, "uni-pop-item", 3, "click"], [1, "uni-dot"], ["class", "uni-check", "width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 1, "uni-check"], ["class", "ap-chips", 4, "ngIf"], [1, "ap-search"], ["type", "text", "placeholder", "Buscar pessoa...", 3, "input", "value"], [1, "ap-list"], ["class", "ap-list-label", 4, "ngIf"], ["class", "ap-list-item", 3, "click", 4, "ngFor", "ngForOf"], ["class", "ap-empty", 4, "ngIf"], [1, "ap-chips"], ["class", "ap-chip", 3, "title", "click", 4, "ngFor", "ngForOf"], [1, "ap-chip", 3, "click", "title"], [1, "ap-list-label"], [1, "ap-list-item", 3, "click"], [1, "ap-user-info"], [1, "ap-user-name"], ["class", "ap-user-role", 4, "ngIf"], [1, "ap-user-role"], [1, "ap-empty"], ["type", "text", "placeholder", "Buscar tag...", 3, "input", "value"], ["class", "ap-create-tag", 3, "disabled", "click", 4, "ngIf"], ["class", "ap-chip ap-chip--tag", 3, "background", "color", "border-color", "title", "click", 4, "ngFor", "ngForOf"], [1, "ap-chip", "ap-chip--tag", 3, "click", "title"], [1, "ap-create-tag", 3, "click", "disabled"], [1, "move-sprint-icon"], ["class", "move-sprint-sub", 4, "ngIf"], ["class", "move-sprint-finished-tag", 4, "ngIf"], [1, "move-sprint-finished-tag"], [1, "move-sprint-loading"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], [1, "import-json-errors"], ["class", "import-json-error-item", 4, "ngFor", "ngForOf"], [1, "import-json-error-item"], [1, "import-json-progress-wrap"], [1, "import-json-progress-bar"], [1, "import-json-progress-fill"], [1, "import-json-progress-label"], [1, "import-json-done"], [1, "import-json-confirm", 3, "click", "disabled"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], [1, "import-json-confirm", 3, "click"]], template: function TaskListComponent_Template(rf, ctx) {
+  }, decls: 150, vars: 63, consts: [["loadingTpl", ""], ["emptyAssignee", ""], ["emptyTags", ""], [3, "toggle", "collapsed"], [1, "sidebar-nav-item", 3, "click"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M9 11l3 3L22 4"], ["d", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"], ["points", "13 2 3 14 12 14 11 22 21 10 12 10 13 2"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], ["d", "M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"], ["x1", "4", "y1", "22", "x2", "4", "y2", "15"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], [1, "sidebar-divider"], [1, "sidebar-nav-item", "sidebar-nav-item--soon", 3, "click"], ["x1", "18", "y1", "20", "x2", "18", "y2", "10"], ["x1", "12", "y1", "20", "x2", "12", "y2", "4"], ["x1", "6", "y1", "20", "x2", "6", "y2", "14"], ["class", "sidebar-soon-badge", 4, "ngIf"], ["d", "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"], ["d", "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"], [1, "page"], [4, "ngIf"], ["class", "uni-popover", 3, "uni-popover--top", "top", "left", "width", "click", 4, "ngIf"], [1, "toast"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M20 6 9 17l-5-5"], [1, "toast", "toast--soon"], ["width", "440px", 3, "closeModal", "isOpen"], [1, "finish-sprint-modal"], [1, "finish-sprint-icon"], ["width", "26", "height", "26", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], [1, "finish-sprint-actions"], [1, "finish-sprint-cancel", 3, "click"], [1, "finish-sprint-confirm", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], [3, "closeDialog", "save", "addComment", "removeComment", "manageAssignees", "deleteTask", "isOpen", "mode", "task", "statuses", "sprints", "tags", "priorities", "taskTypes", "saving", "comments", "savingComment"], ["width", "400px", 3, "closeModal", "isOpen"], [1, "move-sprint-modal"], [1, "move-sprint-header"], [1, "move-sprint-subtitle"], [1, "assignee-modal-close", 3, "click"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "M18 6 6 18M6 6l12 12"], [1, "move-sprint-list"], [1, "move-sprint-item", 3, "click", "disabled"], [1, "move-sprint-icon", "move-sprint-icon--backlog"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["cx", "12", "cy", "12", "r", "10", "stroke-dasharray", "4 2"], [1, "move-sprint-info"], [1, "move-sprint-name"], [1, "move-sprint-sub"], ["class", "move-sprint-item", 3, "disabled", "click", 4, "ngFor", "ngForOf"], ["class", "move-sprint-loading", 4, "ngIf"], ["title", "Excluir atividade", 3, "confirm", "cancel", "isOpen", "itemName", "loading"], ["width", "600px", 3, "closeModal", "isOpen"], [1, "import-json-modal"], [1, "import-json-header"], [1, "import-json-header-left"], [1, "import-json-icon"], ["width", "22", "height", "22", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["points", "17 8 12 3 7 8"], ["x1", "12", "y1", "3", "x2", "12", "y2", "15"], [1, "import-json-format"], [1, "import-json-format-label"], [1, "import-json-example"], [1, "import-json-defaults"], [1, "import-json-field"], [1, "import-json-label"], [1, "import-json-select", 3, "ngModelChange", "ngModel"], [3, "ngValue"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["placeholder", '[\n  { "description": "Minha primeira tarefa", "priority": "Alta" },\n  { "description": "Segunda tarefa", "priority": "M\xE9dia", "epic": "MVP" }\n]', 1, "import-json-textarea", 3, "ngModelChange", "ngModel", "disabled"], ["class", "import-json-errors", 4, "ngIf"], ["class", "import-json-progress-wrap", 4, "ngIf"], ["class", "import-json-done", 4, "ngIf"], [1, "import-json-actions"], [1, "import-json-cancel", 3, "click", "disabled"], ["class", "import-json-confirm", 3, "disabled", "click", 4, "ngIf"], ["class", "import-json-confirm", 3, "click", 4, "ngIf"], [1, "sidebar-soon-badge"], [1, "page-header"], [1, "header-left"], [1, "back-link", 3, "click"], ["d", "m15 18-6-6 6-6"], [1, "header-title-block"], ["class", "header-board-name", 4, "ngIf"], [1, "header-title"], ["class", "header-stats", 4, "ngIf"], [1, "header-actions"], [1, "view-toggle"], ["title", "Vis\xE3o tabela", 1, "toggle-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2"], ["d", "M3 9h18M3 15h18M9 3v18"], ["title", "Vis\xE3o kanban", 1, "toggle-btn", 3, "click"], ["x", "3", "y", "3", "width", "5", "height", "18", "rx", "1"], ["x", "10", "y", "3", "width", "5", "height", "12", "rx", "1"], ["x", "17", "y", "3", "width", "5", "height", "15", "rx", "1"], ["title", "Importar tarefas via JSON", 1, "import-json-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["variant", "primary", 3, "clicked"], ["d", "M12 5v14M5 12h14"], [1, "filters-wrap"], [3, "filtersChange", "statuses", "users", "epics", "tags", "priorities"], [1, "selection-bar"], [1, "selection-bar-left"], [1, "selection-count-badge"], [1, "selection-count-label"], [1, "selection-bar-sep"], [1, "selection-bar-actions"], [1, "bulk-dropdown-wrap"], [1, "selection-action-btn", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["width", "10", "height", "10", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "m6 9 6 6 6-6"], [1, "bulk-dropdown", 3, "click"], [1, "bulk-dropdown-header"], [1, "bulk-dropdown-list"], ["class", "bulk-dropdown-item", 3, "click", 4, "ngFor", "ngForOf"], ["d", "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"], ["cx", "12", "cy", "7", "r", "4"], [1, "bulk-dropdown", "bulk-dropdown--assignee", 3, "click"], [1, "bulk-assignee-search-wrap"], ["cx", "11", "cy", "11", "r", "8"], ["d", "m21 21-4.35-4.35"], ["type", "text", "placeholder", "Buscar pessoa...", 1, "bulk-assignee-search", 3, "input", "value"], ["class", "bulk-assignee-empty", 4, "ngIf"], [1, "selection-action-btn", "selection-action-btn--move", 3, "click", "disabled"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["d", "M5 12h14M12 5l7 7-7 7"], ["class", "bulk-updating-hint", 4, "ngIf"], [1, "selection-clear-btn", 3, "click", "disabled"], ["class", "bulk-overlay", 3, "click", 4, "ngIf"], ["class", "table-view", 4, "ngIf"], ["class", "kanban-placeholder", 4, "ngIf"], [1, "header-board-name"], ["x", "3", "y", "3", "width", "7", "height", "7", "rx", "1"], ["x", "14", "y", "3", "width", "7", "height", "7", "rx", "1"], ["x", "3", "y", "14", "width", "7", "height", "7", "rx", "1"], ["x", "14", "y", "14", "width", "7", "height", "7", "rx", "1"], [1, "header-stats"], [1, "stat-chip", "stat-chip--total"], [1, "stat-chip-num"], ["class", "stat-chip stat-chip--done", 4, "ngIf"], ["class", "stat-chip stat-chip--progress", 4, "ngIf"], ["class", "stat-chip stat-chip--pct", 4, "ngIf"], [1, "stat-chip", "stat-chip--done"], [1, "stat-chip-dot", 2, "background", "#059669"], [1, "stat-chip", "stat-chip--progress"], [1, "stat-chip-dot", 2, "background", "#4F46E5"], [1, "stat-chip", "stat-chip--pct"], [1, "bulk-dropdown-item", 3, "click"], [1, "bulk-status-dot"], [2, "font-weight", "600"], ["size", "sm", 3, "name", "photoUrl"], [1, "bulk-user-name"], [1, "bulk-assignee-empty"], [1, "bulk-updating-hint"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], ["d", "M21 12a9 9 0 1 1-6.219-8.56"], [1, "bulk-overlay", 3, "click"], [1, "table-view"], [4, "ngIf", "ngIfElse"], [4, "ngFor", "ngForOf"], ["class", "empty-state", 4, "ngIf"], ["class", "sprint-group", 3, "sprint-group--finished", "sprint-group--overdue", 4, "ngIf"], [1, "sprint-group"], [1, "sprint-group-header", 3, "click"], [1, "chevron"], [1, "sprint-header-info"], [1, "sprint-header-top"], [1, "sprint-name"], [1, "sprint-count"], ["class", "order-reset-btn", "appTooltip", "Restaurar ordem original (desfaz ordena\xE7\xE3o e movimenta\xE7\xF5es)", 3, "click", 4, "ngIf"], ["class", "sprint-cols-header", 4, "ngIf"], ["class", "task-rows", "cdkDropList", "", 3, "cdkDropListData", "id", "cdkDropListConnectedTo", "cdkDropListDropped", 4, "ngIf"], [1, "sprint-dates"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round"], ["x", "3", "y", "4", "width", "18", "height", "18", "rx", "2"], ["x1", "16", "y1", "2", "x2", "16", "y2", "6"], ["x1", "8", "y1", "2", "x2", "8", "y2", "6"], ["x1", "3", "y1", "10", "x2", "21", "y2", "10"], ["class", "sprint-overdue-badge", 4, "ngIf"], ["class", "sprint-finished-badge", 4, "ngIf"], [1, "sprint-overdue-badge"], ["width", "9", "height", "9", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], ["class", "sprint-days-remaining", 4, "ngIf"], [1, "sprint-days-remaining"], [1, "sprint-finished-badge"], [1, "sprint-progress-wrap", 3, "click", "title"], [1, "sprint-progress-bar"], ["class", "sprint-progress-seg", 3, "width", "background", "title", 4, "ngFor", "ngForOf"], [1, "sprint-progress-pct"], [1, "sprint-progress-detail"], [1, "sprint-progress-seg", 3, "title"], ["appTooltip", "Restaurar ordem original (desfaz ordena\xE7\xE3o e movimenta\xE7\xF5es)", 1, "order-reset-btn", 3, "click"], ["d", "M3 2v6h6"], ["d", "M3 13a9 9 0 1 0 3-7.7L3 8"], [1, "sprint-finish-btn", 3, "click", "disabled", "appTooltip"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "sprint-cols-header"], [1, "gcol", "gcol-drag", 3, "click"], ["type", "checkbox", "appTooltip", "Selecionar todas desta sprint", 1, "row-checkbox", 3, "change", "checked", "indeterminate"], [1, "gcol", "gcol-check"], [1, "gcol", "gcol-title", "sort-col", 3, "click"], [1, "sort-icon"], ["width", "11", "height", "11", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round"], ["d", "m18 15-6-6-6 6", 4, "ngIf"], ["d", "m6 9 6 6 6-6", 4, "ngIf"], [1, "gcol", "gcol-status", "sort-col", 3, "click"], [1, "gcol", "gcol-priority", "sort-col", 3, "click"], [1, "gcol", "gcol-assignee", "sort-col", 3, "click"], [1, "gcol", "gcol-epic"], [1, "gcol", "gcol-tags"], ["d", "m18 15-6-6-6 6"], ["cdkDropList", "", 1, "task-rows", 3, "cdkDropListDropped", "cdkDropListData", "id", "cdkDropListConnectedTo"], ["class", "task-row", "cdkDrag", "", 3, "selected", "cdkDragData", "click", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "task-row", 3, "click", "cdkDragData"], ["class", "task-drag-placeholder", 4, "cdkDragPlaceholder"], ["class", "task-drag-preview", 4, "cdkDragPreview"], [1, "task-type-strip", 3, "click", "appTooltip"], ["cdkDragHandle", "", "appTooltip", "Arrastar para reordenar ou mover de sprint", 1, "task-drag-handle", 3, "click"], ["width", "12", "height", "12", "viewBox", "0 0 10 16", "fill", "currentColor"], ["cx", "2", "cy", "2", "r", "1.5"], ["cx", "8", "cy", "2", "r", "1.5"], ["cx", "2", "cy", "8", "r", "1.5"], ["cx", "8", "cy", "8", "r", "1.5"], ["cx", "2", "cy", "14", "r", "1.5"], ["cx", "8", "cy", "14", "r", "1.5"], [1, "task-check-cell", 3, "click"], ["type", "checkbox", 1, "row-checkbox", 3, "change", "click", "checked"], [1, "task-title-cell"], [1, "task-title"], ["class", "task-release-badge", 3, "appTooltip", 4, "ngIf"], [1, "copy-btn", 3, "click", "appTooltip"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "#059669", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], [1, "task-mobile-meta"], ["class", "task-mobile-status", 3, "color", 4, "ngIf"], [1, "task-mobile-priority"], [1, "task-col"], ["appTooltip", "Alterar status", 1, "meta-trigger", 3, "click"], [3, "color"], ["appTooltip", "Alterar prioridade", 1, "meta-trigger", 3, "click"], [1, "assignees-trigger", 3, "click", "appTooltip"], [1, "task-col", "task-col--epic"], ["class", "task-epic-tag", 3, "appTooltip", 4, "ngIf"], [1, "task-col", "task-col--tags"], [1, "tags-trigger", 3, "click", "appTooltip"], [1, "task-drag-placeholder"], [1, "task-drag-preview"], [1, "task-drag-preview-text"], [1, "task-release-badge", 3, "appTooltip"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "#059669", "stroke-width", "2.5", "stroke-linecap", "round"], [1, "task-mobile-status"], [1, "task-mobile-dot"], ["class", "assignee-avatar--more", 4, "ngIf"], [1, "assignee-avatar--more"], [1, "assignee-avatar", "assignee-avatar--empty"], [1, "task-epic-tag", 3, "appTooltip"], ["class", "task-tag-chip", 3, "background", "color", "border-color", 4, "ngFor", "ngForOf"], ["class", "task-tag-more", 3, "appTooltip", 4, "ngIf"], [1, "task-tag-chip"], [1, "task-tag-more", 3, "appTooltip"], [1, "tags-empty"], ["d", "M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"], ["x1", "7", "y1", "7", "x2", "7.01", "y2", "7"], [1, "empty-state"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.2", "stroke-linecap", "round", 2, "opacity", ".25", "margin-bottom", "12px"], [1, "loading-state"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin", 2, "color", "var(--accent)"], [1, "kanban-placeholder"], ["width", "40", "height", "40", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "1.2", "stroke-linecap", "round", 2, "opacity", ".25", "margin-bottom", "12px"], [3, "sprintsChanged", "boardId"], [3, "statusesChanged", "boardId"], [3, "prioritiesChanged", "boardId"], [3, "typesChanged", "boardId"], [1, "uni-popover", 3, "click"], [1, "uni-popover-arrow"], [1, "uni-pop-head"], [1, "uni-pop-close", 3, "click"], [1, "uni-pop-list"], ["class", "uni-pop-item", 3, "active", "click", 4, "ngFor", "ngForOf"], [1, "uni-pop-item", "uni-pop-item--clear", 3, "click"], [1, "uni-pop-item", 3, "click"], [1, "uni-dot"], ["class", "uni-check", "width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 4, "ngIf"], ["width", "13", "height", "13", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "3", "stroke-linecap", "round", 1, "uni-check"], ["class", "ap-chips", 4, "ngIf"], [1, "ap-search"], ["type", "text", "placeholder", "Buscar pessoa...", 3, "input", "value"], [1, "ap-list"], ["class", "ap-list-label", 4, "ngIf"], ["class", "ap-list-item", 3, "click", 4, "ngFor", "ngForOf"], ["class", "ap-empty", 4, "ngIf"], [1, "ap-chips"], ["class", "ap-chip", 3, "title", "click", 4, "ngFor", "ngForOf"], [1, "ap-chip", 3, "click", "title"], [1, "ap-list-label"], [1, "ap-list-item", 3, "click"], [1, "ap-user-info"], [1, "ap-user-name"], ["class", "ap-user-role", 4, "ngIf"], [1, "ap-user-role"], [1, "ap-empty"], ["type", "text", "placeholder", "Buscar tag...", 3, "input", "value"], ["class", "ap-create-tag", 3, "disabled", "click", 4, "ngIf"], ["class", "ap-chip ap-chip--tag", 3, "background", "color", "border-color", "title", "click", 4, "ngFor", "ngForOf"], [1, "ap-chip", "ap-chip--tag", 3, "click", "title"], [1, "ap-create-tag", 3, "click", "disabled"], [1, "move-sprint-icon"], ["class", "move-sprint-sub", 4, "ngIf"], ["class", "move-sprint-finished-tag", 4, "ngIf"], [1, "move-sprint-finished-tag"], [1, "move-sprint-loading"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], [1, "import-json-errors"], ["class", "import-json-error-item", 4, "ngFor", "ngForOf"], [1, "import-json-error-item"], [1, "import-json-progress-wrap"], [1, "import-json-progress-bar"], [1, "import-json-progress-fill"], [1, "import-json-progress-label"], [1, "import-json-done"], [1, "import-json-confirm", 3, "click", "disabled"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2.5", "stroke-linecap", "round", 4, "ngIf"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "class", "spin", 4, "ngIf"], ["width", "15", "height", "15", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", 1, "spin"], [1, "import-json-confirm", 3, "click"]], template: function TaskListComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "app-sidebar", 3);
       \u0275\u0275listener("toggle", function TaskListComponent_Template_app_sidebar_toggle_0_listener() {
@@ -41047,219 +42080,231 @@ Conclu\xEDdo: ${pct}%`);
       \u0275\u0275elementStart(22, "span");
       \u0275\u0275text(23, "Prioridades");
       \u0275\u0275elementEnd()();
-      \u0275\u0275element(24, "div", 13);
-      \u0275\u0275elementStart(25, "button", 14);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_25_listener() {
+      \u0275\u0275elementStart(24, "button", 4);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_24_listener() {
+        return ctx.setSection("types");
+      });
+      \u0275\u0275namespaceSVG();
+      \u0275\u0275elementStart(25, "svg", 5);
+      \u0275\u0275element(26, "path", 13)(27, "polyline", 14);
+      \u0275\u0275elementEnd();
+      \u0275\u0275namespaceHTML();
+      \u0275\u0275elementStart(28, "span");
+      \u0275\u0275text(29, "Tipos");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275element(30, "div", 15);
+      \u0275\u0275elementStart(31, "button", 16);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_31_listener() {
         return ctx.showComingSoon("Analytics");
       });
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(26, "svg", 5);
-      \u0275\u0275element(27, "line", 15)(28, "line", 16)(29, "line", 17);
+      \u0275\u0275elementStart(32, "svg", 5);
+      \u0275\u0275element(33, "line", 17)(34, "line", 18)(35, "line", 19);
       \u0275\u0275elementEnd();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(30, "span");
-      \u0275\u0275text(31, "Analytics");
+      \u0275\u0275elementStart(36, "span");
+      \u0275\u0275text(37, "Analytics");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(32, TaskListComponent_span_32_Template, 2, 0, "span", 18);
+      \u0275\u0275template(38, TaskListComponent_span_38_Template, 2, 0, "span", 20);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(33, "button", 14);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_33_listener() {
+      \u0275\u0275elementStart(39, "button", 16);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_39_listener() {
         return ctx.showComingSoon("EduCore");
       });
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(34, "svg", 5);
-      \u0275\u0275element(35, "path", 19)(36, "path", 20);
+      \u0275\u0275elementStart(40, "svg", 5);
+      \u0275\u0275element(41, "path", 21)(42, "path", 22);
       \u0275\u0275elementEnd();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(37, "span");
-      \u0275\u0275text(38, "EduCore");
+      \u0275\u0275elementStart(43, "span");
+      \u0275\u0275text(44, "EduCore");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(39, TaskListComponent_span_39_Template, 2, 0, "span", 18);
+      \u0275\u0275template(45, TaskListComponent_span_45_Template, 2, 0, "span", 20);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(40, "div", 21);
-      \u0275\u0275template(41, TaskListComponent_ng_container_41_Template, 102, 41, "ng-container", 22)(42, TaskListComponent_ng_container_42_Template, 2, 1, "ng-container", 22)(43, TaskListComponent_ng_container_43_Template, 2, 1, "ng-container", 22)(44, TaskListComponent_ng_container_44_Template, 2, 1, "ng-container", 22);
+      \u0275\u0275elementStart(46, "div", 23);
+      \u0275\u0275template(47, TaskListComponent_ng_container_47_Template, 102, 41, "ng-container", 24)(48, TaskListComponent_ng_container_48_Template, 2, 1, "ng-container", 24)(49, TaskListComponent_ng_container_49_Template, 2, 1, "ng-container", 24)(50, TaskListComponent_ng_container_50_Template, 2, 1, "ng-container", 24)(51, TaskListComponent_ng_container_51_Template, 2, 1, "ng-container", 24);
       \u0275\u0275elementEnd();
-      \u0275\u0275template(45, TaskListComponent_div_45_Template, 6, 14, "div", 23);
-      \u0275\u0275elementStart(46, "div", 24);
+      \u0275\u0275template(52, TaskListComponent_div_52_Template, 7, 15, "div", 25);
+      \u0275\u0275elementStart(53, "div", 26);
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(47, "svg", 25);
-      \u0275\u0275element(48, "path", 26);
+      \u0275\u0275elementStart(54, "svg", 27);
+      \u0275\u0275element(55, "path", 28);
       \u0275\u0275elementEnd();
-      \u0275\u0275text(49);
+      \u0275\u0275text(56);
       \u0275\u0275elementEnd();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(50, "div", 27);
-      \u0275\u0275text(51);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(52, "app-modal", 28);
-      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_52_listener() {
-        return ctx.closeFinishConfirm();
-      });
-      \u0275\u0275elementStart(53, "div", 29)(54, "div", 30);
-      \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(55, "svg", 31);
-      \u0275\u0275element(56, "polygon", 8);
-      \u0275\u0275elementEnd()();
-      \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(57, "h2");
+      \u0275\u0275elementStart(57, "div", 29);
       \u0275\u0275text(58);
       \u0275\u0275elementEnd();
-      \u0275\u0275template(59, TaskListComponent_p_59_Template, 3, 2, "p", 22);
-      \u0275\u0275elementStart(60, "div", 32)(61, "button", 33);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_61_listener() {
+      \u0275\u0275elementStart(59, "app-modal", 30);
+      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_59_listener() {
         return ctx.closeFinishConfirm();
       });
-      \u0275\u0275text(62, "Cancelar");
+      \u0275\u0275elementStart(60, "div", 31)(61, "div", 32);
+      \u0275\u0275namespaceSVG();
+      \u0275\u0275elementStart(62, "svg", 33);
+      \u0275\u0275element(63, "polygon", 8);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275namespaceHTML();
+      \u0275\u0275elementStart(64, "h2");
+      \u0275\u0275text(65);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(63, "button", 34);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_63_listener() {
+      \u0275\u0275template(66, TaskListComponent_p_66_Template, 3, 2, "p", 24);
+      \u0275\u0275elementStart(67, "div", 34)(68, "button", 35);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_68_listener() {
+        return ctx.closeFinishConfirm();
+      });
+      \u0275\u0275text(69, "Cancelar");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(70, "button", 36);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_70_listener() {
         return ctx.confirmFinishSprint();
       });
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(64, "svg", 35);
-      \u0275\u0275element(65, "path", 26);
+      \u0275\u0275elementStart(71, "svg", 37);
+      \u0275\u0275element(72, "path", 28);
       \u0275\u0275elementEnd();
-      \u0275\u0275text(66, " Finalizar Sprint ");
+      \u0275\u0275text(73, " Finalizar Sprint ");
       \u0275\u0275elementEnd()()()();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(67, "app-task-dialog", 36);
-      \u0275\u0275listener("closeDialog", function TaskListComponent_Template_app_task_dialog_closeDialog_67_listener() {
+      \u0275\u0275elementStart(74, "app-task-dialog", 38);
+      \u0275\u0275listener("closeDialog", function TaskListComponent_Template_app_task_dialog_closeDialog_74_listener() {
         return ctx.closeTaskDialog();
-      })("save", function TaskListComponent_Template_app_task_dialog_save_67_listener($event) {
+      })("save", function TaskListComponent_Template_app_task_dialog_save_74_listener($event) {
         return ctx.confirmSaveTask($event);
-      })("addComment", function TaskListComponent_Template_app_task_dialog_addComment_67_listener($event) {
+      })("addComment", function TaskListComponent_Template_app_task_dialog_addComment_74_listener($event) {
         return ctx.onAddComment($event);
-      })("removeComment", function TaskListComponent_Template_app_task_dialog_removeComment_67_listener($event) {
+      })("removeComment", function TaskListComponent_Template_app_task_dialog_removeComment_74_listener($event) {
         return ctx.onRemoveComment($event);
-      })("manageAssignees", function TaskListComponent_Template_app_task_dialog_manageAssignees_67_listener() {
+      })("manageAssignees", function TaskListComponent_Template_app_task_dialog_manageAssignees_74_listener() {
         return ctx.openAssigneeModal(ctx.editingTask);
-      })("deleteTask", function TaskListComponent_Template_app_task_dialog_deleteTask_67_listener() {
+      })("deleteTask", function TaskListComponent_Template_app_task_dialog_deleteTask_74_listener() {
         return ctx.onDeleteFromDialog();
       });
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(68, "app-modal", 37);
-      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_68_listener() {
+      \u0275\u0275elementStart(75, "app-modal", 39);
+      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_75_listener() {
         return ctx.closeMoveModal();
       });
-      \u0275\u0275elementStart(69, "div", 38)(70, "div", 39)(71, "div")(72, "h2");
-      \u0275\u0275text(73, "Mover para Sprint");
+      \u0275\u0275elementStart(76, "div", 40)(77, "div", 41)(78, "div")(79, "h2");
+      \u0275\u0275text(80, "Mover para Sprint");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(74, "p", 40)(75, "strong");
-      \u0275\u0275text(76);
+      \u0275\u0275elementStart(81, "p", 42)(82, "strong");
+      \u0275\u0275text(83);
       \u0275\u0275elementEnd();
-      \u0275\u0275text(77);
+      \u0275\u0275text(84);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(78, "button", 41);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_78_listener() {
+      \u0275\u0275elementStart(85, "button", 43);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_85_listener() {
         return ctx.closeMoveModal();
       });
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(79, "svg", 42);
-      \u0275\u0275element(80, "path", 43);
+      \u0275\u0275elementStart(86, "svg", 44);
+      \u0275\u0275element(87, "path", 45);
       \u0275\u0275elementEnd()()();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(81, "div", 44)(82, "button", 45);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_82_listener() {
+      \u0275\u0275elementStart(88, "div", 46)(89, "button", 47);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_89_listener() {
         return ctx.moveSelectedToSprint(null);
       });
-      \u0275\u0275elementStart(83, "div", 46);
+      \u0275\u0275elementStart(90, "div", 48);
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(84, "svg", 47);
-      \u0275\u0275element(85, "circle", 48);
+      \u0275\u0275elementStart(91, "svg", 49);
+      \u0275\u0275element(92, "circle", 50);
       \u0275\u0275elementEnd()();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(86, "div", 49)(87, "span", 50);
-      \u0275\u0275text(88, "Sem Sprint");
+      \u0275\u0275elementStart(93, "div", 51)(94, "span", 52);
+      \u0275\u0275text(95, "Sem Sprint");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(89, "span", 51);
-      \u0275\u0275text(90, "Backlog");
+      \u0275\u0275elementStart(96, "span", 53);
+      \u0275\u0275text(97, "Backlog");
       \u0275\u0275elementEnd()()();
-      \u0275\u0275template(91, TaskListComponent_button_91_Template, 9, 4, "button", 52);
+      \u0275\u0275template(98, TaskListComponent_button_98_Template, 9, 4, "button", 54);
       \u0275\u0275elementEnd();
-      \u0275\u0275template(92, TaskListComponent_div_92_Template, 4, 0, "div", 53);
+      \u0275\u0275template(99, TaskListComponent_div_99_Template, 4, 0, "div", 55);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(93, "app-confirm-dialog", 54);
-      \u0275\u0275listener("confirm", function TaskListComponent_Template_app_confirm_dialog_confirm_93_listener() {
+      \u0275\u0275elementStart(100, "app-confirm-dialog", 56);
+      \u0275\u0275listener("confirm", function TaskListComponent_Template_app_confirm_dialog_confirm_100_listener() {
         return ctx.confirmDeleteTask();
-      })("cancel", function TaskListComponent_Template_app_confirm_dialog_cancel_93_listener() {
+      })("cancel", function TaskListComponent_Template_app_confirm_dialog_cancel_100_listener() {
         return ctx.cancelDeleteTask();
       });
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(94, "app-modal", 55);
-      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_94_listener() {
+      \u0275\u0275elementStart(101, "app-modal", 57);
+      \u0275\u0275listener("closeModal", function TaskListComponent_Template_app_modal_closeModal_101_listener() {
         return ctx.closeImportJsonModal();
       });
-      \u0275\u0275elementStart(95, "div", 56)(96, "div", 57)(97, "div", 58)(98, "div", 59);
+      \u0275\u0275elementStart(102, "div", 58)(103, "div", 59)(104, "div", 60)(105, "div", 61);
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(99, "svg", 60);
-      \u0275\u0275element(100, "path", 61)(101, "polyline", 62)(102, "line", 63);
+      \u0275\u0275elementStart(106, "svg", 62);
+      \u0275\u0275element(107, "path", 63)(108, "polyline", 64)(109, "line", 65);
       \u0275\u0275elementEnd()();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(103, "div")(104, "h2");
-      \u0275\u0275text(105, "Importar Tarefas via JSON");
+      \u0275\u0275elementStart(110, "div")(111, "h2");
+      \u0275\u0275text(112, "Importar Tarefas via JSON");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(106, "p");
-      \u0275\u0275text(107, "Cole o JSON abaixo. Cada item precisa ter ao menos o campo ");
-      \u0275\u0275elementStart(108, "code");
-      \u0275\u0275text(109, "description");
+      \u0275\u0275elementStart(113, "p");
+      \u0275\u0275text(114, "Cole o JSON abaixo. Cada item precisa ter ao menos o campo ");
+      \u0275\u0275elementStart(115, "code");
+      \u0275\u0275text(116, "description");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(110, ".");
+      \u0275\u0275text(117, ".");
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(111, "button", 41);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_111_listener() {
+      \u0275\u0275elementStart(118, "button", 43);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_118_listener() {
         return ctx.closeImportJsonModal();
       });
       \u0275\u0275namespaceSVG();
-      \u0275\u0275elementStart(112, "svg", 42);
-      \u0275\u0275element(113, "path", 43);
+      \u0275\u0275elementStart(119, "svg", 44);
+      \u0275\u0275element(120, "path", 45);
       \u0275\u0275elementEnd()()();
       \u0275\u0275namespaceHTML();
-      \u0275\u0275elementStart(114, "div", 64)(115, "span", 65);
-      \u0275\u0275text(116, "Formato:");
+      \u0275\u0275elementStart(121, "div", 66)(122, "span", 67);
+      \u0275\u0275text(123, "Formato:");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(117, "code", 66);
-      \u0275\u0275text(118, '[ { "description": "Criar tela", "priority": "Alta", "epic": "MVP" } ]');
+      \u0275\u0275elementStart(124, "code", 68);
+      \u0275\u0275text(125, '[ { "description": "Criar tela", "priority": "Alta", "epic": "MVP" } ]');
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(119, "div", 67)(120, "div", 68)(121, "label", 69);
-      \u0275\u0275text(122, "Sprint padr\xE3o");
+      \u0275\u0275elementStart(126, "div", 69)(127, "div", 70)(128, "label", 71);
+      \u0275\u0275text(129, "Sprint padr\xE3o");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(123, "select", 70);
-      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_select_ngModelChange_123_listener($event) {
+      \u0275\u0275elementStart(130, "select", 72);
+      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_select_ngModelChange_130_listener($event) {
         \u0275\u0275twoWayBindingSet(ctx.importJsonSprintId, $event) || (ctx.importJsonSprintId = $event);
         return $event;
       });
-      \u0275\u0275elementStart(124, "option", 71);
-      \u0275\u0275text(125, "\u2014 Sem sprint \u2014");
+      \u0275\u0275elementStart(131, "option", 73);
+      \u0275\u0275text(132, "\u2014 Sem sprint \u2014");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(126, TaskListComponent_option_126_Template, 2, 2, "option", 72);
+      \u0275\u0275template(133, TaskListComponent_option_133_Template, 2, 2, "option", 74);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(127, "div", 68)(128, "label", 69);
-      \u0275\u0275text(129, "Status padr\xE3o");
+      \u0275\u0275elementStart(134, "div", 70)(135, "label", 71);
+      \u0275\u0275text(136, "Status padr\xE3o");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(130, "select", 70);
-      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_select_ngModelChange_130_listener($event) {
+      \u0275\u0275elementStart(137, "select", 72);
+      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_select_ngModelChange_137_listener($event) {
         \u0275\u0275twoWayBindingSet(ctx.importJsonStatusId, $event) || (ctx.importJsonStatusId = $event);
         return $event;
       });
-      \u0275\u0275elementStart(131, "option", 71);
-      \u0275\u0275text(132, "\u2014 Sem status \u2014");
+      \u0275\u0275elementStart(138, "option", 73);
+      \u0275\u0275text(139, "\u2014 Sem status \u2014");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(133, TaskListComponent_option_133_Template, 2, 2, "option", 72);
+      \u0275\u0275template(140, TaskListComponent_option_140_Template, 2, 2, "option", 74);
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(134, "textarea", 73);
-      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_textarea_ngModelChange_134_listener($event) {
+      \u0275\u0275elementStart(141, "textarea", 75);
+      \u0275\u0275twoWayListener("ngModelChange", function TaskListComponent_Template_textarea_ngModelChange_141_listener($event) {
         \u0275\u0275twoWayBindingSet(ctx.importJsonText, $event) || (ctx.importJsonText = $event);
         return $event;
       });
       \u0275\u0275elementEnd();
-      \u0275\u0275template(135, TaskListComponent_div_135_Template, 2, 1, "div", 74)(136, TaskListComponent_div_136_Template, 5, 4, "div", 75)(137, TaskListComponent_div_137_Template, 2, 1, "div", 76);
-      \u0275\u0275elementStart(138, "div", 77)(139, "button", 78);
-      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_139_listener() {
+      \u0275\u0275template(142, TaskListComponent_div_142_Template, 2, 1, "div", 76)(143, TaskListComponent_div_143_Template, 5, 4, "div", 77)(144, TaskListComponent_div_144_Template, 2, 1, "div", 78);
+      \u0275\u0275elementStart(145, "div", 79)(146, "button", 80);
+      \u0275\u0275listener("click", function TaskListComponent_Template_button_click_146_listener() {
         return ctx.closeImportJsonModal();
       });
-      \u0275\u0275text(140, "Cancelar");
+      \u0275\u0275text(147, "Cancelar");
       \u0275\u0275elementEnd();
-      \u0275\u0275template(141, TaskListComponent_button_141_Template, 4, 4, "button", 79)(142, TaskListComponent_button_142_Template, 4, 0, "button", 80);
+      \u0275\u0275template(148, TaskListComponent_button_148_Template, 4, 4, "button", 81)(149, TaskListComponent_button_149_Template, 4, 0, "button", 82);
       \u0275\u0275elementEnd()()();
     }
     if (rf & 2) {
@@ -41272,6 +42317,8 @@ Conclu\xEDdo: ${pct}%`);
       \u0275\u0275classProp("active", ctx.section() === "statuses");
       \u0275\u0275advance(6);
       \u0275\u0275classProp("active", ctx.section() === "priorities");
+      \u0275\u0275advance(6);
+      \u0275\u0275classProp("active", ctx.section() === "types");
       \u0275\u0275advance(14);
       \u0275\u0275property("ngIf", !ctx.sidebarCollapsed());
       \u0275\u0275advance(7);
@@ -41284,6 +42331,8 @@ Conclu\xEDdo: ${pct}%`);
       \u0275\u0275property("ngIf", ctx.section() === "statuses");
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.section() === "priorities");
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.section() === "types");
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.activePopover());
       \u0275\u0275advance();
@@ -41301,7 +42350,7 @@ Conclu\xEDdo: ${pct}%`);
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.sprintToFinishTasks.length > 0);
       \u0275\u0275advance(8);
-      \u0275\u0275property("isOpen", ctx.taskDialogOpen())("mode", ctx.dialogMode)("task", ctx.editingTask)("statuses", ctx.statuses())("sprints", ctx.sprints())("tags", ctx.tags())("priorities", ctx.priorities())("saving", ctx.saving())("comments", ctx.comments())("savingComment", ctx.savingComment());
+      \u0275\u0275property("isOpen", ctx.taskDialogOpen())("mode", ctx.dialogMode)("task", ctx.editingTask)("statuses", ctx.statuses())("sprints", ctx.sprints())("tags", ctx.tags())("priorities", ctx.priorities())("taskTypes", ctx.taskTypes())("saving", ctx.saving())("comments", ctx.comments())("savingComment", ctx.savingComment());
       \u0275\u0275advance();
       \u0275\u0275property("isOpen", ctx.moveSprintModalOpen());
       \u0275\u0275advance(8);
@@ -41372,12 +42421,13 @@ Conclu\xEDdo: ${pct}%`);
     SprintManager,
     StatusManager,
     PriorityManager,
+    TypeManager,
     Sidebar,
     TaskFilters,
     TooltipDirective,
     DecimalPipe,
     DatePipe
-  ], styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n\n[_nghost-%COMP%] {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-lg: 20px;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);\n  display: flex;\n  align-items: stretch;\n  min-height: 100vh;\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  color: var(--text-primary);\n}\n[_nghost-%COMP%]   *[_ngcontent-%COMP%] {\n  cursor: default;\n}\n[_nghost-%COMP%]   button[_ngcontent-%COMP%], \n[_nghost-%COMP%]   [role=button][_ngcontent-%COMP%], \n[_nghost-%COMP%]   .task-title-cell[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n.sidebar-nav-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.6);\n  cursor: pointer;\n  white-space: nowrap;\n  overflow: hidden;\n  text-align: left;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]:hover   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.sidebar-nav-item.active[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.18);\n  color: white;\n}\n.sidebar-nav-item.active[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.section-placeholder[_ngcontent-%COMP%] {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n}\n.page[_ngcontent-%COMP%] {\n  flex: 1;\n  min-width: 0;\n  max-width: 1280px;\n  margin: 0 auto;\n  padding: 40px 32px 64px;\n}\n.page-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  flex-wrap: wrap;\n  gap: 20px;\n  margin-bottom: 32px;\n}\n.back-link[_ngcontent-%COMP%] {\n  border: none;\n  background: none;\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  padding: 0;\n  margin-bottom: 8px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n.back-link[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.header-text[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n}\n.header-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.view-toggle[_ngcontent-%COMP%] {\n  display: flex;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 3px;\n  gap: 2px;\n}\n.toggle-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: transparent;\n  padding: 8px 16px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.toggle-btn[_ngcontent-%COMP%]:hover {\n  color: var(--text-primary);\n}\n.toggle-btn.active[_ngcontent-%COMP%] {\n  background: var(--accent);\n  color: white;\n}\n.selection-bar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: var(--radius-md);\n  box-shadow: 0 8px 32px rgba(28, 28, 31, 0.22);\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(16px);\n  z-index: 500;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  white-space: nowrap;\n  max-width: calc(100vw - 48px);\n}\n.selection-bar.visible[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n  pointer-events: auto;\n}\n.selection-bar-info[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count[_ngcontent-%COMP%] {\n  font-size: 13px;\n  font-weight: 600;\n}\n.selection-bar-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-action-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: 1.5px solid rgba(255, 255, 255, 0.35);\n  background: transparent;\n  color: white;\n  padding: 6px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.selection-action-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.12);\n  border-color: rgba(255, 255, 255, 0.6);\n}\n.selection-clear-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: transparent;\n  color: rgba(255, 255, 255, 0.65);\n  padding: 6px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  cursor: pointer;\n  transition: color 0.12s ease, background 0.12s ease;\n}\n.selection-clear-btn[_ngcontent-%COMP%]:hover {\n  color: white;\n  background: rgba(255, 255, 255, 0.08);\n}\n.table-view[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.table-columns-header[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: stretch;\n  padding: 0;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-primary);\n  white-space: nowrap;\n  overflow: hidden;\n  padding: 12px 16px;\n  border-right: 1px solid var(--border);\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%]:last-child {\n  border-right: none;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-check[_ngcontent-%COMP%] {\n  justify-content: center;\n  padding: 0;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-status[_ngcontent-%COMP%], \n.table-columns-header[_ngcontent-%COMP%]   .col-priority[_ngcontent-%COMP%], \n.table-columns-header[_ngcontent-%COMP%]   .col-assignee[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-title[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sort-col[_ngcontent-%COMP%] {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sort-col[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.sort-col[_ngcontent-%COMP%]:hover   .sort-icon[_ngcontent-%COMP%] {\n  opacity: 1;\n  color: var(--accent);\n}\n.sort-icon[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  opacity: 0.35;\n  color: var(--text-secondary);\n  transition: opacity 0.12s ease, color 0.12s ease;\n  flex-shrink: 0;\n}\n.sort-icon.active[_ngcontent-%COMP%] {\n  opacity: 1;\n  color: var(--accent);\n}\n.row-checkbox[_ngcontent-%COMP%] {\n  width: 15px;\n  height: 15px;\n  border-radius: 4px;\n  accent-color: var(--accent);\n  cursor: pointer;\n  flex-shrink: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: center;\n  background: rgba(28, 28, 31, 0.022);\n  border-bottom: 1px solid var(--border);\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 7px 10px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-drag[_ngcontent-%COMP%] {\n  justify-content: center;\n  padding: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-check[_ngcontent-%COMP%] {\n  padding: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-title[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-status[_ngcontent-%COMP%], \n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-priority[_ngcontent-%COMP%], \n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-assignee[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-epic[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-tags[_ngcontent-%COMP%] {\n  padding-left: 8px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .sort-col[_ngcontent-%COMP%] {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .sort-col[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.sprint-group[_ngcontent-%COMP%] {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n}\n.sprint-group-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 12px 18px 12px 14px;\n  cursor: pointer;\n  background: var(--bg);\n  border-bottom: 1px solid var(--border);\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n  transition: background 0.12s ease;\n}\n.sprint-group-header[_ngcontent-%COMP%]:hover {\n  background: #F3F2EE;\n}\n.order-reset-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  flex-shrink: 0;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  border-radius: 8px;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.order-reset-btn[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n}\n.chevron[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  transition: transform 0.15s ease;\n  display: inline-block;\n}\n.chevron.collapsed[_ngcontent-%COMP%] {\n  transform: rotate(-90deg);\n}\n.sprint-name[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 600;\n}\n.sprint-count[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 1px 9px;\n}\n.task-rows[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  border-radius: 0 0 var(--radius-md) var(--radius-md);\n}\n.task-row[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: stretch;\n  gap: 0;\n  padding: 0;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.12s ease;\n}\n.task-row[_ngcontent-%COMP%]:last-child {\n  border-bottom: none;\n}\n.task-row[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.03);\n}\n.task-row.selected[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.05);\n}\n.task-row.selected[_ngcontent-%COMP%]   .task-check-cell[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.04);\n}\n.task-check-cell[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-right: 1px solid var(--border);\n  padding: 0;\n  cursor: default;\n}\n.task-title-cell[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 13px 16px 13px 12px;\n  border-right: 1px solid var(--border);\n  overflow: hidden;\n  cursor: pointer;\n}\n.task-title-cell[_ngcontent-%COMP%]:hover   .copy-btn[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.task-title[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  flex: 1;\n  min-width: 0;\n}\n.task-epic-tag[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 7px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  background: #EDE9FE;\n  color: #6D28D9;\n  border: 1px solid #DDD6FE;\n  white-space: nowrap;\n  max-width: 120px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-tag-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 8px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 600;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  max-width: 100px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: default;\n}\n.task-drag-handle[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  flex-shrink: 0;\n  color: #C4C4CC;\n  cursor: grab;\n  opacity: 0.85;\n  transition: color 0.12s ease, opacity 0.12s ease;\n}\n.task-drag-handle[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  opacity: 1;\n}\n.task-drag-handle[_ngcontent-%COMP%]:active {\n  cursor: grabbing;\n}\n.task-row[_ngcontent-%COMP%]:hover   .task-drag-handle[_ngcontent-%COMP%] {\n  color: #9CA3AF;\n}\n.task-row[_ngcontent-%COMP%]:hover   .task-drag-handle[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.task-drag-placeholder[_ngcontent-%COMP%] {\n  height: 46px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 0;\n}\n.task-drag-preview[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #fff;\n  border: 1px solid #E8E6E1;\n  border-radius: 8px;\n  padding: 10px 16px;\n  font-size: 13px;\n  font-weight: 500;\n  color: #1C1C1F;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.14);\n  max-width: 400px;\n}\n.task-drag-preview-text[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 360px;\n}\n.cdk-drop-list-dragging[_ngcontent-%COMP%]   .task-row[_ngcontent-%COMP%]:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.copy-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: #B4B4BC;\n  cursor: pointer;\n  opacity: 1;\n  transition: color 0.15s ease, background 0.15s ease;\n  border-radius: 6px;\n}\n.copy-btn[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n}\n.copy-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 14px;\n  height: 14px;\n}\n.task-col[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  border-right: 1px solid var(--border);\n  padding: 0 4px;\n}\n.task-col[_ngcontent-%COMP%]   app-popover[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.task-col[_ngcontent-%COMP%]   app-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n}\n.col-actions[_ngcontent-%COMP%] {\n  justify-content: center;\n  border-right: none;\n}\n.assignee-avatar[_ngcontent-%COMP%] {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: #EEF2FF;\n  color: var(--accent);\n  font-family: "Outfit", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-avatar.assignee-avatar--empty[_ngcontent-%COMP%] {\n  background: var(--bg);\n  color: var(--text-secondary);\n  border: 1px dashed var(--border);\n}\n.row-delete-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  opacity: 0.45;\n  transition:\n    opacity 0.15s ease,\n    color 0.15s ease,\n    background 0.15s ease;\n  width: 28px;\n  height: 28px;\n  border-radius: 6px;\n}\n.row-delete-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.row-delete-btn[_ngcontent-%COMP%]:hover {\n  opacity: 1;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n}\n.task-row-empty[_ngcontent-%COMP%] {\n  padding: 18px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.kanban-placeholder[_ngcontent-%COMP%] {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n}\n.empty-state[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 80px 24px;\n  color: var(--text-secondary);\n}\n.empty-state[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 600;\n  color: var(--text-primary);\n  margin: 0 0 6px;\n}\n.empty-state[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  margin: 0;\n}\n.status-popover-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 160px;\n}\n.status-popover-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.status-popover-item[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.status-popover-item--clear[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  margin-top: 4px;\n  padding-top: 10px;\n}\n.status-dot[_ngcontent-%COMP%] {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.meta-trigger[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  border-radius: 999px;\n  transition: transform 0.1s ease;\n}\n.meta-trigger[_ngcontent-%COMP%]:hover {\n  transform: translateY(-1px);\n}\n.task-col--epic[_ngcontent-%COMP%] {\n  justify-content: flex-start;\n  padding: 0 12px;\n  overflow: hidden;\n}\n.task-col-empty[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: #C4C4CC;\n}\n.task-col--tags[_ngcontent-%COMP%] {\n  padding: 0 8px;\n  overflow: hidden;\n}\n.tags-trigger[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 4px 6px;\n  border-radius: 8px;\n  max-width: 100%;\n  overflow: hidden;\n  transition: background 0.12s ease;\n}\n.tags-trigger[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.task-tag-more[_ngcontent-%COMP%] {\n  font-size: 10px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.tags-empty[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: #C4C4CC;\n  transition: color 0.12s ease;\n}\n.tags-trigger[_ngcontent-%COMP%]:hover   .tags-empty[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.assignees-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  min-width: 28px;\n  min-height: 28px;\n}\n.assignees-trigger[_ngcontent-%COMP%]   app-avatar[_ngcontent-%COMP%] {\n  display: inline-flex;\n  border-radius: 50%;\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n  transition: margin-left 0.12s ease;\n}\n.assignees-trigger[_ngcontent-%COMP%]   app-avatar[_ngcontent-%COMP%]:first-child {\n  margin-left: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   app-avatar[_ngcontent-%COMP%] {\n  margin-left: -3px;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   app-avatar[_ngcontent-%COMP%]:first-child {\n  margin-left: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]   .assignee-avatar--more[_ngcontent-%COMP%] {\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   .assignee-avatar--more[_ngcontent-%COMP%] {\n  margin-left: -3px;\n}\n.assignee-avatar--more[_ngcontent-%COMP%] {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: var(--border);\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 10px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 360px;\n}\n.assignee-modal-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.assignee-modal-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.assignee-modal-close[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-modal-close[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.assignee-chips[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n.assignee-chip[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 6px 10px 6px 6px;\n  border-radius: 20px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.assignee-chip[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.assignee-chip[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.assignee-search[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.assignee-search-input[_ngcontent-%COMP%] {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 36px 10px 14px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  background: var(--surface);\n  box-sizing: border-box;\n}\n.assignee-search-input[_ngcontent-%COMP%]:focus {\n  outline: none;\n  border-color: var(--accent);\n}\n.assignee-search-input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.assignee-search-icon[_ngcontent-%COMP%] {\n  position: absolute;\n  right: 12px;\n  color: var(--text-secondary);\n  pointer-events: none;\n}\n.assignee-suggested-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.assignee-suggested-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.assignee-suggested-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.assignee-suggested-item[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.assignee-suggested-empty[_ngcontent-%COMP%] {\n  padding: 16px 10px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.assignee-confirm-btn[_ngcontent-%COMP%] {\n  align-self: flex-end;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: 1.5px solid var(--accent);\n  background: var(--surface);\n  color: var(--accent);\n  padding: 10px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-confirm-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent);\n  color: white;\n}\n.move-sprint-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 340px;\n}\n.move-sprint-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.move-sprint-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.move-sprint-subtitle[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.move-sprint-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 320px;\n  overflow-y: auto;\n}\n.move-sprint-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.move-sprint-item[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.move-sprint-item[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.move-sprint-item[_ngcontent-%COMP%]:hover:not(:disabled)   svg[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.move-sprint-item[_ngcontent-%COMP%]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.move-sprint-date[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-loading[_ngcontent-%COMP%] {\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n  padding: 8px 0;\n}\n.bulk-dropdown-wrap[_ngcontent-%COMP%] {\n  position: relative;\n}\n.bulk-dropdown[_ngcontent-%COMP%] {\n  position: absolute;\n  bottom: calc(100% + 8px);\n  left: 0;\n  min-width: 220px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 -4px 24px rgba(28, 28, 31, 0.12), 0 8px 24px rgba(28, 28, 31, 0.08);\n  padding: 6px;\n  z-index: 600;\n  opacity: 0;\n  transform: translateY(6px);\n  pointer-events: none;\n  transition: opacity 0.15s ease, transform 0.15s ease;\n}\n.bulk-dropdown.open[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateY(0);\n  pointer-events: auto;\n}\n.bulk-dropdown-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px 8px;\n}\n.bulk-dropdown-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.bulk-dropdown-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.bulk-dropdown-item[_ngcontent-%COMP%]:hover   .bulk-status-dot[_ngcontent-%COMP%] {\n  outline: 2px solid rgba(79, 70, 229, 0.3);\n}\n.bulk-dropdown--assignee[_ngcontent-%COMP%] {\n  min-width: 240px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.bulk-assignee-search[_ngcontent-%COMP%] {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  background: var(--bg);\n  margin-bottom: 4px;\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n}\n.bulk-assignee-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 6px 10px;\n  margin: 0;\n}\n.bulk-status-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  outline: 2px solid transparent;\n  transition: outline 0.1s ease;\n}\n.bulk-overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 199;\n}\n.bulk-updating-hint[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  color: rgba(255, 255, 255, 0.65);\n}\n.filters-wrap[_ngcontent-%COMP%] {\n  margin-bottom: 16px;\n}\n.task-mobile-meta[_ngcontent-%COMP%] {\n  display: none;\n}\n@media (max-width: 860px) {\n  .sprint-group-header[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n    row-gap: 6px;\n  }\n  .sprint-finish-btn[_ngcontent-%COMP%] {\n    order: 10;\n    width: 100%;\n    justify-content: center;\n    margin-top: 4px;\n  }\n}\n@media (max-width: 720px) {\n  [_nghost-%COMP%] {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .page[_ngcontent-%COMP%] {\n    padding: 20px 14px 48px;\n  }\n  .page-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .header-actions[_ngcontent-%COMP%] {\n    display: flex;\n    gap: 8px;\n    align-items: stretch;\n  }\n  .view-toggle[_ngcontent-%COMP%] {\n    flex: 1;\n  }\n  .global-columns-header[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .selection-bar[_ngcontent-%COMP%] {\n    bottom: 12px;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 10px;\n    padding: 12px 14px;\n    max-width: calc(100vw - 24px);\n  }\n  .selection-bar-actions[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n    gap: 6px;\n  }\n  .selection-action-btn[_ngcontent-%COMP%] {\n    font-size: 12px;\n    padding: 7px 12px;\n  }\n  .assignee-modal[_ngcontent-%COMP%], \n   .move-sprint-modal[_ngcontent-%COMP%], \n   .finish-sprint-modal[_ngcontent-%COMP%] {\n    min-width: 0;\n  }\n  .sprint-group-header[_ngcontent-%COMP%] {\n    padding: 12px 14px;\n    gap: 8px;\n  }\n  .sprint-name[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n}\n@media (max-width: 560px) {\n  .task-row[_ngcontent-%COMP%] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    position: relative;\n    padding: 0;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-check-cell[_ngcontent-%COMP%] {\n    flex: 0 0 40px;\n    border-right: none;\n    align-self: flex-start;\n    padding-top: 14px;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-title-cell[_ngcontent-%COMP%] {\n    flex: 1;\n    min-width: 0;\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 4px;\n    border-right: none;\n    padding: 10px 0 10px 0;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-col[_ngcontent-%COMP%]:not(.col-actions) {\n    display: none;\n  }\n  .task-row[_ngcontent-%COMP%]   .col-actions[_ngcontent-%COMP%] {\n    flex: 0 0 40px;\n    border-right: none;\n    border-left: none;\n    align-self: flex-start;\n    padding-top: 10px;\n  }\n  .task-mobile-meta[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    flex-wrap: wrap;\n  }\n  .task-mobile-status[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    gap: 4px;\n    font-size: 11px;\n    font-weight: 600;\n  }\n  .task-mobile-dot[_ngcontent-%COMP%] {\n    display: inline-block;\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    flex-shrink: 0;\n  }\n  .task-mobile-priority[_ngcontent-%COMP%] {\n    font-size: 11px;\n    font-weight: 700;\n    opacity: 0.85;\n  }\n  .sprint-header-top[_ngcontent-%COMP%] {\n    gap: 6px;\n  }\n  .sprint-dates[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .sprint-progress-wrap[_ngcontent-%COMP%] {\n    margin-top: 2px;\n  }\n  .page-header[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    font-size: 22px;\n  }\n  .page-header-kicker[_ngcontent-%COMP%] {\n    font-size: 10px;\n  }\n}\n.sprint-header-info[_ngcontent-%COMP%] {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.sprint-header-top[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.sprint-dates[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  font-weight: 500;\n}\n.sprint-dates[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.sprint-overdue-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n  border: 1px solid rgba(220, 38, 38, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-finished-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-progress-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  cursor: default;\n}\n.sprint-progress-bar[_ngcontent-%COMP%] {\n  flex: 1;\n  height: 5px;\n  border-radius: 999px;\n  background: var(--border);\n  overflow: hidden;\n  display: flex;\n  min-width: 80px;\n  max-width: 320px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%] {\n  height: 100%;\n  transition: width 0.3s ease;\n  min-width: 2px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:first-child {\n  border-radius: 999px 0 0 999px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:last-child {\n  border-radius: 0 999px 999px 0;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:only-child {\n  border-radius: 999px;\n}\n.sprint-progress-pct[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  white-space: nowrap;\n  min-width: 32px;\n  text-align: right;\n}\n.sprint-progress-pct.pct--done[_ngcontent-%COMP%] {\n  color: #059669;\n}\n.sprint-group--overdue[_ngcontent-%COMP%]   .sprint-group-header[_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.02);\n  border-bottom-color: rgba(220, 38, 38, 0.12);\n}\n.sprint-group--overdue[_ngcontent-%COMP%]   .sprint-progress-bar[_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.1);\n}\n.sprint-group--finished[_ngcontent-%COMP%] {\n  opacity: 0.72;\n}\n.sprint-group--finished[_ngcontent-%COMP%]   .sprint-group-header[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.02);\n}\n.sprint-group--finished[_ngcontent-%COMP%]   .sprint-progress-bar[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.1);\n}\n.sprint-finish-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: not-allowed;\n  white-space: nowrap;\n  opacity: 0.55;\n  transition: all 0.15s ease;\n  flex-shrink: 0;\n}\n.sprint-finish-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.sprint-finish-btn.sprint-finish-btn--ready[_ngcontent-%COMP%] {\n  cursor: pointer;\n  opacity: 1;\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.sprint-finish-btn.sprint-finish-btn--ready[_ngcontent-%COMP%]:hover {\n  background: var(--accent);\n  color: white;\n}\n.sprint-finish-btn[_ngcontent-%COMP%]:disabled:not(.sprint-finish-btn--ready) {\n  pointer-events: none;\n}\n.finish-sprint-modal[_ngcontent-%COMP%] {\n  padding: 32px 28px 28px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 12px;\n  text-align: center;\n}\n.finish-sprint-icon[_ngcontent-%COMP%] {\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 4px;\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  color: var(--text-secondary);\n  margin: 0;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   strong[_ngcontent-%COMP%] {\n  color: var(--text-primary);\n}\n.finish-sprint-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 10px;\n  margin-top: 8px;\n}\n.finish-sprint-cancel[_ngcontent-%COMP%] {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.finish-sprint-cancel[_ngcontent-%COMP%]:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.finish-sprint-confirm[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.finish-sprint-confirm[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.toast[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(12px);\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 9999;\n  white-space: nowrap;\n  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);\n}\n.toast[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  color: #34D399;\n  flex-shrink: 0;\n}\n.toast.toast--visible[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n}\n@keyframes _ngcontent-%COMP%_spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.spin[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n.header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.header-title-block[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.header-board-name[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.header-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n  color: var(--text-primary);\n}\n.header-stats[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.stat-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 999px;\n  padding: 3px 10px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.02em;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.stat-chip--total[_ngcontent-%COMP%]   .stat-chip-num[_ngcontent-%COMP%] {\n  color: var(--text-primary);\n  font-weight: 700;\n}\n.stat-chip--done[_ngcontent-%COMP%] {\n  border-color: rgba(5, 150, 105, 0.25);\n  background: rgba(5, 150, 105, 0.06);\n  color: #059669;\n}\n.stat-chip--progress[_ngcontent-%COMP%] {\n  border-color: rgba(79, 70, 229, 0.2);\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.stat-chip--pct[_ngcontent-%COMP%] {\n  border-color: var(--border);\n  background: var(--text-primary);\n  color: white;\n  font-weight: 700;\n}\n.stat-chip-dot[_ngcontent-%COMP%] {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.selection-bar-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count-badge[_ngcontent-%COMP%] {\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  background: var(--accent);\n  color: white;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.selection-count-label[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.9);\n  white-space: nowrap;\n}\n.selection-bar-sep[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 20px;\n  background: rgba(255, 255, 255, 0.18);\n  flex-shrink: 0;\n}\n.selection-action-btn--move[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.4);\n}\n.bulk-dropdown-header[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 10px 8px;\n}\n.bulk-dropdown-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  max-height: 220px;\n  overflow-y: auto;\n}\n.bulk-assignee-search-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  margin: 0 4px 4px;\n}\n.bulk-assignee-search-wrap[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.bulk-assignee-search[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.bulk-user-name[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.sprint-progress-detail[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.sprint-days-remaining[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  color: #D97706;\n  background: rgba(217, 119, 6, 0.08);\n  border: 1px solid rgba(217, 119, 6, 0.18);\n  border-radius: 20px;\n  padding: 1px 7px;\n  letter-spacing: 0.02em;\n}\n.move-sprint-icon[_ngcontent-%COMP%] {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  background: rgba(79, 70, 229, 0.07);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.move-sprint-icon--backlog[_ngcontent-%COMP%] {\n  background: var(--bg);\n  color: var(--text-secondary);\n}\n.move-sprint-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  flex: 1;\n  min-width: 0;\n}\n.move-sprint-name[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.move-sprint-sub[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-finished-tag[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.04em;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.18);\n  border-radius: 20px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.loading-state[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  padding: 80px 24px;\n  font-size: 14px;\n  color: var(--text-secondary);\n}\n@keyframes _ngcontent-%COMP%_uni-pop-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n.uni-popover[_ngcontent-%COMP%] {\n  position: fixed;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 16px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  z-index: 2000;\n  display: flex;\n  flex-direction: column;\n  overflow: visible;\n  animation: _ngcontent-%COMP%_uni-pop-in 0.14s ease;\n}\n.uni-popover-arrow[_ngcontent-%COMP%] {\n  position: absolute;\n  top: -7px;\n  width: 13px;\n  height: 13px;\n  background: var(--surface);\n  border-left: 1px solid var(--border);\n  border-top: 1px solid var(--border);\n  transform: translateX(-50%) rotate(45deg);\n  z-index: 1;\n}\n.uni-popover--top[_ngcontent-%COMP%]   .uni-popover-arrow[_ngcontent-%COMP%] {\n  top: auto;\n  bottom: -7px;\n  transform: translateX(-50%) rotate(225deg);\n}\n.uni-popover[_ngcontent-%COMP%]    > .uni-pop-head[_ngcontent-%COMP%]:first-of-type {\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n}\n.uni-pop-head[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 10px 14px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n  position: relative;\n  z-index: 2;\n}\n.uni-pop-close[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.uni-pop-close[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.uni-pop-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  padding: 6px;\n  max-height: 300px;\n  overflow-y: auto;\n}\n.uni-pop-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 9px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.uni-pop-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.uni-pop-item.active[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.08);\n  font-weight: 600;\n}\n.uni-pop-item--clear[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  border-radius: 0;\n  margin-top: 4px;\n  font-size: 12px;\n}\n.uni-pop-item--clear[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.06);\n  color: #DC2626;\n}\n.uni-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.uni-check[_ngcontent-%COMP%] {\n  margin-left: auto;\n  color: var(--accent);\n  flex-shrink: 0;\n}\n.uni-popover-backdrop[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 1999;\n  background: transparent;\n}\n.ap-chip--tag[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.08);\n  border: 1px solid transparent;\n}\n.ap-chip--tag[_ngcontent-%COMP%]:hover {\n  filter: brightness(0.96);\n}\n.ap-create-tag[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: 1px dashed rgba(79, 70, 229, 0.35);\n  background: rgba(79, 70, 229, 0.04);\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--accent);\n  margin-top: 4px;\n  transition: background 0.12s ease;\n}\n.ap-create-tag[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.08);\n}\n.ap-create-tag[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.ap-create-tag[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.ap-create-tag[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-create-tag[_ngcontent-%COMP%]   strong[_ngcontent-%COMP%] {\n  font-weight: 700;\n}\n.ap-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 12px 14px 10px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.ap-header-left[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.ap-close-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.ap-close-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.ap-chips[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 6px;\n  border-bottom: 1px solid var(--border);\n}\n.ap-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  border-radius: 20px;\n  padding: 3px 8px 3px 4px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n  max-width: 150px;\n}\n.ap-chip[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-chip[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.1);\n  color: #DC2626;\n}\n.ap-chip[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.ap-search[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-search[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.ap-search[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.ap-search[_ngcontent-%COMP%]   input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.ap-list[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  padding: 6px;\n  max-height: 220px;\n}\n.ap-list-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.06em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.ap-list-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 7px 8px;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: background 0.1s ease;\n}\n.ap-list-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.ap-list-item[_ngcontent-%COMP%]:hover   .ap-user-name[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.ap-user-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  text-align: left;\n  min-width: 0;\n}\n.ap-user-name[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: color 0.1s ease;\n}\n.ap-user-role[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  text-align: center;\n  padding: 14px 8px;\n  margin: 0;\n}\n.ap-footer[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 8px 12px;\n  border-top: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-footer-hint[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.ap-done-btn[_ngcontent-%COMP%] {\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.ap-done-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.sidebar-divider[_ngcontent-%COMP%] {\n  height: 1px;\n  background: rgba(255, 255, 255, 0.12);\n  margin: 6px 4px;\n  flex-shrink: 0;\n}\n.sidebar-nav-item--soon[_ngcontent-%COMP%] {\n  opacity: 0.55;\n  cursor: pointer;\n}\n.sidebar-nav-item--soon[_ngcontent-%COMP%]:hover {\n  opacity: 0.85;\n}\n.sidebar-soon-badge[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  background: rgba(245, 158, 11, 0.25);\n  color: #FCD34D;\n  border-radius: 999px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.import-json-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 8px 16px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.import-json-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.import-json-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.toast--soon[_ngcontent-%COMP%] {\n  bottom: 80px;\n  background:\n    linear-gradient(\n      135deg,\n      #4F46E5,\n      #7C3AED);\n}\n.import-json-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.import-json-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n}\n.import-json-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n}\n.import-json-icon[_ngcontent-%COMP%] {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.import-json-header-left[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0 0 4px;\n  color: var(--text-primary);\n}\n.import-json-header-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.4;\n}\n.import-json-header-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   code[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n  padding: 1px 5px;\n  border-radius: 4px;\n}\n.import-json-format[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 14px;\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.import-json-format-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n  padding-top: 1px;\n}\n.import-json-example[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: #059669;\n  word-break: break-all;\n}\n.import-json-defaults[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n.import-json-field[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.import-json-label[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n}\n.import-json-select[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 8px 10px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease;\n  cursor: pointer;\n}\n.import-json-select[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 160px;\n  resize: vertical;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-primary);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 14px 16px;\n  background: var(--bg);\n  outline: none;\n  line-height: 1.6;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease;\n}\n.import-json-textarea[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea[_ngcontent-%COMP%]::placeholder {\n  color: #B0AEA8;\n}\n.import-json-textarea[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.import-json-errors[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.import-json-error-item[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.05);\n  border: 1px solid rgba(220, 38, 38, 0.15);\n  border-radius: 7px;\n  padding: 7px 12px;\n}\n.import-json-progress-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.import-json-progress-bar[_ngcontent-%COMP%] {\n  height: 6px;\n  background: var(--border);\n  border-radius: 999px;\n  overflow: hidden;\n}\n.import-json-progress-fill[_ngcontent-%COMP%] {\n  height: 100%;\n  background: var(--accent);\n  border-radius: 999px;\n  transition: width 0.3s ease;\n}\n.import-json-progress-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  text-align: right;\n}\n.import-json-done[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.07);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 12px 16px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.import-json-actions[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 4px;\n}\n.import-json-cancel[_ngcontent-%COMP%] {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.import-json-cancel[_ngcontent-%COMP%]:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.import-json-cancel[_ngcontent-%COMP%]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.import-json-confirm[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.import-json-confirm[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.import-json-confirm[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=task-list.css.map */'] });
+  ], styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n\n[_nghost-%COMP%] {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-lg: 20px;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);\n  display: flex;\n  align-items: stretch;\n  min-height: 100vh;\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  color: var(--text-primary);\n}\n[_nghost-%COMP%]   *[_ngcontent-%COMP%] {\n  cursor: default;\n}\n[_nghost-%COMP%]   button[_ngcontent-%COMP%], \n[_nghost-%COMP%]   [role=button][_ngcontent-%COMP%], \n[_nghost-%COMP%]   .task-title-cell[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n.sidebar-nav-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.6);\n  cursor: pointer;\n  white-space: nowrap;\n  overflow: hidden;\n  text-align: left;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n}\n.sidebar-nav-item[_ngcontent-%COMP%]:hover   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.sidebar-nav-item.active[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.18);\n  color: white;\n}\n.sidebar-nav-item.active[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.section-placeholder[_ngcontent-%COMP%] {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n}\n.page[_ngcontent-%COMP%] {\n  flex: 1;\n  min-width: 0;\n  width: 100%;\n  padding: 32px 40px 64px;\n}\n.page-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  flex-wrap: wrap;\n  gap: 20px;\n  margin-bottom: 32px;\n}\n.back-link[_ngcontent-%COMP%] {\n  border: none;\n  background: none;\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  padding: 0;\n  margin-bottom: 8px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n.back-link[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.header-text[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n}\n.header-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.view-toggle[_ngcontent-%COMP%] {\n  display: flex;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 3px;\n  gap: 2px;\n}\n.toggle-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: transparent;\n  padding: 8px 16px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.toggle-btn[_ngcontent-%COMP%]:hover {\n  color: var(--text-primary);\n}\n.toggle-btn.active[_ngcontent-%COMP%] {\n  background: var(--accent);\n  color: white;\n}\n.selection-bar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: var(--radius-md);\n  box-shadow: 0 8px 32px rgba(28, 28, 31, 0.22);\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(16px);\n  z-index: 500;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  white-space: nowrap;\n  max-width: calc(100vw - 48px);\n}\n.selection-bar.visible[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n  pointer-events: auto;\n}\n.selection-bar-info[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count[_ngcontent-%COMP%] {\n  font-size: 13px;\n  font-weight: 600;\n}\n.selection-bar-actions[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-action-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: 1.5px solid rgba(255, 255, 255, 0.35);\n  background: transparent;\n  color: white;\n  padding: 6px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.selection-action-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.12);\n  border-color: rgba(255, 255, 255, 0.6);\n}\n.selection-clear-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: transparent;\n  color: rgba(255, 255, 255, 0.65);\n  padding: 6px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  cursor: pointer;\n  transition: color 0.12s ease, background 0.12s ease;\n}\n.selection-clear-btn[_ngcontent-%COMP%]:hover {\n  color: white;\n  background: rgba(255, 255, 255, 0.08);\n}\n.table-view[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.table-columns-header[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: stretch;\n  padding: 0;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-primary);\n  white-space: nowrap;\n  overflow: hidden;\n  padding: 12px 16px;\n  border-right: 1px solid var(--border);\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%]:last-child {\n  border-right: none;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-check[_ngcontent-%COMP%] {\n  justify-content: center;\n  padding: 0;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-status[_ngcontent-%COMP%], \n.table-columns-header[_ngcontent-%COMP%]   .col-priority[_ngcontent-%COMP%], \n.table-columns-header[_ngcontent-%COMP%]   .col-assignee[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.table-columns-header[_ngcontent-%COMP%]   .col-title[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sort-col[_ngcontent-%COMP%] {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sort-col[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.sort-col[_ngcontent-%COMP%]:hover   .sort-icon[_ngcontent-%COMP%] {\n  opacity: 1;\n  color: var(--accent);\n}\n.sort-icon[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  opacity: 0.35;\n  color: var(--text-secondary);\n  transition: opacity 0.12s ease, color 0.12s ease;\n  flex-shrink: 0;\n}\n.sort-icon.active[_ngcontent-%COMP%] {\n  opacity: 1;\n  color: var(--accent);\n}\n.row-checkbox[_ngcontent-%COMP%] {\n  width: 15px;\n  height: 15px;\n  border-radius: 4px;\n  accent-color: var(--accent);\n  cursor: pointer;\n  flex-shrink: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: center;\n  background: rgba(28, 28, 31, 0.022);\n  border-bottom: 1px solid var(--border);\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 7px 10px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-drag[_ngcontent-%COMP%] {\n  justify-content: center;\n  padding: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-check[_ngcontent-%COMP%] {\n  padding: 0;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-title[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-status[_ngcontent-%COMP%], \n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-priority[_ngcontent-%COMP%], \n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-assignee[_ngcontent-%COMP%] {\n  justify-content: center;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-epic[_ngcontent-%COMP%] {\n  padding-left: 12px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .gcol-tags[_ngcontent-%COMP%] {\n  padding-left: 8px;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .sort-col[_ngcontent-%COMP%] {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sprint-cols-header[_ngcontent-%COMP%]   .sort-col[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.sprint-group[_ngcontent-%COMP%] {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n}\n.sprint-group-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 12px 18px 12px 14px;\n  cursor: pointer;\n  background: var(--bg);\n  border-bottom: 1px solid var(--border);\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n  transition: background 0.12s ease;\n}\n.sprint-group-header[_ngcontent-%COMP%]:hover {\n  background: #F3F2EE;\n}\n.order-reset-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  flex-shrink: 0;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  border-radius: 8px;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.order-reset-btn[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n}\n.chevron[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  transition: transform 0.15s ease;\n  display: inline-block;\n}\n.chevron.collapsed[_ngcontent-%COMP%] {\n  transform: rotate(-90deg);\n}\n.sprint-name[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 600;\n}\n.sprint-count[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 1px 9px;\n}\n.task-rows[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  border-radius: 0 0 var(--radius-md) var(--radius-md);\n}\n.task-row[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: stretch;\n  gap: 0;\n  padding: 0;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.12s ease;\n}\n.task-row[_ngcontent-%COMP%]:last-child {\n  border-bottom: none;\n}\n.task-row[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.03);\n}\n.task-row.selected[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.05);\n}\n.task-row.selected[_ngcontent-%COMP%]   .task-check-cell[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.04);\n}\n.task-row[_ngcontent-%COMP%] {\n  position: relative;\n}\n.task-type-strip[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 4px;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 0;\n  z-index: 2;\n  transition: width 0.12s ease, filter 0.12s ease;\n}\n.task-type-strip[_ngcontent-%COMP%]:hover {\n  width: 7px;\n  filter: brightness(0.92);\n}\n.task-check-cell[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-right: 1px solid var(--border);\n  padding: 0;\n  cursor: default;\n}\n.task-title-cell[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 16px 18px 16px 14px;\n  border-right: 1px solid var(--border);\n  overflow: hidden;\n  cursor: pointer;\n}\n.task-title-cell[_ngcontent-%COMP%]:hover   .copy-btn[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.task-release-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 2px 8px;\n  border-radius: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 600;\n  background: #4B5563;\n  color: #FFFFFF;\n  white-space: nowrap;\n  max-width: 130px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-title[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  flex: 1;\n  min-width: 0;\n}\n.task-epic-tag[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 7px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  background: #EDE9FE;\n  color: #6D28D9;\n  border: 1px solid #DDD6FE;\n  white-space: nowrap;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-tag-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 1;\n  min-width: 0;\n  padding: 1px 8px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 600;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  max-width: 84px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: default;\n}\n.task-drag-handle[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  flex-shrink: 0;\n  color: #C4C4CC;\n  cursor: grab;\n  opacity: 0.85;\n  transition: color 0.12s ease, opacity 0.12s ease;\n}\n.task-drag-handle[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  opacity: 1;\n}\n.task-drag-handle[_ngcontent-%COMP%]:active {\n  cursor: grabbing;\n}\n.task-row[_ngcontent-%COMP%]:hover   .task-drag-handle[_ngcontent-%COMP%] {\n  color: #9CA3AF;\n}\n.task-row[_ngcontent-%COMP%]:hover   .task-drag-handle[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n}\n.task-drag-placeholder[_ngcontent-%COMP%] {\n  height: 46px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 0;\n}\n.task-drag-preview[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #fff;\n  border: 1px solid #E8E6E1;\n  border-radius: 8px;\n  padding: 10px 16px;\n  font-size: 13px;\n  font-weight: 500;\n  color: #1C1C1F;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.14);\n  max-width: 400px;\n}\n.task-drag-preview-text[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 360px;\n}\n.cdk-drop-list-dragging[_ngcontent-%COMP%]   .task-row[_ngcontent-%COMP%]:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.copy-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: #B4B4BC;\n  cursor: pointer;\n  opacity: 1;\n  transition: color 0.15s ease, background 0.15s ease;\n  border-radius: 6px;\n}\n.copy-btn[_ngcontent-%COMP%]:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n}\n.copy-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 14px;\n  height: 14px;\n}\n.task-col[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  border-right: 1px solid var(--border);\n  padding: 0 4px;\n}\n.task-col[_ngcontent-%COMP%]   app-popover[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.task-col[_ngcontent-%COMP%]   app-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n}\n.col-actions[_ngcontent-%COMP%] {\n  justify-content: center;\n  border-right: none;\n}\n.assignee-avatar[_ngcontent-%COMP%] {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: #EEF2FF;\n  color: var(--accent);\n  font-family: "Outfit", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-avatar.assignee-avatar--empty[_ngcontent-%COMP%] {\n  background: var(--bg);\n  color: var(--text-secondary);\n  border: 1px dashed var(--border);\n}\n.row-delete-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  opacity: 0.45;\n  transition:\n    opacity 0.15s ease,\n    color 0.15s ease,\n    background 0.15s ease;\n  width: 28px;\n  height: 28px;\n  border-radius: 6px;\n}\n.row-delete-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.row-delete-btn[_ngcontent-%COMP%]:hover {\n  opacity: 1;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n}\n.task-row-empty[_ngcontent-%COMP%] {\n  padding: 18px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.kanban-placeholder[_ngcontent-%COMP%] {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n}\n.empty-state[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 80px 24px;\n  color: var(--text-secondary);\n}\n.empty-state[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 600;\n  color: var(--text-primary);\n  margin: 0 0 6px;\n}\n.empty-state[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  margin: 0;\n}\n.status-popover-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 160px;\n}\n.status-popover-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.status-popover-item[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.status-popover-item--clear[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  margin-top: 4px;\n  padding-top: 10px;\n}\n.status-dot[_ngcontent-%COMP%] {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.meta-trigger[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  border-radius: 999px;\n  transition: transform 0.1s ease;\n}\n.meta-trigger[_ngcontent-%COMP%]:hover {\n  transform: translateY(-1px);\n}\n.task-col--epic[_ngcontent-%COMP%] {\n  justify-content: flex-start;\n  padding: 0 12px;\n  overflow: hidden;\n}\n.task-col-empty[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: #C4C4CC;\n}\n.task-col--tags[_ngcontent-%COMP%] {\n  padding: 0 8px;\n  overflow: hidden;\n}\n.tags-trigger[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  flex-wrap: nowrap;\n  gap: 4px;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 4px 6px;\n  border-radius: 8px;\n  max-width: 100%;\n  overflow: hidden;\n  transition: background 0.12s ease;\n}\n.tags-trigger[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.task-tag-more[_ngcontent-%COMP%] {\n  font-size: 10px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.tags-empty[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: #C4C4CC;\n  transition: color 0.12s ease;\n}\n.tags-trigger[_ngcontent-%COMP%]:hover   .tags-empty[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.assignees-trigger[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  flex-wrap: nowrap;\n  overflow: hidden;\n  max-width: 100%;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  min-width: 28px;\n  min-height: 28px;\n}\n.assignees-trigger[_ngcontent-%COMP%]   app-avatar[_ngcontent-%COMP%] {\n  display: inline-flex;\n  border-radius: 50%;\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n  transition: margin-left 0.12s ease;\n}\n.assignees-trigger[_ngcontent-%COMP%]   app-avatar[_ngcontent-%COMP%]:first-child {\n  margin-left: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   app-avatar[_ngcontent-%COMP%] {\n  margin-left: -3px;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   app-avatar[_ngcontent-%COMP%]:first-child {\n  margin-left: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]   .assignee-avatar--more[_ngcontent-%COMP%] {\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n}\n.assignees-trigger[_ngcontent-%COMP%]:hover   .assignee-avatar--more[_ngcontent-%COMP%] {\n  margin-left: -3px;\n}\n.assignee-avatar--more[_ngcontent-%COMP%] {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: var(--border);\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 10px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 360px;\n}\n.assignee-modal-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.assignee-modal-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.assignee-modal-close[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-modal-close[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.assignee-chips[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n.assignee-chip[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 6px 10px 6px 6px;\n  border-radius: 20px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.assignee-chip[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.assignee-chip[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.assignee-search[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.assignee-search-input[_ngcontent-%COMP%] {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 36px 10px 14px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  background: var(--surface);\n  box-sizing: border-box;\n}\n.assignee-search-input[_ngcontent-%COMP%]:focus {\n  outline: none;\n  border-color: var(--accent);\n}\n.assignee-search-input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.assignee-search-icon[_ngcontent-%COMP%] {\n  position: absolute;\n  right: 12px;\n  color: var(--text-secondary);\n  pointer-events: none;\n}\n.assignee-suggested-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.assignee-suggested-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.assignee-suggested-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.assignee-suggested-item[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.assignee-suggested-empty[_ngcontent-%COMP%] {\n  padding: 16px 10px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.assignee-confirm-btn[_ngcontent-%COMP%] {\n  align-self: flex-end;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: 1.5px solid var(--accent);\n  background: var(--surface);\n  color: var(--accent);\n  padding: 10px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-confirm-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent);\n  color: white;\n}\n.move-sprint-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 340px;\n}\n.move-sprint-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.move-sprint-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.move-sprint-subtitle[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.move-sprint-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 320px;\n  overflow-y: auto;\n}\n.move-sprint-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.move-sprint-item[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.move-sprint-item[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.move-sprint-item[_ngcontent-%COMP%]:hover:not(:disabled)   svg[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.move-sprint-item[_ngcontent-%COMP%]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.move-sprint-date[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-loading[_ngcontent-%COMP%] {\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n  padding: 8px 0;\n}\n.bulk-dropdown-wrap[_ngcontent-%COMP%] {\n  position: relative;\n}\n.bulk-dropdown[_ngcontent-%COMP%] {\n  position: absolute;\n  bottom: calc(100% + 8px);\n  left: 0;\n  min-width: 220px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 -4px 24px rgba(28, 28, 31, 0.12), 0 8px 24px rgba(28, 28, 31, 0.08);\n  padding: 6px;\n  z-index: 600;\n  opacity: 0;\n  transform: translateY(6px);\n  pointer-events: none;\n  transition: opacity 0.15s ease, transform 0.15s ease;\n}\n.bulk-dropdown.open[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateY(0);\n  pointer-events: auto;\n}\n.bulk-dropdown-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px 8px;\n}\n.bulk-dropdown-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.bulk-dropdown-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.bulk-dropdown-item[_ngcontent-%COMP%]:hover   .bulk-status-dot[_ngcontent-%COMP%] {\n  outline: 2px solid rgba(79, 70, 229, 0.3);\n}\n.bulk-dropdown--assignee[_ngcontent-%COMP%] {\n  min-width: 240px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.bulk-assignee-search[_ngcontent-%COMP%] {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  background: var(--bg);\n  margin-bottom: 4px;\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n}\n.bulk-assignee-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 6px 10px;\n  margin: 0;\n}\n.bulk-status-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  outline: 2px solid transparent;\n  transition: outline 0.1s ease;\n}\n.bulk-overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 199;\n}\n.bulk-updating-hint[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  color: rgba(255, 255, 255, 0.65);\n}\n.filters-wrap[_ngcontent-%COMP%] {\n  margin-bottom: 16px;\n}\n.task-mobile-meta[_ngcontent-%COMP%] {\n  display: none;\n}\n@media (max-width: 860px) {\n  .sprint-group-header[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n    row-gap: 6px;\n  }\n  .sprint-finish-btn[_ngcontent-%COMP%] {\n    order: 10;\n    width: 100%;\n    justify-content: center;\n    margin-top: 4px;\n  }\n}\n@media (max-width: 720px) {\n  [_nghost-%COMP%] {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .page[_ngcontent-%COMP%] {\n    padding: 20px 14px 48px;\n  }\n  .page-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .header-actions[_ngcontent-%COMP%] {\n    display: flex;\n    gap: 8px;\n    align-items: stretch;\n  }\n  .view-toggle[_ngcontent-%COMP%] {\n    flex: 1;\n  }\n  .global-columns-header[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .selection-bar[_ngcontent-%COMP%] {\n    bottom: 12px;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 10px;\n    padding: 12px 14px;\n    max-width: calc(100vw - 24px);\n  }\n  .selection-bar-actions[_ngcontent-%COMP%] {\n    flex-wrap: wrap;\n    gap: 6px;\n  }\n  .selection-action-btn[_ngcontent-%COMP%] {\n    font-size: 12px;\n    padding: 7px 12px;\n  }\n  .assignee-modal[_ngcontent-%COMP%], \n   .move-sprint-modal[_ngcontent-%COMP%], \n   .finish-sprint-modal[_ngcontent-%COMP%] {\n    min-width: 0;\n  }\n  .sprint-group-header[_ngcontent-%COMP%] {\n    padding: 12px 14px;\n    gap: 8px;\n  }\n  .sprint-name[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n}\n@media (max-width: 560px) {\n  .task-row[_ngcontent-%COMP%] {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    position: relative;\n    padding: 0;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-check-cell[_ngcontent-%COMP%] {\n    flex: 0 0 40px;\n    border-right: none;\n    align-self: flex-start;\n    padding-top: 14px;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-title-cell[_ngcontent-%COMP%] {\n    flex: 1;\n    min-width: 0;\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 4px;\n    border-right: none;\n    padding: 10px 0 10px 0;\n  }\n  .task-row[_ngcontent-%COMP%]   .task-col[_ngcontent-%COMP%]:not(.col-actions) {\n    display: none;\n  }\n  .task-row[_ngcontent-%COMP%]   .col-actions[_ngcontent-%COMP%] {\n    flex: 0 0 40px;\n    border-right: none;\n    border-left: none;\n    align-self: flex-start;\n    padding-top: 10px;\n  }\n  .task-mobile-meta[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    flex-wrap: wrap;\n  }\n  .task-mobile-status[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    gap: 4px;\n    font-size: 11px;\n    font-weight: 600;\n  }\n  .task-mobile-dot[_ngcontent-%COMP%] {\n    display: inline-block;\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    flex-shrink: 0;\n  }\n  .task-mobile-priority[_ngcontent-%COMP%] {\n    font-size: 11px;\n    font-weight: 700;\n    opacity: 0.85;\n  }\n  .sprint-header-top[_ngcontent-%COMP%] {\n    gap: 6px;\n  }\n  .sprint-dates[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .sprint-progress-wrap[_ngcontent-%COMP%] {\n    margin-top: 2px;\n  }\n  .page-header[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    font-size: 22px;\n  }\n  .page-header-kicker[_ngcontent-%COMP%] {\n    font-size: 10px;\n  }\n}\n.sprint-header-info[_ngcontent-%COMP%] {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.sprint-header-top[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.sprint-dates[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  font-weight: 500;\n}\n.sprint-dates[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.sprint-overdue-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n  border: 1px solid rgba(220, 38, 38, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-finished-badge[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-progress-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  cursor: default;\n}\n.sprint-progress-bar[_ngcontent-%COMP%] {\n  flex: 1;\n  height: 5px;\n  border-radius: 999px;\n  background: var(--border);\n  overflow: hidden;\n  display: flex;\n  min-width: 80px;\n  max-width: 320px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%] {\n  height: 100%;\n  transition: width 0.3s ease;\n  min-width: 2px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:first-child {\n  border-radius: 999px 0 0 999px;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:last-child {\n  border-radius: 0 999px 999px 0;\n}\n.sprint-progress-seg[_ngcontent-%COMP%]:only-child {\n  border-radius: 999px;\n}\n.sprint-progress-pct[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  white-space: nowrap;\n  min-width: 32px;\n  text-align: right;\n}\n.sprint-progress-pct.pct--done[_ngcontent-%COMP%] {\n  color: #059669;\n}\n.sprint-group--overdue[_ngcontent-%COMP%]   .sprint-group-header[_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.02);\n  border-bottom-color: rgba(220, 38, 38, 0.12);\n}\n.sprint-group--overdue[_ngcontent-%COMP%]   .sprint-progress-bar[_ngcontent-%COMP%] {\n  background: rgba(220, 38, 38, 0.1);\n}\n.sprint-group--finished[_ngcontent-%COMP%] {\n  opacity: 0.72;\n}\n.sprint-group--finished[_ngcontent-%COMP%]   .sprint-group-header[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.02);\n}\n.sprint-group--finished[_ngcontent-%COMP%]   .sprint-progress-bar[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.1);\n}\n.sprint-finish-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: not-allowed;\n  white-space: nowrap;\n  opacity: 0.55;\n  transition: all 0.15s ease;\n  flex-shrink: 0;\n}\n.sprint-finish-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.sprint-finish-btn.sprint-finish-btn--ready[_ngcontent-%COMP%] {\n  cursor: pointer;\n  opacity: 1;\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.sprint-finish-btn.sprint-finish-btn--ready[_ngcontent-%COMP%]:hover {\n  background: var(--accent);\n  color: white;\n}\n.sprint-finish-btn[_ngcontent-%COMP%]:disabled:not(.sprint-finish-btn--ready) {\n  pointer-events: none;\n}\n.finish-sprint-modal[_ngcontent-%COMP%] {\n  padding: 32px 28px 28px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 12px;\n  text-align: center;\n}\n.finish-sprint-icon[_ngcontent-%COMP%] {\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 4px;\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 14px;\n  color: var(--text-secondary);\n  margin: 0;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.finish-sprint-modal[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   strong[_ngcontent-%COMP%] {\n  color: var(--text-primary);\n}\n.finish-sprint-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 10px;\n  margin-top: 8px;\n}\n.finish-sprint-cancel[_ngcontent-%COMP%] {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.finish-sprint-cancel[_ngcontent-%COMP%]:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.finish-sprint-confirm[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.finish-sprint-confirm[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.toast[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(12px);\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 9999;\n  white-space: nowrap;\n  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);\n}\n.toast[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  color: #34D399;\n  flex-shrink: 0;\n}\n.toast.toast--visible[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n}\n@keyframes _ngcontent-%COMP%_spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.spin[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n.header-left[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.header-title-block[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.header-board-name[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.header-title[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n  color: var(--text-primary);\n}\n.header-stats[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.stat-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 999px;\n  padding: 3px 10px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.02em;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.stat-chip--total[_ngcontent-%COMP%]   .stat-chip-num[_ngcontent-%COMP%] {\n  color: var(--text-primary);\n  font-weight: 700;\n}\n.stat-chip--done[_ngcontent-%COMP%] {\n  border-color: rgba(5, 150, 105, 0.25);\n  background: rgba(5, 150, 105, 0.06);\n  color: #059669;\n}\n.stat-chip--progress[_ngcontent-%COMP%] {\n  border-color: rgba(79, 70, 229, 0.2);\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.stat-chip--pct[_ngcontent-%COMP%] {\n  border-color: var(--border);\n  background: var(--text-primary);\n  color: white;\n  font-weight: 700;\n}\n.stat-chip-dot[_ngcontent-%COMP%] {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.selection-bar-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count-badge[_ngcontent-%COMP%] {\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  background: var(--accent);\n  color: white;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.selection-count-label[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.9);\n  white-space: nowrap;\n}\n.selection-bar-sep[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 20px;\n  background: rgba(255, 255, 255, 0.18);\n  flex-shrink: 0;\n}\n.selection-action-btn--move[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.4);\n}\n.bulk-dropdown-header[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 10px 8px;\n}\n.bulk-dropdown-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  max-height: 220px;\n  overflow-y: auto;\n}\n.bulk-assignee-search-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  margin: 0 4px 4px;\n}\n.bulk-assignee-search-wrap[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.bulk-assignee-search[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.bulk-user-name[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.sprint-progress-detail[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.sprint-days-remaining[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  color: #D97706;\n  background: rgba(217, 119, 6, 0.08);\n  border: 1px solid rgba(217, 119, 6, 0.18);\n  border-radius: 20px;\n  padding: 1px 7px;\n  letter-spacing: 0.02em;\n}\n.move-sprint-icon[_ngcontent-%COMP%] {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  background: rgba(79, 70, 229, 0.07);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.move-sprint-icon--backlog[_ngcontent-%COMP%] {\n  background: var(--bg);\n  color: var(--text-secondary);\n}\n.move-sprint-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  flex: 1;\n  min-width: 0;\n}\n.move-sprint-name[_ngcontent-%COMP%] {\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.move-sprint-sub[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-finished-tag[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.04em;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.18);\n  border-radius: 20px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.loading-state[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  padding: 80px 24px;\n  font-size: 14px;\n  color: var(--text-secondary);\n}\n@keyframes _ngcontent-%COMP%_uni-pop-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n.uni-popover[_ngcontent-%COMP%] {\n  position: fixed;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 16px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  z-index: 2000;\n  display: flex;\n  flex-direction: column;\n  overflow: visible;\n  animation: _ngcontent-%COMP%_uni-pop-in 0.14s ease;\n}\n.uni-popover-arrow[_ngcontent-%COMP%] {\n  position: absolute;\n  top: -7px;\n  width: 13px;\n  height: 13px;\n  background: var(--surface);\n  border-left: 1px solid var(--border);\n  border-top: 1px solid var(--border);\n  transform: translateX(-50%) rotate(45deg);\n  z-index: 1;\n}\n.uni-popover--top[_ngcontent-%COMP%]   .uni-popover-arrow[_ngcontent-%COMP%] {\n  top: auto;\n  bottom: -7px;\n  transform: translateX(-50%) rotate(225deg);\n}\n.uni-popover[_ngcontent-%COMP%]    > .uni-pop-head[_ngcontent-%COMP%]:first-of-type {\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n}\n.uni-pop-head[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 10px 14px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n  position: relative;\n  z-index: 2;\n}\n.uni-pop-close[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.uni-pop-close[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.uni-pop-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  padding: 6px;\n  max-height: 300px;\n  overflow-y: auto;\n}\n.uni-pop-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 9px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.uni-pop-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.uni-pop-item.active[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.08);\n  font-weight: 600;\n}\n.uni-pop-item--clear[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  border-radius: 0;\n  margin-top: 4px;\n  font-size: 12px;\n}\n.uni-pop-item--clear[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.06);\n  color: #DC2626;\n}\n.uni-dot[_ngcontent-%COMP%] {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.uni-check[_ngcontent-%COMP%] {\n  margin-left: auto;\n  color: var(--accent);\n  flex-shrink: 0;\n}\n.uni-popover-backdrop[_ngcontent-%COMP%] {\n  position: fixed;\n  inset: 0;\n  z-index: 1999;\n  background: transparent;\n}\n.ap-chip--tag[_ngcontent-%COMP%] {\n  background: rgba(79, 70, 229, 0.08);\n  border: 1px solid transparent;\n}\n.ap-chip--tag[_ngcontent-%COMP%]:hover {\n  filter: brightness(0.96);\n}\n.ap-create-tag[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: 1px dashed rgba(79, 70, 229, 0.35);\n  background: rgba(79, 70, 229, 0.04);\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--accent);\n  margin-top: 4px;\n  transition: background 0.12s ease;\n}\n.ap-create-tag[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.08);\n}\n.ap-create-tag[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.ap-create-tag[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.ap-create-tag[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-create-tag[_ngcontent-%COMP%]   strong[_ngcontent-%COMP%] {\n  font-weight: 700;\n}\n.ap-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 12px 14px 10px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.ap-header-left[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.ap-close-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.ap-close-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.ap-chips[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 6px;\n  border-bottom: 1px solid var(--border);\n}\n.ap-chip[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  border-radius: 20px;\n  padding: 3px 8px 3px 4px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n  max-width: 150px;\n}\n.ap-chip[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-chip[_ngcontent-%COMP%]:hover {\n  background: rgba(220, 38, 38, 0.1);\n  color: #DC2626;\n}\n.ap-chip[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.ap-search[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-search[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.ap-search[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.ap-search[_ngcontent-%COMP%]   input[_ngcontent-%COMP%]::placeholder {\n  color: var(--text-secondary);\n}\n.ap-list[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  padding: 6px;\n  max-height: 220px;\n}\n.ap-list-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.06em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.ap-list-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 7px 8px;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: background 0.1s ease;\n}\n.ap-list-item[_ngcontent-%COMP%]:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.ap-list-item[_ngcontent-%COMP%]:hover   .ap-user-name[_ngcontent-%COMP%] {\n  color: var(--accent);\n}\n.ap-user-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  text-align: left;\n  min-width: 0;\n}\n.ap-user-name[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: color 0.1s ease;\n}\n.ap-user-role[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-empty[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--text-secondary);\n  text-align: center;\n  padding: 14px 8px;\n  margin: 0;\n}\n.ap-footer[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 8px 12px;\n  border-top: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-footer-hint[_ngcontent-%COMP%] {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.ap-done-btn[_ngcontent-%COMP%] {\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.ap-done-btn[_ngcontent-%COMP%]:hover {\n  background: var(--accent-hover);\n}\n.sidebar-divider[_ngcontent-%COMP%] {\n  height: 1px;\n  background: rgba(255, 255, 255, 0.12);\n  margin: 6px 4px;\n  flex-shrink: 0;\n}\n.sidebar-nav-item--soon[_ngcontent-%COMP%] {\n  opacity: 0.55;\n  cursor: pointer;\n}\n.sidebar-nav-item--soon[_ngcontent-%COMP%]:hover {\n  opacity: 0.85;\n}\n.sidebar-soon-badge[_ngcontent-%COMP%] {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  background: rgba(245, 158, 11, 0.25);\n  color: #FCD34D;\n  border-radius: 999px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.import-json-btn[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 8px 16px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.import-json-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n}\n.import-json-btn[_ngcontent-%COMP%]:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.toast--soon[_ngcontent-%COMP%] {\n  bottom: 80px;\n  background:\n    linear-gradient(\n      135deg,\n      #4F46E5,\n      #7C3AED);\n}\n.import-json-modal[_ngcontent-%COMP%] {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.import-json-header[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n}\n.import-json-header-left[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n}\n.import-json-icon[_ngcontent-%COMP%] {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.import-json-header-left[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0 0 4px;\n  color: var(--text-primary);\n}\n.import-json-header-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.4;\n}\n.import-json-header-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   code[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n  padding: 1px 5px;\n  border-radius: 4px;\n}\n.import-json-format[_ngcontent-%COMP%] {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 14px;\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.import-json-format-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n  padding-top: 1px;\n}\n.import-json-example[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: #059669;\n  word-break: break-all;\n}\n.import-json-defaults[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n.import-json-field[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.import-json-label[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n}\n.import-json-select[_ngcontent-%COMP%] {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 8px 10px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease;\n  cursor: pointer;\n}\n.import-json-select[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 160px;\n  resize: vertical;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-primary);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 14px 16px;\n  background: var(--bg);\n  outline: none;\n  line-height: 1.6;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease;\n}\n.import-json-textarea[_ngcontent-%COMP%]:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea[_ngcontent-%COMP%]::placeholder {\n  color: #B0AEA8;\n}\n.import-json-textarea[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.import-json-errors[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.import-json-error-item[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.05);\n  border: 1px solid rgba(220, 38, 38, 0.15);\n  border-radius: 7px;\n  padding: 7px 12px;\n}\n.import-json-progress-wrap[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.import-json-progress-bar[_ngcontent-%COMP%] {\n  height: 6px;\n  background: var(--border);\n  border-radius: 999px;\n  overflow: hidden;\n}\n.import-json-progress-fill[_ngcontent-%COMP%] {\n  height: 100%;\n  background: var(--accent);\n  border-radius: 999px;\n  transition: width 0.3s ease;\n}\n.import-json-progress-label[_ngcontent-%COMP%] {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  text-align: right;\n}\n.import-json-done[_ngcontent-%COMP%] {\n  background: rgba(5, 150, 105, 0.07);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 12px 16px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.import-json-actions[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 4px;\n}\n.import-json-cancel[_ngcontent-%COMP%] {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.import-json-cancel[_ngcontent-%COMP%]:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.import-json-cancel[_ngcontent-%COMP%]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.import-json-confirm[_ngcontent-%COMP%] {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.import-json-confirm[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.import-json-confirm[_ngcontent-%COMP%]:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=task-list.css.map */'] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TaskListComponent, [{
@@ -41395,6 +42445,7 @@ Conclu\xEDdo: ${pct}%`);
       SprintManager,
       StatusManager,
       PriorityManager,
+      TypeManager,
       Sidebar,
       TaskFilters,
       TooltipDirective
@@ -41429,6 +42480,13 @@ Conclu\xEDdo: ${pct}%`);
       <line x1="4" y1="22" x2="4" y2="15" />
     </svg>
     <span>Prioridades</span>
+  </button>
+  <button class="sidebar-nav-item" [class.active]="section() === 'types'" (click)="setSection('types')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+    </svg>
+    <span>Tipos</span>
   </button>
 
   <div class="sidebar-divider"></div>
@@ -41873,6 +42931,11 @@ Conclu\xEDdo: ${pct}%`);
                   <span class="task-drag-preview-text">{{ summaryFor(task.description) }}</span>
                 </div>
 
+                <!-- Faixa de tipo (cor) \u2014 clique abre popover de tipo -->
+                <button class="task-type-strip" [style.background]="task.type ? typeColor(task.type) : '#E8E6E1'"
+                  (click)="openPopover('type', task, $event)"
+                  [appTooltip]="task.type ? ('Tipo: ' + task.type) : 'Definir tipo'"></button>
+
                 <!-- Drag handle -->
                 <div class="task-drag-handle" cdkDragHandle (click)="$event.stopPropagation()"
                   appTooltip="Arrastar para reordenar ou mover de sprint">
@@ -41890,6 +42953,9 @@ Conclu\xEDdo: ${pct}%`);
 
                 <div class="task-title-cell">
                   <span class="task-title">{{ summaryFor(task.description) }}</span>
+                  <span *ngIf="task.release" class="task-release-badge" [appTooltip]="'Release: ' + task.release">
+                    {{ task.release }}
+                  </span>
                   <button class="copy-btn" (click)="copyDescription(task, $event)"
                     [appTooltip]="copiedTaskId() === task.id ? 'Copiado!' : 'Copiar descri\xE7\xE3o'">
                     <svg *ngIf="copiedTaskId() !== task.id" width="13" height="13" viewBox="0 0 24 24" fill="none"
@@ -41934,11 +43000,10 @@ Conclu\xEDdo: ${pct}%`);
                 <!-- Respons\xE1veis (popover) -->
                 <div class="task-col">
                   <button class="assignees-trigger" (click)="openPopover('assignee', task, $event)"
-                    appTooltip="Gerenciar respons\xE1veis">
+                    [appTooltip]="task.assignees?.length ? allAssigneeNames(task) : 'Gerenciar respons\xE1veis'">
                     <ng-container *ngIf="task.assignees?.length > 0; else emptyAssignee">
                       <ng-container *ngFor="let a of task.assignees.slice(0,3)">
-                        <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"
-                          [title]="a.name"></app-avatar>
+                        <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
                       </ng-container>
                       <div *ngIf="task.assignees.length > 3" class="assignee-avatar--more">
                         +{{ task.assignees.length - 3 }}
@@ -41959,7 +43024,6 @@ Conclu\xEDdo: ${pct}%`);
                 <!-- \xC9pico -->
                 <div class="task-col task-col--epic">
                   <span *ngIf="task.epic" class="task-epic-tag" [appTooltip]="task.epic">{{ task.epic }}</span>
-                  <span *ngIf="!task.epic" class="task-col-empty">\u2014</span>
                 </div>
 
                 <!-- Tags (popover igual respons\xE1veis) -->
@@ -41970,7 +43034,8 @@ Conclu\xEDdo: ${pct}%`);
                       <span *ngFor="let tag of task.tags.slice(0,2)" class="task-tag-chip"
                         [style.background]="tag.color + '20'" [style.color]="tag.color"
                         [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
-                      <span *ngIf="task.tags.length > 2" class="task-tag-more">+{{ task.tags.length - 2 }}</span>
+                      <span *ngIf="task.tags.length > 2" class="task-tag-more"
+                        [appTooltip]="extraTagNames(task, 2)">+{{ task.tags.length - 2 }}</span>
                     </ng-container>
                     <ng-template #emptyTags>
                       <span class="tags-empty">
@@ -42034,6 +43099,10 @@ Conclu\xEDdo: ${pct}%`);
 
   <ng-container *ngIf="section() === 'priorities'">
     <app-priority-manager [boardId]="boardId" (prioritiesChanged)="reloadPriorities()"></app-priority-manager>
+  </ng-container>
+
+  <ng-container *ngIf="section() === 'types'">
+    <app-type-manager [boardId]="boardId" (typesChanged)="reloadTaskTypes()"></app-type-manager>
   </ng-container>
 
 
@@ -42179,6 +43248,29 @@ Conclu\xEDdo: ${pct}%`);
     </div>
   </ng-container>
 
+  <!-- ===== TIPO ===== -->
+  <ng-container *ngIf="pop.type === 'type'">
+    <div class="uni-pop-head">
+      <span>Tipo</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="uni-pop-list">
+      <button *ngFor="let t of taskTypes()" class="uni-pop-item"
+        [class.active]="popoverTask?.type === t.name"
+        (click)="setPopoverField('type', t.name)">
+        <span class="uni-dot" [style.background]="t.color"></span>{{ t.name }}
+        <svg *ngIf="popoverTask?.type === t.name" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </button>
+      <button class="uni-pop-item uni-pop-item--clear" (click)="setPopoverField('type', null)">
+        Remover tipo
+      </button>
+    </div>
+  </ng-container>
+
 </div>
 
 <!-- ===== TOASTS ===== -->
@@ -42235,6 +43327,7 @@ Conclu\xEDdo: ${pct}%`);
   [sprints]="sprints()"
   [tags]="tags()"
   [priorities]="priorities()"
+  [taskTypes]="taskTypes()"
   [saving]="saving()"
   [comments]="comments()"
   [savingComment]="savingComment()"
@@ -42409,7 +43502,7 @@ Conclu\xEDdo: ${pct}%`);
     </div>
   </div>
 </app-modal>
-`, styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n/* src/app/components/task-list/task-list.scss */\n:host {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-lg: 20px;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);\n  display: flex;\n  align-items: stretch;\n  min-height: 100vh;\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  color: var(--text-primary);\n}\n:host * {\n  cursor: default;\n}\n:host button,\n:host [role=button],\n:host .task-title-cell {\n  cursor: pointer;\n}\n.sidebar-nav-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.6);\n  cursor: pointer;\n  white-space: nowrap;\n  overflow: hidden;\n  text-align: left;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.sidebar-nav-item svg {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.sidebar-nav-item:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n}\n.sidebar-nav-item:hover svg {\n  opacity: 1;\n}\n.sidebar-nav-item.active {\n  background: rgba(255, 255, 255, 0.18);\n  color: white;\n}\n.sidebar-nav-item.active svg {\n  opacity: 1;\n}\n.section-placeholder {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n}\n.page {\n  flex: 1;\n  min-width: 0;\n  max-width: 1280px;\n  margin: 0 auto;\n  padding: 40px 32px 64px;\n}\n.page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  flex-wrap: wrap;\n  gap: 20px;\n  margin-bottom: 32px;\n}\n.back-link {\n  border: none;\n  background: none;\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  padding: 0;\n  margin-bottom: 8px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n.back-link:hover {\n  color: var(--accent);\n}\n.header-text h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n}\n.header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.view-toggle {\n  display: flex;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 3px;\n  gap: 2px;\n}\n.toggle-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: transparent;\n  padding: 8px 16px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.toggle-btn:hover {\n  color: var(--text-primary);\n}\n.toggle-btn.active {\n  background: var(--accent);\n  color: white;\n}\n.selection-bar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: var(--radius-md);\n  box-shadow: 0 8px 32px rgba(28, 28, 31, 0.22);\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(16px);\n  z-index: 500;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  white-space: nowrap;\n  max-width: calc(100vw - 48px);\n}\n.selection-bar.visible {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n  pointer-events: auto;\n}\n.selection-bar-info {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count {\n  font-size: 13px;\n  font-weight: 600;\n}\n.selection-bar-actions {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-action-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: 1.5px solid rgba(255, 255, 255, 0.35);\n  background: transparent;\n  color: white;\n  padding: 6px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.selection-action-btn:hover {\n  background: rgba(255, 255, 255, 0.12);\n  border-color: rgba(255, 255, 255, 0.6);\n}\n.selection-clear-btn {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: transparent;\n  color: rgba(255, 255, 255, 0.65);\n  padding: 6px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  cursor: pointer;\n  transition: color 0.12s ease, background 0.12s ease;\n}\n.selection-clear-btn:hover {\n  color: white;\n  background: rgba(255, 255, 255, 0.08);\n}\n.table-view {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.table-columns-header {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: stretch;\n  padding: 0;\n}\n.table-columns-header .col {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-primary);\n  white-space: nowrap;\n  overflow: hidden;\n  padding: 12px 16px;\n  border-right: 1px solid var(--border);\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.table-columns-header .col:last-child {\n  border-right: none;\n}\n.table-columns-header .col-check {\n  justify-content: center;\n  padding: 0;\n}\n.table-columns-header .col-status,\n.table-columns-header .col-priority,\n.table-columns-header .col-assignee {\n  justify-content: center;\n}\n.table-columns-header .col-title {\n  padding-left: 12px;\n}\n.sort-col {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sort-col:hover {\n  color: var(--accent);\n}\n.sort-col:hover .sort-icon {\n  opacity: 1;\n  color: var(--accent);\n}\n.sort-icon {\n  display: inline-flex;\n  align-items: center;\n  opacity: 0.35;\n  color: var(--text-secondary);\n  transition: opacity 0.12s ease, color 0.12s ease;\n  flex-shrink: 0;\n}\n.sort-icon.active {\n  opacity: 1;\n  color: var(--accent);\n}\n.row-checkbox {\n  width: 15px;\n  height: 15px;\n  border-radius: 4px;\n  accent-color: var(--accent);\n  cursor: pointer;\n  flex-shrink: 0;\n}\n.sprint-cols-header {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: center;\n  background: rgba(28, 28, 31, 0.022);\n  border-bottom: 1px solid var(--border);\n}\n.sprint-cols-header .gcol {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 7px 10px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.sprint-cols-header .gcol-drag {\n  justify-content: center;\n  padding: 0;\n}\n.sprint-cols-header .gcol-check {\n  padding: 0;\n}\n.sprint-cols-header .gcol-title {\n  padding-left: 12px;\n}\n.sprint-cols-header .gcol-status,\n.sprint-cols-header .gcol-priority,\n.sprint-cols-header .gcol-assignee {\n  justify-content: center;\n}\n.sprint-cols-header .gcol-epic {\n  padding-left: 12px;\n}\n.sprint-cols-header .gcol-tags {\n  padding-left: 8px;\n}\n.sprint-cols-header .sort-col {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sprint-cols-header .sort-col:hover {\n  color: var(--accent);\n}\n.sprint-group {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n}\n.sprint-group-header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 12px 18px 12px 14px;\n  cursor: pointer;\n  background: var(--bg);\n  border-bottom: 1px solid var(--border);\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n  transition: background 0.12s ease;\n}\n.sprint-group-header:hover {\n  background: #F3F2EE;\n}\n.order-reset-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  flex-shrink: 0;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  border-radius: 8px;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.order-reset-btn:hover {\n  color: var(--accent);\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n}\n.chevron {\n  font-size: 12px;\n  color: var(--text-secondary);\n  transition: transform 0.15s ease;\n  display: inline-block;\n}\n.chevron.collapsed {\n  transform: rotate(-90deg);\n}\n.sprint-name {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 600;\n}\n.sprint-count {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 1px 9px;\n}\n.task-rows {\n  display: flex;\n  flex-direction: column;\n  border-radius: 0 0 var(--radius-md) var(--radius-md);\n}\n.task-row {\n  display: grid;\n  grid-template-columns: 28px 36px 1fr 118px 100px 64px 84px 92px;\n  align-items: stretch;\n  gap: 0;\n  padding: 0;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.12s ease;\n}\n.task-row:last-child {\n  border-bottom: none;\n}\n.task-row:hover {\n  background: rgba(79, 70, 229, 0.03);\n}\n.task-row.selected {\n  background: rgba(79, 70, 229, 0.05);\n}\n.task-row.selected .task-check-cell {\n  background: rgba(79, 70, 229, 0.04);\n}\n.task-check-cell {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-right: 1px solid var(--border);\n  padding: 0;\n  cursor: default;\n}\n.task-title-cell {\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 13px 16px 13px 12px;\n  border-right: 1px solid var(--border);\n  overflow: hidden;\n  cursor: pointer;\n}\n.task-title-cell:hover .copy-btn {\n  opacity: 1;\n}\n.task-title {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  flex: 1;\n  min-width: 0;\n}\n.task-epic-tag {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 7px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  background: #EDE9FE;\n  color: #6D28D9;\n  border: 1px solid #DDD6FE;\n  white-space: nowrap;\n  max-width: 120px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-tag-chip {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 8px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 600;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  max-width: 100px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: default;\n}\n.task-drag-handle {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  flex-shrink: 0;\n  color: #C4C4CC;\n  cursor: grab;\n  opacity: 0.85;\n  transition: color 0.12s ease, opacity 0.12s ease;\n}\n.task-drag-handle:hover {\n  color: var(--accent);\n  opacity: 1;\n}\n.task-drag-handle:active {\n  cursor: grabbing;\n}\n.task-row:hover .task-drag-handle {\n  color: #9CA3AF;\n}\n.task-row:hover .task-drag-handle:hover {\n  color: var(--accent);\n}\n.task-drag-placeholder {\n  height: 46px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 0;\n}\n.task-drag-preview {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #fff;\n  border: 1px solid #E8E6E1;\n  border-radius: 8px;\n  padding: 10px 16px;\n  font-size: 13px;\n  font-weight: 500;\n  color: #1C1C1F;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.14);\n  max-width: 400px;\n}\n.task-drag-preview-text {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 360px;\n}\n.cdk-drop-list-dragging .task-row:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.copy-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: #B4B4BC;\n  cursor: pointer;\n  opacity: 1;\n  transition: color 0.15s ease, background 0.15s ease;\n  border-radius: 6px;\n}\n.copy-btn:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n}\n.copy-btn svg {\n  width: 14px;\n  height: 14px;\n}\n.task-col {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  border-right: 1px solid var(--border);\n  padding: 0 4px;\n}\n.task-col app-popover {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.task-col app-badge {\n  display: inline-flex;\n}\n.col-actions {\n  justify-content: center;\n  border-right: none;\n}\n.assignee-avatar {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: #EEF2FF;\n  color: var(--accent);\n  font-family: "Outfit", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-avatar.assignee-avatar--empty {\n  background: var(--bg);\n  color: var(--text-secondary);\n  border: 1px dashed var(--border);\n}\n.row-delete-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  opacity: 0.45;\n  transition:\n    opacity 0.15s ease,\n    color 0.15s ease,\n    background 0.15s ease;\n  width: 28px;\n  height: 28px;\n  border-radius: 6px;\n}\n.row-delete-btn svg {\n  width: 16px;\n  height: 16px;\n}\n.row-delete-btn:hover {\n  opacity: 1;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n}\n.task-row-empty {\n  padding: 18px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.kanban-placeholder {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n}\n.empty-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 80px 24px;\n  color: var(--text-secondary);\n}\n.empty-state h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 600;\n  color: var(--text-primary);\n  margin: 0 0 6px;\n}\n.empty-state p {\n  font-size: 14px;\n  margin: 0;\n}\n.status-popover-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 160px;\n}\n.status-popover-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.status-popover-item:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.status-popover-item--clear {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  margin-top: 4px;\n  padding-top: 10px;\n}\n.status-dot {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.meta-trigger {\n  display: inline-flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  border-radius: 999px;\n  transition: transform 0.1s ease;\n}\n.meta-trigger:hover {\n  transform: translateY(-1px);\n}\n.task-col--epic {\n  justify-content: flex-start;\n  padding: 0 12px;\n  overflow: hidden;\n}\n.task-col-empty {\n  font-size: 13px;\n  color: #C4C4CC;\n}\n.task-col--tags {\n  padding: 0 8px;\n  overflow: hidden;\n}\n.tags-trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 4px 6px;\n  border-radius: 8px;\n  max-width: 100%;\n  overflow: hidden;\n  transition: background 0.12s ease;\n}\n.tags-trigger:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.task-tag-more {\n  font-size: 10px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.tags-empty {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: #C4C4CC;\n  transition: color 0.12s ease;\n}\n.tags-trigger:hover .tags-empty {\n  color: var(--accent);\n}\n.assignees-trigger {\n  display: flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  min-width: 28px;\n  min-height: 28px;\n}\n.assignees-trigger app-avatar {\n  display: inline-flex;\n  border-radius: 50%;\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n  transition: margin-left 0.12s ease;\n}\n.assignees-trigger app-avatar:first-child {\n  margin-left: 0;\n}\n.assignees-trigger:hover app-avatar {\n  margin-left: -3px;\n}\n.assignees-trigger:hover app-avatar:first-child {\n  margin-left: 0;\n}\n.assignees-trigger .assignee-avatar--more {\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n}\n.assignees-trigger:hover .assignee-avatar--more {\n  margin-left: -3px;\n}\n.assignee-avatar--more {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: var(--border);\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 10px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 360px;\n}\n.assignee-modal-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.assignee-modal-header h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.assignee-modal-close {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-modal-close:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.assignee-chips {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n.assignee-chip {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 6px 10px 6px 6px;\n  border-radius: 20px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.assignee-chip:hover {\n  background: var(--accent-hover);\n}\n.assignee-chip svg {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.assignee-search {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.assignee-search-input {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 36px 10px 14px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  background: var(--surface);\n  box-sizing: border-box;\n}\n.assignee-search-input:focus {\n  outline: none;\n  border-color: var(--accent);\n}\n.assignee-search-input::placeholder {\n  color: var(--text-secondary);\n}\n.assignee-search-icon {\n  position: absolute;\n  right: 12px;\n  color: var(--text-secondary);\n  pointer-events: none;\n}\n.assignee-suggested-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.assignee-suggested-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.assignee-suggested-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.assignee-suggested-item:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.assignee-suggested-empty {\n  padding: 16px 10px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.assignee-confirm-btn {\n  align-self: flex-end;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: 1.5px solid var(--accent);\n  background: var(--surface);\n  color: var(--accent);\n  padding: 10px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-confirm-btn:hover {\n  background: var(--accent);\n  color: white;\n}\n.move-sprint-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 340px;\n}\n.move-sprint-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.move-sprint-header h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.move-sprint-subtitle {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.move-sprint-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 320px;\n  overflow-y: auto;\n}\n.move-sprint-item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.move-sprint-item svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.move-sprint-item:hover:not(:disabled) {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.move-sprint-item:hover:not(:disabled) svg {\n  color: var(--accent);\n}\n.move-sprint-item:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.move-sprint-date {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-loading {\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n  padding: 8px 0;\n}\n.bulk-dropdown-wrap {\n  position: relative;\n}\n.bulk-dropdown {\n  position: absolute;\n  bottom: calc(100% + 8px);\n  left: 0;\n  min-width: 220px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 -4px 24px rgba(28, 28, 31, 0.12), 0 8px 24px rgba(28, 28, 31, 0.08);\n  padding: 6px;\n  z-index: 600;\n  opacity: 0;\n  transform: translateY(6px);\n  pointer-events: none;\n  transition: opacity 0.15s ease, transform 0.15s ease;\n}\n.bulk-dropdown.open {\n  opacity: 1;\n  transform: translateY(0);\n  pointer-events: auto;\n}\n.bulk-dropdown-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px 8px;\n}\n.bulk-dropdown-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.bulk-dropdown-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.bulk-dropdown-item:hover .bulk-status-dot {\n  outline: 2px solid rgba(79, 70, 229, 0.3);\n}\n.bulk-dropdown--assignee {\n  min-width: 240px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.bulk-assignee-search {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  background: var(--bg);\n  margin-bottom: 4px;\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search:focus {\n  border-color: var(--accent);\n}\n.bulk-assignee-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 6px 10px;\n  margin: 0;\n}\n.bulk-status-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  outline: 2px solid transparent;\n  transition: outline 0.1s ease;\n}\n.bulk-overlay {\n  position: fixed;\n  inset: 0;\n  z-index: 199;\n}\n.bulk-updating-hint {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  color: rgba(255, 255, 255, 0.65);\n}\n.filters-wrap {\n  margin-bottom: 16px;\n}\n.task-mobile-meta {\n  display: none;\n}\n@media (max-width: 860px) {\n  .sprint-group-header {\n    flex-wrap: wrap;\n    row-gap: 6px;\n  }\n  .sprint-finish-btn {\n    order: 10;\n    width: 100%;\n    justify-content: center;\n    margin-top: 4px;\n  }\n}\n@media (max-width: 720px) {\n  :host {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .page {\n    padding: 20px 14px 48px;\n  }\n  .page-header {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .header-actions {\n    display: flex;\n    gap: 8px;\n    align-items: stretch;\n  }\n  .view-toggle {\n    flex: 1;\n  }\n  .global-columns-header {\n    display: none;\n  }\n  .selection-bar {\n    bottom: 12px;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 10px;\n    padding: 12px 14px;\n    max-width: calc(100vw - 24px);\n  }\n  .selection-bar-actions {\n    flex-wrap: wrap;\n    gap: 6px;\n  }\n  .selection-action-btn {\n    font-size: 12px;\n    padding: 7px 12px;\n  }\n  .assignee-modal,\n  .move-sprint-modal,\n  .finish-sprint-modal {\n    min-width: 0;\n  }\n  .sprint-group-header {\n    padding: 12px 14px;\n    gap: 8px;\n  }\n  .sprint-name {\n    font-size: 14px;\n  }\n}\n@media (max-width: 560px) {\n  .task-row {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    position: relative;\n    padding: 0;\n  }\n  .task-row .task-check-cell {\n    flex: 0 0 40px;\n    border-right: none;\n    align-self: flex-start;\n    padding-top: 14px;\n  }\n  .task-row .task-title-cell {\n    flex: 1;\n    min-width: 0;\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 4px;\n    border-right: none;\n    padding: 10px 0 10px 0;\n  }\n  .task-row .task-col:not(.col-actions) {\n    display: none;\n  }\n  .task-row .col-actions {\n    flex: 0 0 40px;\n    border-right: none;\n    border-left: none;\n    align-self: flex-start;\n    padding-top: 10px;\n  }\n  .task-mobile-meta {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    flex-wrap: wrap;\n  }\n  .task-mobile-status {\n    display: flex;\n    align-items: center;\n    gap: 4px;\n    font-size: 11px;\n    font-weight: 600;\n  }\n  .task-mobile-dot {\n    display: inline-block;\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    flex-shrink: 0;\n  }\n  .task-mobile-priority {\n    font-size: 11px;\n    font-weight: 700;\n    opacity: 0.85;\n  }\n  .sprint-header-top {\n    gap: 6px;\n  }\n  .sprint-dates {\n    display: none;\n  }\n  .sprint-progress-wrap {\n    margin-top: 2px;\n  }\n  .page-header h1 {\n    font-size: 22px;\n  }\n  .page-header-kicker {\n    font-size: 10px;\n  }\n}\n.sprint-header-info {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.sprint-header-top {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.sprint-dates {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  font-weight: 500;\n}\n.sprint-dates svg {\n  flex-shrink: 0;\n}\n.sprint-overdue-badge {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n  border: 1px solid rgba(220, 38, 38, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-finished-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-progress-wrap {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  cursor: default;\n}\n.sprint-progress-bar {\n  flex: 1;\n  height: 5px;\n  border-radius: 999px;\n  background: var(--border);\n  overflow: hidden;\n  display: flex;\n  min-width: 80px;\n  max-width: 320px;\n}\n.sprint-progress-seg {\n  height: 100%;\n  transition: width 0.3s ease;\n  min-width: 2px;\n}\n.sprint-progress-seg:first-child {\n  border-radius: 999px 0 0 999px;\n}\n.sprint-progress-seg:last-child {\n  border-radius: 0 999px 999px 0;\n}\n.sprint-progress-seg:only-child {\n  border-radius: 999px;\n}\n.sprint-progress-pct {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  white-space: nowrap;\n  min-width: 32px;\n  text-align: right;\n}\n.sprint-progress-pct.pct--done {\n  color: #059669;\n}\n.sprint-group--overdue .sprint-group-header {\n  background: rgba(220, 38, 38, 0.02);\n  border-bottom-color: rgba(220, 38, 38, 0.12);\n}\n.sprint-group--overdue .sprint-progress-bar {\n  background: rgba(220, 38, 38, 0.1);\n}\n.sprint-group--finished {\n  opacity: 0.72;\n}\n.sprint-group--finished .sprint-group-header {\n  background: rgba(5, 150, 105, 0.02);\n}\n.sprint-group--finished .sprint-progress-bar {\n  background: rgba(5, 150, 105, 0.1);\n}\n.sprint-finish-btn {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: not-allowed;\n  white-space: nowrap;\n  opacity: 0.55;\n  transition: all 0.15s ease;\n  flex-shrink: 0;\n}\n.sprint-finish-btn svg {\n  flex-shrink: 0;\n}\n.sprint-finish-btn.sprint-finish-btn--ready {\n  cursor: pointer;\n  opacity: 1;\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.sprint-finish-btn.sprint-finish-btn--ready:hover {\n  background: var(--accent);\n  color: white;\n}\n.sprint-finish-btn:disabled:not(.sprint-finish-btn--ready) {\n  pointer-events: none;\n}\n.finish-sprint-modal {\n  padding: 32px 28px 28px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 12px;\n  text-align: center;\n}\n.finish-sprint-icon {\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 4px;\n}\n.finish-sprint-modal h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.finish-sprint-modal p {\n  font-size: 14px;\n  color: var(--text-secondary);\n  margin: 0;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.finish-sprint-modal p strong {\n  color: var(--text-primary);\n}\n.finish-sprint-actions {\n  display: flex;\n  gap: 10px;\n  margin-top: 8px;\n}\n.finish-sprint-cancel {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.finish-sprint-cancel:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.finish-sprint-confirm {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.finish-sprint-confirm:hover {\n  background: var(--accent-hover);\n}\n.toast {\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(12px);\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 9999;\n  white-space: nowrap;\n  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);\n}\n.toast svg {\n  color: #34D399;\n  flex-shrink: 0;\n}\n.toast.toast--visible {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.spin {\n  animation: spin 0.8s linear infinite;\n}\n.header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.header-title-block {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.header-board-name {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.header-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n  color: var(--text-primary);\n}\n.header-stats {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.stat-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 999px;\n  padding: 3px 10px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.02em;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.stat-chip--total .stat-chip-num {\n  color: var(--text-primary);\n  font-weight: 700;\n}\n.stat-chip--done {\n  border-color: rgba(5, 150, 105, 0.25);\n  background: rgba(5, 150, 105, 0.06);\n  color: #059669;\n}\n.stat-chip--progress {\n  border-color: rgba(79, 70, 229, 0.2);\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.stat-chip--pct {\n  border-color: var(--border);\n  background: var(--text-primary);\n  color: white;\n  font-weight: 700;\n}\n.stat-chip-dot {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.selection-bar-left {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count-badge {\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  background: var(--accent);\n  color: white;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.selection-count-label {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.9);\n  white-space: nowrap;\n}\n.selection-bar-sep {\n  width: 1px;\n  height: 20px;\n  background: rgba(255, 255, 255, 0.18);\n  flex-shrink: 0;\n}\n.selection-action-btn--move {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.4);\n}\n.bulk-dropdown-header {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 10px 8px;\n}\n.bulk-dropdown-list {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  max-height: 220px;\n  overflow-y: auto;\n}\n.bulk-assignee-search-wrap {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  margin: 0 4px 4px;\n}\n.bulk-assignee-search-wrap svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.bulk-assignee-search {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search::placeholder {\n  color: var(--text-secondary);\n}\n.bulk-user-name {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.sprint-progress-detail {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.sprint-days-remaining {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  color: #D97706;\n  background: rgba(217, 119, 6, 0.08);\n  border: 1px solid rgba(217, 119, 6, 0.18);\n  border-radius: 20px;\n  padding: 1px 7px;\n  letter-spacing: 0.02em;\n}\n.move-sprint-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  background: rgba(79, 70, 229, 0.07);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.move-sprint-icon--backlog {\n  background: var(--bg);\n  color: var(--text-secondary);\n}\n.move-sprint-info {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  flex: 1;\n  min-width: 0;\n}\n.move-sprint-name {\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.move-sprint-sub {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-finished-tag {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.04em;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.18);\n  border-radius: 20px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.loading-state {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  padding: 80px 24px;\n  font-size: 14px;\n  color: var(--text-secondary);\n}\n@keyframes uni-pop-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n.uni-popover {\n  position: fixed;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 16px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  z-index: 2000;\n  display: flex;\n  flex-direction: column;\n  overflow: visible;\n  animation: uni-pop-in 0.14s ease;\n}\n.uni-popover-arrow {\n  position: absolute;\n  top: -7px;\n  width: 13px;\n  height: 13px;\n  background: var(--surface);\n  border-left: 1px solid var(--border);\n  border-top: 1px solid var(--border);\n  transform: translateX(-50%) rotate(45deg);\n  z-index: 1;\n}\n.uni-popover--top .uni-popover-arrow {\n  top: auto;\n  bottom: -7px;\n  transform: translateX(-50%) rotate(225deg);\n}\n.uni-popover > .uni-pop-head:first-of-type {\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n}\n.uni-pop-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 10px 14px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n  position: relative;\n  z-index: 2;\n}\n.uni-pop-close {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.uni-pop-close:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.uni-pop-list {\n  display: flex;\n  flex-direction: column;\n  padding: 6px;\n  max-height: 300px;\n  overflow-y: auto;\n}\n.uni-pop-item {\n  display: flex;\n  align-items: center;\n  gap: 9px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.uni-pop-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.uni-pop-item.active {\n  background: rgba(79, 70, 229, 0.08);\n  font-weight: 600;\n}\n.uni-pop-item--clear {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  border-radius: 0;\n  margin-top: 4px;\n  font-size: 12px;\n}\n.uni-pop-item--clear:hover {\n  background: rgba(220, 38, 38, 0.06);\n  color: #DC2626;\n}\n.uni-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.uni-check {\n  margin-left: auto;\n  color: var(--accent);\n  flex-shrink: 0;\n}\n.uni-popover-backdrop {\n  position: fixed;\n  inset: 0;\n  z-index: 1999;\n  background: transparent;\n}\n.ap-chip--tag {\n  background: rgba(79, 70, 229, 0.08);\n  border: 1px solid transparent;\n}\n.ap-chip--tag:hover {\n  filter: brightness(0.96);\n}\n.ap-create-tag {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: 1px dashed rgba(79, 70, 229, 0.35);\n  background: rgba(79, 70, 229, 0.04);\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--accent);\n  margin-top: 4px;\n  transition: background 0.12s ease;\n}\n.ap-create-tag:hover {\n  background: rgba(79, 70, 229, 0.08);\n}\n.ap-create-tag:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.ap-create-tag svg {\n  flex-shrink: 0;\n}\n.ap-create-tag span {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-create-tag strong {\n  font-weight: 700;\n}\n.ap-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 12px 14px 10px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-header-left {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.ap-header-left svg {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.ap-close-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.ap-close-btn:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.ap-chips {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 6px;\n  border-bottom: 1px solid var(--border);\n}\n.ap-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  border-radius: 20px;\n  padding: 3px 8px 3px 4px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n  max-width: 150px;\n}\n.ap-chip span {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-chip:hover {\n  background: rgba(220, 38, 38, 0.1);\n  color: #DC2626;\n}\n.ap-chip svg {\n  flex-shrink: 0;\n}\n.ap-search {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-search svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.ap-search input {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.ap-search input::placeholder {\n  color: var(--text-secondary);\n}\n.ap-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 6px;\n  max-height: 220px;\n}\n.ap-list-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.06em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.ap-list-item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 7px 8px;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: background 0.1s ease;\n}\n.ap-list-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.ap-list-item:hover .ap-user-name {\n  color: var(--accent);\n}\n.ap-user-info {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  text-align: left;\n  min-width: 0;\n}\n.ap-user-name {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: color 0.1s ease;\n}\n.ap-user-role {\n  font-size: 11px;\n  color: var(--text-secondary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  text-align: center;\n  padding: 14px 8px;\n  margin: 0;\n}\n.ap-footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 8px 12px;\n  border-top: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-footer-hint {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.ap-done-btn {\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.ap-done-btn:hover {\n  background: var(--accent-hover);\n}\n.sidebar-divider {\n  height: 1px;\n  background: rgba(255, 255, 255, 0.12);\n  margin: 6px 4px;\n  flex-shrink: 0;\n}\n.sidebar-nav-item--soon {\n  opacity: 0.55;\n  cursor: pointer;\n}\n.sidebar-nav-item--soon:hover {\n  opacity: 0.85;\n}\n.sidebar-soon-badge {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  background: rgba(245, 158, 11, 0.25);\n  color: #FCD34D;\n  border-radius: 999px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.import-json-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 8px 16px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.import-json-btn svg {\n  flex-shrink: 0;\n}\n.import-json-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.toast--soon {\n  bottom: 80px;\n  background:\n    linear-gradient(\n      135deg,\n      #4F46E5,\n      #7C3AED);\n}\n.import-json-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.import-json-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n}\n.import-json-header-left {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n}\n.import-json-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.import-json-header-left h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0 0 4px;\n  color: var(--text-primary);\n}\n.import-json-header-left p {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.4;\n}\n.import-json-header-left p code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n  padding: 1px 5px;\n  border-radius: 4px;\n}\n.import-json-format {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 14px;\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.import-json-format-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n  padding-top: 1px;\n}\n.import-json-example {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: #059669;\n  word-break: break-all;\n}\n.import-json-defaults {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n.import-json-field {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.import-json-label {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n}\n.import-json-select {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 8px 10px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease;\n  cursor: pointer;\n}\n.import-json-select:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea {\n  width: 100%;\n  height: 160px;\n  resize: vertical;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-primary);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 14px 16px;\n  background: var(--bg);\n  outline: none;\n  line-height: 1.6;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease;\n}\n.import-json-textarea:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea::placeholder {\n  color: #B0AEA8;\n}\n.import-json-textarea:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.import-json-errors {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.import-json-error-item {\n  font-size: 12px;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.05);\n  border: 1px solid rgba(220, 38, 38, 0.15);\n  border-radius: 7px;\n  padding: 7px 12px;\n}\n.import-json-progress-wrap {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.import-json-progress-bar {\n  height: 6px;\n  background: var(--border);\n  border-radius: 999px;\n  overflow: hidden;\n}\n.import-json-progress-fill {\n  height: 100%;\n  background: var(--accent);\n  border-radius: 999px;\n  transition: width 0.3s ease;\n}\n.import-json-progress-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  text-align: right;\n}\n.import-json-done {\n  background: rgba(5, 150, 105, 0.07);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 12px 16px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.import-json-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 4px;\n}\n.import-json-cancel {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.import-json-cancel:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.import-json-cancel:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.import-json-confirm {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.import-json-confirm:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.import-json-confirm:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=task-list.css.map */\n'] }]
+`, styles: ['@charset "UTF-8";\n@import "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";\n\n/* src/app/components/task-list/task-list.scss */\n:host {\n  --bg: #FAFAF8;\n  --surface: #FFFFFF;\n  --border: #E8E6E1;\n  --text-primary: #1C1C1F;\n  --text-secondary: #6B6B70;\n  --accent: #4F46E5;\n  --accent-hover: #4338CA;\n  --radius-lg: 20px;\n  --radius-md: 14px;\n  --radius-sm: 10px;\n  --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);\n  display: flex;\n  align-items: stretch;\n  min-height: 100vh;\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  color: var(--text-primary);\n}\n:host * {\n  cursor: default;\n}\n:host button,\n:host [role=button],\n:host .task-title-cell {\n  cursor: pointer;\n}\n.sidebar-nav-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.6);\n  cursor: pointer;\n  white-space: nowrap;\n  overflow: hidden;\n  text-align: left;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.sidebar-nav-item svg {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.sidebar-nav-item:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n}\n.sidebar-nav-item:hover svg {\n  opacity: 1;\n}\n.sidebar-nav-item.active {\n  background: rgba(255, 255, 255, 0.18);\n  color: white;\n}\n.sidebar-nav-item.active svg {\n  opacity: 1;\n}\n.section-placeholder {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n}\n.page {\n  flex: 1;\n  min-width: 0;\n  width: 100%;\n  padding: 32px 40px 64px;\n}\n.page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  flex-wrap: wrap;\n  gap: 20px;\n  margin-bottom: 32px;\n}\n.back-link {\n  border: none;\n  background: none;\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  padding: 0;\n  margin-bottom: 8px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n.back-link:hover {\n  color: var(--accent);\n}\n.header-text h1 {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n}\n.header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.view-toggle {\n  display: flex;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 3px;\n  gap: 2px;\n}\n.toggle-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: transparent;\n  padding: 8px 16px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-secondary);\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease;\n}\n.toggle-btn:hover {\n  color: var(--text-primary);\n}\n.toggle-btn.active {\n  background: var(--accent);\n  color: white;\n}\n.selection-bar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: var(--radius-md);\n  box-shadow: 0 8px 32px rgba(28, 28, 31, 0.22);\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(16px);\n  z-index: 500;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  white-space: nowrap;\n  max-width: calc(100vw - 48px);\n}\n.selection-bar.visible {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n  pointer-events: auto;\n}\n.selection-bar-info {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count {\n  font-size: 13px;\n  font-weight: 600;\n}\n.selection-bar-actions {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-action-btn {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: 1.5px solid rgba(255, 255, 255, 0.35);\n  background: transparent;\n  color: white;\n  padding: 6px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, border-color 0.12s ease;\n}\n.selection-action-btn:hover {\n  background: rgba(255, 255, 255, 0.12);\n  border-color: rgba(255, 255, 255, 0.6);\n}\n.selection-clear-btn {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: transparent;\n  color: rgba(255, 255, 255, 0.65);\n  padding: 6px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  cursor: pointer;\n  transition: color 0.12s ease, background 0.12s ease;\n}\n.selection-clear-btn:hover {\n  color: white;\n  background: rgba(255, 255, 255, 0.08);\n}\n.table-view {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n.table-columns-header {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: stretch;\n  padding: 0;\n}\n.table-columns-header .col {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-primary);\n  white-space: nowrap;\n  overflow: hidden;\n  padding: 12px 16px;\n  border-right: 1px solid var(--border);\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.table-columns-header .col:last-child {\n  border-right: none;\n}\n.table-columns-header .col-check {\n  justify-content: center;\n  padding: 0;\n}\n.table-columns-header .col-status,\n.table-columns-header .col-priority,\n.table-columns-header .col-assignee {\n  justify-content: center;\n}\n.table-columns-header .col-title {\n  padding-left: 12px;\n}\n.sort-col {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sort-col:hover {\n  color: var(--accent);\n}\n.sort-col:hover .sort-icon {\n  opacity: 1;\n  color: var(--accent);\n}\n.sort-icon {\n  display: inline-flex;\n  align-items: center;\n  opacity: 0.35;\n  color: var(--text-secondary);\n  transition: opacity 0.12s ease, color 0.12s ease;\n  flex-shrink: 0;\n}\n.sort-icon.active {\n  opacity: 1;\n  color: var(--accent);\n}\n.row-checkbox {\n  width: 15px;\n  height: 15px;\n  border-radius: 4px;\n  accent-color: var(--accent);\n  cursor: pointer;\n  flex-shrink: 0;\n}\n.sprint-cols-header {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: center;\n  background: rgba(28, 28, 31, 0.022);\n  border-bottom: 1px solid var(--border);\n}\n.sprint-cols-header .gcol {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 7px 10px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.sprint-cols-header .gcol-drag {\n  justify-content: center;\n  padding: 0;\n}\n.sprint-cols-header .gcol-check {\n  padding: 0;\n}\n.sprint-cols-header .gcol-title {\n  padding-left: 12px;\n}\n.sprint-cols-header .gcol-status,\n.sprint-cols-header .gcol-priority,\n.sprint-cols-header .gcol-assignee {\n  justify-content: center;\n}\n.sprint-cols-header .gcol-epic {\n  padding-left: 12px;\n}\n.sprint-cols-header .gcol-tags {\n  padding-left: 8px;\n}\n.sprint-cols-header .sort-col {\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  transition: color 0.12s ease;\n}\n.sprint-cols-header .sort-col:hover {\n  color: var(--accent);\n}\n.sprint-group {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: var(--shadow-rest);\n}\n.sprint-group-header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 12px 18px 12px 14px;\n  cursor: pointer;\n  background: var(--bg);\n  border-bottom: 1px solid var(--border);\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n  transition: background 0.12s ease;\n}\n.sprint-group-header:hover {\n  background: #F3F2EE;\n}\n.order-reset-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  flex-shrink: 0;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  border-radius: 8px;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.order-reset-btn:hover {\n  color: var(--accent);\n  border-color: var(--accent);\n  background: rgba(79, 70, 229, 0.06);\n}\n.chevron {\n  font-size: 12px;\n  color: var(--text-secondary);\n  transition: transform 0.15s ease;\n  display: inline-block;\n}\n.chevron.collapsed {\n  transform: rotate(-90deg);\n}\n.sprint-name {\n  font-family: "Outfit", sans-serif;\n  font-size: 15px;\n  font-weight: 600;\n}\n.sprint-count {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-secondary);\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: 20px;\n  padding: 1px 9px;\n}\n.task-rows {\n  display: flex;\n  flex-direction: column;\n  border-radius: 0 0 var(--radius-md) var(--radius-md);\n}\n.task-row {\n  display: grid;\n  grid-template-columns: 32px 40px 1fr 136px 116px 104px 132px 150px;\n  align-items: stretch;\n  gap: 0;\n  padding: 0;\n  border-bottom: 1px solid var(--border);\n  transition: background 0.12s ease;\n}\n.task-row:last-child {\n  border-bottom: none;\n}\n.task-row:hover {\n  background: rgba(79, 70, 229, 0.03);\n}\n.task-row.selected {\n  background: rgba(79, 70, 229, 0.05);\n}\n.task-row.selected .task-check-cell {\n  background: rgba(79, 70, 229, 0.04);\n}\n.task-row {\n  position: relative;\n}\n.task-type-strip {\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 4px;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 0;\n  z-index: 2;\n  transition: width 0.12s ease, filter 0.12s ease;\n}\n.task-type-strip:hover {\n  width: 7px;\n  filter: brightness(0.92);\n}\n.task-check-cell {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-right: 1px solid var(--border);\n  padding: 0;\n  cursor: default;\n}\n.task-title-cell {\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 16px 18px 16px 14px;\n  border-right: 1px solid var(--border);\n  overflow: hidden;\n  cursor: pointer;\n}\n.task-title-cell:hover .copy-btn {\n  opacity: 1;\n}\n.task-release-badge {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 2px 8px;\n  border-radius: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 600;\n  background: #4B5563;\n  color: #FFFFFF;\n  white-space: nowrap;\n  max-width: 130px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-title {\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  flex: 1;\n  min-width: 0;\n}\n.task-epic-tag {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 0;\n  padding: 1px 7px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  background: #EDE9FE;\n  color: #6D28D9;\n  border: 1px solid #DDD6FE;\n  white-space: nowrap;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.task-tag-chip {\n  display: inline-flex;\n  align-items: center;\n  flex-shrink: 1;\n  min-width: 0;\n  padding: 1px 8px;\n  border-radius: 99px;\n  font-size: 10px;\n  font-weight: 600;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  max-width: 84px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: default;\n}\n.task-drag-handle {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  flex-shrink: 0;\n  color: #C4C4CC;\n  cursor: grab;\n  opacity: 0.85;\n  transition: color 0.12s ease, opacity 0.12s ease;\n}\n.task-drag-handle:hover {\n  color: var(--accent);\n  opacity: 1;\n}\n.task-drag-handle:active {\n  cursor: grabbing;\n}\n.task-row:hover .task-drag-handle {\n  color: #9CA3AF;\n}\n.task-row:hover .task-drag-handle:hover {\n  color: var(--accent);\n}\n.task-drag-placeholder {\n  height: 46px;\n  background: rgba(79, 70, 229, 0.05);\n  border: 2px dashed rgba(79, 70, 229, 0.25);\n  border-radius: 8px;\n  margin: 2px 0;\n}\n.task-drag-preview {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #fff;\n  border: 1px solid #E8E6E1;\n  border-radius: 8px;\n  padding: 10px 16px;\n  font-size: 13px;\n  font-weight: 500;\n  color: #1C1C1F;\n  box-shadow: 0 8px 24px rgba(28, 28, 31, 0.14);\n  max-width: 400px;\n}\n.task-drag-preview-text {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 360px;\n}\n.cdk-drop-list-dragging .task-row:not(.cdk-drag-placeholder) {\n  transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.copy-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: #B4B4BC;\n  cursor: pointer;\n  opacity: 1;\n  transition: color 0.15s ease, background 0.15s ease;\n  border-radius: 6px;\n}\n.copy-btn:hover {\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.08);\n}\n.copy-btn svg {\n  width: 14px;\n  height: 14px;\n}\n.task-col {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  border-right: 1px solid var(--border);\n  padding: 0 4px;\n}\n.task-col app-popover {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.task-col app-badge {\n  display: inline-flex;\n}\n.col-actions {\n  justify-content: center;\n  border-right: none;\n}\n.assignee-avatar {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: #EEF2FF;\n  color: var(--accent);\n  font-family: "Outfit", sans-serif;\n  font-size: 11px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-avatar.assignee-avatar--empty {\n  background: var(--bg);\n  color: var(--text-secondary);\n  border: 1px dashed var(--border);\n}\n.row-delete-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  opacity: 0.45;\n  transition:\n    opacity 0.15s ease,\n    color 0.15s ease,\n    background 0.15s ease;\n  width: 28px;\n  height: 28px;\n  border-radius: 6px;\n}\n.row-delete-btn svg {\n  width: 16px;\n  height: 16px;\n}\n.row-delete-btn:hover {\n  opacity: 1;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n}\n.task-row-empty {\n  padding: 18px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.kanban-placeholder {\n  padding: 80px 24px;\n  text-align: center;\n  color: var(--text-secondary);\n}\n.empty-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 80px 24px;\n  color: var(--text-secondary);\n}\n.empty-state h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 600;\n  color: var(--text-primary);\n  margin: 0 0 6px;\n}\n.empty-state p {\n  font-size: 14px;\n  margin: 0;\n}\n.status-popover-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 160px;\n}\n.status-popover-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.status-popover-item:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.status-popover-item--clear {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  margin-top: 4px;\n  padding-top: 10px;\n}\n.status-dot {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.meta-trigger {\n  display: inline-flex;\n  align-items: center;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  border-radius: 999px;\n  transition: transform 0.1s ease;\n}\n.meta-trigger:hover {\n  transform: translateY(-1px);\n}\n.task-col--epic {\n  justify-content: flex-start;\n  padding: 0 12px;\n  overflow: hidden;\n}\n.task-col-empty {\n  font-size: 13px;\n  color: #C4C4CC;\n}\n.task-col--tags {\n  padding: 0 8px;\n  overflow: hidden;\n}\n.tags-trigger {\n  display: inline-flex;\n  align-items: center;\n  flex-wrap: nowrap;\n  gap: 4px;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 4px 6px;\n  border-radius: 8px;\n  max-width: 100%;\n  overflow: hidden;\n  transition: background 0.12s ease;\n}\n.tags-trigger:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.task-tag-more {\n  font-size: 10px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.tags-empty {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: #C4C4CC;\n  transition: color 0.12s ease;\n}\n.tags-trigger:hover .tags-empty {\n  color: var(--accent);\n}\n.assignees-trigger {\n  display: flex;\n  align-items: center;\n  flex-wrap: nowrap;\n  overflow: hidden;\n  max-width: 100%;\n  border: none;\n  background: transparent;\n  cursor: pointer;\n  padding: 0;\n  min-width: 28px;\n  min-height: 28px;\n}\n.assignees-trigger app-avatar {\n  display: inline-flex;\n  border-radius: 50%;\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n  transition: margin-left 0.12s ease;\n}\n.assignees-trigger app-avatar:first-child {\n  margin-left: 0;\n}\n.assignees-trigger:hover app-avatar {\n  margin-left: -3px;\n}\n.assignees-trigger:hover app-avatar:first-child {\n  margin-left: 0;\n}\n.assignees-trigger .assignee-avatar--more {\n  border: 2px solid var(--surface);\n  box-sizing: content-box;\n  margin-left: -6px;\n  flex-shrink: 0;\n}\n.assignees-trigger:hover .assignee-avatar--more {\n  margin-left: -3px;\n}\n.assignee-avatar--more {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: var(--border);\n  color: var(--text-secondary);\n  font-family: "Inter", sans-serif;\n  font-size: 10px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.assignee-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 360px;\n}\n.assignee-modal-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.assignee-modal-header h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.assignee-modal-close {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-modal-close:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.assignee-chips {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n.assignee-chip {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 6px 10px 6px 6px;\n  border-radius: 20px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.assignee-chip:hover {\n  background: var(--accent-hover);\n}\n.assignee-chip svg {\n  flex-shrink: 0;\n  opacity: 0.85;\n}\n.assignee-search {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.assignee-search-input {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 36px 10px 14px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  color: var(--text-primary);\n  background: var(--surface);\n  box-sizing: border-box;\n}\n.assignee-search-input:focus {\n  outline: none;\n  border-color: var(--accent);\n}\n.assignee-search-input::placeholder {\n  color: var(--text-secondary);\n}\n.assignee-search-icon {\n  position: absolute;\n  right: 12px;\n  color: var(--text-secondary);\n  pointer-events: none;\n}\n.assignee-suggested-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.assignee-suggested-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.assignee-suggested-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.assignee-suggested-item:hover {\n  background: rgba(28, 28, 31, 0.05);\n}\n.assignee-suggested-empty {\n  padding: 16px 10px;\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n}\n.assignee-confirm-btn {\n  align-self: flex-end;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  border: 1.5px solid var(--accent);\n  background: var(--surface);\n  color: var(--accent);\n  padding: 10px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.assignee-confirm-btn:hover {\n  background: var(--accent);\n  color: white;\n}\n.move-sprint-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 340px;\n}\n.move-sprint-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.move-sprint-header h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0;\n}\n.move-sprint-subtitle {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n}\n.move-sprint-list {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  max-height: 320px;\n  overflow-y: auto;\n}\n.move-sprint-item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 10px 12px;\n  border-radius: var(--radius-sm);\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.12s ease;\n}\n.move-sprint-item svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.move-sprint-item:hover:not(:disabled) {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.move-sprint-item:hover:not(:disabled) svg {\n  color: var(--accent);\n}\n.move-sprint-item:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.move-sprint-date {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-loading {\n  text-align: center;\n  font-size: 13px;\n  color: var(--text-secondary);\n  padding: 8px 0;\n}\n.bulk-dropdown-wrap {\n  position: relative;\n}\n.bulk-dropdown {\n  position: absolute;\n  bottom: calc(100% + 8px);\n  left: 0;\n  min-width: 220px;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 -4px 24px rgba(28, 28, 31, 0.12), 0 8px 24px rgba(28, 28, 31, 0.08);\n  padding: 6px;\n  z-index: 600;\n  opacity: 0;\n  transform: translateY(6px);\n  pointer-events: none;\n  transition: opacity 0.15s ease, transform 0.15s ease;\n}\n.bulk-dropdown.open {\n  opacity: 1;\n  transform: translateY(0);\n  pointer-events: auto;\n}\n.bulk-dropdown-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px 8px;\n}\n.bulk-dropdown-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  cursor: pointer;\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.bulk-dropdown-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.bulk-dropdown-item:hover .bulk-status-dot {\n  outline: 2px solid rgba(79, 70, 229, 0.3);\n}\n.bulk-dropdown--assignee {\n  min-width: 240px;\n  max-height: 280px;\n  overflow-y: auto;\n}\n.bulk-assignee-search {\n  width: 100%;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  background: var(--bg);\n  margin-bottom: 4px;\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search:focus {\n  border-color: var(--accent);\n}\n.bulk-assignee-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  padding: 6px 10px;\n  margin: 0;\n}\n.bulk-status-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  outline: 2px solid transparent;\n  transition: outline 0.1s ease;\n}\n.bulk-overlay {\n  position: fixed;\n  inset: 0;\n  z-index: 199;\n}\n.bulk-updating-hint {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  color: rgba(255, 255, 255, 0.65);\n}\n.filters-wrap {\n  margin-bottom: 16px;\n}\n.task-mobile-meta {\n  display: none;\n}\n@media (max-width: 860px) {\n  .sprint-group-header {\n    flex-wrap: wrap;\n    row-gap: 6px;\n  }\n  .sprint-finish-btn {\n    order: 10;\n    width: 100%;\n    justify-content: center;\n    margin-top: 4px;\n  }\n}\n@media (max-width: 720px) {\n  :host {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .page {\n    padding: 20px 14px 48px;\n  }\n  .page-header {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n  .header-actions {\n    display: flex;\n    gap: 8px;\n    align-items: stretch;\n  }\n  .view-toggle {\n    flex: 1;\n  }\n  .global-columns-header {\n    display: none;\n  }\n  .selection-bar {\n    bottom: 12px;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 10px;\n    padding: 12px 14px;\n    max-width: calc(100vw - 24px);\n  }\n  .selection-bar-actions {\n    flex-wrap: wrap;\n    gap: 6px;\n  }\n  .selection-action-btn {\n    font-size: 12px;\n    padding: 7px 12px;\n  }\n  .assignee-modal,\n  .move-sprint-modal,\n  .finish-sprint-modal {\n    min-width: 0;\n  }\n  .sprint-group-header {\n    padding: 12px 14px;\n    gap: 8px;\n  }\n  .sprint-name {\n    font-size: 14px;\n  }\n}\n@media (max-width: 560px) {\n  .task-row {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    position: relative;\n    padding: 0;\n  }\n  .task-row .task-check-cell {\n    flex: 0 0 40px;\n    border-right: none;\n    align-self: flex-start;\n    padding-top: 14px;\n  }\n  .task-row .task-title-cell {\n    flex: 1;\n    min-width: 0;\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 4px;\n    border-right: none;\n    padding: 10px 0 10px 0;\n  }\n  .task-row .task-col:not(.col-actions) {\n    display: none;\n  }\n  .task-row .col-actions {\n    flex: 0 0 40px;\n    border-right: none;\n    border-left: none;\n    align-self: flex-start;\n    padding-top: 10px;\n  }\n  .task-mobile-meta {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    flex-wrap: wrap;\n  }\n  .task-mobile-status {\n    display: flex;\n    align-items: center;\n    gap: 4px;\n    font-size: 11px;\n    font-weight: 600;\n  }\n  .task-mobile-dot {\n    display: inline-block;\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    flex-shrink: 0;\n  }\n  .task-mobile-priority {\n    font-size: 11px;\n    font-weight: 700;\n    opacity: 0.85;\n  }\n  .sprint-header-top {\n    gap: 6px;\n  }\n  .sprint-dates {\n    display: none;\n  }\n  .sprint-progress-wrap {\n    margin-top: 2px;\n  }\n  .page-header h1 {\n    font-size: 22px;\n  }\n  .page-header-kicker {\n    font-size: 10px;\n  }\n}\n.sprint-header-info {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.sprint-header-top {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.sprint-dates {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  font-weight: 500;\n}\n.sprint-dates svg {\n  flex-shrink: 0;\n}\n.sprint-overdue-badge {\n  display: inline-flex;\n  align-items: center;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.08);\n  border: 1px solid rgba(220, 38, 38, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-finished-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  border-radius: 20px;\n  padding: 1px 7px;\n}\n.sprint-progress-wrap {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  cursor: default;\n}\n.sprint-progress-bar {\n  flex: 1;\n  height: 5px;\n  border-radius: 999px;\n  background: var(--border);\n  overflow: hidden;\n  display: flex;\n  min-width: 80px;\n  max-width: 320px;\n}\n.sprint-progress-seg {\n  height: 100%;\n  transition: width 0.3s ease;\n  min-width: 2px;\n}\n.sprint-progress-seg:first-child {\n  border-radius: 999px 0 0 999px;\n}\n.sprint-progress-seg:last-child {\n  border-radius: 0 999px 999px 0;\n}\n.sprint-progress-seg:only-child {\n  border-radius: 999px;\n}\n.sprint-progress-pct {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--text-secondary);\n  white-space: nowrap;\n  min-width: 32px;\n  text-align: right;\n}\n.sprint-progress-pct.pct--done {\n  color: #059669;\n}\n.sprint-group--overdue .sprint-group-header {\n  background: rgba(220, 38, 38, 0.02);\n  border-bottom-color: rgba(220, 38, 38, 0.12);\n}\n.sprint-group--overdue .sprint-progress-bar {\n  background: rgba(220, 38, 38, 0.1);\n}\n.sprint-group--finished {\n  opacity: 0.72;\n}\n.sprint-group--finished .sprint-group-header {\n  background: rgba(5, 150, 105, 0.02);\n}\n.sprint-group--finished .sprint-progress-bar {\n  background: rgba(5, 150, 105, 0.1);\n}\n.sprint-finish-btn {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 5px 12px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: not-allowed;\n  white-space: nowrap;\n  opacity: 0.55;\n  transition: all 0.15s ease;\n  flex-shrink: 0;\n}\n.sprint-finish-btn svg {\n  flex-shrink: 0;\n}\n.sprint-finish-btn.sprint-finish-btn--ready {\n  cursor: pointer;\n  opacity: 1;\n  border-color: var(--accent);\n  color: var(--accent);\n}\n.sprint-finish-btn.sprint-finish-btn--ready:hover {\n  background: var(--accent);\n  color: white;\n}\n.sprint-finish-btn:disabled:not(.sprint-finish-btn--ready) {\n  pointer-events: none;\n}\n.finish-sprint-modal {\n  padding: 32px 28px 28px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 12px;\n  text-align: center;\n}\n.finish-sprint-icon {\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 4px;\n}\n.finish-sprint-modal h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 20px;\n  font-weight: 700;\n  margin: 0;\n  color: var(--text-primary);\n}\n.finish-sprint-modal p {\n  font-size: 14px;\n  color: var(--text-secondary);\n  margin: 0;\n  max-width: 320px;\n  line-height: 1.5;\n}\n.finish-sprint-modal p strong {\n  color: var(--text-primary);\n}\n.finish-sprint-actions {\n  display: flex;\n  gap: 10px;\n  margin-top: 8px;\n}\n.finish-sprint-cancel {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.finish-sprint-cancel:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.finish-sprint-confirm {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.finish-sprint-confirm:hover {\n  background: var(--accent-hover);\n}\n.toast {\n  position: fixed;\n  bottom: 28px;\n  left: 50%;\n  transform: translateX(-50%) translateY(12px);\n  background: var(--text-primary);\n  color: white;\n  padding: 12px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 9999;\n  white-space: nowrap;\n  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);\n}\n.toast svg {\n  color: #34D399;\n  flex-shrink: 0;\n}\n.toast.toast--visible {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.spin {\n  animation: spin 0.8s linear infinite;\n}\n.header-left {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  min-width: 0;\n}\n.header-title-block {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.header-board-name {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 700;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n}\n.header-title {\n  font-family: "Outfit", sans-serif;\n  font-size: 30px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n  margin: 0;\n  color: var(--text-primary);\n}\n.header-stats {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.stat-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border-radius: 999px;\n  padding: 3px 10px;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.02em;\n  border: 1px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.stat-chip--total .stat-chip-num {\n  color: var(--text-primary);\n  font-weight: 700;\n}\n.stat-chip--done {\n  border-color: rgba(5, 150, 105, 0.25);\n  background: rgba(5, 150, 105, 0.06);\n  color: #059669;\n}\n.stat-chip--progress {\n  border-color: rgba(79, 70, 229, 0.2);\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n}\n.stat-chip--pct {\n  border-color: var(--border);\n  background: var(--text-primary);\n  color: white;\n  font-weight: 700;\n}\n.stat-chip-dot {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.selection-bar-left {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.selection-count-badge {\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  background: var(--accent);\n  color: white;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.selection-count-label {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.9);\n  white-space: nowrap;\n}\n.selection-bar-sep {\n  width: 1px;\n  height: 20px;\n  background: rgba(255, 255, 255, 0.18);\n  flex-shrink: 0;\n}\n.selection-action-btn--move {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.4);\n}\n.bulk-dropdown-header {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 10px 8px;\n}\n.bulk-dropdown-list {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  max-height: 220px;\n  overflow-y: auto;\n}\n.bulk-assignee-search-wrap {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  padding: 6px 10px;\n  margin: 0 4px 4px;\n}\n.bulk-assignee-search-wrap svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.bulk-assignee-search {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.bulk-assignee-search::placeholder {\n  color: var(--text-secondary);\n}\n.bulk-user-name {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.sprint-progress-detail {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  color: var(--text-secondary);\n  white-space: nowrap;\n}\n.sprint-days-remaining {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  color: #D97706;\n  background: rgba(217, 119, 6, 0.08);\n  border: 1px solid rgba(217, 119, 6, 0.18);\n  border-radius: 20px;\n  padding: 1px 7px;\n  letter-spacing: 0.02em;\n}\n.move-sprint-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  background: rgba(79, 70, 229, 0.07);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.move-sprint-icon--backlog {\n  background: var(--bg);\n  color: var(--text-secondary);\n}\n.move-sprint-info {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  flex: 1;\n  min-width: 0;\n}\n.move-sprint-name {\n  font-size: 14px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.move-sprint-sub {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.move-sprint-finished-tag {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.04em;\n  color: #059669;\n  background: rgba(5, 150, 105, 0.08);\n  border: 1px solid rgba(5, 150, 105, 0.18);\n  border-radius: 20px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.loading-state {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  padding: 80px 24px;\n  font-size: 14px;\n  color: var(--text-secondary);\n}\n@keyframes uni-pop-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px) scale(0.98);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n.uni-popover {\n  position: fixed;\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-md);\n  box-shadow: 0 16px 48px rgba(28, 28, 31, 0.18), 0 4px 12px rgba(28, 28, 31, 0.08);\n  z-index: 2000;\n  display: flex;\n  flex-direction: column;\n  overflow: visible;\n  animation: uni-pop-in 0.14s ease;\n}\n.uni-popover-arrow {\n  position: absolute;\n  top: -7px;\n  width: 13px;\n  height: 13px;\n  background: var(--surface);\n  border-left: 1px solid var(--border);\n  border-top: 1px solid var(--border);\n  transform: translateX(-50%) rotate(45deg);\n  z-index: 1;\n}\n.uni-popover--top .uni-popover-arrow {\n  top: auto;\n  bottom: -7px;\n  transform: translateX(-50%) rotate(225deg);\n}\n.uni-popover > .uni-pop-head:first-of-type {\n  border-radius: var(--radius-md) var(--radius-md) 0 0;\n}\n.uni-pop-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 10px 14px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n  position: relative;\n  z-index: 2;\n}\n.uni-pop-close {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.uni-pop-close:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.uni-pop-list {\n  display: flex;\n  flex-direction: column;\n  padding: 6px;\n  max-height: 300px;\n  overflow-y: auto;\n}\n.uni-pop-item {\n  display: flex;\n  align-items: center;\n  gap: 9px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--text-primary);\n  text-align: left;\n  transition: background 0.1s ease;\n}\n.uni-pop-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.uni-pop-item.active {\n  background: rgba(79, 70, 229, 0.08);\n  font-weight: 600;\n}\n.uni-pop-item--clear {\n  color: var(--text-secondary);\n  border-top: 1px solid var(--border);\n  border-radius: 0;\n  margin-top: 4px;\n  font-size: 12px;\n}\n.uni-pop-item--clear:hover {\n  background: rgba(220, 38, 38, 0.06);\n  color: #DC2626;\n}\n.uni-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n.uni-check {\n  margin-left: auto;\n  color: var(--accent);\n  flex-shrink: 0;\n}\n.uni-popover-backdrop {\n  position: fixed;\n  inset: 0;\n  z-index: 1999;\n  background: transparent;\n}\n.ap-chip--tag {\n  background: rgba(79, 70, 229, 0.08);\n  border: 1px solid transparent;\n}\n.ap-chip--tag:hover {\n  filter: brightness(0.96);\n}\n.ap-create-tag {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  width: 100%;\n  border: 1px dashed rgba(79, 70, 229, 0.35);\n  background: rgba(79, 70, 229, 0.04);\n  padding: 8px 10px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--accent);\n  margin-top: 4px;\n  transition: background 0.12s ease;\n}\n.ap-create-tag:hover {\n  background: rgba(79, 70, 229, 0.08);\n}\n.ap-create-tag:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.ap-create-tag svg {\n  flex-shrink: 0;\n}\n.ap-create-tag span {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-create-tag strong {\n  font-weight: 700;\n}\n.ap-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 12px 14px 10px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-header-left {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: var(--text-primary);\n}\n.ap-header-left svg {\n  color: var(--text-secondary);\n  flex-shrink: 0;\n}\n.ap-close-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background: transparent;\n  color: var(--text-secondary);\n  cursor: pointer;\n  border-radius: 6px;\n  transition: background 0.12s ease, color 0.12s ease;\n}\n.ap-close-btn:hover {\n  background: rgba(28, 28, 31, 0.06);\n  color: var(--text-primary);\n}\n.ap-chips {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n  padding: 10px 12px 6px;\n  border-bottom: 1px solid var(--border);\n}\n.ap-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  border: none;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  border-radius: 20px;\n  padding: 3px 8px 3px 4px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n  max-width: 150px;\n}\n.ap-chip span {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-chip:hover {\n  background: rgba(220, 38, 38, 0.1);\n  color: #DC2626;\n}\n.ap-chip svg {\n  flex-shrink: 0;\n}\n.ap-search {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-bottom: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-search svg {\n  flex-shrink: 0;\n  color: var(--text-secondary);\n}\n.ap-search input {\n  flex: 1;\n  border: none;\n  background: transparent;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  outline: none;\n  cursor: text;\n}\n.ap-search input::placeholder {\n  color: var(--text-secondary);\n}\n.ap-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 6px;\n  max-height: 220px;\n}\n.ap-list-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.06em;\n  text-transform: uppercase;\n  color: var(--text-secondary);\n  padding: 4px 8px;\n}\n.ap-list-item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  border: none;\n  background: transparent;\n  padding: 7px 8px;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: background 0.1s ease;\n}\n.ap-list-item:hover {\n  background: rgba(79, 70, 229, 0.06);\n}\n.ap-list-item:hover .ap-user-name {\n  color: var(--accent);\n}\n.ap-user-info {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  text-align: left;\n  min-width: 0;\n}\n.ap-user-name {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: var(--text-primary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: color 0.1s ease;\n}\n.ap-user-role {\n  font-size: 11px;\n  color: var(--text-secondary);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ap-empty {\n  font-size: 12px;\n  color: var(--text-secondary);\n  text-align: center;\n  padding: 14px 8px;\n  margin: 0;\n}\n.ap-footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 8px 12px;\n  border-top: 1px solid var(--border);\n  background: var(--bg);\n}\n.ap-footer-hint {\n  font-size: 11px;\n  color: var(--text-secondary);\n}\n.ap-done-btn {\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 5px 14px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.ap-done-btn:hover {\n  background: var(--accent-hover);\n}\n.sidebar-divider {\n  height: 1px;\n  background: rgba(255, 255, 255, 0.12);\n  margin: 6px 4px;\n  flex-shrink: 0;\n}\n.sidebar-nav-item--soon {\n  opacity: 0.55;\n  cursor: pointer;\n}\n.sidebar-nav-item--soon:hover {\n  opacity: 0.85;\n}\n.sidebar-soon-badge {\n  margin-left: auto;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 9px;\n  font-weight: 700;\n  letter-spacing: 0.05em;\n  text-transform: uppercase;\n  background: rgba(245, 158, 11, 0.25);\n  color: #FCD34D;\n  border-radius: 999px;\n  padding: 2px 7px;\n  flex-shrink: 0;\n}\n.import-json-btn {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 8px 16px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.import-json-btn svg {\n  flex-shrink: 0;\n}\n.import-json-btn:hover {\n  border-color: var(--accent);\n  color: var(--accent);\n  background: rgba(79, 70, 229, 0.04);\n}\n.toast--soon {\n  bottom: 80px;\n  background:\n    linear-gradient(\n      135deg,\n      #4F46E5,\n      #7C3AED);\n}\n.import-json-modal {\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.import-json-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 16px;\n}\n.import-json-header-left {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n}\n.import-json-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  background: rgba(79, 70, 229, 0.08);\n  color: var(--accent);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.import-json-header-left h2 {\n  font-family: "Outfit", sans-serif;\n  font-size: 18px;\n  font-weight: 700;\n  margin: 0 0 4px;\n  color: var(--text-primary);\n}\n.import-json-header-left p {\n  font-size: 13px;\n  color: var(--text-secondary);\n  margin: 0;\n  line-height: 1.4;\n}\n.import-json-header-left p code {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  background: rgba(79, 70, 229, 0.06);\n  color: var(--accent);\n  padding: 1px 5px;\n  border-radius: 4px;\n}\n.import-json-format {\n  background: var(--bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 10px 14px;\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.import-json-format-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 10px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: var(--text-secondary);\n  flex-shrink: 0;\n  padding-top: 1px;\n}\n.import-json-example {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: #059669;\n  word-break: break-all;\n}\n.import-json-defaults {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n.import-json-field {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.import-json-label {\n  font-size: 12px;\n  font-weight: 600;\n  color: var(--text-secondary);\n}\n.import-json-select {\n  font-family: "Inter", sans-serif;\n  font-size: 13px;\n  color: var(--text-primary);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 8px 10px;\n  background: var(--surface);\n  outline: none;\n  transition: border-color 0.15s ease;\n  cursor: pointer;\n}\n.import-json-select:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea {\n  width: 100%;\n  height: 160px;\n  resize: vertical;\n  font-family: "JetBrains Mono", monospace;\n  font-size: 12px;\n  color: var(--text-primary);\n  border: 1.5px solid var(--border);\n  border-radius: var(--radius-sm);\n  padding: 14px 16px;\n  background: var(--bg);\n  outline: none;\n  line-height: 1.6;\n  box-sizing: border-box;\n  transition: border-color 0.15s ease;\n}\n.import-json-textarea:focus {\n  border-color: var(--accent);\n  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n.import-json-textarea::placeholder {\n  color: #B0AEA8;\n}\n.import-json-textarea:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.import-json-errors {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.import-json-error-item {\n  font-size: 12px;\n  color: #DC2626;\n  background: rgba(220, 38, 38, 0.05);\n  border: 1px solid rgba(220, 38, 38, 0.15);\n  border-radius: 7px;\n  padding: 7px 12px;\n}\n.import-json-progress-wrap {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.import-json-progress-bar {\n  height: 6px;\n  background: var(--border);\n  border-radius: 999px;\n  overflow: hidden;\n}\n.import-json-progress-fill {\n  height: 100%;\n  background: var(--accent);\n  border-radius: 999px;\n  transition: width 0.3s ease;\n}\n.import-json-progress-label {\n  font-family: "JetBrains Mono", monospace;\n  font-size: 11px;\n  color: var(--text-secondary);\n  text-align: right;\n}\n.import-json-done {\n  background: rgba(5, 150, 105, 0.07);\n  border: 1px solid rgba(5, 150, 105, 0.2);\n  color: #059669;\n  border-radius: var(--radius-sm);\n  padding: 12px 16px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.import-json-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 4px;\n}\n.import-json-cancel {\n  border: 1.5px solid var(--border);\n  background: var(--surface);\n  color: var(--text-secondary);\n  padding: 9px 20px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.12s ease;\n}\n.import-json-cancel:hover {\n  border-color: var(--text-secondary);\n  color: var(--text-primary);\n}\n.import-json-cancel:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.import-json-confirm {\n  display: inline-flex;\n  align-items: center;\n  gap: 7px;\n  border: none;\n  background: var(--accent);\n  color: white;\n  padding: 9px 22px;\n  border-radius: 999px;\n  font-family: "Inter", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.12s ease;\n}\n.import-json-confirm:hover:not(:disabled) {\n  background: var(--accent-hover);\n}\n.import-json-confirm:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n/*# sourceMappingURL=task-list.css.map */\n'] }]
   }], () => [{ type: ActivatedRoute }, { type: Router }, { type: ApiService }], { onEscKey: [{
     type: HostListener,
     args: ["document:keydown.escape"]
@@ -42419,7 +43512,7 @@ Conclu\xEDdo: ${pct}%`);
   }] });
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TaskListComponent, { className: "TaskListComponent", filePath: "src/app/components/task-list/task-list.ts", lineNumber: 36 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TaskListComponent, { className: "TaskListComponent", filePath: "src/app/components/task-list/task-list.ts", lineNumber: 37 });
 })();
 
 // src/app/components/login/login.ts

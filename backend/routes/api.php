@@ -7,6 +7,7 @@ use App\Http\Controllers\SprintController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskTypeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -38,6 +39,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::put('/priorities/reorder', [PriorityController::class, 'reorder']);
     Route::apiResource('priorities', PriorityController::class);
+
+    Route::put('/task-types/reorder', [TaskTypeController::class, 'reorder']);
+    Route::apiResource('task-types', TaskTypeController::class);
 
     Route::apiResource('tags', TagController::class);
 

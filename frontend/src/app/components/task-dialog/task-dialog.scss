@@ -156,6 +156,47 @@
   gap: 18px;
 }
 
+/* ---------- Detalhes em duas colunas ---------- */
+.details-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.details-main { min-width: 0; }
+.details-desc { min-height: 360px; }
+
+.details-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+
+.side-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+}
+
+.side-field {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 820px) {
+  .details-2col { grid-template-columns: 1fr; }
+  .details-side { position: static; }
+}
+
 .field-label-row {
   display: flex;
   align-items: center;

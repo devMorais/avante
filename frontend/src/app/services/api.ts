@@ -217,6 +217,28 @@ export class ApiService {
     return this.http.delete(`${API_URL}/priorities/${id}`);
   }
 
+  // ---------- Task types (tipos) ----------
+
+  getTaskTypes(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/task-types?board_id=${boardId}`);
+  }
+
+  createTaskType(data: { board_id: number; name: string; color: string }): Observable<any> {
+    return this.http.post(`${API_URL}/task-types`, data);
+  }
+
+  updateTaskType(id: number, data: { name?: string; color?: string; order?: number }): Observable<any> {
+    return this.http.put(`${API_URL}/task-types/${id}`, data);
+  }
+
+  deleteTaskType(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/task-types/${id}`);
+  }
+
+  reorderTaskTypes(items: { id: number; order: number }[]): Observable<any> {
+    return this.http.put(`${API_URL}/task-types/reorder`, { items });
+  }
+
   // ---------- Tags ----------
 
   getTags(boardId: number): Observable<any> {

@@ -14,6 +14,7 @@ import { TaskDialog, TaskFormValue } from '../task-dialog/task-dialog';
 import { SprintManager } from '../sprint-manager/sprint-manager';
 import { StatusManager } from '../status-manager/status-manager';
 import { PriorityManager } from '../priority-manager/priority-manager';
+import { TypeManager } from '../type-manager/type-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
 import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
@@ -27,7 +28,7 @@ type SortDir = 'asc' | 'desc';
   standalone: true,
   imports: [
     CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
-    Modal, Avatar, TaskDialog, SprintManager, StatusManager, PriorityManager, Sidebar,
+    Modal, Avatar, TaskDialog, SprintManager, StatusManager, PriorityManager, TypeManager, Sidebar,
     TaskFilters, TooltipDirective
   ],
   templateUrl: './task-list.html',
@@ -43,6 +44,7 @@ export class TaskListComponent implements OnInit {
   users = signal<any[]>([]);
   tags = signal<any[]>([]);
   priorities = signal<any[]>([]);
+  taskTypes = signal<any[]>([]);
 
   viewMode = signal('table');
   loading = signal(true);
@@ -52,7 +54,7 @@ export class TaskListComponent implements OnInit {
   section = signal('tasks');
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
-  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities') { this.section.set(s); }
+  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities' | 'types') { this.section.set(s); }
 
   reloadPriorities() { this.loadPriorities(); }
 
@@ -71,6 +73,7 @@ export class TaskListComponent implements OnInit {
     this.loadTasks();
     this.loadTags();
     this.loadPriorities();
+    this.loadTaskTypes();
   }
 
   // ---------- Filtros ----------
@@ -258,6 +261,31 @@ export class TaskListComponent implements OnInit {
       next: (data) => this.priorities.set(data),
       error: () => {}
     });
+  }
+
+  loadTaskTypes() {
+    this.apiService.getTaskTypes(this.boardId).subscribe({
+      next: (data) => this.taskTypes.set(data),
+      error: () => {}
+    });
+  }
+
+  reloadTaskTypes() { this.loadTaskTypes(); }
+
+  typeColor(name: string): string {
+    if (!name) return '#6B6B70';
+    return this.taskTypes().find(t => t.name === name)?.color || '#6B6B70';
+  }
+
+  // Nomes dos responsáveis além dos exibidos (para tooltip do +N)
+  extraAssigneeNames(task: any, shown: number): string {
+    return (task.assignees ?? []).slice(shown).map((a: any) => a.name).join(', ');
+  }
+  allAssigneeNames(task: any): string {
+    return (task.assignees ?? []).map((a: any) => a.name).join(', ');
+  }
+  extraTagNames(task: any, shown: number): string {
+    return (task.tags ?? []).slice(shown).map((t: any) => t.name).join(', ');
   }
 
   // ---------- Agrupamentos ----------
@@ -705,7 +733,7 @@ export class TaskListComponent implements OnInit {
   // ---------- Popover unificado (status / prioridade / responsáveis / tags) ----------
 
   activePopover = signal<{
-    type: 'status' | 'priority' | 'assignee' | 'tags';
+    type: 'status' | 'priority' | 'assignee' | 'tags' | 'type';
     taskId: number;
     top: number;
     left: number;
@@ -721,11 +749,12 @@ export class TaskListComponent implements OnInit {
     priority: { w: 230, h: 240 },
     assignee: { w: 300, h: 380 },
     tags: { w: 300, h: 360 },
+    type: { w: 230, h: 260 },
   };
 
   popWidth(type: string): number { return this.POP_DIMS[type]?.w ?? 260; }
 
-  openPopover(type: 'status' | 'priority' | 'assignee' | 'tags', task: any, event: Event) {
+  openPopover(type: 'status' | 'priority' | 'assignee' | 'tags' | 'type', task: any, event: Event) {
     event.stopPropagation();
     const cur = this.activePopover();
     if (cur && cur.type === type && cur.taskId === task.id) { this.closePopover(); return; }
@@ -779,8 +808,8 @@ export class TaskListComponent implements OnInit {
     if (this.activePopover()) this.closePopover();
   }
 
-  // Status / prioridade no popover unificado
-  setPopoverField(field: 'status_id' | 'priority', value: any) {
+  // Status / prioridade / tipo no popover unificado
+  setPopoverField(field: 'status_id' | 'priority' | 'type', value: any) {
     if (!this.popoverTask) return;
     this.updateTaskField(this.popoverTask, field, value);
     this.closePopover();

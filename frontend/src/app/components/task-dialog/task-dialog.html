@@ -48,21 +48,49 @@
       </button>
     </div>
 
-    <!-- ===== ABA DETALHES ===== -->
-    <div class="dialog-content" *ngIf="mode === 'create' || activeTab === 'details'">
+    <!-- ===== ABA DETALHES (duas colunas) ===== -->
+    <div class="dialog-content details-2col" *ngIf="mode === 'create' || activeTab === 'details'">
 
-      <div class="field field--full">
-        <div class="field-label-row">
-          <span class="field-label">História / Descrição</span>
-          <span class="field-counter">{{ charCount }} chars · {{ wordCount }} palavras</span>
+      <!-- Coluna esquerda: descrição -->
+      <div class="details-main">
+        <div class="field field--full">
+          <div class="field-label-row">
+            <span class="field-label">História / Descrição</span>
+            <span class="field-counter">{{ charCount }} chars · {{ wordCount }} palavras</span>
+          </div>
+          <textarea [(ngModel)]="formDescription" rows="16" class="field-input details-desc"
+            placeholder="Descreva a atividade com o máximo de detalhe possível..."></textarea>
         </div>
-        <textarea [(ngModel)]="formDescription" rows="10" class="field-input"
-          placeholder="Descreva a atividade com o máximo de detalhe possível..."></textarea>
       </div>
 
-      <div class="field-grid">
-        <!-- Status (popover) -->
-        <div class="field">
+      <!-- Coluna direita: Visão Geral -->
+      <aside class="details-side">
+        <h3 class="side-title">Visão Geral</h3>
+
+        <!-- Tipo -->
+        <div class="side-field">
+          <span class="field-label">Tipo</span>
+          <div class="td-dropdown">
+            <button type="button" class="td-dropdown-trigger" (click)="toggleField('type', $event)">
+              <span class="td-dot" [style.background]="currentType?.color || '#C4C4CC'"></span>
+              <span class="td-dropdown-value">{{ formType || 'Sem tipo' }}</span>
+              <svg class="td-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="td-dropdown-panel" *ngIf="openField === 'type'" (click)="$event.stopPropagation()">
+              <button type="button" class="td-dropdown-item" (click)="selectType(null)">
+                <span class="td-dot" style="background:#C4C4CC"></span>Sem tipo
+              </button>
+              <button type="button" *ngFor="let t of taskTypes" class="td-dropdown-item"
+                [class.active]="formType === t.name" (click)="selectType(t.name)">
+                <span class="td-dot" [style.background]="t.color"></span>{{ t.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="side-field">
           <span class="field-label">Status</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('status', $event)">
@@ -83,8 +111,8 @@
           </div>
         </div>
 
-        <!-- Prioridade (popover) -->
-        <div class="field">
+        <!-- Prioridade -->
+        <div class="side-field">
           <span class="field-label">Prioridade</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('priority', $event)">
@@ -102,8 +130,8 @@
           </div>
         </div>
 
-        <!-- Sprint (popover) -->
-        <div class="field">
+        <!-- Sprint -->
+        <div class="side-field">
           <span class="field-label">Sprint</span>
           <div class="td-dropdown">
             <button type="button" class="td-dropdown-trigger" (click)="toggleField('sprint', $event)">
@@ -121,66 +149,67 @@
           </div>
         </div>
 
-        <label class="field">
+        <!-- Épico -->
+        <div class="side-field">
           <span class="field-label">Épico</span>
           <input type="text" [(ngModel)]="formEpic" class="field-input"
             placeholder="ex: Admin, Real-time, IA…" />
-        </label>
-        <label class="field">
+        </div>
+
+        <!-- Release -->
+        <div class="side-field">
           <span class="field-label">Release</span>
           <input type="text" [(ngModel)]="formRelease" class="field-input"
             placeholder="ex: v1.2, Sprint Q3…" />
-        </label>
-      </div>
+        </div>
 
-      <div class="field" *ngIf="mode === 'edit'">
-        <span class="field-label">Responsáveis</span>
-        <button type="button" class="assignees-field-trigger" (click)="onManageAssignees()">
-          <ng-container *ngIf="task?.assignees?.length; else noAssignees">
-            <span class="assignees-field-person" *ngFor="let a of task.assignees">
-              <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
-              <span>{{ a.name }}</span>
-            </span>
-          </ng-container>
-          <ng-template #noAssignees>
-            <span class="assignees-field-empty">+ Adicionar responsáveis</span>
-          </ng-template>
-        </button>
-      </div>
+        <!-- Responsáveis -->
+        <div class="side-field" *ngIf="mode === 'edit'">
+          <span class="field-label">Responsáveis</span>
+          <button type="button" class="assignees-field-trigger" (click)="onManageAssignees()">
+            <ng-container *ngIf="task?.assignees?.length; else noAssignees">
+              <span class="assignees-field-person" *ngFor="let a of task.assignees">
+                <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+                <span>{{ a.name }}</span>
+              </span>
+            </ng-container>
+            <ng-template #noAssignees>
+              <span class="assignees-field-empty">+ Adicionar responsáveis</span>
+            </ng-template>
+          </button>
+        </div>
 
-      <!-- Tags -->
-      <div class="field" *ngIf="tags.length > 0">
-        <span class="field-label">Tags</span>
-        <div class="tags-selector">
-          <!-- chips selecionadas -->
-          <div class="tags-selected" *ngIf="formTagIds.length > 0">
-            <span *ngFor="let tag of selectedTagObjects()" class="td-tag-chip td-tag-chip--selected"
-              [style.background]="tag.color + '20'"
-              [style.color]="tag.color"
-              [style.border-color]="tag.color + '50'">
-              {{ tag.name }}
-              <button type="button" class="td-tag-remove" (click)="toggleTag(tag.id)">×</button>
-            </span>
-          </div>
-          <!-- busca + lista -->
-          <div class="tags-dropdown-wrap">
-            <input type="text" class="tags-search-input" placeholder="Buscar tag..." [(ngModel)]="tagSearchTerm" />
-            <div class="tags-list">
-              <button type="button" *ngFor="let tag of filteredTags" class="tags-list-item"
-                [class.selected]="isTagSelected(tag.id)"
-                (click)="toggleTag(tag.id)">
-                <span class="td-tag-dot" [style.background]="tag.color"></span>
-                <span class="td-tag-name">{{ tag.name }}</span>
-                <svg *ngIf="isTagSelected(tag.id)" class="td-tag-check" width="12" height="12" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </button>
-              <div *ngIf="filteredTags.length === 0" class="tags-list-empty">Nenhuma tag encontrada</div>
+        <!-- Tags -->
+        <div class="side-field" *ngIf="tags.length > 0">
+          <span class="field-label">Tags</span>
+          <div class="tags-selector">
+            <div class="tags-selected" *ngIf="formTagIds.length > 0">
+              <span *ngFor="let tag of selectedTagObjects()" class="td-tag-chip td-tag-chip--selected"
+                [style.background]="tag.color + '20'" [style.color]="tag.color"
+                [style.border-color]="tag.color + '50'">
+                {{ tag.name }}
+                <button type="button" class="td-tag-remove" (click)="toggleTag(tag.id)">×</button>
+              </span>
+            </div>
+            <div class="tags-dropdown-wrap">
+              <input type="text" class="tags-search-input" placeholder="Buscar tag..." [(ngModel)]="tagSearchTerm" />
+              <div class="tags-list">
+                <button type="button" *ngFor="let tag of filteredTags" class="tags-list-item"
+                  [class.selected]="isTagSelected(tag.id)" (click)="toggleTag(tag.id)">
+                  <span class="td-tag-dot" [style.background]="tag.color"></span>
+                  <span class="td-tag-name">{{ tag.name }}</span>
+                  <svg *ngIf="isTagSelected(tag.id)" class="td-tag-check" width="12" height="12" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </button>
+                <div *ngIf="filteredTags.length === 0" class="tags-list-empty">Nenhuma tag encontrada</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+
+      </aside>
 
     </div>
 

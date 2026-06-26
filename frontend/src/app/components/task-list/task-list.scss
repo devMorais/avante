@@ -88,9 +88,8 @@
 .page {
   flex: 1;
   min-width: 0;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 40px 32px 64px;
+  width: 100%;
+  padding: 32px 40px 64px;
 }
 
 /* ---------- Header ---------- */
@@ -264,12 +263,12 @@
 /* ---------- Visão Tabela ---------- */
 
 // grid: drag/select | checkbox | título | status | prioridade | resp. | épico | tags
-$cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
+$cols: 32px 40px 1fr 136px 116px 104px 132px 150px;
 
 .table-view {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 /* .table-header-box removido — header agora fica dentro de cada grupo */
@@ -361,7 +360,7 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 
 /* ---------- Cabeçalho de colunas por sprint ---------- */
 
-$cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
+$cols: 32px 40px 1fr 136px 116px 104px 132px 150px;
 
 .sprint-cols-header {
   display: grid;
@@ -517,6 +516,23 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
   }
 }
 
+/* Faixa de tipo (cor) na borda esquerda da linha */
+.task-row { position: relative; }
+.task-type-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 0;
+  z-index: 2;
+  transition: width 0.12s ease, filter 0.12s ease;
+  &:hover { width: 7px; filter: brightness(0.92); }
+}
+
 .task-check-cell {
   display: flex;
   align-items: center;
@@ -531,7 +547,7 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 16px 13px 12px;
+  padding: 16px 18px 16px 14px;
   border-right: 1px solid var(--border);
   overflow: hidden;
   cursor: pointer;
@@ -539,6 +555,24 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
   &:hover .copy-btn {
     opacity: 1;
   }
+}
+
+/* Badge de release ao lado do título */
+.task-release-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  background: #4B5563;
+  color: #FFFFFF;
+  white-space: nowrap;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .task-title {
@@ -566,7 +600,7 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
   color: #6D28D9;
   border: 1px solid #DDD6FE;
   white-space: nowrap;
-  max-width: 120px;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -574,14 +608,15 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 .task-tag-chip {
   display: inline-flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   padding: 1px 8px;
   border-radius: 99px;
   font-size: 10px;
   font-weight: 600;
   border: 1px solid transparent;
   white-space: nowrap;
-  max-width: 100px;
+  max-width: 84px;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
@@ -859,6 +894,7 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 .tags-trigger {
   display: inline-flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 4px;
   border: none;
   background: transparent;
@@ -892,6 +928,9 @@ $cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 .assignees-trigger {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-width: 100%;
   border: none;
   background: transparent;
   cursor: pointer;

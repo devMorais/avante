@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\Priority;
 use App\Models\Status;
+use App\Models\TaskType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,6 +29,16 @@ class BoardController extends Controller
         ['name' => 'Média', 'color' => '#0284C7'],
         ['name' => 'Alta', 'color' => '#EA580C'],
         ['name' => 'Urgente', 'color' => '#DC2626'],
+    ];
+
+    /**
+     * Tipos de tarefa padrão criados automaticamente para todo quadro novo.
+     */
+    private const DEFAULT_TASK_TYPES = [
+        ['name' => 'Tarefa', 'color' => '#6B6B70'],
+        ['name' => 'História', 'color' => '#7C3AED'],
+        ['name' => 'Bug', 'color' => '#DC2626'],
+        ['name' => 'Melhoria', 'color' => '#0284C7'],
     ];
 
     /**
@@ -96,6 +107,16 @@ class BoardController extends Controller
                 'board_id' => $board->id,
                 'name' => $priority['name'],
                 'color' => $priority['color'],
+                'order' => $index,
+            ]);
+        }
+
+        // Cria os tipos de tarefa padrão para este quadro
+        foreach (self::DEFAULT_TASK_TYPES as $index => $type) {
+            TaskType::create([
+                'board_id' => $board->id,
+                'name' => $type['name'],
+                'color' => $type['color'],
                 'order' => $index,
             ]);
         }
