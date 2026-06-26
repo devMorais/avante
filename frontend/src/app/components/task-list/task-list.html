@@ -22,14 +22,6 @@
     </svg>
     <span>Status</span>
   </button>
-  <button class="sidebar-nav-item" [class.active]="section() === 'tags'" (click)="setSection('tags')">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-      <line x1="7" y1="7" x2="7.01" y2="7"/>
-    </svg>
-    <span>Tags</span>
-  </button>
 
   <div class="sidebar-divider"></div>
 
@@ -296,75 +288,13 @@
 
       <ng-container *ngIf="!loading(); else loadingTpl">
 
-        <!-- Header global de colunas -->
-        <div class="global-columns-header">
-          <div class="gcol gcol-drag"></div>
-          <div class="gcol gcol-check"></div>
-          <div class="gcol gcol-title sort-col" (click)="setSort('description')">
-            Atividade
-            <span class="sort-icon" [class.active]="sortField() === 'description'">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'description' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
-                <ng-container *ngIf="sortField() !== 'description' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="gcol gcol-epic">Épico</div>
-          <div class="gcol gcol-tags">Tags</div>
-          <div class="gcol gcol-status sort-col" (click)="setSort('status')">
-            Status
-            <span class="sort-icon" [class.active]="sortField() === 'status'">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'status' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
-                <ng-container *ngIf="sortField() !== 'status' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="gcol gcol-priority sort-col" (click)="setSort('priority')">
-            Prioridade
-            <span class="sort-icon" [class.active]="sortField() === 'priority'">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'priority' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
-                <ng-container *ngIf="sortField() !== 'priority' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="gcol gcol-assignee sort-col" (click)="setSort('assignee')">
-            Resp.
-            <span class="sort-icon" [class.active]="sortField() === 'assignee'">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <ng-container *ngIf="sortField() === 'assignee' && sortDir() === 'desc'"><path d="m18 15-6-6-6 6"/></ng-container>
-                <ng-container *ngIf="sortField() !== 'assignee' || sortDir() === 'asc'"><path d="m6 9 6 6 6-6"/></ng-container>
-              </svg>
-            </span>
-          </div>
-          <div class="gcol"></div>
-          <button *ngIf="sortField()" class="sort-clear-btn" (click)="clearSort()">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-              stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-            Limpar ordem
-          </button>
-        </div>
-
         <ng-container *ngFor="let group of groupedBySprint()">
           <div *ngIf="group.tasks.length > 0" class="sprint-group"
             [class.sprint-group--finished]="isSprintFinished(group.sprint)"
             [class.sprint-group--overdue]="isSprintOverdue(group.sprint)">
 
-            <!-- CABEÇALHO DA SPRINT -->
+            <!-- CABEÇALHO DA SPRINT (título + ações) -->
             <div class="sprint-group-header" (click)="toggleGroup(group.sprint?.id ?? 'backlog')">
-
-              <div class="group-check-wrap" (click)="$event.stopPropagation()">
-                <input type="checkbox" class="row-checkbox"
-                  [checked]="isGroupAllSelected(group.tasks)"
-                  [indeterminate]="isGroupIndeterminate(group.tasks)"
-                  (change)="toggleSelectGroup(group.tasks, $event)"
-                  (click)="$event.stopPropagation()" />
-              </div>
 
               <span class="chevron" [class.collapsed]="isGroupCollapsed(group.sprint?.id ?? 'backlog')">▾</span>
 
@@ -437,11 +367,22 @@
                 </ng-container>
               </div>
 
+              <!-- Região de ações: restaurar ordem + finalizar -->
+              <button *ngIf="hasCustomOrder(groupKey(group.sprint))" class="order-reset-btn"
+                (click)="resetOrder(groupKey(group.sprint), $event)"
+                appTooltip="Restaurar ordem original (desfaz ordenação e movimentações)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 2v6h6" />
+                  <path d="M3 13a9 9 0 1 0 3-7.7L3 8" />
+                </svg>
+              </button>
+
               <ng-container *ngIf="group.sprint && !isSprintFinished(group.sprint)">
                 <button class="sprint-finish-btn"
                   [class.sprint-finish-btn--ready]="canFinishSprint(group.sprint, group.tasks)"
                   [disabled]="!canFinishSprint(group.sprint, group.tasks) || finishingSprintId() === group.sprint.id"
-                  [title]="canFinishSprint(group.sprint, group.tasks) ? 'Finalizar sprint' : 'Disponível quando vencida ou 100% concluída'"
+                  [appTooltip]="canFinishSprint(group.sprint, group.tasks) ? 'Finalizar sprint' : 'Disponível quando vencida ou 100% concluída'"
                   (click)="openFinishConfirm(group.sprint, group.tasks, $event)">
                   <svg *ngIf="finishingSprintId() !== group.sprint.id" width="13" height="13" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -455,6 +396,56 @@
                 </button>
               </ng-container>
 
+            </div>
+
+            <!-- Header de colunas próprio da sprint -->
+            <div class="sprint-cols-header" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
+              <div class="gcol gcol-drag" (click)="$event.stopPropagation()">
+                <input type="checkbox" class="row-checkbox"
+                  [checked]="isGroupAllSelected(group.tasks)"
+                  [indeterminate]="isGroupIndeterminate(group.tasks)"
+                  (change)="toggleSelectGroup(group.tasks, $event)"
+                  appTooltip="Selecionar todas desta sprint" />
+              </div>
+              <div class="gcol gcol-check"></div>
+              <div class="gcol gcol-title sort-col" (click)="setSortFor(groupKey(group.sprint), 'description')">
+                Atividade
+                <span class="sort-icon" [class.active]="getSort(groupKey(group.sprint)).field === 'description'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path *ngIf="getSort(groupKey(group.sprint)).field === 'description' && getSort(groupKey(group.sprint)).dir === 'desc'" d="m18 15-6-6-6 6"/>
+                    <path *ngIf="getSort(groupKey(group.sprint)).field !== 'description' || getSort(groupKey(group.sprint)).dir === 'asc'" d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-status sort-col" (click)="setSortFor(groupKey(group.sprint), 'status')">
+                Status
+                <span class="sort-icon" [class.active]="getSort(groupKey(group.sprint)).field === 'status'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path *ngIf="getSort(groupKey(group.sprint)).field === 'status' && getSort(groupKey(group.sprint)).dir === 'desc'" d="m18 15-6-6-6 6"/>
+                    <path *ngIf="getSort(groupKey(group.sprint)).field !== 'status' || getSort(groupKey(group.sprint)).dir === 'asc'" d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-priority sort-col" (click)="setSortFor(groupKey(group.sprint), 'priority')">
+                Prioridade
+                <span class="sort-icon" [class.active]="getSort(groupKey(group.sprint)).field === 'priority'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path *ngIf="getSort(groupKey(group.sprint)).field === 'priority' && getSort(groupKey(group.sprint)).dir === 'desc'" d="m18 15-6-6-6 6"/>
+                    <path *ngIf="getSort(groupKey(group.sprint)).field !== 'priority' || getSort(groupKey(group.sprint)).dir === 'asc'" d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-assignee sort-col" (click)="setSortFor(groupKey(group.sprint), 'assignee')">
+                Resp.
+                <span class="sort-icon" [class.active]="getSort(groupKey(group.sprint)).field === 'assignee'">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path *ngIf="getSort(groupKey(group.sprint)).field === 'assignee' && getSort(groupKey(group.sprint)).dir === 'desc'" d="m18 15-6-6-6 6"/>
+                    <path *ngIf="getSort(groupKey(group.sprint)).field !== 'assignee' || getSort(groupKey(group.sprint)).dir === 'asc'" d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="gcol gcol-epic">Épico</div>
+              <div class="gcol gcol-tags">Tags</div>
             </div>
 
             <!-- Linhas de tarefa com drag-and-drop -->
@@ -514,34 +505,6 @@
                   </div>
                 </div>
 
-                <!-- Épico -->
-                <div class="task-col task-col--epic">
-                  <span *ngIf="task.epic" class="task-epic-tag" [title]="task.epic">{{ task.epic }}</span>
-                  <span *ngIf="!task.epic" class="task-col-empty">—</span>
-                </div>
-
-                <!-- Tags (popover igual responsáveis) -->
-                <div class="task-col task-col--tags">
-                  <button class="tags-trigger" (click)="openPopover('tags', task, $event)"
-                    [appTooltip]="task.tags?.length ? 'Editar tags' : 'Adicionar tags'">
-                    <ng-container *ngIf="task.tags?.length > 0; else emptyTags">
-                      <span *ngFor="let tag of task.tags.slice(0,2)" class="task-tag-chip"
-                        [style.background]="tag.color + '20'" [style.color]="tag.color"
-                        [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
-                      <span *ngIf="task.tags.length > 2" class="task-tag-more">+{{ task.tags.length - 2 }}</span>
-                    </ng-container>
-                    <ng-template #emptyTags>
-                      <span class="tags-empty">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round">
-                          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-                          <line x1="7" y1="7" x2="7.01" y2="7"/>
-                        </svg>
-                      </span>
-                    </ng-template>
-                  </button>
-                </div>
-
                 <!-- Status (popover) -->
                 <div class="task-col">
                   <button class="meta-trigger" (click)="openPopover('status', task, $event)" appTooltip="Alterar status">
@@ -585,15 +548,31 @@
                   </button>
                 </div>
 
-                <!-- Ações -->
-                <div class="task-col col-actions">
-                  <button class="row-delete-btn" (click)="askDeleteTask(task, $event)"
-                    appTooltip="Excluir atividade" tooltipPlacement="left">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round">
-                      <path
-                        d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
-                    </svg>
+                <!-- Épico -->
+                <div class="task-col task-col--epic">
+                  <span *ngIf="task.epic" class="task-epic-tag" [appTooltip]="task.epic">{{ task.epic }}</span>
+                  <span *ngIf="!task.epic" class="task-col-empty">—</span>
+                </div>
+
+                <!-- Tags (popover igual responsáveis) -->
+                <div class="task-col task-col--tags">
+                  <button class="tags-trigger" (click)="openPopover('tags', task, $event)"
+                    [appTooltip]="task.tags?.length ? 'Editar tags' : 'Adicionar tags'">
+                    <ng-container *ngIf="task.tags?.length > 0; else emptyTags">
+                      <span *ngFor="let tag of task.tags.slice(0,2)" class="task-tag-chip"
+                        [style.background]="tag.color + '20'" [style.color]="tag.color"
+                        [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
+                      <span *ngIf="task.tags.length > 2" class="task-tag-more">+{{ task.tags.length - 2 }}</span>
+                    </ng-container>
+                    <ng-template #emptyTags>
+                      <span class="tags-empty">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round">
+                          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                          <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                      </span>
+                    </ng-template>
                   </button>
                 </div>
               </div>
@@ -645,9 +624,6 @@
     <app-status-manager [boardId]="boardId" (statusesChanged)="reloadStatuses()"></app-status-manager>
   </ng-container>
 
-  <ng-container *ngIf="section() === 'tags'">
-    <app-tag-manager [boardId]="boardId" (tagsChanged)="loadTags()"></app-tag-manager>
-  </ng-container>
 
 </div>
 
@@ -774,10 +750,18 @@
         <span class="uni-dot" [style.background]="t.color"></span>
         <span class="ap-user-name">{{ t.name }}</span>
       </button>
-      <p *ngIf="suggestedTags().length === 0 && tags().length === 0" class="ap-empty">
-        Nenhuma tag criada. Crie em "Tags" na barra lateral.
+
+      <!-- Criar nova tag inline -->
+      <button *ngIf="canCreateTag()" class="ap-create-tag" (click)="createTagInline()" [disabled]="creatingTag()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Criar tag “<strong>{{ popoverSearch().trim() }}</strong>”</span>
+      </button>
+
+      <p *ngIf="suggestedTags().length === 0 && !canCreateTag() && tags().length === 0" class="ap-empty">
+        Digite para criar a primeira tag.
       </p>
-      <p *ngIf="suggestedTags().length === 0 && tags().length > 0" class="ap-empty">
+      <p *ngIf="suggestedTags().length === 0 && !canCreateTag() && tags().length > 0" class="ap-empty">
         Todas as tags já aplicadas.
       </p>
     </div>

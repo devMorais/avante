@@ -263,8 +263,8 @@
 
 /* ---------- Visão Tabela ---------- */
 
-// grid: drag | checkbox | título | épico | tags | status | prioridade | resp. | ações
-$cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
+// grid: drag/select | checkbox | título | status | prioridade | resp. | épico | tags
+$cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 
 .table-view {
   display: flex;
@@ -359,49 +359,11 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
 }
 
 
-/* ---------- Cabeçalho de colunas por grupo (substitui o header fixo) ---------- */
+/* ---------- Cabeçalho de colunas por sprint ---------- */
 
-$cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
+$cols: 28px 36px 1fr 118px 100px 64px 84px 92px;
 
-.global-columns-header {
-  display: grid;
-  grid-template-columns: $cols;
-  align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-rest);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  margin-bottom: 4px;
-}
-
-.sort-clear-btn {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  border: none;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  padding: 4px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.12s ease;
-  z-index: 2;
-
-  &:hover { background: rgba(79, 70, 229, 0.16); }
-}
-
-.group-columns-header {
+.sprint-cols-header {
   display: grid;
   grid-template-columns: $cols;
   align-items: center;
@@ -415,8 +377,7 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--text-secondary);
-    padding: 7px 16px;
-    border-right: 1px solid transparent;
+    padding: 7px 10px;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -424,14 +385,12 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
     overflow: hidden;
   }
 
-  .gcol:last-child {
-    border-right: none;
-  }
-
-  .gcol-check {
+  .gcol-drag {
     justify-content: center;
     padding: 0;
   }
+  .gcol-check { padding: 0; }
+  .gcol-title { padding-left: 12px; }
 
   .gcol-status,
   .gcol-priority,
@@ -439,8 +398,14 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
     justify-content: center;
   }
 
-  .gcol-title {
-    padding-left: 12px;
+  .gcol-epic { padding-left: 12px; }
+  .gcol-tags { padding-left: 8px; }
+
+  .sort-col {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.12s ease;
+    &:hover { color: var(--accent); }
   }
 }
 
@@ -456,8 +421,8 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
 .sprint-group-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 18px 12px 28px;
+  gap: 10px;
+  padding: 12px 18px 12px 14px;
   cursor: pointer;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
@@ -469,12 +434,26 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
   }
 }
 
-.group-check-wrap {
+/* Botão restaurar ordem original (região de ações da sprint) */
+.order-reset-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(79, 70, 229, 0.06);
+  }
 }
 
 .chevron {
@@ -2028,39 +2007,6 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
   white-space: nowrap;
 }
 
-/* ---------- gcol (global columns header) ---------- */
-
-.gcol {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.gcol-check {
-  justify-content: center;
-  padding: 0 !important;
-  width: 40px;
-}
-
-.gcol-title { padding-left: 12px; }
-
-.gcol-epic { padding-left: 12px; }
-.gcol-tags { padding-left: 8px; }
-
-.gcol-status,
-.gcol-priority,
-.gcol-assignee {
-  justify-content: center;
-}
 
 /* ---------- Sprint progress detail ---------- */
 
@@ -2276,6 +2222,29 @@ $cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
   background: rgba(79, 70, 229, 0.08);
   border: 1px solid transparent;
   &:hover { filter: brightness(0.96); }
+}
+
+.ap-create-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px dashed rgba(79, 70, 229, 0.35);
+  background: rgba(79, 70, 229, 0.04);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--accent);
+  margin-top: 4px;
+  transition: background 0.12s ease;
+
+  &:hover { background: rgba(79, 70, 229, 0.08); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+  svg { flex-shrink: 0; }
+  span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  strong { font-weight: 700; }
 }
 
 .ap-header {

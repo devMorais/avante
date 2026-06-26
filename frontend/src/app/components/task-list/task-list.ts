@@ -15,7 +15,6 @@ import { SprintManager } from '../sprint-manager/sprint-manager';
 import { StatusManager } from '../status-manager/status-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
-import { TagManagerComponent } from '../tag-manager/tag-manager';
 import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
@@ -29,7 +28,7 @@ const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Médi
   imports: [
     CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, Sidebar,
-    TaskFilters, TagManagerComponent, TooltipDirective
+    TaskFilters, TooltipDirective
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -52,7 +51,7 @@ export class TaskListComponent implements OnInit {
   section = signal('tasks');
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
-  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'tags') { this.section.set(s); }
+  setSection(s: 'tasks' | 'sprints' | 'statuses') { this.section.set(s); }
 
   constructor(
     private route: ActivatedRoute,
@@ -99,26 +98,69 @@ export class TaskListComponent implements OnInit {
     return Math.round((this.statsDone() / total) * 100);
   });
 
-  // ---------- Ordenação ----------
+  // ---------- Ordenação (por sprint) ----------
 
-  sortField = signal<SortField>(null);
-  sortDir = signal<SortDir>('asc');
+  // Mapa: chave do grupo -> { field, dir }
+  sprintSort = signal<Record<string, { field: SortField; dir: SortDir }>>({});
+  // Grupos cuja ordem foi alterada por drag (para habilitar o reset)
+  draggedGroups = signal<Set<string>>(new Set());
+  // Snapshot da ordem original (id -> índice), capturado no primeiro load
+  private originalOrder = new Map<number, number>();
 
-  setSort(field: SortField) {
-    if (this.sortField() === field) {
-      this.sortDir.set(this.sortDir() === 'asc' ? 'desc' : 'asc');
-    } else {
-      this.sortField.set(field);
-      this.sortDir.set('asc');
+  groupKey(sprint: any): string { return String(sprint?.id ?? 'backlog'); }
+  taskGroupKey(task: any): string { return String(task?.sprint_id ?? 'backlog'); }
+
+  getSort(key: string): { field: SortField; dir: SortDir } {
+    return this.sprintSort()[key] ?? { field: null, dir: 'asc' };
+  }
+
+  setSortFor(key: string, field: SortField) {
+    const cur = this.getSort(key);
+    const next = cur.field === field
+      ? { field, dir: (cur.dir === 'asc' ? 'desc' : 'asc') as SortDir }
+      : { field, dir: 'asc' as SortDir };
+    this.sprintSort.set({ ...this.sprintSort(), [key]: next });
+  }
+
+  // Há ordenação ativa OU ordem alterada por drag → permite restaurar
+  hasCustomOrder(key: string): boolean {
+    return this.getSort(key).field !== null || this.draggedGroups().has(key);
+  }
+
+  // Restaura a ordem original (desfaz sort e drag) do grupo
+  resetOrder(key: string, event?: Event) {
+    event?.stopPropagation();
+    const map = { ...this.sprintSort() };
+    delete map[key];
+    this.sprintSort.set(map);
+
+    const dragged = new Set(this.draggedGroups());
+    dragged.delete(key);
+    this.draggedGroups.set(dragged);
+
+    // Reordena as tarefas do grupo pela ordem original e persiste
+    const groupTasks = this.tasks()
+      .filter(t => this.taskGroupKey(t) === key)
+      .sort((a, b) => (this.originalOrder.get(a.id) ?? 0) - (this.originalOrder.get(b.id) ?? 0));
+
+    const items = groupTasks.map((t, i) => ({ id: t.id, sort_order: i }));
+    if (items.length) {
+      // atualiza local
+      const orderById = new Map(items.map(it => [it.id, it.sort_order]));
+      this.tasks.set(this.tasks().map(t =>
+        orderById.has(t.id) ? { ...t, sort_order: orderById.get(t.id) } : t
+      ));
+      this.apiService.reorderTasks(items).subscribe();
     }
   }
 
-  clearSort() { this.sortField.set(null); }
-
-  sortedTasks(tasks: any[]): any[] {
-    const field = this.sortField();
-    if (!field) return tasks;
-    const dir = this.sortDir() === 'asc' ? 1 : -1;
+  private sortGroupTasks(tasks: any[], key: string): any[] {
+    const { field, dir } = this.getSort(key);
+    if (!field) {
+      // sem sort → ordem por sort_order
+      return [...tasks].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+    }
+    const d = dir === 'asc' ? 1 : -1;
     return [...tasks].sort((a, b) => {
       let av: any, bv: any;
       if (field === 'description') { av = (a.description ?? '').toLowerCase(); bv = (b.description ?? '').toLowerCase(); }
@@ -126,11 +168,11 @@ export class TaskListComponent implements OnInit {
       else if (field === 'priority') {
         av = PRIORITY_ORDER[a.priority] ?? 99;
         bv = PRIORITY_ORDER[b.priority] ?? 99;
-        return (av - bv) * dir;
+        return (av - bv) * d;
       }
       else if (field === 'assignee') { av = (a.assignees?.[0]?.name ?? '').toLowerCase(); bv = (b.assignees?.[0]?.name ?? '').toLowerCase(); }
-      if (av < bv) return -1 * dir;
-      if (av > bv) return 1 * dir;
+      if (av < bv) return -1 * d;
+      if (av > bv) return 1 * d;
       return 0;
     });
   }
@@ -154,7 +196,15 @@ export class TaskListComponent implements OnInit {
       tag_ids: this.currentFilters.tag_ids?.length ? this.currentFilters.tag_ids : undefined,
     }).subscribe({
       next: (res) => {
-        this.tasks.set(Array.isArray(res) ? res : (res.data ?? []));
+        const list = Array.isArray(res) ? res : (res.data ?? []);
+        this.tasks.set(list);
+        // captura ordem original na primeira carga
+        if (this.originalOrder.size === 0) {
+          list.forEach((t: any, i: number) => this.originalOrder.set(t.id, i));
+        } else {
+          // garante que novas tarefas tenham posição no snapshot
+          list.forEach((t: any) => { if (!this.originalOrder.has(t.id)) this.originalOrder.set(t.id, this.originalOrder.size); });
+        }
         this.selectedIds.set(new Set());
         this.closeBulkDropdown();
         this.loading.set(false);
@@ -209,10 +259,11 @@ export class TaskListComponent implements OnInit {
 
     const groups: { sprint: any | null; tasks: any[] }[] = [];
     for (const sprint of this.sprints()) {
-      const sprintTasks = this.sortedTasks(allTasks.filter(t => t.sprint_id === sprint.id));
+      const key = this.groupKey(sprint);
+      const sprintTasks = this.sortGroupTasks(allTasks.filter(t => t.sprint_id === sprint.id), key);
       groups.push({ sprint, tasks: sprintTasks });
     }
-    const withoutSprint = this.sortedTasks(allTasks.filter(t => !t.sprint_id));
+    const withoutSprint = this.sortGroupTasks(allTasks.filter(t => !t.sprint_id), 'backlog');
     groups.push({ sprint: null, tasks: withoutSprint });
     return groups;
   });
@@ -810,6 +861,39 @@ export class TaskListComponent implements OnInit {
     });
   });
 
+  // Cores para novas tags criadas inline
+  private readonly TAG_PALETTE = [
+    '#4F46E5', '#0284C7', '#059669', '#D97706', '#DC2626',
+    '#7C3AED', '#DB2777', '#0891B2', '#16A34A', '#EA580C',
+  ];
+
+  // Termo digitado pode virar nova tag? (não existe exatamente)
+  canCreateTag = computed(() => {
+    const _ = this.activePopover();
+    const term = this.popoverSearch().trim();
+    if (!term) return false;
+    return !this.tags().some(t => (t.name ?? '').toLowerCase() === term.toLowerCase());
+  });
+
+  creatingTag = signal(false);
+
+  createTagInline() {
+    const term = this.popoverSearch().trim();
+    if (!term || this.creatingTag()) return;
+    this.creatingTag.set(true);
+    const color = this.TAG_PALETTE[this.tags().length % this.TAG_PALETTE.length];
+    this.apiService.createTag({ board_id: this.boardId, name: term, color }).subscribe({
+      next: (tag: any) => {
+        this.tags.set([...this.tags(), tag]);
+        this.popoverSearch.set('');
+        this.creatingTag.set(false);
+        // aplica imediatamente à tarefa
+        this.toggleTaskTag(tag.id);
+      },
+      error: (err) => { console.error('Erro ao criar tag:', err); this.creatingTag.set(false); }
+    });
+  }
+
   // ---------- Drag-and-drop de tarefas ----------
 
   draggingTask = signal(false);
@@ -825,24 +909,31 @@ export class TaskListComponent implements OnInit {
   onTaskDrop(event: CdkDragDrop<any[]>, targetGroup: any) {
     const sourceList: any[] = event.previousContainer.data;
     const targetList: any[] = event.container.data;
+    const newSprintId = targetGroup.sprint?.id ?? null;
+    const targetKey = this.groupKey(targetGroup.sprint);
 
     if (event.previousContainer === event.container) {
-      // Reorder dentro do mesmo grupo
       moveItemInArray(targetList, event.previousIndex, event.currentIndex);
     } else {
-      // Mover para outro sprint
       transferArrayItem(sourceList, targetList, event.previousIndex, event.currentIndex);
       const task = targetList[event.currentIndex];
-      const newSprintId = targetGroup.sprint?.id ?? null;
-      this.apiService.updateTask(task.id, { sprint_id: newSprintId }).subscribe({
-        next: (updated) => {
-          targetList[event.currentIndex] = updated;
-        }
-      });
+      task.sprint_id = newSprintId;
+      this.apiService.updateTask(task.id, { sprint_id: newSprintId }).subscribe();
     }
 
-    // Persistir ordem
+    // marca grupo como reordenado manualmente
+    const dragged = new Set(this.draggedGroups());
+    dragged.add(targetKey);
+    this.draggedGroups.set(dragged);
+
+    // persiste a ordem e atualiza o sort_order local para fixar a ordem
     const items = targetList.map((t, i) => ({ id: t.id, sort_order: i }));
+    const orderById = new Map(items.map(it => [it.id, it.sort_order]));
+    this.tasks.set(this.tasks().map(t =>
+      orderById.has(t.id)
+        ? { ...t, sort_order: orderById.get(t.id), sprint_id: t.id === targetList[event.currentIndex]?.id ? newSprintId : t.sprint_id }
+        : t
+    ));
     this.apiService.reorderTasks(items).subscribe();
   }
 
