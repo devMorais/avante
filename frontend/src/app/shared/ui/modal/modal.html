@@ -1,4 +1,4 @@
-<div class="modal-backdrop" *ngIf="isOpen" (click)="requestClose()">
+<div class="modal-backdrop" *ngIf="isOpen" (click)="onBackdropClick()">
   <div class="modal-panel" [style.width]="width" (click)="$event.stopPropagation()">
     <ng-content></ng-content>
   </div>

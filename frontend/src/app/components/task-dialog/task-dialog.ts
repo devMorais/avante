@@ -14,6 +14,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Modal } from '../../shared/ui/modal/modal';
 import { Button } from '../../shared/ui/button/button';
 import { Avatar } from '../../shared/ui/avatar/avatar';
+import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 import { ApiService } from '../../services/api';
 
 export interface TaskFormValue {
@@ -40,7 +41,7 @@ const MOTIVATIONAL = [
 @Component({
   selector: 'app-task-dialog',
   standalone: true,
-  imports: [CommonModule, FormsModule, Modal, Button, Avatar],
+  imports: [CommonModule, FormsModule, Modal, Button, Avatar, TooltipDirective],
   templateUrl: './task-dialog.html',
   styleUrl: './task-dialog.scss',
 })
@@ -65,7 +66,10 @@ export class TaskDialog implements OnChanges {
   @Output() manageAssignees = new EventEmitter<void>();
   @Output() deleteTask = new EventEmitter<void>();
 
-  activeTab: 'details' | 'comments' | 'notes' = 'details';
+  activeTab: 'details' | 'notes' = 'details';
+
+  // Imagens coladas na descrição (base64, localStorage)
+  descImages: { id: string; data: string; name: string }[] = [];
 
   // Dropdowns inline (popover) — substituem os <select> nativos
   openField: 'status' | 'priority' | 'sprint' | 'type' | null = null;
@@ -180,6 +184,7 @@ export class TaskDialog implements OnChanges {
       this.formTagIds = (this.task.tags ?? []).map((t: any) => Number(t.id));
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
+      this.descImages = this.loadDescImages(this.task.id);
       this.startTimer(this.task.id);
     } else {
       this.formDescription = '';
@@ -192,6 +197,7 @@ export class TaskDialog implements OnChanges {
       this.formTagIds = [];
       this.taskNotes = '';
       this.noteImages = [];
+      this.descImages = [];
       this.stopTimer();
     }
     this.tagSearchTerm = '';
@@ -463,6 +469,53 @@ export class TaskDialog implements OnChanges {
 
   openImageViewer(img: { data: string; name: string }) { this.viewingImage = img; }
   closeImageViewer() { this.viewingImage = null; }
+
+  // -------- Imagens coladas na descrição --------
+
+  private loadDescImages(taskId: number): { id: string; data: string; name: string }[] {
+    try {
+      const raw = localStorage.getItem(`avante-descimgs-${taskId}`);
+      return raw ? JSON.parse(raw) : [];
+    } catch { return []; }
+  }
+
+  private persistDescImages() {
+    if (!this.task?.id) return;
+    try {
+      localStorage.setItem(`avante-descimgs-${this.task.id}`, JSON.stringify(this.descImages));
+    } catch {
+      alert('Armazenamento local cheio. Exclua imagens antigas para colar novas.');
+    }
+  }
+
+  onDescriptionPaste(event: ClipboardEvent) {
+    const items = event.clipboardData?.items;
+    if (!items || !this.task?.id) return;
+    for (const item of Array.from(items)) {
+      if (item.type.startsWith('image/')) {
+        event.preventDefault();
+        const file = item.getAsFile();
+        if (!file) continue;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const data = e.target?.result as string;
+          this.descImages = [
+            ...this.descImages,
+            { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, data, name: file.name || 'print.png' },
+          ];
+          this.persistDescImages();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+  removeDescImage(id: string) {
+    this.descImages = this.descImages.filter(img => img.id !== id);
+    this.persistDescImages();
+  }
+
+  openDescImage(img: { data: string; name: string }) { this.viewingImage = img; }
 
   // -------- Timer --------
 

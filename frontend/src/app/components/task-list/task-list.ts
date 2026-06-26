@@ -1107,7 +1107,7 @@ export class TaskListComponent implements OnInit {
   summaryFor(description: string | undefined | null): string {
     if (!description) return '(sem descrição)';
     const trimmed = description.trim();
-    const maxLength = 90;
+    const maxLength = 200;
     if (trimmed.length <= maxLength) return trimmed;
     return trimmed.slice(0, maxLength).trimEnd() + '…';
   }

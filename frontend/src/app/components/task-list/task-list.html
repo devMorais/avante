@@ -415,14 +415,14 @@
 
             <!-- Header de colunas próprio da sprint -->
             <div class="sprint-cols-header" *ngIf="!isGroupCollapsed(group.sprint?.id ?? 'backlog')">
-              <div class="gcol gcol-drag" (click)="$event.stopPropagation()">
+              <div class="gcol gcol-drag"></div>
+              <div class="gcol gcol-check" (click)="$event.stopPropagation()">
                 <input type="checkbox" class="row-checkbox"
                   [checked]="isGroupAllSelected(group.tasks)"
                   [indeterminate]="isGroupIndeterminate(group.tasks)"
                   (change)="toggleSelectGroup(group.tasks, $event)"
                   appTooltip="Selecionar todas desta sprint" />
               </div>
-              <div class="gcol gcol-check"></div>
               <div class="gcol gcol-title sort-col" (click)="setSortFor(groupKey(group.sprint), 'description')">
                 Atividade
                 <span class="sort-icon" [class.active]="getSort(groupKey(group.sprint)).field === 'description'">

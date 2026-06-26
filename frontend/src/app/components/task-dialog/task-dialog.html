@@ -1,4 +1,4 @@
-<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="1080px">
+<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="1080px" [dismissable]="false">
   <div class="task-dialog">
 
     <!-- Header -->
@@ -10,12 +10,18 @@
         <h2>{{ mode === 'edit' ? 'Detalhes da atividade' : 'Nova atividade' }}</h2>
         <span class="dialog-timer" *ngIf="timerDisplay">{{ timerDisplay }}</span>
       </div>
-      <div class="dialog-header-meta" *ngIf="mode === 'edit' && task">
-        <span class="meta-badge" *ngIf="task.status" [style.color]="task.status?.color">
-          <span class="meta-dot" [style.background]="task.status?.color"></span>
-          {{ task.status?.name }}
-        </span>
-        <span class="meta-badge priority-badge" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+      <div class="dialog-header-right">
+        <div class="dialog-header-meta" *ngIf="mode === 'edit' && task">
+          <span class="meta-badge" *ngIf="task.status" [style.color]="task.status?.color">
+            <span class="meta-dot" [style.background]="task.status?.color"></span>
+            {{ task.status?.name }}
+          </span>
+          <span class="meta-badge priority-badge" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+        </div>
+        <button type="button" class="dialog-close-x" (click)="onClose()" appTooltip="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
       </div>
     </div>
 
@@ -28,14 +34,6 @@
           <polyline points="14 2 14 8 20 8"></polyline>
         </svg>
         Detalhes
-      </button>
-      <button class="tab-btn" [class.active]="activeTab === 'comments'" (click)="activeTab = 'comments'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-        Comentários
-        <span class="tab-count" *ngIf="comments.length">{{ comments.length }}</span>
       </button>
       <button class="tab-btn" [class.active]="activeTab === 'notes'" (click)="activeTab = 'notes'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -51,15 +49,86 @@
     <!-- ===== ABA DETALHES (duas colunas) ===== -->
     <div class="dialog-content details-2col" *ngIf="mode === 'create' || activeTab === 'details'">
 
-      <!-- Coluna esquerda: descrição -->
+      <!-- Coluna esquerda: descrição + comentários -->
       <div class="details-main">
         <div class="field field--full">
           <div class="field-label-row">
             <span class="field-label">História / Descrição</span>
             <span class="field-counter">{{ charCount }} chars · {{ wordCount }} palavras</span>
           </div>
-          <textarea [(ngModel)]="formDescription" rows="16" class="field-input details-desc"
-            placeholder="Descreva a atividade com o máximo de detalhe possível..."></textarea>
+          <textarea [(ngModel)]="formDescription" rows="14" class="field-input details-desc"
+            (paste)="onDescriptionPaste($event)"
+            placeholder="Descreva a atividade com o máximo de detalhe possível... (cole imagens com Ctrl+V)"></textarea>
+          <p class="desc-paste-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Cole prints direto na descrição (Ctrl+V) — as imagens ficam anexadas à tarefa.
+          </p>
+
+          <!-- Imagens coladas na descrição -->
+          <div class="desc-images" *ngIf="descImages.length">
+            <div class="desc-img-thumb" *ngFor="let img of descImages">
+              <img [src]="img.data" [alt]="img.name" (click)="openDescImage(img)" />
+              <button type="button" class="desc-img-del" (click)="removeDescImage(img.id)" appTooltip="Remover imagem">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Comentários -->
+          <div class="comments-block" *ngIf="mode === 'edit'">
+            <div class="comments-block-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <h3>Comentários</h3>
+              <span class="comments-count-badge" *ngIf="comments.length">{{ comments.length }}</span>
+            </div>
+
+            <!-- Form de novo comentário -->
+            <div class="comment-compose">
+              <textarea [(ngModel)]="commentContent" rows="2" class="field-input"
+                placeholder="Escreva um comentário..."></textarea>
+              <div class="comment-form-actions">
+                <app-button variant="primary" (clicked)="onAddComment()"
+                  [disabled]="!commentContent.trim() || savingComment">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  {{ savingComment ? 'Enviando...' : 'Comentar' }}
+                </app-button>
+              </div>
+            </div>
+
+            <!-- Lista -->
+            <div class="comments-list" *ngIf="comments.length; else noComments">
+              <div class="comment" *ngFor="let c of comments">
+                <app-avatar [name]="c.user?.name || 'Usuário'" [photoUrl]="c.user?.avatar_url" size="sm"></app-avatar>
+                <div class="comment-body">
+                  <div class="comment-header">
+                    <span class="comment-author">{{ c.user?.name || 'Usuário' }}</span>
+                    <span class="comment-date">{{ c.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+                    <button class="comment-delete" (click)="onDeleteComment(c.id)" appTooltip="Excluir comentário">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="comment-content">{{ c.content }}</p>
+                </div>
+              </div>
+            </div>
+            <ng-template #noComments>
+              <div class="comments-empty-state">
+                <p>Nenhum comentário ainda. Seja o primeiro a comentar.</p>
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
 
@@ -211,48 +280,6 @@
 
       </aside>
 
-    </div>
-
-    <!-- ===== ABA COMENTÁRIOS ===== -->
-    <div class="comments-section" *ngIf="mode === 'edit' && activeTab === 'comments'">
-      <div class="comments-list" *ngIf="comments.length; else noComments">
-        <div class="comment" *ngFor="let c of comments">
-          <div class="comment-header">
-            <span class="comment-author">{{ c.user?.name || 'Usuário' }}</span>
-            <span class="comment-date">{{ c.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
-            <button class="comment-delete" (click)="onDeleteComment(c.id)" title="Excluir">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z" />
-              </svg>
-            </button>
-          </div>
-          <p class="comment-content">{{ c.content }}</p>
-        </div>
-      </div>
-      <ng-template #noComments>
-        <div class="comments-empty-state">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <p>Nenhum comentário ainda.</p>
-          <p class="comments-empty-sub">Seja o primeiro a comentar nesta atividade.</p>
-        </div>
-      </ng-template>
-      <div class="comment-form">
-        <textarea [(ngModel)]="commentContent" rows="3" class="field-input"
-          placeholder="Escreva um comentário..."></textarea>
-        <div class="comment-form-actions">
-          <app-button variant="primary" (clicked)="onAddComment()" [disabled]="!commentContent.trim() || savingComment">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-            {{ savingComment ? 'Enviando...' : 'Comentar' }}
-          </app-button>
-        </div>
-      </div>
     </div>
 
     <!-- ===== ABA CADERNO ===== -->

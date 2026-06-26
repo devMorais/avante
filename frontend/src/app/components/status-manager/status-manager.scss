@@ -16,7 +16,7 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 .sm-spin { animation: spin 0.8s linear infinite; }
 
-.status-manager { padding: 28px 32px 64px; max-width: 1100px; }
+.status-manager { padding: 28px 40px 64px; width: 100%; box-sizing: border-box; }
 
 /* --- Header --- */
 .sm-header {
