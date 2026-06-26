@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\Priority;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,16 @@ class BoardController extends Controller
         ['name' => 'Em Andamento', 'color' => '#0284C7'],
         ['name' => 'Em Revisão', 'color' => '#D97706'],
         ['name' => 'Concluída', 'color' => '#059669'],
+    ];
+
+    /**
+     * Prioridades padrão criadas automaticamente para todo quadro novo.
+     */
+    private const DEFAULT_PRIORITIES = [
+        ['name' => 'Baixa', 'color' => '#059669'],
+        ['name' => 'Média', 'color' => '#0284C7'],
+        ['name' => 'Alta', 'color' => '#EA580C'],
+        ['name' => 'Urgente', 'color' => '#DC2626'],
     ];
 
     /**
@@ -75,6 +86,16 @@ class BoardController extends Controller
                 'board_id' => $board->id,
                 'name' => $status['name'],
                 'color' => $status['color'],
+                'order' => $index,
+            ]);
+        }
+
+        // Cria as prioridades padrão para este quadro
+        foreach (self::DEFAULT_PRIORITIES as $index => $priority) {
+            Priority::create([
+                'board_id' => $board->id,
+                'name' => $priority['name'],
+                'color' => $priority['color'],
                 'order' => $index,
             ]);
         }

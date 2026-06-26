@@ -203,6 +203,7 @@ const BACKEND_URL = environment.backendUrl;
 | tasks     | description, priority, epic, **release**, **notes** (longText), sprint_id, status_id, board_id, sort_order, soft delete |
 | sprints   | name, start_date, end_date, finished_at, board_id, soft delete                       |
 | statuses  | name, color, order, board_id, soft delete                                            |
+| priorities| name, color, order, board_id, soft delete (CRUD igual status; tasks.priority guarda o nome) |
 | task_user | pivot — múltiplos usuários por tarefa (unique task_id + user_id)                    |
 | comments  | task_id, user_id, content, soft delete                                               |
 

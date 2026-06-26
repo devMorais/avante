@@ -85,16 +85,16 @@
 
       <div *ngIf="openDropdown() === 'priority'" class="dropdown-panel" (click)="$event.stopPropagation()">
         <div class="dropdown-list">
-          <button *ngFor="let p of priorities" class="dropdown-item" [class.checked]="isPrioritySelected(p)"
-            (click)="togglePriority(p)">
-            <span class="checkbox" [class.checked]="isPrioritySelected(p)">
-              <svg *ngIf="isPrioritySelected(p)" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white"
+          <button *ngFor="let p of priorities" class="dropdown-item" [class.checked]="isPrioritySelected(p.name)"
+            (click)="togglePriority(p.name)">
+            <span class="checkbox" [class.checked]="isPrioritySelected(p.name)">
+              <svg *ngIf="isPrioritySelected(p.name)" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white"
                 stroke-width="3" stroke-linecap="round">
                 <path d="M20 6 9 17l-5-5" />
               </svg>
             </span>
-            <span class="priority-dot" [style.background]="priorityColors[p]"></span>
-            <span [style.color]="priorityColors[p]" style="font-weight: 600;">{{ p }}</span>
+            <span class="priority-dot" [style.background]="p.color"></span>
+            <span [style.color]="p.color" style="font-weight: 600;">{{ p.name }}</span>
           </button>
         </div>
       </div>

@@ -22,6 +22,14 @@
     </svg>
     <span>Status</span>
   </button>
+  <button class="sidebar-nav-item" [class.active]="section() === 'priorities'" (click)="setSection('priorities')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" y1="22" x2="4" y2="15" />
+    </svg>
+    <span>Prioridades</span>
+  </button>
 
   <div class="sidebar-divider"></div>
 
@@ -138,7 +146,7 @@
     <!-- ===== FILTROS ===== -->
     <div class="filters-wrap">
       <app-task-filters [statuses]="statuses()" [users]="users()" [epics]="availableEpics()" [tags]="tags()"
-        (filtersChange)="onFiltersChange($event)"></app-task-filters>
+        [priorities]="priorities()" (filtersChange)="onFiltersChange($event)"></app-task-filters>
     </div>
 
     <!-- ===== BARRA DE AÇÕES EM MASSA (FLUTUANTE) ===== -->
@@ -201,9 +209,9 @@
             (click)="$event.stopPropagation()">
             <div class="bulk-dropdown-header">Definir prioridade</div>
             <div class="bulk-dropdown-list">
-              <button *ngFor="let p of priorities" class="bulk-dropdown-item" (click)="bulkSetPriority(p)">
-                <span class="bulk-status-dot" [style.background]="priorityColor(p)"></span>
-                <span [style.color]="priorityColor(p)" style="font-weight:600">{{ p }}</span>
+              <button *ngFor="let p of priorities()" class="bulk-dropdown-item" (click)="bulkSetPriority(p.name)">
+                <span class="bulk-status-dot" [style.background]="p.color"></span>
+                <span [style.color]="p.color" style="font-weight:600">{{ p.name }}</span>
               </button>
             </div>
           </div>
@@ -624,6 +632,10 @@
     <app-status-manager [boardId]="boardId" (statusesChanged)="reloadStatuses()"></app-status-manager>
   </ng-container>
 
+  <ng-container *ngIf="section() === 'priorities'">
+    <app-priority-manager [boardId]="boardId" (prioritiesChanged)="reloadPriorities()"></app-priority-manager>
+  </ng-container>
+
 
 </div>
 
@@ -669,11 +681,11 @@
       </button>
     </div>
     <div class="uni-pop-list">
-      <button *ngFor="let p of priorities" class="uni-pop-item"
-        [class.active]="popoverTask?.priority === p"
-        (click)="setPopoverField('priority', p)">
-        <span class="uni-dot" [style.background]="priorityColor(p)"></span>{{ p }}
-        <svg *ngIf="popoverTask?.priority === p" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
+      <button *ngFor="let p of priorities()" class="uni-pop-item"
+        [class.active]="popoverTask?.priority === p.name"
+        (click)="setPopoverField('priority', p.name)">
+        <span class="uni-dot" [style.background]="p.color"></span>{{ p.name }}
+        <svg *ngIf="popoverTask?.priority === p.name" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
       </button>
       <button class="uni-pop-item uni-pop-item--clear" (click)="setPopoverField('priority', null)">
@@ -822,6 +834,7 @@
   [statuses]="statuses()"
   [sprints]="sprints()"
   [tags]="tags()"
+  [priorities]="priorities()"
   [saving]="saving()"
   [comments]="comments()"
   [savingComment]="savingComment()"

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SprintController;
+use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TaskController;
@@ -34,6 +35,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::put('/statuses/reorder', [StatusController::class, 'reorder']);
     Route::apiResource('statuses', StatusController::class);
+
+    Route::put('/priorities/reorder', [PriorityController::class, 'reorder']);
+    Route::apiResource('priorities', PriorityController::class);
 
     Route::apiResource('tags', TagController::class);
 

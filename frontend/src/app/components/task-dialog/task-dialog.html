@@ -95,8 +95,8 @@
             </button>
             <div class="td-dropdown-panel" *ngIf="openField === 'priority'" (click)="$event.stopPropagation()">
               <button type="button" *ngFor="let p of priorities" class="td-dropdown-item"
-                [class.active]="formPriority === p" (click)="selectPriority(p)">
-                <span class="td-dot" [style.background]="priorityColor(p)"></span>{{ p }}
+                [class.active]="formPriority === p.name" (click)="selectPriority(p.name)">
+                <span class="td-dot" [style.background]="p.color"></span>{{ p.name }}
               </button>
             </div>
           </div>

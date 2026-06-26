@@ -191,8 +191,30 @@ export class ApiService {
     return this.http.put(`${API_URL}/statuses/reorder`, { items });
   }
 
+  reorderPriorities(items: { id: number; order: number }[]): Observable<any> {
+    return this.http.put(`${API_URL}/priorities/reorder`, { items });
+  }
+
   reorderTasks(items: { id: number; sort_order: number }[]): Observable<any> {
     return this.http.post(`${API_URL}/tasks/reorder`, { items });
+  }
+
+  // ---------- Priorities ----------
+
+  getPriorities(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/priorities?board_id=${boardId}`);
+  }
+
+  createPriority(data: { board_id: number; name: string; color: string }): Observable<any> {
+    return this.http.post(`${API_URL}/priorities`, data);
+  }
+
+  updatePriority(id: number, data: { name?: string; color?: string; order?: number }): Observable<any> {
+    return this.http.put(`${API_URL}/priorities/${id}`, data);
+  }
+
+  deletePriority(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/priorities/${id}`);
   }
 
   // ---------- Tags ----------

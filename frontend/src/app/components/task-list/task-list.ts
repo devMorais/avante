@@ -13,6 +13,7 @@ import { Avatar } from '../../shared/ui/avatar/avatar';
 import { TaskDialog, TaskFormValue } from '../task-dialog/task-dialog';
 import { SprintManager } from '../sprint-manager/sprint-manager';
 import { StatusManager } from '../status-manager/status-manager';
+import { PriorityManager } from '../priority-manager/priority-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
 import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
@@ -20,14 +21,13 @@ import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
 
-const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Média': 2, 'Baixa': 3 };
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
   imports: [
     CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
-    Modal, Avatar, TaskDialog, SprintManager, StatusManager, Sidebar,
+    Modal, Avatar, TaskDialog, SprintManager, StatusManager, PriorityManager, Sidebar,
     TaskFilters, TooltipDirective
   ],
   templateUrl: './task-list.html',
@@ -42,6 +42,7 @@ export class TaskListComponent implements OnInit {
   statuses = signal<any[]>([]);
   users = signal<any[]>([]);
   tags = signal<any[]>([]);
+  priorities = signal<any[]>([]);
 
   viewMode = signal('table');
   loading = signal(true);
@@ -51,7 +52,9 @@ export class TaskListComponent implements OnInit {
   section = signal('tasks');
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
-  setSection(s: 'tasks' | 'sprints' | 'statuses') { this.section.set(s); }
+  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities') { this.section.set(s); }
+
+  reloadPriorities() { this.loadPriorities(); }
 
   constructor(
     private route: ActivatedRoute,
@@ -67,6 +70,7 @@ export class TaskListComponent implements OnInit {
     this.loadUsers();
     this.loadTasks();
     this.loadTags();
+    this.loadPriorities();
   }
 
   // ---------- Filtros ----------
@@ -166,8 +170,8 @@ export class TaskListComponent implements OnInit {
       if (field === 'description') { av = (a.description ?? '').toLowerCase(); bv = (b.description ?? '').toLowerCase(); }
       else if (field === 'status') { av = (a.status?.name ?? '').toLowerCase(); bv = (b.status?.name ?? '').toLowerCase(); }
       else if (field === 'priority') {
-        av = PRIORITY_ORDER[a.priority] ?? 99;
-        bv = PRIORITY_ORDER[b.priority] ?? 99;
+        av = this.priorityOrder(a.priority);
+        bv = this.priorityOrder(b.priority);
         return (av - bv) * d;
       }
       else if (field === 'assignee') { av = (a.assignees?.[0]?.name ?? '').toLowerCase(); bv = (b.assignees?.[0]?.name ?? '').toLowerCase(); }
@@ -213,7 +217,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); this.loadTags(); }
+  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); this.loadTags(); this.loadPriorities(); }
 
   loadSprints() {
     this.apiService.getSprints(this.boardId).subscribe({
@@ -245,6 +249,13 @@ export class TaskListComponent implements OnInit {
   loadTags() {
     this.apiService.getTags(this.boardId).subscribe({
       next: (data) => this.tags.set(data),
+      error: () => {}
+    });
+  }
+
+  loadPriorities() {
+    this.apiService.getPriorities(this.boardId).subscribe({
+      next: (data) => this.priorities.set(data),
       error: () => {}
     });
   }
@@ -1044,14 +1055,25 @@ export class TaskListComponent implements OnInit {
     return (words[0][0] + words[1][0]).toUpperCase();
   }
 
-  priorityColor(priority: string): string {
-    const colors: Record<string, string> = {
-      'Baixa': '#059669', 'Média': '#0284C7', 'Alta': '#EA580C', 'Urgente': '#DC2626',
-    };
-    return colors[priority] || '#6B6B70';
+  // Ordem da prioridade pela posição no banco (maior 'order' = mais alta, ordena primeiro)
+  priorityOrder(priority: string): number {
+    const list = this.priorities();
+    const idx = list.findIndex(x => x.name === priority);
+    if (idx === -1) return 999;
+    // inverte: prioridades com maior 'order' (mais críticas) vêm primeiro no asc
+    return list.length - idx;
   }
 
-  priorities = ['Baixa', 'Média', 'Alta', 'Urgente'];
+  // Resolve a cor da prioridade pela lista do banco (fallback p/ mapa legado)
+  priorityColor(priority: string): string {
+    if (!priority) return '#6B6B70';
+    const p = this.priorities().find(x => x.name === priority);
+    if (p?.color) return p.color;
+    const legacy: Record<string, string> = {
+      'Baixa': '#059669', 'Média': '#0284C7', 'Alta': '#EA580C', 'Urgente': '#DC2626',
+    };
+    return legacy[priority] || '#6B6B70';
+  }
 
   summaryFor(description: string | undefined | null): string {
     if (!description) return '(sem descrição)';

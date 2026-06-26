@@ -26,6 +26,7 @@ export class TaskFilters implements OnInit {
   @Input() users: any[] = [];
   @Input() epics: string[] = [];
   @Input() tags: any[] = [];
+  @Input() priorities: any[] = [];
 
   @Output() filtersChange = new EventEmitter<TaskFilterValue>();
 
@@ -45,15 +46,6 @@ export class TaskFilters implements OnInit {
   assigneeSearch = signal('');
   epicSearch = signal('');
   tagSearch = signal('');
-
-  priorities = ['Baixa', 'Média', 'Alta', 'Urgente'];
-
-  priorityColors: Record<string, string> = {
-    'Baixa': '#059669',
-    'Média': '#0284C7',
-    'Alta': '#EA580C',
-    'Urgente': '#DC2626',
-  };
 
   constructor(private elRef: ElementRef) { }
 

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/ui/confirm-dialog/confirm-dialog.scss"],
+  "sourcesContent": ["@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');\r\n\r\n:host {\r\n  --text-primary: #1C1C1F;\r\n  --text-secondary: #6B6B70;\r\n}\r\n\r\n.confirm-dialog {\r\n  display: flex;\r\n  flex-direction: column;\r\n  font-family: 'Inter', sans-serif;\r\n}\r\n\r\n.dialog-header {\r\n  padding: 28px 28px 4px;\r\n\r\n  h2 {\r\n    font-family: 'Outfit', sans-serif;\r\n    font-size: 19px;\r\n    font-weight: 700;\r\n    margin: 0 0 8px;\r\n    color: var(--text-primary);\r\n  }\r\n\r\n  p {\r\n    font-size: 13px;\r\n    color: var(--text-secondary);\r\n    margin: 0;\r\n    line-height: 1.5;\r\n\r\n    strong {\r\n      color: var(--text-primary);\r\n      font-weight: 600;\r\n    }\r\n  }\r\n}\r\n\r\n.dialog-actions {\r\n  padding: 20px 28px 24px;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  gap: 8px;\r\n}\r\n"],
+  "mappings": ";;;AAEA;AACE,kBAAA;AACA,oBAAA;;AAGF,CAAA;AACE,WAAA;AACA,kBAAA;AACA,eAAA,OAAA,EAAA;;AAGF,CAAA;AACE,WAAA,KAAA,KAAA;;AAEA,CAHF,cAGE;AACE,eAAA,QAAA,EAAA;AACA,aAAA;AACA,eAAA;AACA,UAAA,EAAA,EAAA;AACA,SAAA,IAAA;;AAGF,CAXF,cAWE;AACE,aAAA;AACA,SAAA,IAAA;AACA,UAAA;AACA,eAAA;;AAEA,CAjBJ,cAiBI,EAAA;AACE,SAAA,IAAA;AACA,eAAA;;AAKN,CAAA;AACE,WAAA,KAAA,KAAA;AACA,WAAA;AACA,mBAAA;AACA,OAAA;;",
+  "names": []
+}

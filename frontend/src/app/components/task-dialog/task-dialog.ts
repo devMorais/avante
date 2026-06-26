@@ -50,6 +50,7 @@ export class TaskDialog implements OnChanges {
   @Input() statuses: any[] = [];
   @Input() sprints: any[] = [];
   @Input() tags: any[] = [];
+  @Input() priorities: any[] = [];
   @Input() saving = false;
 
   @Input() comments: any[] = [];
@@ -62,7 +63,6 @@ export class TaskDialog implements OnChanges {
   @Output() manageAssignees = new EventEmitter<void>();
   @Output() deleteTask = new EventEmitter<void>();
 
-  priorities = PRIORITIES;
   activeTab: 'details' | 'comments' | 'notes' = 'details';
 
   // Dropdowns inline (popover) — substituem os <select> nativos
@@ -87,10 +87,13 @@ export class TaskDialog implements OnChanges {
   }
 
   priorityColor(p: string): string {
-    const colors: Record<string, string> = {
+    if (!p) return '#6B6B70';
+    const found = this.priorities.find(x => x.name === p);
+    if (found?.color) return found.color;
+    const legacy: Record<string, string> = {
       'Baixa': '#059669', 'Média': '#0284C7', 'Alta': '#EA580C', 'Urgente': '#DC2626',
     };
-    return colors[p] || '#6B6B70';
+    return legacy[p] || '#6B6B70';
   }
 
   onDelete() { this.deleteTask.emit(); }
