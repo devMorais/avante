@@ -17,6 +17,7 @@ class Task extends Model
         'description',
         'priority',
         'epic',
+        'release',
         'notes',
         'sort_order',
     ];

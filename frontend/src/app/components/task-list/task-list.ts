@@ -7,7 +7,6 @@ import { ApiService } from '../../services/api';
 
 import { Button } from '../../shared/ui/button/button';
 import { Badge } from '../../shared/ui/badge/badge';
-import { Popover } from '../../shared/ui/popover/popover';
 import { ConfirmDialog } from '../../shared/ui/confirm-dialog/confirm-dialog';
 import { Modal } from '../../shared/ui/modal/modal';
 import { Avatar } from '../../shared/ui/avatar/avatar';
@@ -17,6 +16,7 @@ import { StatusManager } from '../status-manager/status-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
 import { TagManagerComponent } from '../tag-manager/tag-manager';
+import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
@@ -27,9 +27,9 @@ const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Médi
   selector: 'app-task-list',
   standalone: true,
   imports: [
-    CommonModule, FormsModule, DragDropModule, Button, Badge, Popover, ConfirmDialog,
+    CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, Sidebar,
-    TaskFilters, TagManagerComponent
+    TaskFilters, TagManagerComponent, TooltipDirective
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -632,87 +632,122 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  // ---------- Popover de responsáveis (substitui modal) ----------
+  // ---------- Popover unificado (status / prioridade / responsáveis / tags) ----------
 
-  assigneePopoverOpen = signal(false);
-  assigneePopoverStyle = signal({ top: '0px', left: '0px' });
-  taskForAssignees: any = null;
-  assigneeSearchTerm = signal('');
+  activePopover = signal<{
+    type: 'status' | 'priority' | 'assignee' | 'tags';
+    taskId: number;
+    top: number;
+    left: number;
+    placement: 'top' | 'bottom';
+    arrowLeft: number;
+  } | null>(null);
 
-  openAssigneePopover(task: any, event: Event) {
+  popoverTask: any = null;
+  popoverSearch = signal('');
+
+  private readonly POP_DIMS: Record<string, { w: number; h: number }> = {
+    status: { w: 240, h: 290 },
+    priority: { w: 230, h: 240 },
+    assignee: { w: 300, h: 380 },
+    tags: { w: 300, h: 360 },
+  };
+
+  popWidth(type: string): number { return this.POP_DIMS[type]?.w ?? 260; }
+
+  openPopover(type: 'status' | 'priority' | 'assignee' | 'tags', task: any, event: Event) {
     event.stopPropagation();
+    const cur = this.activePopover();
+    if (cur && cur.type === type && cur.taskId === task.id) { this.closePopover(); return; }
+
     const el = event.currentTarget as HTMLElement;
     const rect = el.getBoundingClientRect();
+    const { w, h } = this.POP_DIMS[type];
+    const margin = 12;
 
-    if (this.taskForAssignees?.id === task.id && this.assigneePopoverOpen()) {
-      this.closeAssigneePopover();
-      return;
-    }
+    this.popoverTask = { ...task };
+    this.popoverSearch.set('');
 
-    this.taskForAssignees = { ...task };
-    this.assigneeSearchTerm.set('');
+    // Horizontal: centraliza no gatilho, com clamp na viewport
+    const triggerCenterX = rect.left + rect.width / 2;
+    let left = triggerCenterX - w / 2;
+    if (left < margin) left = margin;
+    if (left + w > window.innerWidth - margin) left = window.innerWidth - w - margin;
 
-    const popW = 300;
-    const popH = 380;
-    let left = rect.left;
-    if (left + popW > window.innerWidth - 16) left = window.innerWidth - popW - 16;
-
+    // Vertical: escolhe o lado com mais espaço
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+    let placement: 'top' | 'bottom';
     let top: number;
-    if (rect.bottom + popH > window.innerHeight - 16) {
-      top = Math.max(8, rect.top - popH - 8);
+    if (spaceBelow >= h + margin || spaceBelow >= spaceAbove) {
+      placement = 'bottom';
+      top = rect.bottom + 10;
     } else {
-      top = rect.bottom + 8;
+      placement = 'top';
+      top = Math.max(margin, rect.top - h - 10);
     }
 
-    this.assigneePopoverStyle.set({ top: `${top}px`, left: `${left}px` });
-    this.assigneePopoverOpen.set(true);
+    // Setinha aponta para o centro do gatilho, relativo ao painel
+    let arrowLeft = triggerCenterX - left;
+    arrowLeft = Math.max(16, Math.min(w - 16, arrowLeft));
+
+    this.activePopover.set({ type, taskId: task.id, top, left, placement, arrowLeft });
   }
 
-  // Compat: task-dialog chama manageAssignees sem event → abre centrado
-  openAssigneeModal(task: any, event?: Event) {
-    if (event) {
-      this.openAssigneePopover(task, event);
-    } else {
-      this.taskForAssignees = { ...task };
-      this.assigneeSearchTerm.set('');
-      const popW = 300;
-      const popH = 380;
-      this.assigneePopoverStyle.set({
-        top: `${Math.max(8, (window.innerHeight - popH) / 2)}px`,
-        left: `${Math.max(8, (window.innerWidth - popW) / 2)}px`
-      });
-      this.assigneePopoverOpen.set(true);
-    }
+  closePopover() {
+    this.activePopover.set(null);
+    this.popoverTask = null;
   }
-
-  closeAssigneePopover() {
-    this.assigneePopoverOpen.set(false);
-  }
-
-  // Alias para compatibilidade com template
-  closeAssigneeModal() { this.closeAssigneePopover(); }
 
   @HostListener('document:keydown.escape')
   onEscKey() {
-    if (this.assigneePopoverOpen()) this.closeAssigneePopover();
+    if (this.activePopover()) this.closePopover();
   }
 
   @HostListener('document:click')
   onDocumentClick() {
-    if (this.assigneePopoverOpen()) this.closeAssigneePopover();
+    if (this.activePopover()) this.closePopover();
   }
 
+  // Status / prioridade no popover unificado
+  setPopoverField(field: 'status_id' | 'priority', value: any) {
+    if (!this.popoverTask) return;
+    this.updateTaskField(this.popoverTask, field, value);
+    this.closePopover();
+  }
+
+  // ---------- Responsáveis ----------
+
+  // Compat: task-dialog chama manageAssignees sem event → abre centrado na tela
+  openAssigneeModal(task: any, event?: Event) {
+    if (event) {
+      this.openPopover('assignee', task, event);
+    } else {
+      this.popoverTask = { ...task };
+      this.popoverSearch.set('');
+      const { w, h } = this.POP_DIMS['assignee'];
+      this.activePopover.set({
+        type: 'assignee', taskId: task.id, placement: 'bottom',
+        arrowLeft: -100,
+        top: Math.max(12, (window.innerHeight - h) / 2),
+        left: Math.max(12, (window.innerWidth - w) / 2),
+      });
+    }
+  }
+
+  closeAssigneeModal() { this.closePopover(); }
+
   toggleAssignee(userId: number) {
-    const task = this.taskForAssignees;
+    const task = this.popoverTask;
     if (!task) return;
     const current: number[] = (task.assignees ?? []).map((u: any) => Number(u.id));
     const updated = current.includes(Number(userId))
       ? current.filter(id => id !== Number(userId))
       : [...current, Number(userId)];
     const updatedUsers = this.users().filter(u => updated.includes(Number(u.id)));
-    this.taskForAssignees = { ...task, assignees: updatedUsers };
-    this.tasks.set(this.tasks().map(t => t.id === task.id ? this.taskForAssignees : t));
-    if (this.editingTask && this.editingTask.id === task.id) this.editingTask = this.taskForAssignees;
+    this.popoverTask = { ...task, assignees: updatedUsers };
+    this.tasks.set(this.tasks().map(t => t.id === task.id ? this.popoverTask : t));
+    if (this.editingTask && this.editingTask.id === task.id) this.editingTask = this.popoverTask;
     this.updateTaskAssignees(task, updated);
   }
 
@@ -722,16 +757,56 @@ export class TaskListComponent implements OnInit {
   }
 
   isAssignee(userId: number): boolean {
-    return (this.taskForAssignees?.assignees ?? []).some((u: any) => Number(u.id) === Number(userId));
+    return (this.popoverTask?.assignees ?? []).some((u: any) => Number(u.id) === Number(userId));
   }
 
   suggestedUsers = computed(() => {
-    const selectedIds = new Set((this.taskForAssignees?.assignees ?? []).map((u: any) => Number(u.id)));
-    const term = this.assigneeSearchTerm().trim().toLowerCase();
+    const _ = this.activePopover(); // reatividade ao abrir/atualizar
+    const selectedIds = new Set((this.popoverTask?.assignees ?? []).map((u: any) => Number(u.id)));
+    const term = this.popoverSearch().trim().toLowerCase();
     return this.users().filter(u => {
       if (selectedIds.has(Number(u.id))) return false;
       if (!term) return true;
       return (u.name ?? '').toLowerCase().includes(term);
+    });
+  });
+
+  // ---------- Tags na linha (popover) ----------
+
+  toggleTaskTag(tagId: number) {
+    const task = this.popoverTask;
+    if (!task) return;
+    const current: number[] = (task.tags ?? []).map((t: any) => Number(t.id));
+    const updated = current.includes(Number(tagId))
+      ? current.filter(id => id !== Number(tagId))
+      : [...current, Number(tagId)];
+    const updatedTags = this.tags().filter(t => updated.includes(Number(t.id)));
+    this.popoverTask = { ...task, tags: updatedTags };
+    this.tasks.set(this.tasks().map(t => t.id === task.id ? this.popoverTask : t));
+    if (this.editingTask && this.editingTask.id === task.id) this.editingTask = this.popoverTask;
+    this.apiService.updateTask(task.id, { tag_ids: updated }).subscribe({
+      next: (u) => this.tasks.set(this.tasks().map(t => t.id === task.id ? u : t)),
+      error: (err) => console.error('Erro ao atualizar tags:', err)
+    });
+  }
+
+  removeTaskTag(tagId: number, event?: Event) {
+    event?.stopPropagation();
+    this.toggleTaskTag(tagId);
+  }
+
+  isTaskTag(tagId: number): boolean {
+    return (this.popoverTask?.tags ?? []).some((t: any) => Number(t.id) === Number(tagId));
+  }
+
+  suggestedTags = computed(() => {
+    const _ = this.activePopover();
+    const selectedIds = new Set((this.popoverTask?.tags ?? []).map((t: any) => Number(t.id)));
+    const term = this.popoverSearch().trim().toLowerCase();
+    return this.tags().filter(t => {
+      if (selectedIds.has(Number(t.id))) return false;
+      if (!term) return true;
+      return (t.name ?? '').toLowerCase().includes(term);
     });
   });
 

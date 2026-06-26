@@ -298,6 +298,7 @@
 
         <!-- Header global de colunas -->
         <div class="global-columns-header">
+          <div class="gcol gcol-drag"></div>
           <div class="gcol gcol-check"></div>
           <div class="gcol gcol-title sort-col" (click)="setSort('description')">
             Atividade
@@ -309,6 +310,8 @@
               </svg>
             </span>
           </div>
+          <div class="gcol gcol-epic">Épico</div>
+          <div class="gcol gcol-tags">Tags</div>
           <div class="gcol gcol-status sort-col" (click)="setSort('status')">
             Status
             <span class="sort-icon" [class.active]="sortField() === 'status'">
@@ -472,7 +475,8 @@
                 </div>
 
                 <!-- Drag handle -->
-                <div class="task-drag-handle" cdkDragHandle (click)="$event.stopPropagation()" title="Arrastar">
+                <div class="task-drag-handle" cdkDragHandle (click)="$event.stopPropagation()"
+                  appTooltip="Arrastar para reordenar ou mover de sprint">
                   <svg width="12" height="12" viewBox="0 0 10 16" fill="currentColor">
                     <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/>
                     <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/>
@@ -487,19 +491,8 @@
 
                 <div class="task-title-cell">
                   <span class="task-title">{{ summaryFor(task.description) }}</span>
-                  <span *ngIf="task.epic" class="task-epic-tag">{{ task.epic }}</span>
-                  <!-- Tag chips -->
-                  <ng-container *ngIf="task.tags?.length > 0">
-                    <span *ngFor="let tag of task.tags" class="task-tag-chip"
-                      [style.background]="tag.color + '20'"
-                      [style.color]="tag.color"
-                      [style.border-color]="tag.color + '50'"
-                      (click)="$event.stopPropagation()">
-                      {{ tag.name }}
-                    </span>
-                  </ng-container>
                   <button class="copy-btn" (click)="copyDescription(task, $event)"
-                    [title]="copiedTaskId() === task.id ? 'Copiado!' : 'Copiar descrição'">
+                    [appTooltip]="copiedTaskId() === task.id ? 'Copiado!' : 'Copiar descrição'">
                     <svg *ngIf="copiedTaskId() !== task.id" width="13" height="13" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <rect x="9" y="9" width="13" height="13" rx="2" />
@@ -521,50 +514,56 @@
                   </div>
                 </div>
 
-                <!-- Status inline popover -->
-                <div class="task-col" (click)="$event.stopPropagation()">
-                  <app-popover>
-                    <ng-container trigger>
-                      <app-badge [color]="task.status?.color || '#6B6B70'">
-                        {{ task.status?.name || 'Sem status' }}
-                      </app-badge>
-                    </ng-container>
-                    <ng-container panel>
-                      <div class="status-popover-list" (click)="$event.stopPropagation()">
-                        <button *ngFor="let s of statuses()" class="status-popover-item"
-                          (click)="updateTaskField(task, 'status_id', s.id)">
-                          <span class="status-dot" [style.background]="s.color || '#6B6B70'"></span>{{ s.name }}
-                        </button>
-                        <button class="status-popover-item status-popover-item--clear"
-                          (click)="updateTaskField(task, 'status_id', null)">Remover status</button>
-                      </div>
-                    </ng-container>
-                  </app-popover>
+                <!-- Épico -->
+                <div class="task-col task-col--epic">
+                  <span *ngIf="task.epic" class="task-epic-tag" [title]="task.epic">{{ task.epic }}</span>
+                  <span *ngIf="!task.epic" class="task-col-empty">—</span>
                 </div>
 
-                <!-- Prioridade inline popover -->
-                <div class="task-col" (click)="$event.stopPropagation()">
-                  <app-popover>
-                    <ng-container trigger>
-                      <app-badge [color]="priorityColor(task.priority)">
-                        {{ task.priority || 'Sem prioridade' }}
-                      </app-badge>
+                <!-- Tags (popover igual responsáveis) -->
+                <div class="task-col task-col--tags">
+                  <button class="tags-trigger" (click)="openPopover('tags', task, $event)"
+                    [appTooltip]="task.tags?.length ? 'Editar tags' : 'Adicionar tags'">
+                    <ng-container *ngIf="task.tags?.length > 0; else emptyTags">
+                      <span *ngFor="let tag of task.tags.slice(0,2)" class="task-tag-chip"
+                        [style.background]="tag.color + '20'" [style.color]="tag.color"
+                        [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
+                      <span *ngIf="task.tags.length > 2" class="task-tag-more">+{{ task.tags.length - 2 }}</span>
                     </ng-container>
-                    <ng-container panel>
-                      <div class="status-popover-list" (click)="$event.stopPropagation()">
-                        <button *ngFor="let p of priorities" class="status-popover-item"
-                          (click)="updateTaskField(task, 'priority', p)">
-                          <span class="status-dot" [style.background]="priorityColor(p)"></span>{{ p }}
-                        </button>
-                      </div>
-                    </ng-container>
-                  </app-popover>
+                    <ng-template #emptyTags>
+                      <span class="tags-empty">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round">
+                          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                          <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                      </span>
+                    </ng-template>
+                  </button>
                 </div>
 
-                <!-- Responsáveis — abre popover flutuante -->
+                <!-- Status (popover) -->
                 <div class="task-col">
-                  <button class="assignees-trigger"
-                    (click)="openAssigneePopover(task, $event); $event.stopPropagation()">
+                  <button class="meta-trigger" (click)="openPopover('status', task, $event)" appTooltip="Alterar status">
+                    <app-badge [color]="task.status?.color || '#6B6B70'">
+                      {{ task.status?.name || 'Sem status' }}
+                    </app-badge>
+                  </button>
+                </div>
+
+                <!-- Prioridade (popover) -->
+                <div class="task-col">
+                  <button class="meta-trigger" (click)="openPopover('priority', task, $event)" appTooltip="Alterar prioridade">
+                    <app-badge [color]="priorityColor(task.priority)">
+                      {{ task.priority || 'Sem prioridade' }}
+                    </app-badge>
+                  </button>
+                </div>
+
+                <!-- Responsáveis (popover) -->
+                <div class="task-col">
+                  <button class="assignees-trigger" (click)="openPopover('assignee', task, $event)"
+                    appTooltip="Gerenciar responsáveis">
                     <ng-container *ngIf="task.assignees?.length > 0; else emptyAssignee">
                       <ng-container *ngFor="let a of task.assignees.slice(0,3)">
                         <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"
@@ -588,7 +587,8 @@
 
                 <!-- Ações -->
                 <div class="task-col col-actions">
-                  <button class="row-delete-btn" (click)="askDeleteTask(task, $event)" title="Excluir atividade">
+                  <button class="row-delete-btn" (click)="askDeleteTask(task, $event)"
+                    appTooltip="Excluir atividade" tooltipPlacement="left">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round">
                       <path
@@ -651,81 +651,139 @@
 
 </div>
 
-<!-- ===== POPOVER FLUTUANTE DE RESPONSÁVEIS ===== -->
-<div class="assignee-popover-panel"
-  [class.open]="assigneePopoverOpen()"
-  [style.top]="assigneePopoverStyle().top"
-  [style.left]="assigneePopoverStyle().left"
+<!-- ===== POPOVER UNIFICADO (status / prioridade / responsáveis / tags) ===== -->
+<div class="uni-popover" *ngIf="activePopover() as pop"
+  [class.uni-popover--top]="pop.placement === 'top'"
+  [style.top.px]="pop.top" [style.left.px]="pop.left"
+  [style.width.px]="popWidth(pop.type)"
   (click)="$event.stopPropagation()">
 
-  <div class="ap-header">
-    <div class="ap-header-left">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-      <span>Responsáveis</span>
+  <span class="uni-popover-arrow" [style.left.px]="pop.arrowLeft"></span>
+
+  <!-- ===== STATUS ===== -->
+  <ng-container *ngIf="pop.type === 'status'">
+    <div class="uni-pop-head">
+      <span>Status</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </div>
-    <button class="ap-close-btn" (click)="closeAssigneePopover()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-        stroke-linecap="round">
-        <path d="M18 6 6 18M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
+    <div class="uni-pop-list">
+      <button *ngFor="let s of statuses()" class="uni-pop-item"
+        [class.active]="popoverTask?.status_id === s.id"
+        (click)="setPopoverField('status_id', s.id)">
+        <span class="uni-dot" [style.background]="s.color || '#6B6B70'"></span>{{ s.name }}
+        <svg *ngIf="popoverTask?.status_id === s.id" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </button>
+      <button class="uni-pop-item uni-pop-item--clear" (click)="setPopoverField('status_id', null)">
+        Remover status
+      </button>
+    </div>
+  </ng-container>
 
-  <!-- Chips dos selecionados -->
-  <div class="ap-chips" *ngIf="taskForAssignees?.assignees?.length > 0">
-    <button *ngFor="let a of taskForAssignees.assignees" class="ap-chip"
-      (click)="removeAssignee(a.id, $event)" [title]="'Remover ' + a.name">
-      <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
-      <span>{{ a.name }}</span>
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-        stroke-linecap="round">
-        <path d="M18 6 6 18M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
+  <!-- ===== PRIORIDADE ===== -->
+  <ng-container *ngIf="pop.type === 'priority'">
+    <div class="uni-pop-head">
+      <span>Prioridade</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="uni-pop-list">
+      <button *ngFor="let p of priorities" class="uni-pop-item"
+        [class.active]="popoverTask?.priority === p"
+        (click)="setPopoverField('priority', p)">
+        <span class="uni-dot" [style.background]="priorityColor(p)"></span>{{ p }}
+        <svg *ngIf="popoverTask?.priority === p" class="uni-check" width="13" height="13" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </button>
+      <button class="uni-pop-item uni-pop-item--clear" (click)="setPopoverField('priority', null)">
+        Remover prioridade
+      </button>
+    </div>
+  </ng-container>
 
-  <!-- Busca -->
-  <div class="ap-search">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round">
-      <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-    </svg>
-    <input type="text" placeholder="Buscar pessoa..."
-      [value]="assigneeSearchTerm()"
-      (input)="assigneeSearchTerm.set($any($event.target).value)" />
-  </div>
+  <!-- ===== RESPONSÁVEIS ===== -->
+  <ng-container *ngIf="pop.type === 'assignee'">
+    <div class="uni-pop-head">
+      <span>Responsáveis</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ap-chips" *ngIf="popoverTask?.assignees?.length > 0">
+      <button *ngFor="let a of popoverTask.assignees" class="ap-chip"
+        (click)="removeAssignee(a.id, $event)" [title]="'Remover ' + a.name">
+        <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+        <span>{{ a.name }}</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ap-search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Buscar pessoa..." [value]="popoverSearch()"
+        (input)="popoverSearch.set($any($event.target).value)" />
+    </div>
+    <div class="ap-list">
+      <div class="ap-list-label" *ngIf="suggestedUsers().length > 0">Pessoas disponíveis</div>
+      <button *ngFor="let u of suggestedUsers()" class="ap-list-item" (click)="toggleAssignee(u.id)">
+        <app-avatar [name]="u.name" [photoUrl]="u.avatar_url" size="sm"></app-avatar>
+        <div class="ap-user-info">
+          <span class="ap-user-name">{{ u.name }}</span>
+          <span class="ap-user-role" *ngIf="u.position">{{ u.position }}</span>
+        </div>
+      </button>
+      <p *ngIf="suggestedUsers().length === 0" class="ap-empty">Nenhum usuário disponível.</p>
+    </div>
+  </ng-container>
 
-  <!-- Lista de sugestões -->
-  <div class="ap-list">
-    <div class="ap-list-label" *ngIf="suggestedUsers().length > 0">Pessoas disponíveis</div>
-    <button *ngFor="let u of suggestedUsers()" class="ap-list-item" (click)="toggleAssignee(u.id)">
-      <app-avatar [name]="u.name" [photoUrl]="u.avatar_url" size="sm"></app-avatar>
-      <div class="ap-user-info">
-        <span class="ap-user-name">{{ u.name }}</span>
-        <span class="ap-user-role" *ngIf="u.position">{{ u.position }}</span>
-      </div>
-    </button>
-    <p *ngIf="suggestedUsers().length === 0 && (taskForAssignees?.assignees?.length ?? 0) === 0"
-      class="ap-empty">Nenhum usuário encontrado.</p>
-    <p *ngIf="suggestedUsers().length === 0 && (taskForAssignees?.assignees?.length ?? 0) > 0 && assigneeSearchTerm()"
-      class="ap-empty">Nenhum resultado para "{{ assigneeSearchTerm() }}"</p>
-  </div>
-
-  <div class="ap-footer">
-    <span class="ap-footer-hint">Clique num responsável para remover</span>
-    <button class="ap-done-btn" (click)="closeAssigneePopover()">Concluir</button>
-  </div>
+  <!-- ===== TAGS ===== -->
+  <ng-container *ngIf="pop.type === 'tags'">
+    <div class="uni-pop-head">
+      <span>Tags</span>
+      <button class="uni-pop-close" (click)="closePopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ap-chips" *ngIf="popoverTask?.tags?.length > 0">
+      <button *ngFor="let t of popoverTask.tags" class="ap-chip ap-chip--tag"
+        [style.background]="t.color + '20'" [style.color]="t.color" [style.border-color]="t.color + '50'"
+        (click)="removeTaskTag(t.id, $event)" [title]="'Remover ' + t.name">
+        <span class="uni-dot" [style.background]="t.color"></span>
+        <span>{{ t.name }}</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ap-search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Buscar tag..." [value]="popoverSearch()"
+        (input)="popoverSearch.set($any($event.target).value)" />
+    </div>
+    <div class="ap-list">
+      <div class="ap-list-label" *ngIf="suggestedTags().length > 0">Tags disponíveis</div>
+      <button *ngFor="let t of suggestedTags()" class="ap-list-item" (click)="toggleTaskTag(t.id)">
+        <span class="uni-dot" [style.background]="t.color"></span>
+        <span class="ap-user-name">{{ t.name }}</span>
+      </button>
+      <p *ngIf="suggestedTags().length === 0 && tags().length === 0" class="ap-empty">
+        Nenhuma tag criada. Crie em "Tags" na barra lateral.
+      </p>
+      <p *ngIf="suggestedTags().length === 0 && tags().length > 0" class="ap-empty">
+        Todas as tags já aplicadas.
+      </p>
+    </div>
+  </ng-container>
 
 </div>
-
-<!-- Backdrop do popover de responsáveis -->
-<div *ngIf="assigneePopoverOpen()" class="assignee-popover-backdrop"
-  (click)="closeAssigneePopover()"></div>
 
 <!-- ===== TOASTS ===== -->
 <div class="toast" [class.toast--visible]="toastMsg()">

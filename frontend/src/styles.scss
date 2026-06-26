@@ -45,3 +45,38 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+/* ---------- Tooltip global (appTooltip) ---------- */
+.app-tooltip {
+  position: fixed;
+  z-index: 4000;
+  max-width: 260px;
+  background: #1C1C1F;
+  color: #FFFFFF;
+  font-family: 'Inter', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  white-space: normal;
+  word-break: break-word;
+}
+.app-tooltip--visible { opacity: 1; transform: translateY(0); }
+
+.app-tooltip__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #1C1C1F;
+  transform: rotate(45deg);
+}
+.app-tooltip--top .app-tooltip__arrow { bottom: -4px; }
+.app-tooltip--bottom .app-tooltip__arrow { top: -4px; }
+.app-tooltip--left .app-tooltip__arrow { right: -4px; top: 50%; margin-top: -4px; }
+.app-tooltip--right .app-tooltip__arrow { left: -4px; top: 50%; margin-top: -4px; }

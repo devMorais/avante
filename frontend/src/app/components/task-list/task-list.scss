@@ -263,8 +263,8 @@
 
 /* ---------- Visão Tabela ---------- */
 
-// grid: checkbox | título | status | prioridade | resp. | ações
-$cols: 40px 1fr 140px 120px 70px 36px;
+// grid: drag | checkbox | título | épico | tags | status | prioridade | resp. | ações
+$cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
 
 .table-view {
   display: flex;
@@ -361,11 +361,11 @@ $cols: 40px 1fr 140px 120px 70px 36px;
 
 /* ---------- Cabeçalho de colunas por grupo (substitui o header fixo) ---------- */
 
-$cols: 40px 1fr 140px 120px 70px 36px;
+$cols: 28px 40px 1fr 120px 140px 124px 104px 64px 40px;
 
 .global-columns-header {
   display: grid;
-  grid-template-columns: $cols auto;
+  grid-template-columns: $cols;
   align-items: center;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -378,6 +378,10 @@ $cols: 40px 1fr 140px 120px 70px 36px;
 }
 
 .sort-clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -390,9 +394,9 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   padding: 4px 10px;
   border-radius: 20px;
   cursor: pointer;
-  margin-right: 10px;
   white-space: nowrap;
   transition: background 0.12s ease;
+  z-index: 2;
 
   &:hover { background: rgba(79, 70, 229, 0.16); }
 }
@@ -452,8 +456,8 @@ $cols: 40px 1fr 140px 120px 70px 36px;
 .sprint-group-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px 12px 10px;
+  gap: 8px;
+  padding: 12px 18px 12px 28px;
   cursor: pointer;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
@@ -469,7 +473,7 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
+  width: 40px;
   flex-shrink: 0;
 }
 
@@ -604,20 +608,22 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   cursor: default;
 }
 
-/* Drag handle on task rows */
+/* Drag handle on task rows — sempre visível */
 .task-drag-handle {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   flex-shrink: 0;
-  color: var(--text-tertiary, #9CA3AF);
+  color: #C4C4CC;
   cursor: grab;
-  opacity: 0;
-  transition: opacity 0.12s ease;
+  opacity: 0.85;
+  transition: color 0.12s ease, opacity 0.12s ease;
+  &:hover { color: var(--accent); opacity: 1; }
   &:active { cursor: grabbing; }
 }
-.task-row:hover .task-drag-handle { opacity: 1; }
+.task-row:hover .task-drag-handle { color: #9CA3AF; }
+.task-row:hover .task-drag-handle:hover { color: var(--accent); }
 
 /* CDK drag states */
 .task-drag-placeholder {
@@ -663,10 +669,10 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   height: 24px;
   border: none;
   background: transparent;
-  color: var(--text-secondary);
+  color: #B4B4BC;
   cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+  opacity: 1;
+  transition: color 0.15s ease, background 0.15s ease;
   border-radius: 6px;
 
   &:hover {
@@ -836,6 +842,71 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   border-radius: 50%;
   flex-shrink: 0;
 }
+
+/* ---------- Gatilho de meta (status/prioridade) ---------- */
+
+.meta-trigger {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 999px;
+  transition: transform 0.1s ease;
+  &:hover { transform: translateY(-1px); }
+}
+
+/* ---------- Coluna Épico ---------- */
+
+.task-col--epic {
+  justify-content: flex-start;
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.task-col-empty {
+  font-size: 13px;
+  color: #C4C4CC;
+}
+
+/* ---------- Coluna Tags (gatilho de popover) ---------- */
+
+.task-col--tags {
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+.tags-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  max-width: 100%;
+  overflow: hidden;
+  transition: background 0.12s ease;
+  &:hover { background: rgba(79, 70, 229, 0.06); }
+}
+
+.task-tag-more {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.tags-empty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #C4C4CC;
+  transition: color 0.12s ease;
+}
+.tags-trigger:hover .tags-empty { color: var(--accent); }
 
 /* ---------- Responsáveis (coluna da tabela) ---------- */
 
@@ -1982,6 +2053,9 @@ $cols: 40px 1fr 140px 120px 70px 36px;
 
 .gcol-title { padding-left: 12px; }
 
+.gcol-epic { padding-left: 12px; }
+.gcol-tags { padding-left: 8px; }
+
 .gcol-status,
 .gcol-priority,
 .gcol-assignee {
@@ -2081,9 +2155,14 @@ $cols: 40px 1fr 140px 120px 70px 36px;
 
 /* ---------- POPOVER FLUTUANTE DE RESPONSÁVEIS ---------- */
 
-.assignee-popover-panel {
+/* ---------- Popover unificado ---------- */
+@keyframes uni-pop-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.uni-popover {
   position: fixed;
-  width: 310px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -2091,24 +2170,112 @@ $cols: 40px 1fr 140px 120px 70px 36px;
   z-index: 2000;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-4px) scale(0.98);
-  pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  overflow: visible;
+  animation: uni-pop-in 0.14s ease;
+}
 
-  &.open {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+.uni-popover-arrow {
+  position: absolute;
+  top: -7px;
+  width: 13px;
+  height: 13px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 1;
+}
+.uni-popover--top .uni-popover-arrow {
+  top: auto;
+  bottom: -7px;
+  transform: translateX(-50%) rotate(225deg);
+}
+
+/* primeiro/último filho precisam respeitar o radius com overflow visível */
+.uni-popover > .uni-pop-head:first-of-type { border-radius: var(--radius-md) var(--radius-md) 0 0; }
+
+.uni-pop-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+}
+
+.uni-pop-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.12s ease, color 0.12s ease;
+  &:hover { background: rgba(28, 28, 31, 0.06); color: var(--text-primary); }
+}
+
+.uni-pop-list {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.uni-pop-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  transition: background 0.1s ease;
+
+  &:hover { background: rgba(79, 70, 229, 0.06); }
+  &.active { background: rgba(79, 70, 229, 0.08); font-weight: 600; }
+
+  &--clear {
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    margin-top: 4px;
+    font-size: 12px;
+    &:hover { background: rgba(220, 38, 38, 0.06); color: #DC2626; }
   }
 }
 
-.assignee-popover-backdrop {
+.uni-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.uni-check { margin-left: auto; color: var(--accent); flex-shrink: 0; }
+
+.uni-popover-backdrop {
   position: fixed;
   inset: 0;
   z-index: 1999;
   background: transparent;
+}
+
+.ap-chip--tag {
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid transparent;
+  &:hover { filter: brightness(0.96); }
 }
 
 .ap-header {

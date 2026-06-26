@@ -56,6 +56,7 @@ class TaskController extends Controller
             'description' => 'required|string',
             'priority'    => 'nullable|string',
             'epic'        => 'nullable|string',
+            'release'     => 'nullable|string',
             'sort_order'  => 'nullable|integer',
             'tag_ids'     => 'nullable|array',
             'tag_ids.*'   => 'exists:tags,id',
@@ -103,6 +104,7 @@ class TaskController extends Controller
             'description'    => 'sometimes|required|string',
             'priority'       => 'nullable|string',
             'epic'           => 'nullable|string',
+            'release'        => 'nullable|string',
             'notes'          => 'nullable|string',
             'sort_order'     => 'nullable|integer',
         ]);

@@ -86,6 +86,11 @@
           <input type="text" [(ngModel)]="formEpic" class="field-input"
             placeholder="ex: Admin, Real-time, IA…" />
         </label>
+        <label class="field">
+          <span class="field-label">Release</span>
+          <input type="text" [(ngModel)]="formRelease" class="field-input"
+            placeholder="ex: v1.2, Sprint Q3…" />
+        </label>
       </div>
 
       <div class="field" *ngIf="mode === 'edit'">

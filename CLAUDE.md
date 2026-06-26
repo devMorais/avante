@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 26/06/2026 — Tags, drag-and-drop em status e tarefas, sort_order, tag-manager, filtro por tags.
+> Última atualização: 26/06/2026 — Popover unificado (status/prioridade/responsáveis/tags) com setinha, colunas Épico/Tags, campo release, tooltip global, alinhamento de colunas.
 
 ---
 
@@ -200,7 +200,7 @@ const BACKEND_URL = environment.backendUrl;
 | --------- | ------------------------------------------------------------------------------------ |
 | users     | name, email, password, role, bio, position, avatar_url, soft delete                  |
 | boards    | name, icon_path, soft delete                                                         |
-| tasks     | description, priority, epic, **notes** (longText), sprint_id, status_id, board_id, soft delete |
+| tasks     | description, priority, epic, **release**, **notes** (longText), sprint_id, status_id, board_id, sort_order, soft delete |
 | sprints   | name, start_date, end_date, finished_at, board_id, soft delete                       |
 | statuses  | name, color, order, board_id, soft delete                                            |
 | task_user | pivot — múltiplos usuários por tarefa (unique task_id + user_id)                    |
@@ -348,6 +348,7 @@ const BACKEND_URL = environment.backendUrl;
 | Pagination     | `app-pagination`  | Controle prev/next/números                      |
 | Popover        | `app-popover`     | Menu flutuante / dropdown                       |
 | Sidebar        | `app-sidebar`     | Barra lateral com abas                          |
+| Tooltip        | `[appTooltip]`    | Diretiva: tooltip flutuante (render no body, flip automático, setinha) — `appTooltip="texto"` + `tooltipPlacement="top\|bottom\|left\|right"` |
 
 ---
 

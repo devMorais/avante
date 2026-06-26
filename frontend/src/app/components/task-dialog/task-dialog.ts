@@ -22,6 +22,7 @@ export interface TaskFormValue {
   priority: string;
   sprint_id: number | null;
   epic: string | null;
+  release: string | null;
   tag_ids: number[];
 }
 
@@ -68,6 +69,7 @@ export class TaskDialog implements OnChanges {
   formPriority = 'Média';
   formSprintId: number | null = null;
   formEpic = '';
+  formRelease = '';
   formTagIds: number[] = [];
   tagSearchTerm = '';
   commentContent = '';
@@ -131,6 +133,7 @@ export class TaskDialog implements OnChanges {
       this.formPriority = this.task.priority ?? 'Média';
       this.formSprintId = this.task.sprint_id;
       this.formEpic = this.task.epic ?? '';
+      this.formRelease = this.task.release ?? '';
       this.formTagIds = (this.task.tags ?? []).map((t: any) => Number(t.id));
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
@@ -141,6 +144,7 @@ export class TaskDialog implements OnChanges {
       this.formPriority = 'Média';
       this.formSprintId = null;
       this.formEpic = '';
+      this.formRelease = '';
       this.formTagIds = [];
       this.taskNotes = '';
       this.noteImages = [];
@@ -571,6 +575,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       priority: this.formPriority,
       sprint_id: this.formSprintId,
       epic: this.formEpic.trim() || null,
+      release: this.formRelease.trim() || null,
       tag_ids: this.formTagIds,
     });
   }
