@@ -21,6 +21,7 @@ export interface TaskFormValue {
   status_id: number | null;
   priority: string;
   sprint_id: number | null;
+  epic: string | null;
 }
 
 const PRIORITIES = ['Baixa', 'Média', 'Alta', 'Urgente'];
@@ -64,6 +65,7 @@ export class TaskDialog implements OnChanges {
   formStatusId: number | null = null;
   formPriority = 'Média';
   formSprintId: number | null = null;
+  formEpic = '';
   commentContent = '';
 
   // Notes core
@@ -124,6 +126,7 @@ export class TaskDialog implements OnChanges {
       this.formStatusId = this.task.status_id;
       this.formPriority = this.task.priority ?? 'Média';
       this.formSprintId = this.task.sprint_id;
+      this.formEpic = this.task.epic ?? '';
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
       this.startTimer(this.task.id);
@@ -132,6 +135,7 @@ export class TaskDialog implements OnChanges {
       this.formStatusId = this.statuses[0]?.id ?? null;
       this.formPriority = 'Média';
       this.formSprintId = null;
+      this.formEpic = '';
       this.taskNotes = '';
       this.noteImages = [];
       this.stopTimer();
@@ -534,6 +538,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       status_id: this.formStatusId,
       priority: this.formPriority,
       sprint_id: this.formSprintId,
+      epic: this.formEpic.trim() || null,
     });
   }
 

@@ -101,7 +101,7 @@
 
     <!-- Filtros -->
     <div class="filters-wrap">
-      <app-task-filters [statuses]="statuses()" [users]="users()"
+      <app-task-filters [statuses]="statuses()" [users]="users()" [epics]="availableEpics()"
         (filtersChange)="onFiltersChange($event)"></app-task-filters>
     </div>
 
@@ -357,6 +357,7 @@
 
                 <div class="task-title-cell">
                   <span class="task-title">{{ summaryFor(task.description) }}</span>
+                  <span *ngIf="task.epic" class="task-epic-tag">{{ task.epic }}</span>
                   <button class="copy-btn" (click)="copyDescription(task, $event)"
                     [title]="copiedTaskId() === task.id ? 'Copiado!' : 'Copiar'">
                     <svg *ngIf="copiedTaskId() !== task.id" width="14" height="14" viewBox="0 0 24 24" fill="none"

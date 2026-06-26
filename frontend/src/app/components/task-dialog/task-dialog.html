@@ -81,6 +81,11 @@
             <option *ngFor="let sp of sprints" [ngValue]="sp.id">{{ sp.name }}</option>
           </select>
         </label>
+        <label class="field">
+          <span class="field-label">Épico</span>
+          <input type="text" [(ngModel)]="formEpic" class="field-input"
+            placeholder="ex: Admin, Real-time, IA…" />
+        </label>
       </div>
 
       <div class="field" *ngIf="mode === 'edit'">

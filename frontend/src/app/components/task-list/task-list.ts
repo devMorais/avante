@@ -66,12 +66,21 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Filtros ----------
 
-  currentFilters: TaskFilterValue = { search: '', status_ids: [], priorities: [], assignee_ids: [] };
+  currentFilters: TaskFilterValue = { search: '', status_ids: [], priorities: [], assignee_ids: [], epics: [] };
+  selectedEpics = signal<string[]>([]);
 
   onFiltersChange(filters: TaskFilterValue) {
     this.currentFilters = filters;
+    this.selectedEpics.set(filters.epics ?? []);
     this.loadTasks();
   }
+
+  // Épicos disponíveis derivados das tarefas carregadas (para o filtro)
+  availableEpics = computed(() => {
+    const set = new Set<string>();
+    this.tasks().forEach(t => { if (t.epic) set.add(t.epic); });
+    return [...set].sort();
+  });
 
   // ---------- Ordenação ----------
 
@@ -161,12 +170,17 @@ export class TaskListComponent implements OnInit {
   // ---------- Agrupamentos ----------
 
   groupedBySprint = computed(() => {
+    const epicFilter = this.selectedEpics();
+    const allTasks = epicFilter.length
+      ? this.tasks().filter(t => t.epic && epicFilter.includes(t.epic))
+      : this.tasks();
+
     const groups: { sprint: any | null; tasks: any[] }[] = [];
     for (const sprint of this.sprints()) {
-      const sprintTasks = this.sortedTasks(this.tasks().filter(t => t.sprint_id === sprint.id));
+      const sprintTasks = this.sortedTasks(allTasks.filter(t => t.sprint_id === sprint.id));
       groups.push({ sprint, tasks: sprintTasks });
     }
-    const withoutSprint = this.sortedTasks(this.tasks().filter(t => !t.sprint_id));
+    const withoutSprint = this.sortedTasks(allTasks.filter(t => !t.sprint_id));
     groups.push({ sprint: null, tasks: withoutSprint });
     return groups;
   });

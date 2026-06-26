@@ -256,11 +256,16 @@
 }
 
 .status-dot,
-.priority-dot {
+.priority-dot,
+.epic-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.epic-dot {
+  background: #7C3AED;
 }
 
 .user-avatar {
@@ -352,6 +357,11 @@
   &.chip-assignee {
     background: #EEF2FF;
     color: #4338CA;
+  }
+
+  &.chip-epic {
+    background: #EDE9FE;
+    color: #6D28D9;
   }
 }
 

@@ -144,6 +144,49 @@
       </div>
     </div>
 
+    <!-- Dropdown Épico -->
+    <div class="dropdown-wrap" *ngIf="epics.length > 0">
+      <button class="filter-btn" [class.active]="selectedEpics().length > 0"
+        (click)="toggleDropdown('epic'); $event.stopPropagation()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+        Épico
+        <span *ngIf="selectedEpics().length > 0" class="filter-count">{{ selectedEpics().length }}</span>
+        <svg class="chevron" [class.open]="openDropdown() === 'epic'" width="12" height="12" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+
+      <div *ngIf="openDropdown() === 'epic'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <div class="dropdown-search-box" *ngIf="epics.length > 5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" placeholder="Buscar épico..." [value]="epicSearch()"
+            (input)="epicSearch.set($any($event.target).value)" />
+        </div>
+        <div class="dropdown-list">
+          <button *ngFor="let e of filteredEpics()" class="dropdown-item" [class.checked]="isEpicSelected(e)"
+            (click)="toggleEpic(e)">
+            <span class="checkbox" [class.checked]="isEpicSelected(e)">
+              <svg *ngIf="isEpicSelected(e)" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white"
+                stroke-width="3" stroke-linecap="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </span>
+            <span class="epic-dot"></span>
+            {{ e }}
+          </button>
+          <p *ngIf="filteredEpics().length === 0" class="dropdown-empty">Nenhum épico encontrado.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Limpar filtros -->
     <button *ngIf="hasActiveFilters()" class="clear-btn" (click)="clearAll()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -159,7 +202,8 @@
   <div *ngIf="activeChips().length > 0" class="active-chips">
     <span class="chips-label">Filtros ativos:</span>
     <span *ngFor="let chip of activeChips()" class="chip" [class.chip-status]="chip.type === 'status'"
-      [class.chip-priority]="chip.type === 'priority'" [class.chip-assignee]="chip.type === 'assignee'">
+      [class.chip-priority]="chip.type === 'priority'" [class.chip-assignee]="chip.type === 'assignee'"
+      [class.chip-epic]="chip.type === 'epic'">
       {{ chip.label }}
       <button class="chip-remove" (click)="removeChip(chip)">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"

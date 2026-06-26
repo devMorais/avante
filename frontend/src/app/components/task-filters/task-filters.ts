@@ -10,6 +10,7 @@ export interface TaskFilterValue {
   status_ids: number[];
   priorities: string[];
   assignee_ids: number[];
+  epics: string[];
 }
 
 @Component({
@@ -22,6 +23,7 @@ export interface TaskFilterValue {
 export class TaskFilters implements OnInit {
   @Input() statuses: any[] = [];
   @Input() users: any[] = [];
+  @Input() epics: string[] = [];
 
   @Output() filtersChange = new EventEmitter<TaskFilterValue>();
 
@@ -30,13 +32,15 @@ export class TaskFilters implements OnInit {
   selectedStatusIds = signal<number[]>([]);
   selectedPriorities = signal<string[]>([]);
   selectedAssigneeIds = signal<number[]>([]);
+  selectedEpics = signal<string[]>([]);
 
   // Controle de dropdowns abertos
-  openDropdown = signal<'status' | 'priority' | 'assignee' | null>(null);
+  openDropdown = signal<'status' | 'priority' | 'assignee' | 'epic' | null>(null);
 
   // Busca interna dos dropdowns
   statusSearch = signal('');
   assigneeSearch = signal('');
+  epicSearch = signal('');
 
   priorities = ['Baixa', 'Média', 'Alta', 'Urgente'];
 
@@ -64,9 +68,15 @@ export class TaskFilters implements OnInit {
     return this.users.filter(u => u.name.toLowerCase().includes(term));
   });
 
+  filteredEpics = computed(() => {
+    const term = this.epicSearch().toLowerCase().trim();
+    if (!term) return this.epics;
+    return this.epics.filter(e => e.toLowerCase().includes(term));
+  });
+
   // Computed: chips ativos para exibição abaixo da barra
   activeChips = computed(() => {
-    const chips: { type: 'status' | 'priority' | 'assignee'; id: number | string; label: string }[] = [];
+    const chips: { type: 'status' | 'priority' | 'assignee' | 'epic'; id: number | string; label: string }[] = [];
 
     this.selectedStatusIds().forEach(id => {
       const s = this.statuses.find(s => Number(s.id) === Number(id));
@@ -82,6 +92,10 @@ export class TaskFilters implements OnInit {
       if (u) chips.push({ type: 'assignee', id, label: u.name });
     });
 
+    this.selectedEpics().forEach(e => {
+      chips.push({ type: 'epic', id: e, label: e });
+    });
+
     return chips;
   });
 
@@ -89,7 +103,8 @@ export class TaskFilters implements OnInit {
     this.search().trim() !== '' ||
     this.selectedStatusIds().length > 0 ||
     this.selectedPriorities().length > 0 ||
-    this.selectedAssigneeIds().length > 0
+    this.selectedAssigneeIds().length > 0 ||
+    this.selectedEpics().length > 0
   );
 
   // Fechar dropdown ao clicar fora
@@ -105,12 +120,12 @@ export class TaskFilters implements OnInit {
     }
   }
 
-  toggleDropdown(name: 'status' | 'priority' | 'assignee') {
+  toggleDropdown(name: 'status' | 'priority' | 'assignee' | 'epic') {
     this.openDropdown.set(this.openDropdown() === name ? null : name);
-    // Limpa buscas internas ao fechar
     if (this.openDropdown() === null) {
       this.statusSearch.set('');
       this.assigneeSearch.set('');
+      this.epicSearch.set('');
     }
   }
 
@@ -142,6 +157,19 @@ export class TaskFilters implements OnInit {
     this.emit();
   }
 
+  toggleEpic(epic: string) {
+    const current = this.selectedEpics();
+    const next = current.includes(epic)
+      ? current.filter(e => e !== epic)
+      : [...current, epic];
+    this.selectedEpics.set(next);
+    this.emit();
+  }
+
+  isEpicSelected(epic: string): boolean {
+    return this.selectedEpics().includes(epic);
+  }
+
   isStatusSelected(id: number): boolean {
     return this.selectedStatusIds().includes(Number(id));
   }
@@ -162,6 +190,8 @@ export class TaskFilters implements OnInit {
       this.selectedPriorities.set(this.selectedPriorities().filter(p => p !== chip.id));
     } else if (chip.type === 'assignee') {
       this.selectedAssigneeIds.set(this.selectedAssigneeIds().filter(i => i !== Number(chip.id)));
+    } else if (chip.type === 'epic') {
+      this.selectedEpics.set(this.selectedEpics().filter(e => e !== chip.id));
     }
     this.emit();
   }
@@ -176,6 +206,7 @@ export class TaskFilters implements OnInit {
     this.selectedStatusIds.set([]);
     this.selectedPriorities.set([]);
     this.selectedAssigneeIds.set([]);
+    this.selectedEpics.set([]);
     this.openDropdown.set(null);
     this.emit();
   }
@@ -186,6 +217,7 @@ export class TaskFilters implements OnInit {
       status_ids: this.selectedStatusIds(),
       priorities: this.selectedPriorities(),
       assignee_ids: this.selectedAssigneeIds(),
+      epics: this.selectedEpics(),
     });
   }
 
