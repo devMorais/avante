@@ -203,6 +203,42 @@
 textarea.field-input { resize: vertical; font-family: 'Inter', sans-serif; line-height: 1.6; }
 select.field-input { cursor: pointer; height: 40px; padding: 0 12px; }
 
+/* ---------- Dropdowns popover (substituem selects) ---------- */
+.td-dropdown { position: relative; }
+
+.td-dropdown-trigger {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  height: 40px; padding: 0 12px; box-sizing: border-box;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface); cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text-primary);
+  transition: border-color .15s ease, box-shadow .15s ease;
+
+  &:hover { border-color: var(--accent); }
+  svg:first-child { color: var(--text-secondary); flex-shrink: 0; }
+}
+.td-dropdown-value { flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.td-chevron { color: var(--text-secondary); flex-shrink: 0; }
+
+.td-dropdown-panel {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 50;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: 0 12px 32px rgba(28,28,31,.16); padding: 5px; max-height: 240px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.td-dropdown-item {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  border: none; background: transparent; padding: 8px 10px; border-radius: 7px;
+  font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-primary);
+  cursor: pointer; text-align: left; transition: background .1s ease;
+
+  &:hover { background: rgba(79,70,229,.06); }
+  &.active { background: rgba(79,70,229,.1); font-weight: 600; }
+}
+
+.td-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
 .assignees-field-trigger {
   display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
   width: 100%; border: 1px solid var(--border); border-radius: var(--radius-sm);
@@ -276,9 +312,31 @@ select.field-input { cursor: pointer; height: 40px; padding: 0 12px; }
 .dialog-actions {
   padding: 12px 28px 20px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   gap: 8px;
   border-top: 1px solid var(--border);
+}
+
+.dialog-actions-spacer { flex: 1; }
+
+.dialog-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: transparent;
+  color: #DC2626;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+
+  &:hover { background: rgba(220, 38, 38, 0.08); border-color: #DC2626; }
+  svg { flex-shrink: 0; }
 }
 
 /* ---------- Comentários ---------- */

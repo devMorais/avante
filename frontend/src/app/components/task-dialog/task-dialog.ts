@@ -60,9 +60,40 @@ export class TaskDialog implements OnChanges {
   @Output() addComment = new EventEmitter<{ content: string }>();
   @Output() removeComment = new EventEmitter<number>();
   @Output() manageAssignees = new EventEmitter<void>();
+  @Output() deleteTask = new EventEmitter<void>();
 
   priorities = PRIORITIES;
   activeTab: 'details' | 'comments' | 'notes' = 'details';
+
+  // Dropdowns inline (popover) — substituem os <select> nativos
+  openField: 'status' | 'priority' | 'sprint' | null = null;
+
+  toggleField(field: 'status' | 'priority' | 'sprint', event: Event) {
+    event.stopPropagation();
+    this.openField = this.openField === field ? null : field;
+  }
+  closeFields() { this.openField = null; }
+
+  @HostListener('document:click')
+  onDocClickFields() { this.openField = null; }
+
+  selectStatus(id: number | null) { this.formStatusId = id; this.openField = null; }
+  selectPriority(p: string) { this.formPriority = p; this.openField = null; }
+  selectSprint(id: number | null) { this.formSprintId = id; this.openField = null; }
+
+  get currentStatus(): any { return this.statuses.find(s => s.id === this.formStatusId) ?? null; }
+  get currentSprintName(): string {
+    return this.sprints.find(s => s.id === this.formSprintId)?.name ?? 'Sem sprint';
+  }
+
+  priorityColor(p: string): string {
+    const colors: Record<string, string> = {
+      'Baixa': '#059669', 'Média': '#0284C7', 'Alta': '#EA580C', 'Urgente': '#DC2626',
+    };
+    return colors[p] || '#6B6B70';
+  }
+
+  onDelete() { this.deleteTask.emit(); }
 
   formDescription = '';
   formStatusId: number | null = null;

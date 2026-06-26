@@ -1,4 +1,4 @@
-<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="960px">
+<app-modal [isOpen]="isOpen" (closeModal)="onClose()" width="1080px">
   <div class="task-dialog">
 
     <!-- Header -->
@@ -61,26 +61,66 @@
       </div>
 
       <div class="field-grid">
-        <label class="field">
+        <!-- Status (popover) -->
+        <div class="field">
           <span class="field-label">Status</span>
-          <select [(ngModel)]="formStatusId" class="field-input">
-            <option [ngValue]="null">Sem status</option>
-            <option *ngFor="let s of statuses" [ngValue]="s.id">{{ s.name }}</option>
-          </select>
-        </label>
-        <label class="field">
+          <div class="td-dropdown">
+            <button type="button" class="td-dropdown-trigger" (click)="toggleField('status', $event)">
+              <span class="td-dot" [style.background]="currentStatus?.color || '#C4C4CC'"></span>
+              <span class="td-dropdown-value">{{ currentStatus?.name || 'Sem status' }}</span>
+              <svg class="td-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="td-dropdown-panel" *ngIf="openField === 'status'" (click)="$event.stopPropagation()">
+              <button type="button" class="td-dropdown-item" (click)="selectStatus(null)">
+                <span class="td-dot" style="background:#C4C4CC"></span>Sem status
+              </button>
+              <button type="button" *ngFor="let s of statuses" class="td-dropdown-item"
+                [class.active]="formStatusId === s.id" (click)="selectStatus(s.id)">
+                <span class="td-dot" [style.background]="s.color || '#6B6B70'"></span>{{ s.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prioridade (popover) -->
+        <div class="field">
           <span class="field-label">Prioridade</span>
-          <select [(ngModel)]="formPriority" class="field-input">
-            <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
-          </select>
-        </label>
-        <label class="field">
+          <div class="td-dropdown">
+            <button type="button" class="td-dropdown-trigger" (click)="toggleField('priority', $event)">
+              <span class="td-dot" [style.background]="priorityColor(formPriority)"></span>
+              <span class="td-dropdown-value">{{ formPriority }}</span>
+              <svg class="td-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="td-dropdown-panel" *ngIf="openField === 'priority'" (click)="$event.stopPropagation()">
+              <button type="button" *ngFor="let p of priorities" class="td-dropdown-item"
+                [class.active]="formPriority === p" (click)="selectPriority(p)">
+                <span class="td-dot" [style.background]="priorityColor(p)"></span>{{ p }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sprint (popover) -->
+        <div class="field">
           <span class="field-label">Sprint</span>
-          <select [(ngModel)]="formSprintId" class="field-input">
-            <option [ngValue]="null">Sem sprint</option>
-            <option *ngFor="let sp of sprints" [ngValue]="sp.id">{{ sp.name }}</option>
-          </select>
-        </label>
+          <div class="td-dropdown">
+            <button type="button" class="td-dropdown-trigger" (click)="toggleField('sprint', $event)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span class="td-dropdown-value">{{ currentSprintName }}</span>
+              <svg class="td-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="td-dropdown-panel" *ngIf="openField === 'sprint'" (click)="$event.stopPropagation()">
+              <button type="button" class="td-dropdown-item" (click)="selectSprint(null)">Sem sprint</button>
+              <button type="button" *ngFor="let sp of sprints" class="td-dropdown-item"
+                [class.active]="formSprintId === sp.id" (click)="selectSprint(sp.id)">{{ sp.name }}</button>
+            </div>
+          </div>
+        </div>
+
         <label class="field">
           <span class="field-label">Épico</span>
           <input type="text" [(ngModel)]="formEpic" class="field-input"
@@ -487,6 +527,14 @@ $$
 
     <!-- Ações -->
     <div class="dialog-actions" *ngIf="activeTab !== 'notes'">
+      <button type="button" class="dialog-delete-btn" *ngIf="mode === 'edit'" (click)="onDelete()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+        </svg>
+        Excluir
+      </button>
+      <span class="dialog-actions-spacer"></span>
       <app-button variant="text" (clicked)="onClose()">Cancelar</app-button>
       <app-button variant="primary" (clicked)="onSave()" [disabled]="!formDescription.trim() || saving">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"

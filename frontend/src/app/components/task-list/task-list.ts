@@ -631,6 +631,14 @@ export class TaskListComponent implements OnInit {
     this.deleteDialogOpen.set(true);
   }
 
+  // Excluir a partir da modal de tarefa
+  onDeleteFromDialog() {
+    if (!this.editingTask) return;
+    this.taskPendingDelete = this.editingTask;
+    this.taskDialogOpen.set(false);
+    this.deleteDialogOpen.set(true);
+  }
+
   cancelDeleteTask() {
     if (this.deleting()) return;
     this.deleteDialogOpen.set(false);

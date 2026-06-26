@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 26/06/2026 — Popover unificado (status/prioridade/responsáveis/tags) com setinha, colunas Épico/Tags, campo release, tooltip global, alinhamento de colunas.
+> Última atualização: 26/06/2026 — Header de colunas por sprint + ordenação por sprint + restaurar ordem; tags inline no popover (sem rota separada); modal de tarefa com dropdowns popover, maior e excluir interno; sprint-manager em tabela.
 
 ---
 
