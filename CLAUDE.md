@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 25/06/2026 — Caderno rico, JSON import, menus placeholder, toasts motivacionais.
+> Última atualização: 26/06/2026 — Tags, drag-and-drop em status e tarefas, sort_order, tag-manager, filtro por tags.
 
 ---
 

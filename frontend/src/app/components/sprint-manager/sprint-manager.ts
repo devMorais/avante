@@ -150,4 +150,72 @@ export class SprintManager implements OnInit {
     const [year, month, day] = date.split('-');
     return `${day}/${month}/${year}`;
   }
+
+  formatDateLong(date: string | null): string {
+    if (!date) return '—';
+    const d = new Date(date + 'T00:00:00');
+    return d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  isFinished(sprint: any): boolean { return !!sprint?.finished_at; }
+
+  isOverdue(sprint: any): boolean {
+    if (!sprint?.end_date || sprint?.finished_at) return false;
+    return new Date(sprint.end_date) < new Date(new Date().toDateString());
+  }
+
+  isUpcoming(sprint: any): boolean {
+    if (!sprint?.start_date || sprint?.finished_at) return false;
+    return new Date(sprint.start_date) > new Date(new Date().toDateString());
+  }
+
+  isActive(sprint: any): boolean {
+    return !this.isFinished(sprint) && !this.isOverdue(sprint) && !this.isUpcoming(sprint);
+  }
+
+  duration(sprint: any): number | null {
+    if (!sprint?.start_date || !sprint?.end_date) return null;
+    const start = new Date(sprint.start_date);
+    const end = new Date(sprint.end_date);
+    return Math.ceil((end.getTime() - start.getTime()) / 86400000) + 1;
+  }
+
+  daysRemaining(sprint: any): number | null {
+    if (!sprint?.end_date || sprint?.finished_at) return null;
+    const end = new Date(sprint.end_date);
+    const today = new Date(new Date().toDateString());
+    return Math.ceil((end.getTime() - today.getTime()) / 86400000);
+  }
+
+  daysOverdue(sprint: any): number | null {
+    if (!this.isOverdue(sprint)) return null;
+    const end = new Date(sprint.end_date);
+    const today = new Date(new Date().toDateString());
+    return Math.ceil((today.getTime() - end.getTime()) / 86400000);
+  }
+
+  timelineProgress(sprint: any): number {
+    if (!sprint?.start_date || !sprint?.end_date) return 0;
+    if (sprint?.finished_at) return 100;
+    const start = new Date(sprint.start_date).getTime();
+    const end = new Date(sprint.end_date).getTime();
+    const now = Date.now();
+    if (now <= start) return 0;
+    if (now >= end) return 100;
+    return Math.round(((now - start) / (end - start)) * 100);
+  }
+
+  statusLabel(sprint: any): string {
+    if (this.isFinished(sprint)) return 'Finalizada';
+    if (this.isOverdue(sprint)) return 'Vencida';
+    if (this.isUpcoming(sprint)) return 'Agendada';
+    return 'Ativa';
+  }
+
+  statusClass(sprint: any): string {
+    if (this.isFinished(sprint)) return 'badge--finished';
+    if (this.isOverdue(sprint)) return 'badge--overdue';
+    if (this.isUpcoming(sprint)) return 'badge--upcoming';
+    return 'badge--active';
+  }
 }

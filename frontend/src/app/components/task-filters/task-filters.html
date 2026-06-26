@@ -187,6 +187,46 @@
       </div>
     </div>
 
+    <!-- Dropdown Tags -->
+    <div class="dropdown-wrap" *ngIf="tags.length > 0">
+      <button class="filter-btn" [class.active]="selectedTagIds().length > 0"
+        (click)="toggleDropdown('tag'); $event.stopPropagation()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Tags
+        <span *ngIf="selectedTagIds().length > 0" class="filter-count">{{ selectedTagIds().length }}</span>
+        <svg class="chevron" [class.open]="openDropdown() === 'tag'" width="12" height="12" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div *ngIf="openDropdown() === 'tag'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <div class="dropdown-search-box" *ngIf="tags.length > 5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" placeholder="Buscar tag..." [value]="tagSearch()"
+            (input)="tagSearch.set($any($event.target).value)" />
+        </div>
+        <div class="dropdown-list">
+          <button *ngFor="let t of filteredTags()" class="dropdown-item" [class.checked]="isTagSelected(t.id)"
+            (click)="toggleTag(t.id)">
+            <span class="checkbox" [class.checked]="isTagSelected(t.id)">
+              <svg *ngIf="isTagSelected(t.id)" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white"
+                stroke-width="3.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5" /></svg>
+            </span>
+            <span class="tag-filter-dot" [style.background]="t.color"></span>
+            {{ t.name }}
+          </button>
+          <p *ngIf="filteredTags().length === 0" class="dropdown-empty">Nenhuma tag encontrada.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Limpar filtros -->
     <button *ngIf="hasActiveFilters()" class="clear-btn" (click)="clearAll()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -203,7 +243,10 @@
     <span class="chips-label">Filtros ativos:</span>
     <span *ngFor="let chip of activeChips()" class="chip" [class.chip-status]="chip.type === 'status'"
       [class.chip-priority]="chip.type === 'priority'" [class.chip-assignee]="chip.type === 'assignee'"
-      [class.chip-epic]="chip.type === 'epic'">
+      [class.chip-epic]="chip.type === 'epic'" [class.chip-tag]="chip.type === 'tag'"
+      [style.background]="chip.type === 'tag' && chip.color ? chip.color + '20' : null"
+      [style.color]="chip.type === 'tag' && chip.color ? chip.color : null"
+      [style.border-color]="chip.type === 'tag' && chip.color ? chip.color + '50' : null">
       {{ chip.label }}
       <button class="chip-remove" (click)="removeChip(chip)">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"

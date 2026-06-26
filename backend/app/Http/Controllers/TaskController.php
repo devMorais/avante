@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    // Relacionamentos padrão reutilizados em todos os métodos
     private array $with = [
         'sprint',
         'status',
         'assignees:id,name,email,avatar_url',
+        'tags:id,name,color',
     ];
 
     public function index(Request $request)
@@ -32,11 +32,16 @@ class TaskController extends Controller
                 $q->whereIn('users.id', $request->assignee_ids);
             });
         }
+        if ($request->filled('tag_ids')) {
+            $query->whereHas('tags', function ($q) use ($request) {
+                $q->whereIn('tags.id', $request->tag_ids);
+            });
+        }
         if ($request->filled('search')) {
             $query->where('description', 'like', '%' . $request->search . '%');
         }
 
-        $query->orderBy('created_at', 'desc');
+        $query->orderBy('sort_order')->orderBy('created_at', 'desc');
 
         return response()->json($query->get());
     }
@@ -51,12 +56,25 @@ class TaskController extends Controller
             'description' => 'required|string',
             'priority'    => 'nullable|string',
             'epic'        => 'nullable|string',
+            'sort_order'  => 'nullable|integer',
+            'tag_ids'     => 'nullable|array',
+            'tag_ids.*'   => 'exists:tags,id',
         ]);
 
-        $task = Task::create($validated);
+        if (!isset($validated['sort_order'])) {
+            $validated['sort_order'] = Task::where('board_id', $validated['board_id'])
+                ->when(isset($validated['sprint_id']), fn($q) => $q->where('sprint_id', $validated['sprint_id']))
+                ->max('sort_order') + 1;
+        }
+
+        $task = Task::create(collect($validated)->except('tag_ids')->toArray());
 
         if (!empty($validated['assigned_to'])) {
             $task->assignees()->sync([$validated['assigned_to']]);
+        }
+
+        if ($request->has('tag_ids')) {
+            $task->tags()->sync($validated['tag_ids'] ?? []);
         }
 
         $task->load($this->with);
@@ -67,7 +85,6 @@ class TaskController extends Controller
     public function show(string $id)
     {
         $task = Task::with($this->with)->findOrFail($id);
-
         return response()->json($task);
     }
 
@@ -81,16 +98,23 @@ class TaskController extends Controller
             'assigned_to'    => 'nullable|exists:users,id',
             'assignee_ids'   => 'nullable|array',
             'assignee_ids.*' => 'exists:users,id',
+            'tag_ids'        => 'nullable|array',
+            'tag_ids.*'      => 'exists:tags,id',
             'description'    => 'sometimes|required|string',
             'priority'       => 'nullable|string',
             'epic'           => 'nullable|string',
             'notes'          => 'nullable|string',
+            'sort_order'     => 'nullable|integer',
         ]);
 
-        $task->update(collect($validated)->except('assignee_ids')->toArray());
+        $task->update(collect($validated)->except(['assignee_ids', 'tag_ids'])->toArray());
 
         if ($request->has('assignee_ids')) {
             $task->assignees()->sync($validated['assignee_ids'] ?? []);
+        }
+
+        if ($request->has('tag_ids')) {
+            $task->tags()->sync($validated['tag_ids'] ?? []);
         }
 
         $task->load($this->with);
@@ -104,5 +128,23 @@ class TaskController extends Controller
         $task->delete();
 
         return response()->json(['message' => 'Tarefa removida com sucesso']);
+    }
+
+    /**
+     * Reordena tarefas em massa: body = [{ id, sort_order }]
+     */
+    public function reorder(Request $request)
+    {
+        $request->validate([
+            'items'             => 'required|array',
+            'items.*.id'        => 'required|exists:tasks,id',
+            'items.*.sort_order'=> 'required|integer',
+        ]);
+
+        foreach ($request->items as $item) {
+            Task::where('id', $item['id'])->update(['sort_order' => $item['sort_order']]);
+        }
+
+        return response()->json(['message' => 'Tarefas reordenadas']);
     }
 }

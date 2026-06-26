@@ -18,6 +18,7 @@ class Task extends Model
         'priority',
         'epic',
         'notes',
+        'sort_order',
     ];
 
     public function board()
@@ -35,17 +36,21 @@ class Task extends Model
         return $this->belongsTo(Status::class);
     }
 
-    // Mantido para compatibilidade com o campo legado
     public function assignee()
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
 
-    // Novo: múltiplos responsáveis via pivot
     public function assignees()
     {
         return $this->belongsToMany(User::class, 'task_user')
-            ->select(['users.id', 'users.name', 'users.email']);
+            ->select(['users.id', 'users.name', 'users.email', 'users.avatar_url']);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'task_tag')
+            ->select(['tags.id', 'tags.name', 'tags.color']);
     }
 
     public function comments()

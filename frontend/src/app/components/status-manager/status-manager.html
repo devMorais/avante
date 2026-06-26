@@ -1,121 +1,211 @@
 <div class="status-manager">
 
   <div class="sm-header">
-    <h2 class="sm-title">Status</h2>
+    <div class="sm-header-left">
+      <h2 class="sm-title">Status</h2>
+      <span class="sm-count" *ngIf="!loading() && statuses().length > 0">{{ statuses().length }}</span>
+      <span class="sm-reorder-hint" *ngIf="!loading() && statuses().length > 1">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+        Arraste para reordenar
+      </span>
+      <span *ngIf="reordering()" class="sm-reorder-saving">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        Salvando...
+      </span>
+    </div>
     <app-button variant="primary" (clicked)="openCreateDialog()">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
-        stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round">
         <line x1="12" y1="5" x2="12" y2="19"></line>
         <line x1="5" y1="12" x2="19" y2="12"></line>
       </svg>
-      Adicionar Status
+      Novo Status
     </app-button>
   </div>
 
   <div class="sm-loading" *ngIf="loading()">
-    <span>Carregando status...</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" class="sm-spin">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+    Carregando...
   </div>
 
-  <ng-container *ngIf="!loading()">
+  <div class="sm-empty" *ngIf="!loading() && statuses().length === 0">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2"
+      stroke-linecap="round">
+      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+    </svg>
+    <p>Nenhum status cadastrado.</p>
+    <p class="sm-empty-sub">Crie o primeiro status para organizar as atividades.</p>
+  </div>
 
-    <div class="sm-empty" *ngIf="statuses().length === 0">
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
-        stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="8" x2="12" y2="12"></line>
-        <line x1="12" y1="16" x2="12.01" y2="16"></line>
-      </svg>
-      <p>Nenhum status cadastrado ainda.</p>
-      <p class="sm-empty-sub">Crie os status que representam as etapas do seu fluxo de trabalho.</p>
+  <!-- Lista arrastável -->
+  <div class="sm-list-wrap" *ngIf="!loading() && statuses().length > 0">
+
+    <!-- Legenda -->
+    <div class="sm-list-header">
+      <div class="sm-col sm-col--handle"></div>
+      <div class="sm-col sm-col--color">Cor</div>
+      <div class="sm-col sm-col--name">Nome</div>
+      <div class="sm-col sm-col--order">Posição</div>
+      <div class="sm-col sm-col--preview">Preview</div>
+      <div class="sm-col sm-col--actions"></div>
     </div>
 
-    <div class="sm-table-wrap" *ngIf="statuses().length > 0">
-      <table class="sm-table">
-        <thead>
-          <tr>
-            <th class="th-color">Cor</th>
-            <th class="th-name">Nome</th>
-            <th class="th-order">Ordem</th>
-            <th class="th-actions"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="sm-row" *ngFor="let status of statuses()">
-            <td class="td-color">
-              <span class="sm-color-dot" [style.background]="status.color"
-                [title]="status.color"></span>
-            </td>
-            <td class="td-name">
-              <span class="status-label" [style.color]="status.color">{{ status.name }}</span>
-            </td>
-            <td class="td-order">{{ status.order ?? '—' }}</td>
-            <td class="td-actions">
-              <div class="action-wrap">
-                <button class="sm-action-btn" (click)="openEditDialog(status)" title="Editar">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                  </svg>
-                </button>
-                <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(status)" title="Excluir">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="sm-list" cdkDropList (cdkDropListDropped)="drop($event)">
 
-  </ng-container>
+      <div *ngFor="let status of statuses(); let i = index"
+        class="sm-row" cdkDrag [cdkDragData]="status">
+
+        <div *cdkDragPlaceholder class="sm-drag-placeholder"></div>
+
+        <div *cdkDragPreview class="sm-drag-preview">
+          <span class="sm-preview-dot" [style.background]="status.color"></span>
+          {{ status.name }}
+        </div>
+
+        <div class="sm-col sm-col--handle" cdkDragHandle title="Arrastar para reordenar">
+          <svg width="14" height="14" viewBox="0 0 10 16" fill="currentColor">
+            <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/>
+            <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/>
+            <circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/>
+          </svg>
+        </div>
+
+        <div class="sm-col sm-col--color">
+          <span class="status-color-dot" [style.background]="status.color || '#6B6B70'"></span>
+          <span class="status-color-hex">{{ status.color || '—' }}</span>
+        </div>
+
+        <div class="sm-col sm-col--name">
+          <span class="status-name-text">{{ status.name }}</span>
+        </div>
+
+        <div class="sm-col sm-col--order">
+          <span class="status-order-badge">{{ i + 1 }}º</span>
+        </div>
+
+        <div class="sm-col sm-col--preview">
+          <span class="status-preview-chip"
+            [style.background]="(status.color || '#6B6B70') + '18'"
+            [style.color]="status.color || '#6B6B70'"
+            [style.border-color]="(status.color || '#6B6B70') + '40'">
+            {{ status.name }}
+          </span>
+        </div>
+
+        <div class="sm-col sm-col--actions">
+          <button class="sm-action-btn" (click)="openEditDialog(status)" title="Editar">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+          </button>
+          <button class="sm-action-btn sm-action-btn--danger" (click)="askDelete(status)" title="Excluir">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </div>
 
-<!-- Modal criar/editar -->
-<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()">
-  <div class="dialog-header">
-    <h2>{{ dialogMode === 'edit' ? 'Editar status' : 'Novo status' }}</h2>
-    <p>{{ dialogMode === 'edit' ? 'Altere o nome ou a cor do status.' : 'Defina o nome e a cor do novo status.' }}</p>
-  </div>
+<!-- ===== MODAL CRIAR/EDITAR ===== -->
+<app-modal [isOpen]="dialogOpen()" (closeModal)="closeDialog()" width="460px">
+  <div class="dialog-inner">
 
-  <div class="dialog-content">
-    <div class="field-group">
-      <label class="field-label">Nome <span class="required">*</span></label>
-      <input class="field-input" type="text" [(ngModel)]="form.name" placeholder="Ex: Em andamento"
-        (keyup.enter)="confirmSave()">
+    <div class="dialog-header">
+      <div class="dialog-header-icon" [style.background]="(form.color || '#4F46E5') + '18'"
+        [style.color]="form.color || '#4F46E5'">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+        </svg>
+      </div>
+      <div>
+        <h2>{{ dialogMode === 'edit' ? 'Editar status' : 'Novo status' }}</h2>
+        <p>{{ dialogMode === 'edit' ? 'Atualize nome e cor.' : 'Defina nome e cor do novo status.' }}</p>
+      </div>
     </div>
 
-    <div class="field-group">
-      <label class="field-label">Cor</label>
-      <div class="color-picker">
-        <button class="color-swatch" *ngFor="let c of presetColors" [style.background]="c"
-          [class.selected]="form.color === c" (click)="form.color = c" type="button">
-        </button>
-        <div class="color-custom">
-          <input type="color" [(ngModel)]="form.color" class="color-input-native">
-          <span class="color-hex">{{ form.color }}</span>
+    <div class="dialog-content">
+
+      <div class="field-group">
+        <label class="field-label">Nome <span class="required">*</span></label>
+        <input class="field-input" type="text" [(ngModel)]="form.name"
+          placeholder="Ex: Em Revisão" (keyup.enter)="confirmSave()" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Cor</label>
+        <div class="color-picker-wrap">
+          <div class="color-presets">
+            <button *ngFor="let c of presetColors" class="color-preset-btn"
+              [style.background]="c" [class.selected]="form.color === c"
+              (click)="selectColor(c)" [title]="c">
+              <svg *ngIf="form.color === c" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="3.5" stroke-linecap="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div class="color-custom-row">
+            <input type="color" class="color-input-native" [(ngModel)]="form.color" />
+            <span class="color-hex-label">Personalizado: {{ form.color }}</span>
+          </div>
         </div>
       </div>
-      <div class="color-preview">
-        <span class="preview-dot" [style.background]="form.color"></span>
-        <span class="preview-label" [style.color]="form.color">{{ form.name || 'Pré-visualização' }}</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="dialog-actions">
-    <app-button variant="text" (clicked)="closeDialog()">Cancelar</app-button>
-    <app-button variant="primary" (clicked)="confirmSave()" [disabled]="!form.name.trim() || saving()">
-      {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar alterações' : 'Criar status') }}
-    </app-button>
+      <div class="field-group">
+        <label class="field-label">Preview</label>
+        <div class="status-preview-live">
+          <span class="status-preview-chip status-preview-chip--live"
+            [style.background]="(form.color || '#6B6B70') + '18'"
+            [style.color]="form.color || '#6B6B70'"
+            [style.border-color]="(form.color || '#6B6B70') + '40'">
+            <span class="status-dot-small" [style.background]="form.color || '#6B6B70'"></span>
+            {{ form.name || 'Nome do status' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Posição</label>
+        <input class="field-input field-input--sm" type="number" [(ngModel)]="form.order" min="0" />
+        <span class="field-hint">O drag-and-drop também reordena automaticamente.</span>
+      </div>
+
+    </div>
+
+    <div class="dialog-actions">
+      <button class="dialog-cancel" (click)="closeDialog()">Cancelar</button>
+      <button class="dialog-save" (click)="confirmSave()" [disabled]="!form.name.trim() || saving()">
+        <svg *ngIf="saving()" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" class="sm-spin">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        {{ saving() ? 'Salvando...' : (dialogMode === 'edit' ? 'Salvar' : 'Criar status') }}
+      </button>
+    </div>
+
   </div>
 </app-modal>
 
-<!-- Modal de confirmação de exclusão -->
-<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir status?" [itemName]="statusPendingDelete?.name"
-  [loading]="deleting()" (confirm)="confirmDelete()" (cancel)="cancelDelete()"></app-confirm-dialog>
+<app-confirm-dialog [isOpen]="deleteDialogOpen()" title="Excluir status?"
+  [itemName]="statusPendingDelete?.name" [loading]="deleting()"
+  (confirm)="confirmDelete()" (cancel)="cancelDelete()">
+</app-confirm-dialog>

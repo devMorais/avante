@@ -1,7 +1,8 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, signal, computed, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ApiService } from '../../services/api';
 
 import { Button } from '../../shared/ui/button/button';
@@ -15,6 +16,7 @@ import { SprintManager } from '../sprint-manager/sprint-manager';
 import { StatusManager } from '../status-manager/status-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
+import { TagManagerComponent } from '../tag-manager/tag-manager';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
@@ -25,9 +27,9 @@ const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Médi
   selector: 'app-task-list',
   standalone: true,
   imports: [
-    CommonModule, FormsModule, Button, Badge, Popover, ConfirmDialog,
+    CommonModule, FormsModule, DragDropModule, Button, Badge, Popover, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, Sidebar,
-    TaskFilters
+    TaskFilters, TagManagerComponent
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -35,10 +37,12 @@ const PRIORITY_ORDER: Record<string, number> = { 'Urgente': 0, 'Alta': 1, 'Médi
 export class TaskListComponent implements OnInit {
   boardId!: number;
 
+  board = signal<any>(null);
   tasks = signal<any[]>([]);
   sprints = signal<any[]>([]);
   statuses = signal<any[]>([]);
   users = signal<any[]>([]);
+  tags = signal<any[]>([]);
 
   viewMode = signal('table');
   loading = signal(true);
@@ -48,7 +52,7 @@ export class TaskListComponent implements OnInit {
   section = signal('tasks');
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
-  setSection(s: 'tasks' | 'sprints' | 'statuses') { this.section.set(s); }
+  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'tags') { this.section.set(s); }
 
   constructor(
     private route: ActivatedRoute,
@@ -58,15 +62,17 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.boardId = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadBoard();
     this.loadSprints();
     this.loadStatuses();
     this.loadUsers();
     this.loadTasks();
+    this.loadTags();
   }
 
   // ---------- Filtros ----------
 
-  currentFilters: TaskFilterValue = { search: '', status_ids: [], priorities: [], assignee_ids: [], epics: [] };
+  currentFilters: TaskFilterValue = { search: '', status_ids: [], priorities: [], assignee_ids: [], epics: [], tag_ids: [] };
   selectedEpics = signal<string[]>([]);
 
   onFiltersChange(filters: TaskFilterValue) {
@@ -75,11 +81,22 @@ export class TaskListComponent implements OnInit {
     this.loadTasks();
   }
 
-  // Épicos disponíveis derivados das tarefas carregadas (para o filtro)
   availableEpics = computed(() => {
     const set = new Set<string>();
     this.tasks().forEach(t => { if (t.epic) set.add(t.epic); });
     return [...set].sort();
+  });
+
+  // ---------- Stats computados ----------
+
+  statsTotal = computed(() => this.tasks().length);
+  statsDone = computed(() => this.tasks().filter(t => t.status?.name && /conclu/i.test(t.status.name)).length);
+  statsInProgress = computed(() => this.tasks().filter(t => t.status?.name && /andamento/i.test(t.status.name)).length);
+  statsNoStatus = computed(() => this.tasks().filter(t => !t.status_id).length);
+  statsDonePct = computed(() => {
+    const total = this.statsTotal();
+    if (!total) return 0;
+    return Math.round((this.statsDone() / total) * 100);
   });
 
   // ---------- Ordenação ----------
@@ -120,6 +137,13 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Carregamento ----------
 
+  loadBoard() {
+    this.apiService.getBoard(this.boardId).subscribe({
+      next: (data) => this.board.set(data),
+      error: (err) => console.error('Erro ao carregar board:', err)
+    });
+  }
+
   loadTasks() {
     this.loading.set(true);
     this.apiService.getTasks(this.boardId, {
@@ -127,6 +151,7 @@ export class TaskListComponent implements OnInit {
       status_ids: this.currentFilters.status_ids.length ? this.currentFilters.status_ids : undefined,
       priorities: this.currentFilters.priorities.length ? this.currentFilters.priorities : undefined,
       assignee_ids: this.currentFilters.assignee_ids.length ? this.currentFilters.assignee_ids : undefined,
+      tag_ids: this.currentFilters.tag_ids?.length ? this.currentFilters.tag_ids : undefined,
     }).subscribe({
       next: (res) => {
         this.tasks.set(Array.isArray(res) ? res : (res.data ?? []));
@@ -138,7 +163,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); }
+  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); this.loadTags(); }
 
   loadSprints() {
     this.apiService.getSprints(this.boardId).subscribe({
@@ -164,6 +189,13 @@ export class TaskListComponent implements OnInit {
     this.apiService.getUsers().subscribe({
       next: (data) => this.users.set(data),
       error: (err) => console.error('Erro ao carregar usuários:', err)
+    });
+  }
+
+  loadTags() {
+    this.apiService.getTags(this.boardId).subscribe({
+      next: (data) => this.tags.set(data),
+      error: () => {}
     });
   }
 
@@ -230,11 +262,26 @@ export class TaskListComponent implements OnInit {
     return Math.round((done / sprintTasks.length) * 100);
   }
 
+  sprintDoneCount(sprintTasks: any[]): number {
+    return sprintTasks.filter(t => t.status?.name && /conclu/i.test(t.status.name)).length;
+  }
+
+  sprintRemainingCount(sprintTasks: any[]): number {
+    return sprintTasks.length - this.sprintDoneCount(sprintTasks);
+  }
+
   isSprintFinished(sprint: any): boolean { return !!sprint?.finished_at; }
 
   isSprintOverdue(sprint: any): boolean {
     if (!sprint?.end_date || sprint?.finished_at) return false;
     return new Date(sprint.end_date) < new Date(new Date().toDateString());
+  }
+
+  sprintDaysRemaining(sprint: any): number | null {
+    if (!sprint?.end_date || sprint?.finished_at) return null;
+    const end = new Date(sprint.end_date);
+    const today = new Date(new Date().toDateString());
+    return Math.ceil((end.getTime() - today.getTime()) / 86400000);
   }
 
   canFinishSprint(sprint: any, sprintTasks: any[]): boolean {
@@ -585,23 +632,74 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  // ---------- Modal de responsáveis ----------
+  // ---------- Popover de responsáveis (substitui modal) ----------
 
-  assigneeModalOpen = signal(false);
+  assigneePopoverOpen = signal(false);
+  assigneePopoverStyle = signal({ top: '0px', left: '0px' });
   taskForAssignees: any = null;
   assigneeSearchTerm = signal('');
 
-  openAssigneeModal(task: any, event?: Event) {
-    event?.stopPropagation();
+  openAssigneePopover(task: any, event: Event) {
+    event.stopPropagation();
+    const el = event.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+
+    if (this.taskForAssignees?.id === task.id && this.assigneePopoverOpen()) {
+      this.closeAssigneePopover();
+      return;
+    }
+
     this.taskForAssignees = { ...task };
     this.assigneeSearchTerm.set('');
-    this.assigneeModalOpen.set(true);
+
+    const popW = 300;
+    const popH = 380;
+    let left = rect.left;
+    if (left + popW > window.innerWidth - 16) left = window.innerWidth - popW - 16;
+
+    let top: number;
+    if (rect.bottom + popH > window.innerHeight - 16) {
+      top = Math.max(8, rect.top - popH - 8);
+    } else {
+      top = rect.bottom + 8;
+    }
+
+    this.assigneePopoverStyle.set({ top: `${top}px`, left: `${left}px` });
+    this.assigneePopoverOpen.set(true);
   }
 
-  closeAssigneeModal() {
-    this.assigneeModalOpen.set(false);
-    this.taskForAssignees = null;
-    this.assigneeSearchTerm.set('');
+  // Compat: task-dialog chama manageAssignees sem event → abre centrado
+  openAssigneeModal(task: any, event?: Event) {
+    if (event) {
+      this.openAssigneePopover(task, event);
+    } else {
+      this.taskForAssignees = { ...task };
+      this.assigneeSearchTerm.set('');
+      const popW = 300;
+      const popH = 380;
+      this.assigneePopoverStyle.set({
+        top: `${Math.max(8, (window.innerHeight - popH) / 2)}px`,
+        left: `${Math.max(8, (window.innerWidth - popW) / 2)}px`
+      });
+      this.assigneePopoverOpen.set(true);
+    }
+  }
+
+  closeAssigneePopover() {
+    this.assigneePopoverOpen.set(false);
+  }
+
+  // Alias para compatibilidade com template
+  closeAssigneeModal() { this.closeAssigneePopover(); }
+
+  @HostListener('document:keydown.escape')
+  onEscKey() {
+    if (this.assigneePopoverOpen()) this.closeAssigneePopover();
+  }
+
+  @HostListener('document:click')
+  onDocumentClick() {
+    if (this.assigneePopoverOpen()) this.closeAssigneePopover();
   }
 
   toggleAssignee(userId: number) {
@@ -636,6 +734,42 @@ export class TaskListComponent implements OnInit {
       return (u.name ?? '').toLowerCase().includes(term);
     });
   });
+
+  // ---------- Drag-and-drop de tarefas ----------
+
+  draggingTask = signal(false);
+
+  dropListIds = computed(() =>
+    this.groupedBySprint().map(g => 'drop-' + (g.sprint?.id ?? 'backlog'))
+  );
+
+  dropListId(group: any): string {
+    return 'drop-' + (group.sprint?.id ?? 'backlog');
+  }
+
+  onTaskDrop(event: CdkDragDrop<any[]>, targetGroup: any) {
+    const sourceList: any[] = event.previousContainer.data;
+    const targetList: any[] = event.container.data;
+
+    if (event.previousContainer === event.container) {
+      // Reorder dentro do mesmo grupo
+      moveItemInArray(targetList, event.previousIndex, event.currentIndex);
+    } else {
+      // Mover para outro sprint
+      transferArrayItem(sourceList, targetList, event.previousIndex, event.currentIndex);
+      const task = targetList[event.currentIndex];
+      const newSprintId = targetGroup.sprint?.id ?? null;
+      this.apiService.updateTask(task.id, { sprint_id: newSprintId }).subscribe({
+        next: (updated) => {
+          targetList[event.currentIndex] = updated;
+        }
+      });
+    }
+
+    // Persistir ordem
+    const items = targetList.map((t, i) => ({ id: t.id, sort_order: i }));
+    this.apiService.reorderTasks(items).subscribe();
+  }
 
   // ---------- JSON Bulk Import ----------
 
@@ -718,7 +852,7 @@ export class TaskListComponent implements OnInit {
     importNext(0);
   }
 
-  // ---------- Feature placeholder (coming soon) ----------
+  // ---------- Feature placeholder ----------
 
   comingSoonToast = signal('');
   showComingSoon(feature: string) {

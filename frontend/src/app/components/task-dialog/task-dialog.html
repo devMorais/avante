@@ -103,6 +103,40 @@
         </button>
       </div>
 
+      <!-- Tags -->
+      <div class="field" *ngIf="tags.length > 0">
+        <span class="field-label">Tags</span>
+        <div class="tags-selector">
+          <!-- chips selecionadas -->
+          <div class="tags-selected" *ngIf="formTagIds.length > 0">
+            <span *ngFor="let tag of selectedTagObjects()" class="td-tag-chip td-tag-chip--selected"
+              [style.background]="tag.color + '20'"
+              [style.color]="tag.color"
+              [style.border-color]="tag.color + '50'">
+              {{ tag.name }}
+              <button type="button" class="td-tag-remove" (click)="toggleTag(tag.id)">×</button>
+            </span>
+          </div>
+          <!-- busca + lista -->
+          <div class="tags-dropdown-wrap">
+            <input type="text" class="tags-search-input" placeholder="Buscar tag..." [(ngModel)]="tagSearchTerm" />
+            <div class="tags-list">
+              <button type="button" *ngFor="let tag of filteredTags" class="tags-list-item"
+                [class.selected]="isTagSelected(tag.id)"
+                (click)="toggleTag(tag.id)">
+                <span class="td-tag-dot" [style.background]="tag.color"></span>
+                <span class="td-tag-name">{{ tag.name }}</span>
+                <svg *ngIf="isTagSelected(tag.id)" class="td-tag-check" width="12" height="12" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+              <div *ngIf="filteredTags.length === 0" class="tags-list-empty">Nenhuma tag encontrada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ===== ABA COMENTÁRIOS ===== -->

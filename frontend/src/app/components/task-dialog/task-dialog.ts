@@ -22,6 +22,7 @@ export interface TaskFormValue {
   priority: string;
   sprint_id: number | null;
   epic: string | null;
+  tag_ids: number[];
 }
 
 const PRIORITIES = ['Baixa', 'Média', 'Alta', 'Urgente'];
@@ -47,6 +48,7 @@ export class TaskDialog implements OnChanges {
   @Input() task: any = null;
   @Input() statuses: any[] = [];
   @Input() sprints: any[] = [];
+  @Input() tags: any[] = [];
   @Input() saving = false;
 
   @Input() comments: any[] = [];
@@ -66,6 +68,8 @@ export class TaskDialog implements OnChanges {
   formPriority = 'Média';
   formSprintId: number | null = null;
   formEpic = '';
+  formTagIds: number[] = [];
+  tagSearchTerm = '';
   commentContent = '';
 
   // Notes core
@@ -127,6 +131,7 @@ export class TaskDialog implements OnChanges {
       this.formPriority = this.task.priority ?? 'Média';
       this.formSprintId = this.task.sprint_id;
       this.formEpic = this.task.epic ?? '';
+      this.formTagIds = (this.task.tags ?? []).map((t: any) => Number(t.id));
       this.taskNotes = this.task.notes ?? this.loadLocalNotes(this.task.id);
       this.noteImages = this.loadImages(this.task.id);
       this.startTimer(this.task.id);
@@ -136,10 +141,12 @@ export class TaskDialog implements OnChanges {
       this.formPriority = 'Média';
       this.formSprintId = null;
       this.formEpic = '';
+      this.formTagIds = [];
       this.taskNotes = '';
       this.noteImages = [];
       this.stopTimer();
     }
+    this.tagSearchTerm = '';
 
     this.commentContent = '';
   }
@@ -531,6 +538,31 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
 
   onClose() { this.closeDialog.emit(); }
 
+  // -------- Tags --------
+
+  get filteredTags(): any[] {
+    const term = this.tagSearchTerm.trim().toLowerCase();
+    if (!term) return this.tags;
+    return this.tags.filter(t => t.name.toLowerCase().includes(term));
+  }
+
+  isTagSelected(tagId: number): boolean {
+    return this.formTagIds.includes(Number(tagId));
+  }
+
+  toggleTag(tagId: number) {
+    const id = Number(tagId);
+    if (this.formTagIds.includes(id)) {
+      this.formTagIds = this.formTagIds.filter(t => t !== id);
+    } else {
+      this.formTagIds = [...this.formTagIds, id];
+    }
+  }
+
+  selectedTagObjects(): any[] {
+    return this.tags.filter(t => this.formTagIds.includes(Number(t.id)));
+  }
+
   onSave() {
     if (!this.formDescription.trim() || this.saving) return;
     this.save.emit({
@@ -539,6 +571,7 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
       priority: this.formPriority,
       sprint_id: this.formSprintId,
       epic: this.formEpic.trim() || null,
+      tag_ids: this.formTagIds,
     });
   }
 

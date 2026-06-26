@@ -1,16 +1,22 @@
 import { Component, Input, OnInit, signal, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ApiService } from '../../services/api';
-
 import { Button } from '../../shared/ui/button/button';
 import { Modal } from '../../shared/ui/modal/modal';
 import { ConfirmDialog } from '../../shared/ui/confirm-dialog/confirm-dialog';
 
+const PRESET_COLORS = [
+  '#6B6B70', '#4F46E5', '#0284C7', '#059669',
+  '#D97706', '#DC2626', '#7C3AED', '#DB2777',
+  '#0891B2', '#16A34A', '#EA580C', '#9333EA',
+];
+
 @Component({
   selector: 'app-status-manager',
   standalone: true,
-  imports: [CommonModule, FormsModule, Button, Modal, ConfirmDialog],
+  imports: [CommonModule, FormsModule, DragDropModule, Button, Modal, ConfirmDialog],
   templateUrl: './status-manager.html',
   styleUrl: './status-manager.scss'
 })
@@ -20,48 +26,71 @@ export class StatusManager implements OnInit {
 
   statuses = signal<any[]>([]);
   loading = signal(true);
+  saving = signal(false);
+  reordering = signal(false);
 
   dialogOpen = signal(false);
   dialogMode: 'create' | 'edit' = 'create';
   editingStatus: any = null;
-  saving = signal(false);
 
-  form = { name: '', color: '#6B6B70' };
+  form = { name: '', color: '#4F46E5', order: 0 };
 
   deleteDialogOpen = signal(false);
   statusPendingDelete: any = null;
   deleting = signal(false);
 
-  presetColors = [
-    '#6B6B70', '#4F46E5', '#059669', '#0284C7',
-    '#EA580C', '#DC2626', '#D97706', '#7C3AED'
-  ];
+  readonly presetColors = PRESET_COLORS;
 
   constructor(private apiService: ApiService) { }
 
-  ngOnInit(): void {
-    this.loadStatuses();
-  }
+  ngOnInit(): void { this.loadStatuses(); }
 
   loadStatuses() {
     this.loading.set(true);
     this.apiService.getStatuses(this.boardId).subscribe({
       next: (data) => { this.statuses.set(data); this.loading.set(false); },
-      error: (err) => { console.error('Erro ao carregar status:', err); this.loading.set(false); }
+      error: () => this.loading.set(false)
     });
   }
+
+  // ---------- Drag-and-drop ----------
+
+  drop(event: CdkDragDrop<any[]>) {
+    const list = [...this.statuses()];
+    moveItemInArray(list, event.previousIndex, event.currentIndex);
+    this.statuses.set(list);
+    this.persistOrder(list);
+  }
+
+  persistOrder(list: any[]) {
+    this.reordering.set(true);
+    const items = list.map((s, i) => ({ id: s.id, order: i }));
+    this.apiService.reorderStatuses(items).subscribe({
+      next: () => {
+        this.reordering.set(false);
+        this.statuses.set(list.map((s, i) => ({ ...s, order: i })));
+        this.statusesChanged.emit();
+      },
+      error: () => { this.reordering.set(false); this.loadStatuses(); }
+    });
+  }
+
+  // ---------- CRUD ----------
 
   openCreateDialog() {
     this.dialogMode = 'create';
     this.editingStatus = null;
-    this.form = { name: '', color: '#6B6B70' };
+    const maxOrder = this.statuses().length > 0
+      ? Math.max(...this.statuses().map(s => s.order ?? 0)) + 1
+      : 0;
+    this.form = { name: '', color: '#4F46E5', order: maxOrder };
     this.dialogOpen.set(true);
   }
 
   openEditDialog(status: any) {
     this.dialogMode = 'edit';
     this.editingStatus = status;
-    this.form = { name: status.name, color: status.color };
+    this.form = { name: status.name, color: status.color ?? '#6B6B70', order: status.order ?? 0 };
     this.dialogOpen.set(true);
   }
 
@@ -74,21 +103,22 @@ export class StatusManager implements OnInit {
     const payload = {
       board_id: this.boardId,
       name: this.form.name.trim(),
-      color: this.form.color
+      color: this.form.color || '#6B6B70',
+      order: Number(this.form.order),
     };
 
-    const request$ = this.dialogMode === 'edit' && this.editingStatus
+    const req$ = this.dialogMode === 'edit' && this.editingStatus
       ? this.apiService.updateStatus(this.editingStatus.id, payload)
       : this.apiService.createStatus(payload);
 
-    request$.subscribe({
+    req$.subscribe({
       next: () => {
         this.saving.set(false);
         this.dialogOpen.set(false);
         this.loadStatuses();
         this.statusesChanged.emit();
       },
-      error: (err) => { console.error('Erro ao salvar status:', err); this.saving.set(false); }
+      error: () => this.saving.set(false)
     });
   }
 
@@ -114,7 +144,9 @@ export class StatusManager implements OnInit {
         this.statusPendingDelete = null;
         this.statusesChanged.emit();
       },
-      error: (err) => { console.error('Erro ao excluir status:', err); this.deleting.set(false); }
+      error: () => this.deleting.set(false)
     });
   }
+
+  selectColor(c: string) { this.form.color = c; }
 }

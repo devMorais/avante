@@ -25,6 +25,10 @@ export class ApiService {
     return this.http.get(`${API_URL}/boards`);
   }
 
+  getBoard(id: number): Observable<any> {
+    return this.http.get(`${API_URL}/boards/${id}`);
+  }
+
   createBoard(data: FormData): Observable<any> {
     return this.http.post(`${API_URL}/boards`, data);
   }
@@ -47,6 +51,7 @@ export class ApiService {
     status_ids?: number[];
     priorities?: string[];
     assignee_ids?: number[];
+    tag_ids?: number[];
   } = {}): Observable<any> {
     let query = `board_id=${boardId}`;
 
@@ -62,6 +67,9 @@ export class ApiService {
     }
     if (params.assignee_ids?.length) {
       params.assignee_ids.forEach(id => query += `&assignee_ids[]=${id}`);
+    }
+    if (params.tag_ids?.length) {
+      params.tag_ids.forEach(id => query += `&tag_ids[]=${id}`);
     }
 
     return this.http.get(`${API_URL}/tasks?${query}`);
@@ -175,5 +183,33 @@ export class ApiService {
 
   finishSprint(sprintId: number, body: { concluded_status_id: number | null }) {
     return this.http.post<any>(`${API_URL}/sprints/${sprintId}/finish`, body);
+  }
+
+  // ---------- Reorder ----------
+
+  reorderStatuses(items: { id: number; order: number }[]): Observable<any> {
+    return this.http.put(`${API_URL}/statuses/reorder`, { items });
+  }
+
+  reorderTasks(items: { id: number; sort_order: number }[]): Observable<any> {
+    return this.http.post(`${API_URL}/tasks/reorder`, { items });
+  }
+
+  // ---------- Tags ----------
+
+  getTags(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/tags?board_id=${boardId}`);
+  }
+
+  createTag(data: { board_id: number; name: string; color: string }): Observable<any> {
+    return this.http.post(`${API_URL}/tags`, data);
+  }
+
+  updateTag(id: number, data: { name?: string; color?: string }): Observable<any> {
+    return this.http.put(`${API_URL}/tags/${id}`, data);
+  }
+
+  deleteTag(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/tags/${id}`);
   }
 }
