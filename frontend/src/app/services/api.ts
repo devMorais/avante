@@ -42,6 +42,14 @@ export class ApiService {
     return this.http.delete(`${API_URL}/boards/${id}`);
   }
 
+  archiveBoard(id: number): Observable<any> {
+    return this.http.patch(`${API_URL}/boards/${id}/archive`, {});
+  }
+
+  unarchiveBoard(id: number): Observable<any> {
+    return this.http.patch(`${API_URL}/boards/${id}/unarchive`, {});
+  }
+
   // ---------- Tasks ----------
 
   getTasks(boardId: number, params: {

@@ -9,7 +9,11 @@ class Board extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'icon_path'];
+    protected $fillable = ['name', 'icon_path', 'archived_at'];
+
+    protected $casts = [
+        'archived_at' => 'datetime',
+    ];
 
     public function tasks()
     {

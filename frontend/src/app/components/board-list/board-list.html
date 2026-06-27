@@ -91,6 +91,10 @@
                 <mat-icon>edit</mat-icon>
                 <span>Editar</span>
               </button>
+              <button class="popover-item" (click)="archiveBoard(board, $event)">
+                <mat-icon>archive</mat-icon>
+                <span>Arquivar</span>
+              </button>
               <button class="popover-item popover-item--danger" (click)="openDeleteDialog(board, $event)">
                 <mat-icon>delete_outline</mat-icon>
                 <span>Excluir</span>
@@ -135,14 +139,69 @@
       </app-button>
     </div>
 
-    <!-- Estado vazio: busca sem resultado -->
-    <div class="empty-state" *ngIf="boards().length > 0 && filteredBoards().length === 0">
+    <!-- Estado vazio: busca sem resultado nos ativos -->
+    <div class="empty-state" *ngIf="searchTerm() && filteredBoards().length === 0 && filteredArchivedBoards().length === 0">
       <div class="empty-icon">
         <mat-icon>search_off</mat-icon>
       </div>
       <h2>Nenhum resultado para "{{ searchTerm() }}"</h2>
       <p>Tente buscar por outro nome de quadro.</p>
     </div>
+
+    <!-- ---------- Seção: Arquivados ---------- -->
+    <section class="archived-section" *ngIf="archivedCount() > 0">
+      <button class="archived-toggle" (click)="toggleArchivedSection()">
+        <mat-icon class="chevron" [class.open]="showArchived()">chevron_right</mat-icon>
+        <mat-icon>archive</mat-icon>
+        <span>Arquivados</span>
+        <span class="archived-count">{{ archivedCount() }}</span>
+      </button>
+
+      <div class="boards-grid archived-grid" *ngIf="showArchived()">
+        <article class="board-card board-card--archived" *ngFor="let board of filteredArchivedBoards()"
+          (click)="openBoard(board.id)">
+
+          <div class="card-menu-trigger">
+            <app-popover>
+              <button trigger class="icon-btn" aria-label="Mais opções">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div panel>
+                <button class="popover-item" (click)="unarchiveBoard(board, $event)">
+                  <mat-icon>unarchive</mat-icon>
+                  <span>Restaurar</span>
+                </button>
+                <button class="popover-item popover-item--danger" (click)="openDeleteDialog(board, $event)">
+                  <mat-icon>delete_outline</mat-icon>
+                  <span>Excluir</span>
+                </button>
+              </div>
+            </app-popover>
+          </div>
+
+          <div class="board-cover" [style.background]="board.icon_url ? '#F3F2EE' : accentFor(board.name).bg">
+            <img *ngIf="board.icon_url" [src]="board.icon_url" [alt]="board.name">
+            <span *ngIf="!board.icon_url" class="board-initials" [style.color]="accentFor(board.name).fg">{{
+              initialsFor(board.name) }}</span>
+          </div>
+
+          <div class="board-body">
+            <h3 class="board-title">{{ board.name }}</h3>
+            <p class="board-meta">
+              <mat-icon class="meta-icon">archive</mat-icon>
+              Arquivado
+            </p>
+          </div>
+
+          <div class="board-footer">
+            <button class="restore-btn" (click)="unarchiveBoard(board, $event)">
+              <mat-icon>unarchive</mat-icon>
+              Restaurar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
 
   </ng-container>
 

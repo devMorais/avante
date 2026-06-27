@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 27/06/2026 — Modal só fecha no X (app-modal [dismissable]) e overlay rola (sem scroll interno); comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; esqueletos Analytics/EduCore/Marketing (app-construction); sidebar no perfil.
+> Última atualização: 27/06/2026 — Arquivar/restaurar quadros (archived_at; seção colapsável "Arquivados" na board-list; endpoints PATCH archive/unarchive). Antes: Modal só fecha no X (app-modal [dismissable]) e overlay rola (sem scroll interno); comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; esqueletos Analytics/EduCore/Marketing (app-construction); sidebar no perfil.
 
 ---
 
@@ -199,7 +199,7 @@ const BACKEND_URL = environment.backendUrl;
 | Tabela    | Campos principais                                                                    |
 | --------- | ------------------------------------------------------------------------------------ |
 | users     | name, email, password, role, bio, position, avatar_url, soft delete                  |
-| boards    | name, icon_path, soft delete                                                         |
+| boards    | name, icon_path, **archived_at** (arquivar sem excluir), soft delete                 |
 | tasks     | description, priority, epic, **release**, **type**, **notes** (longText), sprint_id, status_id, board_id, sort_order, soft delete |
 | sprints   | name, start_date, end_date, finished_at, board_id, soft delete                       |
 | statuses  | name, color, order, board_id, soft delete                                            |
@@ -229,6 +229,7 @@ const BACKEND_URL = environment.backendUrl;
 2026_06_22_033101 add_profile_fields_to_users_table
 2026_06_23_034204 add_finished_to_sprints_table
 2026_06_24_200000 add_notes_to_tasks_table
+2026_06_27_000000 add_archived_at_to_boards_table
 ```
 
 ---
@@ -253,6 +254,8 @@ const BACKEND_URL = environment.backendUrl;
 | POST   | /api/boards              | Criar quadro (cria 4 status padrão automaticamente)                                    |
 | GET    | /api/boards/{id}         | Detalhe do quadro                                                                      |
 | PUT    | /api/boards/{id}         | Atualizar quadro                                                                       |
+| PATCH  | /api/boards/{id}/archive | Arquivar quadro (preenche archived_at)                                                 |
+| PATCH  | /api/boards/{id}/unarchive | Restaurar quadro arquivado (archived_at = null)                                      |
 | DELETE | /api/boards/{id}         | Deletar quadro                                                                         |
 | GET    | /api/tasks               | Lista tarefas (filtros: board_id, page, search, status_ids, priorities, assignee_ids)  |
 | POST   | /api/tasks               | Criar tarefa                                                                           |

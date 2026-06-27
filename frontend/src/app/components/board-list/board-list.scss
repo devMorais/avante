@@ -25,9 +25,10 @@
 .page {
   flex: 1;
   min-width: 0;
-  max-width: 1280px;
+  max-width: 1680px;
+  width: 100%;
   margin: 0 auto;
-  padding: 48px 32px 64px;
+  padding: 48px 48px 64px;
 }
 
 /* ---------- Header ---------- */
@@ -110,6 +111,104 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
+}
+
+/* ---------- Seção: Arquivados ---------- */
+
+.archived-section {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.archived-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  .chevron {
+    transition: transform 0.2s ease;
+
+    &.open {
+      transform: rotate(90deg);
+    }
+  }
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.archived-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 11px;
+  background: var(--border);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.archived-grid {
+  margin-top: 16px;
+}
+
+.board-card--archived {
+  opacity: 0.72;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .board-cover {
+    filter: grayscale(0.35);
+  }
+}
+
+.restore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .board-card {

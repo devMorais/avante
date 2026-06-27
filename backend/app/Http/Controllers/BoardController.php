@@ -164,6 +164,30 @@ class BoardController extends Controller
     }
 
     /**
+     * Arquiva o quadro (esconde da lista principal sem excluir).
+     */
+    public function archive(string $id)
+    {
+        $board = Board::findOrFail($id);
+        $board->update(['archived_at' => now()]);
+        $board->icon_url = $this->buildIconUrl($board->icon_path);
+
+        return response()->json($board);
+    }
+
+    /**
+     * Restaura um quadro arquivado.
+     */
+    public function unarchive(string $id)
+    {
+        $board = Board::findOrFail($id);
+        $board->update(['archived_at' => null]);
+        $board->icon_url = $this->buildIconUrl($board->icon_path);
+
+        return response()->json($board);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)

@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 
+    Route::patch('/boards/{board}/archive', [BoardController::class, 'archive']);
+    Route::patch('/boards/{board}/unarchive', [BoardController::class, 'unarchive']);
     Route::apiResource('boards', BoardController::class);
 
     Route::post('/tasks/reorder', [TaskController::class, 'reorder']);

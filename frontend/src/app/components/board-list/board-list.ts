@@ -73,15 +73,21 @@ export class BoardListComponent implements OnInit {
   deleting = signal(false);
 
   sidebarCollapsed = signal(false);
-  section = signal<'boards' | 'users'>('boards');
+  section = signal<'boards' | 'users' | 'archived'>('boards');
 
   comingSoonToast = signal('');
+
+  showArchived = signal(false);
+
+  toggleArchivedSection() {
+    this.showArchived.set(!this.showArchived());
+  }
 
   toggleSidebar() {
     this.sidebarCollapsed.set(!this.sidebarCollapsed());
   }
 
-  setSection(section: 'boards' | 'users') {
+  setSection(section: 'boards' | 'users' | 'archived') {
     this.section.set(section);
   }
 
@@ -106,10 +112,24 @@ export class BoardListComponent implements OnInit {
     });
   }
 
-  filteredBoards() {
+  private matchesSearch(list: any[]) {
     const term = this.searchTerm().trim().toLowerCase();
-    if (!term) return this.boards();
-    return this.boards().filter(b => b.name.toLowerCase().includes(term));
+    if (!term) return list;
+    return list.filter(b => b.name.toLowerCase().includes(term));
+  }
+
+  // Quadros ativos (não arquivados)
+  filteredBoards() {
+    return this.matchesSearch(this.boards().filter(b => !b.archived_at));
+  }
+
+  // Quadros arquivados
+  filteredArchivedBoards() {
+    return this.matchesSearch(this.boards().filter(b => !!b.archived_at));
+  }
+
+  archivedCount() {
+    return this.boards().filter(b => !!b.archived_at).length;
   }
 
   accentFor = accentFor;
@@ -221,6 +241,28 @@ export class BoardListComponent implements OnInit {
         console.error('Erro ao excluir quadro:', err);
         this.deleting.set(false);
       }
+    });
+  }
+
+  // ---------- Arquivar / Restaurar ----------
+
+  archiveBoard(board: any, event?: Event) {
+    event?.stopPropagation();
+    this.apiService.archiveBoard(board.id).subscribe({
+      next: (updated) => {
+        this.boards.set(this.boards().map(b => b.id === board.id ? { ...b, archived_at: updated.archived_at } : b));
+      },
+      error: (err) => console.error('Erro ao arquivar quadro:', err)
+    });
+  }
+
+  unarchiveBoard(board: any, event?: Event) {
+    event?.stopPropagation();
+    this.apiService.unarchiveBoard(board.id).subscribe({
+      next: () => {
+        this.boards.set(this.boards().map(b => b.id === board.id ? { ...b, archived_at: null } : b));
+      },
+      error: (err) => console.error('Erro ao restaurar quadro:', err)
     });
   }
 
