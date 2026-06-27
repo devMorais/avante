@@ -18,6 +18,7 @@ import { TypeManager } from '../type-manager/type-manager';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
 import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
+import { ConstructionComponent, ConstructionFeature } from '../../shared/ui/construction/construction';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
@@ -29,7 +30,7 @@ type SortDir = 'asc' | 'desc';
   imports: [
     CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, PriorityManager, TypeManager, Sidebar,
-    TaskFilters, TooltipDirective
+    TaskFilters, TooltipDirective, ConstructionComponent
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -54,9 +55,38 @@ export class TaskListComponent implements OnInit {
   section = signal('tasks');
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
-  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities' | 'types') { this.section.set(s); }
+  setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities' | 'types' | 'marketing' | 'analytics' | 'educore') {
+    this.section.set(s);
+  }
 
   reloadPriorities() { this.loadPriorities(); }
+
+  // ---------- Funcionalidades planejadas (páginas em construção) ----------
+
+  readonly analyticsFeatures: ConstructionFeature[] = [
+    { icon: 'trend', title: 'Velocidade da sprint', desc: 'Tarefas concluídas por sprint e tendência de entrega ao longo do tempo.' },
+    { icon: 'chart', title: 'Distribuição', desc: 'Gráficos por status, prioridade, tipo e responsável do quadro.' },
+    { icon: 'clock', title: 'Lead & cycle time', desc: 'Tempo médio entre criação, início e conclusão das atividades.' },
+    { icon: 'users', title: 'Carga por pessoa', desc: 'Quantas atividades cada responsável tem em aberto e concluídas.' },
+    { icon: 'target', title: 'Burndown', desc: 'Acompanhamento do restante da sprint dia a dia até o prazo.' },
+    { icon: 'doc', title: 'Exportar relatório', desc: 'Gerar PDF/– CSV com o resumo do quadro para compartilhar.' },
+  ];
+
+  readonly educoreFeatures: ConstructionFeature[] = [
+    { icon: 'book', title: 'Leitor de PDFs', desc: 'Abra materiais de estudo direto no quadro, ligados às atividades.' },
+    { icon: 'doc', title: 'Trilhas de estudo', desc: 'Organize conteúdos em trilhas e marque seu progresso.' },
+    { icon: 'bulb', title: 'Anotações inteligentes', desc: 'Caderno integrado com resumos e revisões espaçadas.' },
+    { icon: 'target', title: 'Metas de aprendizado', desc: 'Defina objetivos e acompanhe a evolução por tema.' },
+  ];
+
+  readonly marketingFeatures: ConstructionFeature[] = [
+    { icon: 'instagram', title: 'Publicar no Instagram', desc: 'Crie, agende e publique posts e stories direto do quadro.' },
+    { icon: 'calendar', title: 'Calendário de conteúdo', desc: 'Planeje campanhas e postagens num calendário visual.' },
+    { icon: 'dollar', title: 'Vendas & pipeline', desc: 'Acompanhe leads, propostas e conversões do funil.' },
+    { icon: 'bulb', title: 'Banco de ideias', desc: 'Capture ideias de conteúdo e campanhas para priorizar depois.' },
+    { icon: 'megaphone', title: 'Campanhas', desc: 'Gerencie campanhas com metas, canais e orçamento.' },
+    { icon: 'chart', title: 'Desempenho', desc: 'Métricas de alcance, engajamento e ROI por canal.' },
+  ];
 
   constructor(
     private route: ActivatedRoute,

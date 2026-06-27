@@ -4,18 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../../services/auth';
 import { ApiService, resolveAvatarUrl } from '../../services/api';
+import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './profile.html',
   styleUrl: './profile.scss'
 })
 export class ProfileComponent implements OnInit {
   user = signal<any>(null);
   loading = signal(true);
+  sidebarCollapsed = signal(false);
+  toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
+  goToBoards() { this.router.navigate(['/']); }
   saving = signal(false);
   savingPassword = signal(false);
   uploadingAvatar = signal(false);
