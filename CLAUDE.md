@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 26/06/2026 — Header de colunas por sprint + ordenação por sprint + restaurar ordem; tags inline no popover (sem rota separada); modal de tarefa com dropdowns popover, maior e excluir interno; sprint-manager em tabela.
+> Última atualização: 27/06/2026 — Modal só fecha no X (app-modal [dismissable]) e overlay rola (sem scroll interno); comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; esqueletos Analytics/EduCore/Marketing (app-construction); sidebar no perfil.
 
 ---
 
