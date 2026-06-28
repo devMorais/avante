@@ -336,7 +336,7 @@
                         <line x1="8" y1="2" x2="8" y2="6" />
                         <line x1="3" y1="10" x2="21" y2="10" />
                       </svg>
-                      {{ group.sprint.start_date | date:'dd/MM' }} – {{ group.sprint.end_date | date:'dd/MM/yy' }}
+                      {{ group.sprint.start_date | date:'dd/MM':'UTC' }} – {{ group.sprint.end_date | date:'dd/MM/yy':'UTC' }}
                     </span>
 
                     <!-- Badge vencida -->
@@ -956,7 +956,7 @@
         <div class="move-sprint-info">
           <span class="move-sprint-name">{{ s.name }}</span>
           <span class="move-sprint-sub" *ngIf="s.start_date">
-            {{ s.start_date | date:'dd/MM' }} – {{ s.end_date | date:'dd/MM/yy' }}
+            {{ s.start_date | date:'dd/MM':'UTC' }} – {{ s.end_date | date:'dd/MM/yy':'UTC' }}
           </span>
         </div>
         <span *ngIf="s.finished_at" class="move-sprint-finished-tag">Finalizada</span>

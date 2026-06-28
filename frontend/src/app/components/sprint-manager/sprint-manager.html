@@ -68,7 +68,7 @@
 
         <div class="sm-col sm-col--period">
           <ng-container *ngIf="sprint.start_date || sprint.end_date; else noPeriod">
-            {{ sprint.start_date | date:'dd/MM/yy' }} <span class="sm-period-arrow">→</span> {{ sprint.end_date | date:'dd/MM/yy' }}
+            {{ sprint.start_date | date:'dd/MM/yy':'UTC' }} <span class="sm-period-arrow">→</span> {{ sprint.end_date | date:'dd/MM/yy':'UTC' }}
           </ng-container>
           <ng-template #noPeriod><span class="sm-muted">—</span></ng-template>
         </div>
