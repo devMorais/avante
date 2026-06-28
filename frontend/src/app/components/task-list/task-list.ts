@@ -392,14 +392,21 @@ export class TaskListComponent implements OnInit {
 
   isSprintFinished(sprint: any): boolean { return !!sprint?.finished_at; }
 
+  private parseLocalDate(dateStr: string): Date {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
   isSprintOverdue(sprint: any): boolean {
     if (!sprint?.end_date || sprint?.finished_at) return false;
-    return new Date(sprint.end_date) < new Date(new Date().toDateString());
+    const end = this.parseLocalDate(sprint.end_date);
+    const today = new Date(new Date().toDateString());
+    return end < today;
   }
 
   sprintDaysRemaining(sprint: any): number | null {
     if (!sprint?.end_date || sprint?.finished_at) return null;
-    const end = new Date(sprint.end_date);
+    const end = this.parseLocalDate(sprint.end_date);
     const today = new Date(new Date().toDateString());
     return Math.ceil((end.getTime() - today.getTime()) / 86400000);
   }
