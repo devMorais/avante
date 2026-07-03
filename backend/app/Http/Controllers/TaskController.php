@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use App\Models\Task;
+use App\Services\WhatsAppGateway;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -79,6 +81,7 @@ class TaskController extends Controller
             $task->tags()->sync($validated['tag_ids'] ?? []);
         }
 
+        $this->syncCompletedAt($task);
         $task->load($this->with);
 
         return response()->json($task, 201);
@@ -111,6 +114,7 @@ class TaskController extends Controller
             'sort_order'     => 'nullable|integer',
         ]);
 
+        $oldStatusId = $task->status_id;
         $task->update(collect($validated)->except(['assignee_ids', 'tag_ids'])->toArray());
 
         if ($request->has('assignee_ids')) {
@@ -121,6 +125,12 @@ class TaskController extends Controller
             $task->tags()->sync($validated['tag_ids'] ?? []);
         }
 
+        if (array_key_exists('status_id', $validated)) {
+            $this->syncCompletedAt($task);
+            if ($task->status_id != $oldStatusId) {
+                $this->notifyWhatsAppStatusChange($task);
+            }
+        }
         $task->load($this->with);
 
         return response()->json($task);
@@ -150,5 +160,90 @@ class TaskController extends Controller
         }
 
         return response()->json(['message' => 'Tarefas reordenadas']);
+    }
+
+    /**
+     * Atualiza vários campos de várias tarefas em uma única requisição.
+     * status_id/priority/type/sprint_id: substituem o valor (aceitam null para limpar).
+     * add_tag_id/add_assignee_id: adicionam sem remover os já existentes em cada tarefa.
+     */
+    public function bulkUpdate(Request $request)
+    {
+        $validated = $request->validate([
+            'task_ids'        => 'required|array|min:1',
+            'task_ids.*'      => 'exists:tasks,id',
+            'status_id'       => 'nullable|exists:statuses,id',
+            'priority'        => 'nullable|string',
+            'type'            => 'nullable|string',
+            'sprint_id'       => 'nullable|exists:sprints,id',
+            'add_tag_id'      => 'nullable|exists:tags,id',
+            'add_assignee_id' => 'nullable|exists:users,id',
+        ]);
+
+        $ids = $validated['task_ids'];
+
+        $fields = collect($validated)->only(['status_id', 'priority', 'type', 'sprint_id'])->toArray();
+        if (!empty($fields)) {
+            Task::whereIn('id', $ids)->update($fields);
+        }
+
+        if (array_key_exists('status_id', $fields)) {
+            foreach (Task::whereIn('id', $ids)->get() as $task) {
+                $this->syncCompletedAt($task);
+            }
+        }
+
+        if (array_key_exists('add_tag_id', $validated)) {
+            foreach (Task::whereIn('id', $ids)->get() as $task) {
+                $task->tags()->syncWithoutDetaching([$validated['add_tag_id']]);
+            }
+        }
+
+        if (array_key_exists('add_assignee_id', $validated)) {
+            foreach (Task::whereIn('id', $ids)->get() as $task) {
+                $task->assignees()->syncWithoutDetaching([$validated['add_assignee_id']]);
+            }
+        }
+
+        return response()->json(Task::with($this->with)->whereIn('id', $ids)->get());
+    }
+
+    /**
+     * Preenche/limpa tasks.completed_at conforme o status atual da tarefa
+     * ser ou não o status "concluído" do board — usado para velocidade/cycle
+     * time no Analytics.
+     */
+    private function syncCompletedAt(Task $task): void
+    {
+        $concludedId = Status::concludedIdFor($task->board_id);
+        $isConcluded = $concludedId && (int) $task->status_id === (int) $concludedId;
+
+        if ($isConcluded && !$task->completed_at) {
+            $task->update(['completed_at' => now()]);
+        } elseif (!$isConcluded && $task->completed_at) {
+            $task->update(['completed_at' => null]);
+        }
+    }
+
+    /**
+     * Avisa por WhatsApp (se configurado e o usuário optou por receber)
+     * quando a tarefa entra num status de "em andamento".
+     */
+    private function notifyWhatsAppStatusChange(Task $task): void
+    {
+        $statusName = strtolower($task->status?->name ?? '');
+        if (!str_contains($statusName, 'andamento')) {
+            return;
+        }
+
+        $gateway = app(WhatsAppGateway::class);
+        foreach ($task->assignees as $assignee) {
+            if ($assignee->whatsapp_opt_in && $assignee->whatsapp_number) {
+                $gateway->send(
+                    $assignee->whatsapp_number,
+                    "Sua demanda \"{$task->description}\" está em andamento. Continue assim — está tudo sendo observado! 👀"
+                );
+            }
+        }
     }
 }

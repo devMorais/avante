@@ -1,0 +1,28 @@
+[
+  { "description": "Testar Avante vs. Trello free lado a lado (Caderno, Timer, export PDF) — confirmar diferencial real antes de criar peça de marketing", "priority": "Alta", "epic": "Validação & Diferencial" },
+  { "description": "Escrever mensagem-âncora: 'gestão de tarefas pra quem vende projeto, em reais, com PIX'", "priority": "Alta", "epic": "Validação & Diferencial" },
+  { "description": "Definir segmento foco: freelancer de tecnologia/design", "priority": "Alta", "epic": "Validação & Diferencial" },
+  { "description": "Escrever página /precos com foco em freelancer/agência BR (sem jargão de 'gestão ágil corporativa')", "priority": "Alta", "epic": "Validação & Diferencial" },
+
+  { "description": "Criar perfil Instagram do Avante (bio, destaque, link /precos)", "priority": "Alta", "epic": "Conteúdo & Prova Social" },
+  { "description": "Criar perfil LinkedIn do Avante", "priority": "Média", "epic": "Conteúdo & Prova Social" },
+  { "description": "Gravar vídeo demo: usando o Caderno de notas + Timer numa tarefa real", "priority": "Alta", "epic": "Conteúdo & Prova Social" },
+  { "description": "Gravar vídeo demo: export PDF de tarefa para prestação de contas ao cliente", "priority": "Alta", "epic": "Conteúdo & Prova Social" },
+  { "description": "Oferecer Avante grátis (trial estendido) para clientes ativos da fábrica de software", "priority": "Alta", "epic": "Conteúdo & Prova Social" },
+  { "description": "Coletar 3-5 depoimentos reais de clientes da fábrica usando o Avante", "priority": "Alta", "epic": "Conteúdo & Prova Social" },
+  { "description": "Calendário editorial: 2-3 posts/semana por 8 semanas", "priority": "Média", "epic": "Conteúdo & Prova Social" },
+
+  { "description": "Mapear 5-8 comunidades de freelancers de tecnologia/design (WhatsApp/Telegram/Discord)", "priority": "Alta", "epic": "Comunidades & Indicação" },
+  { "description": "Entrar nas comunidades mapeadas, ajudar antes de vender", "priority": "Média", "epic": "Comunidades & Indicação" },
+  { "description": "Adicionar oferta do Avante na conversa de manutenção mensal com clientes da fábrica", "priority": "Alta", "epic": "Comunidades & Indicação" },
+  { "description": "Desenhar programa de indicação (mesmo modelo do plano da fábrica)", "priority": "Média", "epic": "Comunidades & Indicação" },
+
+  { "description": "Implementar multi-tenancy no Avante (isolar dados por conta/empresa)", "priority": "Alta", "epic": "Billing & Multi-tenancy (pré-requisito técnico)" },
+  { "description": "Migrations de billing: plans, subscriptions, usage (reaproveitar modelo do EduCore)", "priority": "Alta", "epic": "Billing & Multi-tenancy (pré-requisito técnico)" },
+  { "description": "Portar integração Asaas (mesmo gateway do Votar/EduCore) para o Avante", "priority": "Alta", "epic": "Billing & Multi-tenancy (pré-requisito técnico)" },
+  { "description": "Enforcement real dos limites do plano Free (1 quadro, 2 usuários)", "priority": "Alta", "epic": "Billing & Multi-tenancy (pré-requisito técnico)" },
+  { "description": "Cadastro self-service ponta a ponta sem intervenção manual", "priority": "Alta", "epic": "Billing & Multi-tenancy (pré-requisito técnico)" },
+
+  { "description": "Painel simples de cadastros, ativação, MRR e churn do Avante", "priority": "Média", "epic": "Métricas & Indicadores" },
+  { "description": "Revisão mensal de funil: cadastro -> ativação -> pago", "priority": "Média", "epic": "Métricas & Indicadores" }
+]

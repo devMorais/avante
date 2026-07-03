@@ -1,17 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :host {
-  --bg: #FAFAF8;
-  --surface: #FFFFFF;
-  --border: #E8E6E1;
-  --text-primary: #1C1C1F;
-  --text-secondary: #6B6B70;
-  --accent: #4F46E5;
-  --accent-hover: #4338CA;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
   display: flex;
   align-items: stretch;
   min-height: 100vh;
@@ -149,7 +138,7 @@
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background: #EEF2FF;
+  background: var(--accent-soft);
   border: 4px solid var(--surface);
   box-shadow: 0 4px 20px rgba(79, 70, 229, 0.22), 0 0 0 1px rgba(79, 70, 229, 0.12);
   display: flex;
@@ -312,7 +301,7 @@
   border-bottom: 1px solid var(--border);
   padding: 0 28px;
   gap: 0;
-  background: rgba(28, 28, 31, 0.015);
+  background: var(--wash);
 }
 
 .tab-btn {
@@ -414,6 +403,49 @@
   margin-left: auto;
   text-transform: none;
   letter-spacing: 0;
+}
+
+/* ---------- Preferências: tema + WhatsApp ---------- */
+
+.theme-picker {
+  display: flex;
+  gap: 8px;
+}
+
+.theme-option {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text-primary);
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+
+  &:hover { border-color: var(--accent); }
+  &.active {
+    border-color: var(--accent);
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--accent);
+  }
+}
+
+.whatsapp-optin {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  cursor: pointer;
+
+  input { width: auto; margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
 }
 
 /* ---------- Segurança info banner ---------- */

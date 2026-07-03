@@ -1,0 +1,545 @@
+:host {
+  display: block;
+}
+
+.marketing-root {
+  padding: 28px 40px 64px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ---------- Header ---------- */
+
+.mkt-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 2px 0 0;
+  }
+}
+
+.mkt-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #DB2777, #9D174D);
+  flex-shrink: 0;
+}
+
+/* ---------- Tabs ---------- */
+
+.mkt-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.mkt-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.12s ease, border-color 0.12s ease;
+
+  &:hover { color: var(--text-primary); }
+
+  &.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+}
+
+.mkt-tab-count {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+/* ---------- Panel toolbar ---------- */
+
+.mkt-panel-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mkt-panel-hint {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin: 0;
+
+  strong { color: var(--text-primary); }
+}
+
+.mkt-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease;
+  &:hover { background: var(--accent-hover); }
+}
+
+/* ---------- Inline form ---------- */
+
+.mkt-inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  margin-bottom: 18px;
+}
+
+.mkt-form-row {
+  display: flex;
+  gap: 8px;
+
+  > * { flex: 1; min-width: 0; }
+}
+
+.mkt-input, .mkt-select, .mkt-textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--surface);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus { border-color: var(--accent); }
+}
+
+.mkt-input--num { max-width: 160px; }
+.mkt-textarea { resize: vertical; font-family: inherit; }
+
+.mkt-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mkt-btn-ghost {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  &:hover { background: var(--wash); }
+}
+
+.mkt-btn-primary {
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover:not(:disabled) { background: var(--accent-hover); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+/* ---------- Kanban (posts / leads) ---------- */
+
+.mkt-kanban {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+}
+
+.mkt-kanban--3 { grid-template-columns: repeat(3, 1fr); }
+.mkt-kanban--5 { grid-template-columns: repeat(5, 1fr); }
+
+.mkt-kcol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  min-height: 80px;
+}
+
+.mkt-kcol-head {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  span {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--wash);
+    padding: 0 6px;
+    border-radius: 999px;
+  }
+}
+
+.mkt-kcol-empty {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  text-align: center;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.mkt-kcard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--shadow-rest);
+}
+
+.mkt-kcard-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mkt-channel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mkt-kcard-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mkt-kcard-del {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 6px;
+  flex-shrink: 0;
+  &:hover { background: rgba(220, 38, 38, 0.1); color: #DC2626; }
+}
+
+.mkt-kcard-caption {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mkt-kcard-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #059669;
+  margin: 0;
+}
+
+.mkt-kcard-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.mkt-kcard-move {
+  display: flex;
+  gap: 2px;
+
+  button {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-secondary);
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    &:hover { color: var(--accent); border-color: var(--accent); }
+  }
+}
+
+.mkt-stage-select {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 11px;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+/* ---------- Ideias ---------- */
+
+.mkt-ideas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mkt-idea-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.mkt-vote-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  &:hover { border-color: var(--accent); color: var(--accent); }
+}
+
+.mkt-idea-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mkt-idea-title { font-size: 13.5px; font-weight: 700; color: var(--text-primary); }
+.mkt-idea-desc { font-size: 12.5px; color: var(--text-secondary); margin: 0; }
+
+.mkt-idea-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mkt-idea-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(79, 70, 229, 0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* ---------- Campanhas ---------- */
+
+.mkt-campaign-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mkt-campaign-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.mkt-campaign-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mkt-campaign-name { font-size: 13.5px; font-weight: 700; color: var(--text-primary); }
+.mkt-campaign-meta { font-size: 11.5px; color: var(--text-secondary); }
+
+.mkt-campaign-budget {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #059669;
+  flex-shrink: 0;
+}
+
+/* ---------- Gráfico de desempenho ---------- */
+
+.mkt-chart {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+  background: var(--surface);
+}
+
+.mkt-chart-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.mkt-chart-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 60px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.mkt-chart-label { color: var(--text-secondary); text-transform: capitalize; }
+
+.mkt-chart-track {
+  height: 10px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.mkt-chart-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.mkt-chart-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+/* ---------- Tabela de métricas ---------- */
+
+.mkt-metrics-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.mkt-metrics-head, .mkt-metrics-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+
+  span:first-child { display: flex; align-items: center; gap: 6px; text-transform: capitalize; }
+}
+
+.mkt-metrics-head {
+  background: var(--bg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.mkt-metrics-row {
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.mkt-empty {
+  text-align: center;
+  padding: 32px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.mkt-loading {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .mkt-kanban--3, .mkt-kanban--5 { grid-template-columns: 1fr; }
+}

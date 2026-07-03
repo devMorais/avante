@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 27/06/2026 — Arquivar/restaurar quadros (archived_at; seção colapsável "Arquivados" na board-list; endpoints PATCH archive/unarchive). Antes: Modal só fecha no X (app-modal [dismissable]) e overlay rola (sem scroll interno); comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; esqueletos Analytics/EduCore/Marketing (app-construction); sidebar no perfil.
+> Última atualização: 02/07/2026 — Leva grande: alinhamento fino da tabela + ações em massa (Tipo/Tags, endpoint bulk-update, setas nos popovers); modo claro/escuro em todo o sistema (ThemeService, tokens globais); notificações in-app (sino no sidebar) + foto real nos comentários; anexos de arquivo compartilhados por tarefa (aba "Arquivos", servidor); área de Marketing funcional (calendário de conteúdo, pipeline de leads, banco de ideias, campanhas, desempenho); área de Analytics funcional (distribuição, velocidade, carga por pessoa, burndown, cycle time, export CSV/PDF); infraestrutura de avisos via WhatsApp (opt-in no perfil, gateway plugável, comando agendado). Antes: Arquivar/restaurar quadros (archived_at; seção colapsável "Arquivados" na board-list; endpoints PATCH archive/unarchive); Modal só fecha no X; comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; sidebar no perfil.
 
 ---
 
@@ -67,8 +67,10 @@ gestao-tarefas/
     ├── src/
     │   ├── app/
     │   │   ├── components/
+    │   │   │   ├── analytics/        ← indicadores reais do quadro (seção "analytics" do task-list)
     │   │   │   ├── board-list/       ← lista de quadros (rota /)
     │   │   │   ├── login/            ← tela de login (rota /login)
+    │   │   │   ├── marketing/        ← calendário, pipeline, ideias, campanhas, desempenho (seção "marketing")
     │   │   │   ├── profile/          ← perfil do usuário (rota /profile)
     │   │   │   ├── sprint-manager/   ← gestão de sprints
     │   │   │   ├── status-manager/   ← gestão de status
@@ -82,7 +84,9 @@ gestao-tarefas/
     │   │   │   └── auth-interceptor.ts
     │   │   ├── services/
     │   │   │   ├── api.ts            ← todos endpoints HTTP
-    │   │   │   └── auth.ts           ← estado de autenticação (Signal)
+    │   │   │   ├── auth.ts           ← estado de autenticação (Signal)
+    │   │   │   ├── theme.ts          ← modo claro/escuro (Signal, classe .dark em <html>)
+    │   │   │   └── notifications.ts  ← notificações in-app (poll de contagem/lista)
     │   │   ├── shared/ui/
     │   │   │   ├── avatar/           ← iniciais ou foto com fallback
     │   │   │   ├── badge/            ← indicador de status com cor
@@ -196,17 +200,26 @@ const BACKEND_URL = environment.backendUrl;
 
 ### Tabelas principais
 
-| Tabela    | Campos principais                                                                    |
-| --------- | ------------------------------------------------------------------------------------ |
-| users     | name, email, password, role, bio, position, avatar_url, soft delete                  |
-| boards    | name, icon_path, **archived_at** (arquivar sem excluir), soft delete                 |
-| tasks     | description, priority, epic, **release**, **type**, **notes** (longText), sprint_id, status_id, board_id, sort_order, soft delete |
-| sprints   | name, start_date, end_date, finished_at, board_id, soft delete                       |
-| statuses  | name, color, order, board_id, soft delete                                            |
-| priorities| name, color, order, board_id, soft delete (CRUD igual status; tasks.priority guarda o nome) |
-| task_types| name, color, order, board_id, soft delete (tipos de tarefa; tasks.type guarda o nome; faixa colorida na linha) |
-| task_user | pivot — múltiplos usuários por tarefa (unique task_id + user_id)                    |
-| comments  | task_id, user_id, content, soft delete                                               |
+| Tabela             | Campos principais                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| users              | name, email, password, role, bio, position, avatar_url, **whatsapp_number**, **whatsapp_opt_in**, soft delete |
+| boards             | name, icon_path, **archived_at** (arquivar sem excluir), soft delete                 |
+| tasks              | description, priority, epic, release, type, notes (longText), **completed_at** (preenchido ao entrar no status "concluído"), sprint_id, status_id, board_id, sort_order, soft delete |
+| sprints            | name, start_date, end_date, finished_at, board_id, soft delete                       |
+| statuses           | name, color, order, board_id, soft delete                                            |
+| priorities         | name, color, order, board_id, soft delete (CRUD igual status; tasks.priority guarda o nome) |
+| task_types         | name, color, order, board_id, soft delete (tipos de tarefa; tasks.type guarda o nome; faixa colorida na linha) |
+| tags               | name, color, board_id, soft delete                                                   |
+| task_tag           | pivot — tags de uma tarefa                                                            |
+| task_user          | pivot — múltiplos usuários por tarefa (unique task_id + user_id)                    |
+| comments           | task_id, user_id, content, soft delete                                               |
+| notifications      | user_id (destinatário), task_id, from_user_id, type (comment/mention), message, read_at |
+| attachments        | task_id, user_id (quem subiu), path, original_name, size, mime_type, soft delete — arquivos compartilhados, baixáveis por todos |
+| marketing_posts    | board_id, user_id, title, caption, channel, scheduled_at, status (idea/scheduled/published), image_path, soft delete |
+| marketing_leads    | board_id, name, contact, stage (novo/contato/proposta/ganho/perdido), value, notes, soft delete |
+| marketing_ideas    | board_id, title, description, votes, tags, soft delete                               |
+| marketing_campaigns| board_id, name, channels, budget, start_date, end_date, goal, status, soft delete    |
+| marketing_metrics  | board_id, channel, period_date, reach, engagement, conversions                       |
 
 ### Migrations em ordem
 
@@ -229,7 +242,22 @@ const BACKEND_URL = environment.backendUrl;
 2026_06_22_033101 add_profile_fields_to_users_table
 2026_06_23_034204 add_finished_to_sprints_table
 2026_06_24_200000 add_notes_to_tasks_table
+2026_06_26_200001 create_tags_table
+2026_06_26_200002 create_task_tag_table
+2026_06_26_200003 add_sort_order_to_tasks_table
+2026_06_26_210000 add_release_to_tasks_table
+2026_06_26_220000 create_priorities_table
+2026_06_26_230000 create_task_types_table
 2026_06_27_000000 add_archived_at_to_boards_table
+2026_07_02_010000 create_notifications_table
+2026_07_02_020000 create_attachments_table
+2026_07_02_030000 create_marketing_posts_table
+2026_07_02_030001 create_marketing_leads_table
+2026_07_02_030002 create_marketing_ideas_table
+2026_07_02_030003 create_marketing_campaigns_table
+2026_07_02_030004 create_marketing_metrics_table
+2026_07_02_040000 add_completed_at_to_tasks_table
+2026_07_02_050000 add_whatsapp_fields_to_users_table
 ```
 
 ---
@@ -250,6 +278,7 @@ const BACKEND_URL = environment.backendUrl;
 | PUT    | /api/profile             | Atualizar nome/email/bio/position                                                      |
 | POST   | /api/profile/password    | Atualizar senha (current_password + password)                                          |
 | POST   | /api/profile/avatar      | Upload avatar (jpg/jpeg/png/webp, max 2MB)                                             |
+| PUT    | /api/profile             | (também aceita `whatsapp_number` + `whatsapp_opt_in`)                                  |
 | GET    | /api/boards              | Lista quadros                                                                          |
 | POST   | /api/boards              | Criar quadro (cria 4 status padrão automaticamente)                                    |
 | GET    | /api/boards/{id}         | Detalhe do quadro                                                                      |
@@ -262,9 +291,23 @@ const BACKEND_URL = environment.backendUrl;
 | GET    | /api/tasks/{id}          | Detalhe da tarefa                                                                      |
 | PUT    | /api/tasks/{id}          | Atualizar tarefa (assignee_ids[] sincroniza via pivot)                                 |
 | DELETE | /api/tasks/{id}          | Deletar tarefa                                                                         |
+| POST   | /api/tasks/bulk-update    | Atualiza status/prioridade/tipo/sprint (substitui) ou add_tag_id/add_assignee_id (adiciona) de várias tarefas numa só requisição |
 | GET    | /api/tasks/{id}/comments | Lista comentários                                                                      |
-| POST   | /api/tasks/{id}/comments | Criar comentário                                                                       |
+| POST   | /api/tasks/{id}/comments | Criar comentário (gera notificações para responsáveis, outros comentaristas e menções `@Nome`) |
 | DELETE | /api/comments/{id}       | Deletar comentário                                                                     |
+| GET    | /api/tasks/{id}/attachments | Lista arquivos anexados à tarefa                                                    |
+| POST   | /api/tasks/{id}/attachments | Upload de arquivo (multipart `file`, máx. 10MB, qualquer tipo) — visível a todos    |
+| DELETE | /api/attachments/{id}    | Remove um anexo                                                                        |
+| GET    | /api/notifications       | Lista notificações recentes do usuário autenticado                                     |
+| GET    | /api/notifications/unread-count | Contagem de não lidas                                                          |
+| POST   | /api/notifications/{id}/read | Marca uma notificação como lida                                                   |
+| POST   | /api/notifications/read-all | Marca todas como lidas                                                             |
+| GET    | /api/analytics/board/{boardId} | Agregados: distribuição (status/prioridade/tipo), velocidade por sprint, carga por responsável, burndown da sprint ativa, cycle time médio |
+| GET/POST/PUT/DELETE | /api/marketing-posts | CRUD de posts (calendário de conteúdo — compor/agendar, sem publicação automática) |
+| GET/POST/PUT/DELETE | /api/marketing-leads | CRUD de leads (pipeline de vendas por estágio)                            |
+| GET/POST/PUT/DELETE | /api/marketing-ideas | CRUD de ideias; `POST /marketing-ideas/{id}/upvote` para votar                |
+| GET/POST/PUT/DELETE | /api/marketing-campaigns | CRUD de campanhas                                                         |
+| GET/POST/DELETE | /api/marketing-metrics | Métricas de desempenho por canal/período (entrada manual)                       |
 | GET    | /api/sprints             | Lista sprints por board_id (ordenado por start_date)                                   |
 | POST   | /api/sprints             | Criar sprint                                                                           |
 | PUT    | /api/sprints/{id}        | Atualizar sprint                                                                       |
@@ -367,6 +410,11 @@ const BACKEND_URL = environment.backendUrl;
 - Métodos: `getStatuses`, `createStatus`, `updateStatus`, `deleteStatus`
 - Métodos: `getUsers`, `createUser`, `updateUser`, `deleteUser`
 - Métodos: `getComments`, `createComment`, `deleteComment`
+- Métodos: `getAttachments`, `uploadAttachment`, `deleteAttachment`
+- Métodos: `getNotifications`, `getUnreadNotificationCount`, `markNotificationRead`, `markAllNotificationsRead`
+- Métodos: `bulkUpdateTasks({ task_ids, status_id?, priority?, type?, sprint_id?, add_tag_id?, add_assignee_id? })`
+- Métodos: `get/create/update/deleteMarketingPost|Lead|Idea|Campaign|Metric`, `upvoteMarketingIdea`
+- Métodos: `getBoardAnalytics(boardId)`
 - Métodos: `login`, `logout`, `getProfile`, `updateProfile`, `updatePassword`, `uploadAvatar`
 - Helper: `resolveAvatarUrl(url)` → converte para URL absoluta
 
@@ -374,6 +422,16 @@ const BACKEND_URL = environment.backendUrl;
 - Signal: `currentUser = signal<any>(loadUser())`
 - LocalStorage keys: `avante_token`, `avante_user`
 - `getToken()`, `isAuthenticated()`, `login()`, `logout()`, `clearSession()`
+
+### theme.ts (Theme)
+- Signal: `mode = signal<'light'|'dark'|'system'>(...)`, persistido em `localStorage('avante_theme')`
+- Aplica/remove classe `.dark` em `document.documentElement` (reage a `prefers-color-scheme` quando `system`)
+- `setMode()`, `toggle()`, `isDark()` — toggle exposto no `app-sidebar` (sol/lua) e na aba "Notificações" do perfil
+- Tokens globais (`--bg`, `--surface`, `--border`, `--text-primary`, `--text-secondary`, `--accent`, `--accent-hover`, `--radius-*`, `--shadow*`) centralizados em `styles.scss` (`:root` claro / `html.dark` escuro); Angular Material recebe um segundo `mat.theme(theme-type: dark)` dentro de `html.dark`
+
+### notifications.ts (Notifications)
+- Signals: `items`, `unreadCount`; poll de `unread-count` a cada 45s (sem websockets — hosting sem processos persistentes)
+- Usado pelo sino no `app-sidebar` (popover com lista, marca como lida ao clicar e navega até o board da tarefa)
 
 ### auth-interceptor.ts
 - Adiciona `Authorization: Bearer {token}` em todas as requisições
@@ -544,3 +602,11 @@ DEPLOY.md
 | 24/06/2026 | Timer de execução em localStorage por tarefa                  | Sem backend para tempo — persiste entre sessões no mesmo browser |
 | 24/06/2026 | JSON import sequencial (não paralelo)                         | Evita sobrecarga no shared hosting; barra de progresso dá feedback real |
 | 24/06/2026 | Menus Analytics/EduCore como placeholder com badge "Em breve" | Reservar espaço na UI antes de desenvolver; não criar expectativa sem entrega |
+| 02/07/2026 | Marketing/Analytics deixaram de ser placeholder (`app-construction`) e viraram componentes reais (`app-marketing`, `app-analytics`) | Board de Marketing (id 14) já em uso real; dados agregados a partir do próprio banco (tasks/sprints/statuses), sem custo de infra novo |
+| 02/07/2026 | Marketing é ferramenta interna (calendário/pipeline/ideias/campanhas/desempenho), sem integração real com Graph API do Instagram | Publicação automática exige App Meta for Developers + aprovação, fora do escopo de uma sessão de código; "Publicar no Instagram" vira compor/agendar (status idea/scheduled/published), publicação em si manual |
+| 02/07/2026 | `tasks.completed_at` preenchido automaticamente ao entrar no status "concluído" (nome via `Status::concludedIdFor`, mesma lógica do finish de sprint) | Sem isso não existe dado histórico para calcular velocidade/cycle time/burndown no Analytics |
+| 02/07/2026 | `POST /api/tasks/bulk-update` único em vez de N requisições PUT em loop | Barra de ações em massa mais rápida e ganha ações novas (Tipo, Tags) sem multiplicar chamadas HTTP |
+| 02/07/2026 | Notificações in-app com tabela própria (não o sistema `Notifiable` nativo do Laravel) | Precisa ser lida/listada pelo frontend via API simples; polling a cada 45s no sino do sidebar (sem websockets, hosting sem processo persistente) |
+| 02/07/2026 | Anexos de tarefa no servidor (`storage/app/public`, mesmo padrão do avatar) em vez de localStorage | Precisam ser baixáveis por qualquer pessoa do quadro, não só por quem enviou — diferente do "Caderno" (pessoal, local) |
+| 02/07/2026 | Dark mode via classe `.dark` em `<html>` + tokens CSS centralizados em `styles.scss` | Componentes já usavam os mesmos nomes de variável duplicados por arquivo; centralizar foi suficiente para o tema propagar sem reescrever cada tela |
+| 02/07/2026 | WhatsApp: infraestrutura completa (opt-in no perfil, `WhatsAppGateway` HTTP plugável, comando `app:notify-whatsapp-digest` agendado) sem conectar um provedor real | Sem conta/credenciais de um gateway (Z-API/UltraMsg/Meta Cloud API) ainda; serviço loga em vez de enviar quando `WHATSAPP_API_URL` não está no `.env` — plugar depois é só configurar o `.env` |

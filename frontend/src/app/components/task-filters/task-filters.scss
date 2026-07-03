@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :host {
-  --bg: #FAFAF8;
-  --surface: #FFFFFF;
-  --border: #E8E6E1;
-  --text-primary: #1C1C1F;
-  --text-secondary: #6B6B70;
-  --accent: #4F46E5;
-  --accent-hover: #4338CA;
-  --radius-md: 14px;
-  --radius-sm: 10px;
   display: block;
 }
 
@@ -122,7 +113,7 @@
   }
 
   &.active {
-    background: #EEF2FF;
+    background: var(--accent-soft);
     border-color: var(--accent);
     color: var(--accent);
   }
@@ -166,6 +157,20 @@
   min-width: 220px;
   padding: 8px;
   animation: dropdown-in 0.12s ease-out;
+}
+
+/* Seta apontando do painel para o botão que o abriu (mesmo padrão do .uni-popover) */
+.dropdown-panel-arrow {
+  position: absolute;
+  top: -7px;
+  left: 20px;
+  width: 13px;
+  height: 13px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  transform: rotate(45deg);
+  z-index: 1;
 }
 
 @keyframes dropdown-in {
@@ -281,7 +286,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #EEF2FF;
+  background: var(--accent-soft);
   color: var(--accent);
   font-family: 'Inter', sans-serif;
   font-size: 9px;
@@ -364,7 +369,7 @@
   }
 
   &.chip-assignee {
-    background: #EEF2FF;
+    background: var(--accent-soft);
     color: #4338CA;
   }
 

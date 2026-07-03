@@ -21,10 +21,12 @@ class ProfileController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'name'     => 'sometimes|required|string|max:100',
-            'email'    => ['sometimes', 'required', 'email', Rule::unique('users')->ignore($user->id)],
-            'bio'      => 'nullable|string|max:300',
-            'position' => 'nullable|string|max:100',
+            'name'             => 'sometimes|required|string|max:100',
+            'email'            => ['sometimes', 'required', 'email', Rule::unique('users')->ignore($user->id)],
+            'bio'              => 'nullable|string|max:300',
+            'position'         => 'nullable|string|max:100',
+            'whatsapp_number'  => 'nullable|string|max:20',
+            'whatsapp_opt_in'  => 'nullable|boolean',
         ]);
 
         $user->update($validated);

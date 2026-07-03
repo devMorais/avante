@@ -22,11 +22,11 @@
 }
 
 .app-btn--primary {
-  background: #4F46E5;
+  background: var(--accent);
   color: white;
 
   &:hover:not(:disabled) {
-    background: #4338CA;
+    background: var(--accent-hover);
   }
 
   &:disabled {
@@ -36,12 +36,12 @@
 
 .app-btn--text {
   background: transparent;
-  color: #6B6B70;
+  color: var(--text-secondary);
   padding: 0 16px;
 
   &:hover:not(:disabled) {
-    background: rgba(28, 28, 31, 0.05);
-    color: #1C1C1F;
+    background: var(--wash);
+    color: var(--text-primary);
   }
 }
 

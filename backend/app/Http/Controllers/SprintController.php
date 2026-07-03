@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sprint;
+use App\Models\Status;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -79,10 +80,7 @@ class SprintController extends Controller
 
         if (!$concludedStatusId) {
             // Fallback: busca pelo nome
-            $concludedStatus = \App\Models\Status::where('board_id', $sprint->board_id)
-                ->whereRaw("LOWER(name) IN ('concluído', 'concluido', 'done', 'finalizado')")
-                ->first();
-            $concludedStatusId = $concludedStatus?->id;
+            $concludedStatusId = Status::concludedIdFor($sprint->board_id);
         }
 
         // Próxima sprint do mesmo quadro (por start_date)

@@ -57,7 +57,7 @@
       <line x1="6" y1="20" x2="6" y2="14" />
     </svg>
     <span>Analytics</span>
-    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Em breve</span>
+    <span class="sidebar-soon-badge" *ngIf="!sidebarCollapsed()">Beta</span>
   </button>
 
   <button class="sidebar-nav-item" [class.active]="section() === 'educore'" (click)="setSection('educore')">
@@ -196,6 +196,7 @@
           </button>
           <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'status'"
             (click)="$event.stopPropagation()">
+            <span class="bulk-dropdown-arrow"></span>
             <div class="bulk-dropdown-header">Definir status</div>
             <div class="bulk-dropdown-list">
               <button *ngFor="let s of statuses()" class="bulk-dropdown-item" (click)="bulkSetStatus(s)">
@@ -223,12 +224,69 @@
           </button>
           <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'priority'"
             (click)="$event.stopPropagation()">
+            <span class="bulk-dropdown-arrow"></span>
             <div class="bulk-dropdown-header">Definir prioridade</div>
             <div class="bulk-dropdown-list">
               <button *ngFor="let p of priorities()" class="bulk-dropdown-item" (click)="bulkSetPriority(p.name)">
                 <span class="bulk-status-dot" [style.background]="p.color"></span>
                 <span [style.color]="p.color" style="font-weight:600">{{ p.name }}</span>
               </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipo -->
+        <div class="bulk-dropdown-wrap">
+          <button class="selection-action-btn" (click)="toggleBulkDropdown('type'); $event.stopPropagation()"
+            [disabled]="bulkUpdating()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+            </svg>
+            Tipo
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" [style.transform]="bulkDropdown() === 'type' ? 'rotate(180deg)' : ''">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'type'"
+            (click)="$event.stopPropagation()">
+            <span class="bulk-dropdown-arrow"></span>
+            <div class="bulk-dropdown-header">Definir tipo</div>
+            <div class="bulk-dropdown-list">
+              <button *ngFor="let t of taskTypes()" class="bulk-dropdown-item" (click)="bulkSetType(t)">
+                <span class="bulk-status-dot" [style.background]="t.color"></span>
+                {{ t.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="bulk-dropdown-wrap">
+          <button class="selection-action-btn" (click)="toggleBulkDropdown('tags'); $event.stopPropagation()"
+            [disabled]="bulkUpdating()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+            Tags
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" [style.transform]="bulkDropdown() === 'tags' ? 'rotate(180deg)' : ''">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="bulk-dropdown" [class.open]="bulkDropdown() === 'tags'"
+            (click)="$event.stopPropagation()">
+            <span class="bulk-dropdown-arrow"></span>
+            <div class="bulk-dropdown-header">Adicionar tag a todas</div>
+            <div class="bulk-dropdown-list">
+              <button *ngFor="let t of tags()" class="bulk-dropdown-item" (click)="bulkAddTag(t)">
+                <span class="bulk-status-dot" [style.background]="t.color"></span>
+                {{ t.name }}
+              </button>
+              <p *ngIf="tags().length === 0" class="bulk-assignee-empty">Nenhuma tag criada ainda.</p>
             </div>
           </div>
         </div>
@@ -251,6 +309,7 @@
           </button>
           <div class="bulk-dropdown bulk-dropdown--assignee" [class.open]="bulkDropdown() === 'assignee'"
             (click)="$event.stopPropagation()">
+            <span class="bulk-dropdown-arrow"></span>
             <div class="bulk-dropdown-header">Adicionar responsável</div>
             <div class="bulk-assignee-search-wrap">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -273,6 +332,8 @@
             </div>
           </div>
         </div>
+
+        <div class="selection-bar-sep"></div>
 
         <!-- Mover para sprint -->
         <button class="selection-action-btn selection-action-btn--move" (click)="openMoveModal()"
@@ -623,26 +684,100 @@
         </div>
       </ng-container>
 
-      <ng-template #loadingTpl>
-        <div class="loading-state">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" class="spin" style="color:var(--accent)">
-            <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-          </svg>
-          <span>Carregando atividades...</span>
-        </div>
-      </ng-template>
-
     </div>
 
-    <div *ngIf="viewMode() === 'kanban'" class="kanban-placeholder">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
-        stroke-linecap="round" style="opacity:.25; margin-bottom:12px">
-        <rect x="3" y="3" width="5" height="18" rx="1" />
-        <rect x="10" y="3" width="5" height="12" rx="1" />
-        <rect x="17" y="3" width="5" height="15" rx="1" />
-      </svg>
-      <p>Visão Kanban em breve</p>
+    <!-- Template de loading compartilhado entre as visões tabela e kanban -->
+    <ng-template #loadingTpl>
+      <div class="loading-state">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" class="spin" style="color:var(--accent)">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+        <span>Carregando atividades...</span>
+      </div>
+    </ng-template>
+
+    <!-- ===== VISÃO KANBAN ===== -->
+    <div *ngIf="viewMode() === 'kanban'" class="kanban-board" cdkDropListGroup>
+      <ng-container *ngIf="!loading(); else loadingTpl">
+        <div class="kanban-col" *ngFor="let col of kanbanColumns()">
+
+          <div class="kanban-col-head">
+            <span class="kanban-col-dot" [style.background]="col.status?.color || '#6B6B70'"></span>
+            <span class="kanban-col-name">{{ col.status?.name || 'Sem status' }}</span>
+            <span class="kanban-col-count">{{ col.tasks.length }}</span>
+          </div>
+
+          <div class="kanban-col-body"
+            cdkDropList
+            [cdkDropListData]="col.tasks"
+            [id]="kanbanDropId(col)"
+            (cdkDropListDropped)="onKanbanDrop($event, col)">
+
+            <div class="kanban-card" *ngFor="let task of col.tasks"
+              cdkDrag [cdkDragData]="task"
+              (click)="openEditTaskDialog(task)">
+
+              <div *cdkDragPlaceholder class="kanban-card-placeholder"></div>
+              <div *cdkDragPreview class="task-drag-preview">
+                <span class="task-drag-preview-text">{{ summaryFor(task.description) }}</span>
+              </div>
+
+              <span class="kanban-card-strip"
+                [style.background]="task.type ? typeColor(task.type) : 'transparent'"></span>
+
+              <div class="kanban-card-top" *ngIf="task.type || task.priority">
+                <span class="kanban-card-type" *ngIf="task.type" [style.color]="typeColor(task.type)">
+                  {{ task.type }}
+                </span>
+                <span class="kanban-card-priority" [style.color]="priorityColor(task.priority)"
+                  [style.background]="priorityColor(task.priority) + '18'" *ngIf="task.priority">
+                  {{ task.priority }}
+                </span>
+              </div>
+
+              <p class="kanban-card-title">{{ summaryFor(task.description) }}</p>
+
+              <div class="kanban-card-tags" *ngIf="task.tags?.length > 0 || task.epic">
+                <span *ngIf="task.epic" class="kanban-card-epic" [appTooltip]="task.epic">{{ task.epic }}</span>
+                <span *ngFor="let tag of task.tags?.slice(0, 3)" class="task-tag-chip"
+                  [style.background]="tag.color + '20'" [style.color]="tag.color"
+                  [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
+                <span *ngIf="task.tags?.length > 3" class="task-tag-more"
+                  [appTooltip]="extraTagNames(task, 3)">+{{ task.tags.length - 3 }}</span>
+              </div>
+
+              <div class="kanban-card-foot">
+                <span class="kanban-card-sprint" *ngIf="task.sprint?.name">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  {{ task.sprint.name }}
+                </span>
+                <span class="kanban-card-release" *ngIf="task.release">{{ task.release }}</span>
+                <div class="kanban-card-avatars" *ngIf="task.assignees?.length > 0">
+                  <ng-container *ngFor="let a of task.assignees.slice(0, 3)">
+                    <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+                  </ng-container>
+                  <span *ngIf="task.assignees.length > 3" class="assignee-avatar--more">
+                    +{{ task.assignees.length - 3 }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p class="kanban-col-empty" *ngIf="col.tasks.length === 0">
+              Arraste atividades para cá
+            </p>
+          </div>
+        </div>
+
+        <div *ngIf="tasks().length === 0" class="empty-state" style="flex: 1">
+          <h2>Nenhuma atividade encontrada</h2>
+          <p>Tente ajustar os filtros ou crie uma nova atividade.</p>
+        </div>
+      </ng-container>
     </div>
 
   </ng-container>
@@ -664,15 +799,11 @@
   </ng-container>
 
   <ng-container *ngIf="section() === 'marketing'">
-    <app-construction accent="#DB2777" title="Marketing"
-      subtitle="Central de marketing do quadro: planeje campanhas, publique nas redes e acompanhe vendas e ideias — tudo no mesmo lugar."
-      [features]="marketingFeatures"></app-construction>
+    <app-marketing [boardId]="boardId"></app-marketing>
   </ng-container>
 
   <ng-container *ngIf="section() === 'analytics'">
-    <app-construction accent="#4F46E5" title="Analytics"
-      subtitle="Relatórios e indicadores do quadro: produtividade, evolução das sprints, distribuição por status, prioridade e responsável."
-      [features]="analyticsFeatures"></app-construction>
+    <app-analytics [boardId]="boardId" [boardName]="board()?.name ?? ''"></app-analytics>
   </ng-container>
 
   <ng-container *ngIf="section() === 'educore'">
@@ -907,12 +1038,16 @@
   [saving]="saving()"
   [comments]="comments()"
   [savingComment]="savingComment()"
+  [attachments]="attachments()"
+  [uploadingAttachment]="uploadingAttachment()"
   (closeDialog)="closeTaskDialog()"
   (save)="confirmSaveTask($event)"
   (addComment)="onAddComment($event)"
   (removeComment)="onRemoveComment($event)"
   (manageAssignees)="openAssigneeModal(editingTask)"
-  (deleteTask)="onDeleteFromDialog()">
+  (deleteTask)="onDeleteFromDialog()"
+  (uploadAttachment)="onUploadAttachment($event)"
+  (removeAttachment)="onRemoveAttachment($event)">
 </app-task-dialog>
 
 <!-- ===== MODAL MOVER PARA SPRINT ===== -->

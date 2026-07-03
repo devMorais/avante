@@ -14,8 +14,8 @@
   right: 0;
   z-index: 50;
   min-width: 180px;
-  background: #FFFFFF;
-  border: 1px solid #E8E6E1;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(28, 28, 31, 0.08), 0 2px 8px rgba(28, 28, 31, 0.06);
   padding: 6px;

@@ -10,6 +10,7 @@ html {
   @include mat.theme(
     (
       color: (
+        theme-type: light,
         primary: mat.$rose-palette,
         tertiary: mat.$red-palette,
       ),
@@ -19,12 +20,69 @@ html {
   );
 }
 
-body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
+// Tema escuro: refaz os tokens --mat-sys-* do Angular Material dentro do
+// escopo .dark, alternado pelo ThemeService (classe aplicada em <html>).
+html.dark {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$rose-palette,
+        tertiary: mat.$red-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
 
+// ---------- Tokens de design globais (claro/escuro) ----------
+// Usados em todo o app via var(--bg), var(--surface) etc. Alternados pela
+// classe .dark em <html> (ver ThemeService).
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --border: #E8E6E1;
+  --text-primary: #1C1C1F;
+  --text-secondary: #6B6B70;
+  --accent: #4F46E5;
+  --accent-hover: #4338CA;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.05);
+  --shadow-rest: 0 1px 2px rgba(28, 28, 31, 0.04), 0 1px 3px rgba(28, 28, 31, 0.06);
+  --shadow-hover: 0 8px 24px rgba(28, 28, 31, 0.08), 0 2px 8px rgba(28, 28, 31, 0.06);
+  // Superfície "invertida" (barras escuras sobre fundo claro; no dark vira um
+  // cinza elevado — o texto sobre ela é sempre branco)
+  --surface-inverse: #1C1C1F;
+  // Wash neutro para hovers/fundos sutis (não pode ser preto fixo no dark)
+  --wash: rgba(28, 28, 31, 0.05);
+  --wash-strong: rgba(28, 28, 31, 0.08);
+  // Fundo suave da cor de destaque (chips/botões ativos — era #EEF2FF fixo)
+  --accent-soft: #EEF2FF;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: #16161B;
+  --surface: #1F1F26;
+  --border: #33333D;
+  --text-primary: #F1F1F4;
+  --text-secondary: #A3A3AE;
+  --accent: #7C7FF2;
+  --accent-hover: #9497F5;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35);
+  --surface-inverse: #2E2E38;
+  --wash: rgba(255, 255, 255, 0.07);
+  --wash-strong: rgba(255, 255, 255, 0.11);
+  --accent-soft: rgba(124, 127, 242, 0.18);
+  color-scheme: dark;
+}
+
+body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
@@ -41,7 +99,7 @@ body {
 @tailwind utilities;
 
 body {
-  background-color: #f3f4f6;
+  background-color: var(--bg);
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
@@ -51,7 +109,7 @@ body {
   position: fixed;
   z-index: 4000;
   max-width: 260px;
-  background: #1C1C1F;
+  background: var(--surface-inverse);
   color: #FFFFFF;
   font-family: 'Inter', Roboto, sans-serif;
   font-size: 12px;
@@ -73,7 +131,7 @@ body {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #1C1C1F;
+  background: var(--surface-inverse);
   transform: rotate(45deg);
 }
 .app-tooltip--top .app-tooltip__arrow { bottom: -4px; }

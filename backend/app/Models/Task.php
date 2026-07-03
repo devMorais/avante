@@ -21,6 +21,7 @@ class Task extends Model
         'type',
         'notes',
         'sort_order',
+        'completed_at',
     ];
 
     public function board()
@@ -58,5 +59,10 @@ class Task extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->orderBy('created_at');
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class);
     }
 }

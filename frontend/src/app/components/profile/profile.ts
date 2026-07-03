@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Auth } from '../../services/auth';
 import { ApiService, resolveAvatarUrl } from '../../services/api';
 import { Sidebar } from '../../shared/ui/sidebar/sidebar';
+import { Theme } from '../../services/theme';
 
 
 @Component({
@@ -24,21 +25,25 @@ export class ProfileComponent implements OnInit {
   savingPassword = signal(false);
   uploadingAvatar = signal(false);
 
-  activeTab = signal<'info' | 'password'>('info');
+  activeTab = signal<'info' | 'password' | 'notifications'>('info');
 
   form = { name: '', email: '', bio: '', position: '' };
+  notifForm = { whatsapp_number: '', whatsapp_opt_in: false };
   passwordForm = { current_password: '', password: '', password_confirmation: '' };
 
   successMsg = signal('');
   errorMsg = signal('');
   passwordSuccessMsg = signal('');
   passwordErrorMsg = signal('');
+  notifSuccessMsg = signal('');
+  savingNotif = signal(false);
   avatarPreview = signal<string | null>(null);
 
   constructor(
     private api: ApiService,
     private auth: Auth,
-    private router: Router
+    private router: Router,
+    protected theme: Theme,
   ) { }
 
   ngOnInit() {
@@ -51,6 +56,10 @@ export class ProfileComponent implements OnInit {
           email: u.email ?? '',
           bio: u.bio ?? '',
           position: u.position ?? '',
+        };
+        this.notifForm = {
+          whatsapp_number: u.whatsapp_number ?? '',
+          whatsapp_opt_in: !!u.whatsapp_opt_in,
         };
         this.loading.set(false);
       },
@@ -79,6 +88,20 @@ export class ProfileComponent implements OnInit {
         this.saving.set(false);
         this.errorMsg.set(err?.error?.message ?? 'Erro ao salvar perfil.');
       }
+    });
+  }
+
+  saveNotificationPrefs() {
+    this.savingNotif.set(true);
+    this.notifSuccessMsg.set('');
+    this.api.updateProfile(this.notifForm).subscribe({
+      next: (u) => {
+        this.syncUser({ ...this.user(), ...u });
+        this.savingNotif.set(false);
+        this.notifSuccessMsg.set('Preferências salvas com sucesso!');
+        setTimeout(() => this.notifSuccessMsg.set(''), 3000);
+      },
+      error: () => this.savingNotif.set(false),
     });
   }
 

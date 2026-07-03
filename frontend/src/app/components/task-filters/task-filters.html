@@ -40,6 +40,7 @@
       </button>
 
       <div *ngIf="openDropdown() === 'status'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <span class="dropdown-panel-arrow"></span>
         <div class="dropdown-search-box">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -84,6 +85,7 @@
       </button>
 
       <div *ngIf="openDropdown() === 'priority'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <span class="dropdown-panel-arrow"></span>
         <div class="dropdown-list">
           <button *ngFor="let p of priorities" class="dropdown-item" [class.checked]="isPrioritySelected(p.name)"
             (click)="togglePriority(p.name)">
@@ -118,6 +120,7 @@
       </button>
 
       <div *ngIf="openDropdown() === 'assignee'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <span class="dropdown-panel-arrow"></span>
         <div class="dropdown-search-box">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -161,6 +164,7 @@
       </button>
 
       <div *ngIf="openDropdown() === 'epic'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <span class="dropdown-panel-arrow"></span>
         <div class="dropdown-search-box" *ngIf="epics.length > 5">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -204,6 +208,7 @@
         </svg>
       </button>
       <div *ngIf="openDropdown() === 'tag'" class="dropdown-panel" (click)="$event.stopPropagation()">
+        <span class="dropdown-panel-arrow"></span>
         <div class="dropdown-search-box" *ngIf="tags.length > 5">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round">

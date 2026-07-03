@@ -1,0 +1,155 @@
+<div class="an-root">
+
+  <div class="an-header">
+    <div class="an-header-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    </div>
+    <div class="an-header-text">
+      <h1>Analytics</h1>
+      <p>Indicadores reais do quadro: produtividade, distribuição e evolução das sprints.</p>
+    </div>
+    <div class="an-header-actions" *ngIf="data()">
+      <button class="an-export-btn" (click)="exportCSV()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+        CSV
+      </button>
+      <button class="an-export-btn" (click)="exportPDF()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /></svg>
+        PDF
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading()" class="an-loading">Carregando analytics...</div>
+
+  <ng-container *ngIf="!loading() && data() as d">
+
+    <!-- ===== STAT TILES ===== -->
+    <div class="an-stats">
+      <div class="an-stat-tile">
+        <span class="an-stat-label">Total de tarefas</span>
+        <span class="an-stat-value">{{ d.distribution.total }}</span>
+      </div>
+      <div class="an-stat-tile">
+        <span class="an-stat-label">Cycle time médio</span>
+        <span class="an-stat-value">{{ d.cycle_time.avg_days ?? '—' }}<small *ngIf="d.cycle_time.avg_days"> dias</small></span>
+      </div>
+      <div class="an-stat-tile">
+        <span class="an-stat-label">Amostra de cycle time</span>
+        <span class="an-stat-value">{{ d.cycle_time.sample_size }}</span>
+      </div>
+      <div class="an-stat-tile" *ngIf="d.burndown">
+        <span class="an-stat-label">Restantes na sprint ativa</span>
+        <span class="an-stat-value">{{ d.burndown.series[d.burndown.series.length - 1]?.remaining ?? '—' }}</span>
+      </div>
+    </div>
+
+    <div class="an-grid">
+
+      <!-- ===== DISTRIBUIÇÃO POR STATUS ===== -->
+      <div class="an-card">
+        <div class="an-card-title">Distribuição por Status</div>
+        <div class="an-bar-row" *ngFor="let s of d.distribution.by_status">
+          <span class="an-bar-label">{{ s.name }}</span>
+          <div class="an-bar-track">
+            <div class="an-bar-fill" [style.width.%]="pct(s.count, maxCount(d.distribution.by_status))" [style.background]="s.color"></div>
+          </div>
+          <span class="an-bar-value">{{ s.count }}</span>
+        </div>
+        <p class="an-empty" *ngIf="d.distribution.by_status.length === 0">Sem status cadastrados.</p>
+      </div>
+
+      <!-- ===== DISTRIBUIÇÃO POR PRIORIDADE ===== -->
+      <div class="an-card">
+        <div class="an-card-title">Distribuição por Prioridade</div>
+        <div class="an-bar-row" *ngFor="let p of d.distribution.by_priority">
+          <span class="an-bar-label">{{ p.name }}</span>
+          <div class="an-bar-track">
+            <div class="an-bar-fill" [style.width.%]="pct(p.count, maxCount(d.distribution.by_priority))" [style.background]="p.color"></div>
+          </div>
+          <span class="an-bar-value">{{ p.count }}</span>
+        </div>
+        <p class="an-empty" *ngIf="d.distribution.by_priority.length === 0">Sem prioridades cadastradas.</p>
+      </div>
+
+      <!-- ===== DISTRIBUIÇÃO POR TIPO ===== -->
+      <div class="an-card">
+        <div class="an-card-title">Distribuição por Tipo</div>
+        <div class="an-bar-row" *ngFor="let t of d.distribution.by_type">
+          <span class="an-bar-label">{{ t.name }}</span>
+          <div class="an-bar-track">
+            <div class="an-bar-fill" [style.width.%]="pct(t.count, maxCount(d.distribution.by_type))" [style.background]="t.color"></div>
+          </div>
+          <span class="an-bar-value">{{ t.count }}</span>
+        </div>
+        <p class="an-empty" *ngIf="d.distribution.by_type.length === 0">Sem tipos cadastrados.</p>
+      </div>
+
+      <!-- ===== VELOCIDADE POR SPRINT ===== -->
+      <div class="an-card an-card--wide">
+        <div class="an-card-title-row">
+          <div class="an-card-title">Velocidade por Sprint</div>
+          <div class="an-legend">
+            <span class="an-legend-item"><span class="an-legend-dot" style="background:#059669"></span>Concluídas</span>
+            <span class="an-legend-item"><span class="an-legend-dot" style="background:#D8D8D2"></span>Restantes</span>
+          </div>
+        </div>
+        <div class="an-bar-row" *ngFor="let s of d.velocity">
+          <span class="an-bar-label">{{ s.sprint_name }}</span>
+          <div class="an-bar-track an-bar-track--stack">
+            <div class="an-bar-fill" style="background:#059669"
+              [style.width.%]="s.total ? pct(s.completed, velocityMax()) : 0"></div>
+            <div class="an-bar-fill" style="background:#D8D8D2"
+              [style.width.%]="s.total ? pct(s.total - s.completed, velocityMax()) : 0"></div>
+          </div>
+          <span class="an-bar-value">{{ s.completed }}/{{ s.total }}</span>
+        </div>
+        <p class="an-empty" *ngIf="d.velocity.length === 0">Nenhuma sprint criada ainda.</p>
+      </div>
+
+      <!-- ===== CARGA POR PESSOA ===== -->
+      <div class="an-card">
+        <div class="an-card-title">Carga por Responsável</div>
+        <div class="an-bar-row" *ngFor="let w of d.workload">
+          <span class="an-bar-label">{{ w.name }}</span>
+          <div class="an-bar-track">
+            <div class="an-bar-fill" [style.width.%]="pct(w.open, workloadMax())" style="background:var(--accent)"></div>
+          </div>
+          <span class="an-bar-value">{{ w.open }}/{{ w.total }}</span>
+        </div>
+        <p class="an-empty" *ngIf="d.workload.length === 0">Nenhum responsável atribuído ainda.</p>
+      </div>
+
+      <!-- ===== BURNDOWN ===== -->
+      <div class="an-card an-card--wide" *ngIf="d.burndown as b">
+        <div class="an-card-title-row">
+          <div class="an-card-title">Burndown — {{ b.sprint_name }}</div>
+          <div class="an-legend">
+            <span class="an-legend-item"><span class="an-legend-line" style="background:var(--accent)"></span>Real</span>
+            <span class="an-legend-item"><span class="an-legend-line an-legend-line--dashed"></span>Ideal</span>
+          </div>
+        </div>
+        <svg class="an-burndown-svg" [attr.viewBox]="svgViewBox" preserveAspectRatio="none">
+          <polyline [attr.points]="burndownPoints('ideal')" fill="none" stroke="var(--text-secondary)"
+            stroke-width="2" stroke-dasharray="5,4" />
+          <polyline [attr.points]="burndownPoints('remaining')" fill="none" stroke="var(--accent)" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="an-burndown-axis">
+          <span>{{ burndownDateLabel(b.start_date) }}</span>
+          <span>{{ b.total_tasks }} tarefas na sprint</span>
+          <span *ngIf="b.end_date">{{ burndownDateLabel(b.end_date) }}</span>
+        </div>
+      </div>
+      <div class="an-card an-card--wide" *ngIf="!d.burndown">
+        <div class="an-card-title">Burndown</div>
+        <p class="an-empty">Nenhuma sprint ativa com datas definidas no momento.</p>
+      </div>
+
+    </div>
+
+  </ng-container>
+
+</div>

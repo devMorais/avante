@@ -25,4 +25,16 @@ class Status extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    /**
+     * ID do status considerado "concluído" de um board, pelo nome
+     * (Concluído/Concluido/Done/Finalizado) — usado ao finalizar sprint
+     * e para marcar tasks.completed_at automaticamente.
+     */
+    public static function concludedIdFor(int $boardId): ?int
+    {
+        return static::where('board_id', $boardId)
+            ->whereRaw("LOWER(name) IN ('concluído', 'concluido', 'done', 'finalizado')")
+            ->value('id');
+    }
 }

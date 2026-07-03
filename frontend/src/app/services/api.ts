@@ -95,6 +95,18 @@ export class ApiService {
     return this.http.delete(`${API_URL}/tasks/${id}`);
   }
 
+  bulkUpdateTasks(data: {
+    task_ids: number[];
+    status_id?: number | null;
+    priority?: string | null;
+    type?: string | null;
+    sprint_id?: number | null;
+    add_tag_id?: number;
+    add_assignee_id?: number;
+  }): Observable<any> {
+    return this.http.post(`${API_URL}/tasks/bulk-update`, data);
+  }
+
   // ---------- Sprints ----------
 
   getSprints(boardId: number): Observable<any> {
@@ -159,6 +171,46 @@ export class ApiService {
 
   deleteComment(id: number): Observable<any> {
     return this.http.delete(`${API_URL}/comments/${id}`);
+  }
+
+  // ---------- Anexos ----------
+
+  getAttachments(taskId: number): Observable<any> {
+    return this.http.get(`${API_URL}/tasks/${taskId}/attachments`);
+  }
+
+  uploadAttachment(taskId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${API_URL}/tasks/${taskId}/attachments`, formData);
+  }
+
+  deleteAttachment(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/attachments/${id}`);
+  }
+
+  // ---------- Analytics ----------
+
+  getBoardAnalytics(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/analytics/board/${boardId}`);
+  }
+
+  // ---------- Notificações ----------
+
+  getNotifications(): Observable<any> {
+    return this.http.get(`${API_URL}/notifications`);
+  }
+
+  getUnreadNotificationCount(): Observable<any> {
+    return this.http.get(`${API_URL}/notifications/unread-count`);
+  }
+
+  markNotificationRead(id: number): Observable<any> {
+    return this.http.post(`${API_URL}/notifications/${id}/read`, {});
+  }
+
+  markAllNotificationsRead(): Observable<any> {
+    return this.http.post(`${API_URL}/notifications/read-all`, {});
   }
 
   // ---------- Auth ----------
@@ -263,5 +315,91 @@ export class ApiService {
 
   deleteTag(id: number): Observable<any> {
     return this.http.delete(`${API_URL}/tags/${id}`);
+  }
+
+  // ---------- Marketing: Posts (calendário de conteúdo) ----------
+
+  getMarketingPosts(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/marketing-posts?board_id=${boardId}`);
+  }
+
+  createMarketingPost(data: any): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-posts`, data);
+  }
+
+  updateMarketingPost(id: number, data: any): Observable<any> {
+    return this.http.put(`${API_URL}/marketing-posts/${id}`, data);
+  }
+
+  deleteMarketingPost(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/marketing-posts/${id}`);
+  }
+
+  // ---------- Marketing: Leads (vendas & pipeline) ----------
+
+  getMarketingLeads(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/marketing-leads?board_id=${boardId}`);
+  }
+
+  createMarketingLead(data: any): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-leads`, data);
+  }
+
+  updateMarketingLead(id: number, data: any): Observable<any> {
+    return this.http.put(`${API_URL}/marketing-leads/${id}`, data);
+  }
+
+  deleteMarketingLead(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/marketing-leads/${id}`);
+  }
+
+  // ---------- Marketing: Ideias (banco de ideias) ----------
+
+  getMarketingIdeas(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/marketing-ideas?board_id=${boardId}`);
+  }
+
+  createMarketingIdea(data: any): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-ideas`, data);
+  }
+
+  upvoteMarketingIdea(id: number): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-ideas/${id}/upvote`, {});
+  }
+
+  deleteMarketingIdea(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/marketing-ideas/${id}`);
+  }
+
+  // ---------- Marketing: Campanhas ----------
+
+  getMarketingCampaigns(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/marketing-campaigns?board_id=${boardId}`);
+  }
+
+  createMarketingCampaign(data: any): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-campaigns`, data);
+  }
+
+  updateMarketingCampaign(id: number, data: any): Observable<any> {
+    return this.http.put(`${API_URL}/marketing-campaigns/${id}`, data);
+  }
+
+  deleteMarketingCampaign(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/marketing-campaigns/${id}`);
+  }
+
+  // ---------- Marketing: Métricas (desempenho) ----------
+
+  getMarketingMetrics(boardId: number): Observable<any> {
+    return this.http.get(`${API_URL}/marketing-metrics?board_id=${boardId}`);
+  }
+
+  createMarketingMetric(data: any): Observable<any> {
+    return this.http.post(`${API_URL}/marketing-metrics`, data);
+  }
+
+  deleteMarketingMetric(id: number): Observable<any> {
+    return this.http.delete(`${API_URL}/marketing-metrics/${id}`);
   }
 }

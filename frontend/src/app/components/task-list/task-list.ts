@@ -19,6 +19,8 @@ import { Sidebar } from '../../shared/ui/sidebar/sidebar';
 import { TaskFilters, TaskFilterValue } from '../task-filters/task-filters';
 import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 import { ConstructionComponent, ConstructionFeature } from '../../shared/ui/construction/construction';
+import { Marketing } from '../marketing/marketing';
+import { Analytics } from '../analytics/analytics';
 
 type SortField = 'description' | 'status' | 'priority' | 'assignee' | null;
 type SortDir = 'asc' | 'desc';
@@ -30,7 +32,7 @@ type SortDir = 'asc' | 'desc';
   imports: [
     CommonModule, FormsModule, DragDropModule, Button, Badge, ConfirmDialog,
     Modal, Avatar, TaskDialog, SprintManager, StatusManager, PriorityManager, TypeManager, Sidebar,
-    TaskFilters, TooltipDirective, ConstructionComponent
+    TaskFilters, TooltipDirective, ConstructionComponent, Marketing, Analytics
   ],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss'
@@ -63,29 +65,11 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Funcionalidades planejadas (páginas em construção) ----------
 
-  readonly analyticsFeatures: ConstructionFeature[] = [
-    { icon: 'trend', title: 'Velocidade da sprint', desc: 'Tarefas concluídas por sprint e tendência de entrega ao longo do tempo.' },
-    { icon: 'chart', title: 'Distribuição', desc: 'Gráficos por status, prioridade, tipo e responsável do quadro.' },
-    { icon: 'clock', title: 'Lead & cycle time', desc: 'Tempo médio entre criação, início e conclusão das atividades.' },
-    { icon: 'users', title: 'Carga por pessoa', desc: 'Quantas atividades cada responsável tem em aberto e concluídas.' },
-    { icon: 'target', title: 'Burndown', desc: 'Acompanhamento do restante da sprint dia a dia até o prazo.' },
-    { icon: 'doc', title: 'Exportar relatório', desc: 'Gerar PDF/– CSV com o resumo do quadro para compartilhar.' },
-  ];
-
   readonly educoreFeatures: ConstructionFeature[] = [
     { icon: 'book', title: 'Leitor de PDFs', desc: 'Abra materiais de estudo direto no quadro, ligados às atividades.' },
     { icon: 'doc', title: 'Trilhas de estudo', desc: 'Organize conteúdos em trilhas e marque seu progresso.' },
     { icon: 'bulb', title: 'Anotações inteligentes', desc: 'Caderno integrado com resumos e revisões espaçadas.' },
     { icon: 'target', title: 'Metas de aprendizado', desc: 'Defina objetivos e acompanhe a evolução por tema.' },
-  ];
-
-  readonly marketingFeatures: ConstructionFeature[] = [
-    { icon: 'instagram', title: 'Publicar no Instagram', desc: 'Crie, agende e publique posts e stories direto do quadro.' },
-    { icon: 'calendar', title: 'Calendário de conteúdo', desc: 'Planeje campanhas e postagens num calendário visual.' },
-    { icon: 'dollar', title: 'Vendas & pipeline', desc: 'Acompanhe leads, propostas e conversões do funil.' },
-    { icon: 'bulb', title: 'Banco de ideias', desc: 'Capture ideias de conteúdo e campanhas para priorizar depois.' },
-    { icon: 'megaphone', title: 'Campanhas', desc: 'Gerencie campanhas com metas, canais e orçamento.' },
-    { icon: 'chart', title: 'Desempenho', desc: 'Métricas de alcance, engajamento e ROI por canal.' },
   ];
 
   constructor(
@@ -510,86 +494,59 @@ export class TaskListComponent implements OnInit {
 
   // ---------- Ações em massa ----------
 
-  bulkDropdown = signal<'status' | 'priority' | 'sprint' | 'assignee' | null>(null);
+  bulkDropdown = signal<'status' | 'priority' | 'type' | 'tags' | 'sprint' | 'assignee' | null>(null);
   bulkUpdating = signal(false);
 
-  toggleBulkDropdown(type: 'status' | 'priority' | 'sprint' | 'assignee') {
+  toggleBulkDropdown(type: 'status' | 'priority' | 'type' | 'tags' | 'sprint' | 'assignee') {
     this.bulkDropdown.set(this.bulkDropdown() === type ? null : type);
   }
 
   closeBulkDropdown() { this.bulkDropdown.set(null); }
 
-  bulkUpdateField(field: 'status_id' | 'priority', value: any, label: string) {
+  private runBulkUpdate(payload: Partial<{
+    status_id: number | null; priority: string | null; type: string | null;
+    sprint_id: number | null; add_tag_id: number; add_assignee_id: number;
+  }>, label: string) {
     const ids = Array.from(this.selectedIds());
     if (!ids.length) return;
     this.bulkUpdating.set(true);
     this.closeBulkDropdown();
 
-    let completed = 0;
-    const updatedTasks = [...this.tasks()];
-
-    for (const id of ids) {
-      this.apiService.updateTask(id, { [field]: value }).subscribe({
-        next: (updated) => {
-          const idx = updatedTasks.findIndex(t => t.id === id);
-          if (idx !== -1) updatedTasks[idx] = updated;
-          completed++;
-          if (completed === ids.length) {
-            this.tasks.set([...updatedTasks]);
-            this.bulkUpdating.set(false);
-            this.showToast(`${ids.length} tarefa(s) atualizadas — ${label}`);
-          }
-        },
-        error: (err) => {
-          console.error('Erro ao atualizar em massa:', err);
-          completed++;
-          if (completed === ids.length) {
-            this.bulkUpdating.set(false);
-            this.loadTasks();
-          }
-        }
-      });
-    }
+    this.apiService.bulkUpdateTasks({ task_ids: ids, ...payload }).subscribe({
+      next: (updated: any[]) => {
+        const byId = new Map(updated.map(t => [t.id, t]));
+        this.tasks.set(this.tasks().map(t => byId.get(t.id) ?? t));
+        this.bulkUpdating.set(false);
+        this.showToast(`${ids.length} tarefa(s) atualizadas — ${label}`);
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar em massa:', err);
+        this.bulkUpdating.set(false);
+        this.loadTasks();
+      }
+    });
   }
 
   bulkSetStatus(status: any) {
-    this.bulkUpdateField('status_id', status.id, status.name);
+    this.runBulkUpdate({ status_id: status.id }, status.name);
   }
 
   bulkSetPriority(priority: string) {
-    this.bulkUpdateField('priority', priority, priority);
+    this.runBulkUpdate({ priority }, priority);
+  }
+
+  bulkSetType(type: any) {
+    this.runBulkUpdate({ type: type.name }, type.name);
+  }
+
+  bulkAddTag(tag: any) {
+    this.runBulkUpdate({ add_tag_id: tag.id }, `tag "${tag.name}" adicionada`);
   }
 
   bulkAssigneeSearch = signal('');
 
   bulkAddAssignee(user: any) {
-    const ids = Array.from(this.selectedIds());
-    if (!ids.length) return;
-    this.bulkUpdating.set(true);
-    this.closeBulkDropdown();
-    let completed = 0;
-    const updatedTasks = [...this.tasks()];
-    for (const id of ids) {
-      const task = updatedTasks.find(t => t.id === id);
-      const current: number[] = (task?.assignees ?? []).map((u: any) => Number(u.id));
-      const merged = current.includes(Number(user.id)) ? current : [...current, Number(user.id)];
-      this.apiService.updateTask(id, { assignee_ids: merged }).subscribe({
-        next: (updated) => {
-          const idx = updatedTasks.findIndex(t => t.id === id);
-          if (idx !== -1) updatedTasks[idx] = updated;
-          completed++;
-          if (completed === ids.length) {
-            this.tasks.set([...updatedTasks]);
-            this.bulkUpdating.set(false);
-            this.showToast(`${ids.length} tarefa(s) atribuídas para ${user.name}`);
-          }
-        },
-        error: () => {
-          completed++;
-          if (completed === ids.length) { this.bulkUpdating.set(false); this.loadTasks(); }
-        }
-      });
-    }
+    this.runBulkUpdate({ add_assignee_id: user.id }, `atribuídas para ${user.name}`);
   }
 
   filteredBulkUsers = computed(() => {
@@ -610,25 +567,20 @@ export class TaskListComponent implements OnInit {
     const ids = Array.from(this.selectedIds());
     if (ids.length === 0) return;
     this.movingToSprint.set(true);
-    let completed = 0;
-    for (const id of ids) {
-      this.apiService.updateTask(id, { sprint_id: sprintId }).subscribe({
-        next: () => {
-          completed++;
-          if (completed === ids.length) {
-            this.movingToSprint.set(false);
-            this.moveSprintModalOpen.set(false);
-            this.selectedIds.set(new Set());
-            this.loadTasks();
-          }
-        },
-        error: (err) => {
-          console.error('Erro ao mover tarefa:', err);
-          completed++;
-          if (completed === ids.length) { this.movingToSprint.set(false); this.moveSprintModalOpen.set(false); this.loadTasks(); }
-        }
-      });
-    }
+    this.apiService.bulkUpdateTasks({ task_ids: ids, sprint_id: sprintId }).subscribe({
+      next: () => {
+        this.movingToSprint.set(false);
+        this.moveSprintModalOpen.set(false);
+        this.selectedIds.set(new Set());
+        this.loadTasks();
+      },
+      error: (err) => {
+        console.error('Erro ao mover tarefa:', err);
+        this.movingToSprint.set(false);
+        this.moveSprintModalOpen.set(false);
+        this.loadTasks();
+      }
+    });
   }
 
   // ---------- Modal criar/editar atividade ----------
@@ -642,6 +594,7 @@ export class TaskListComponent implements OnInit {
     this.dialogMode = 'create';
     this.editingTask = null;
     this.comments.set([]);
+    this.attachments.set([]);
     this.taskDialogOpen.set(true);
   }
 
@@ -650,6 +603,7 @@ export class TaskListComponent implements OnInit {
     this.editingTask = task;
     this.taskDialogOpen.set(true);
     this.loadComments(task.id);
+    this.loadAttachments(task.id);
   }
 
   closeTaskDialog() { this.taskDialogOpen.set(false); }
@@ -692,6 +646,39 @@ export class TaskListComponent implements OnInit {
     this.apiService.deleteComment(id).subscribe({
       next: () => this.loadComments(this.editingTask.id),
       error: (err) => console.error('Erro ao excluir comentário:', err)
+    });
+  }
+
+  // ---------- Arquivos compartilhados ----------
+
+  attachments = signal<any[]>([]);
+  uploadingAttachment = signal(false);
+
+  loadAttachments(taskId: number) {
+    this.apiService.getAttachments(taskId).subscribe({
+      next: (data) => this.attachments.set(data),
+      error: (err) => console.error('Erro ao carregar arquivos:', err)
+    });
+  }
+
+  onUploadAttachment(file: File) {
+    if (!this.editingTask) return;
+    this.uploadingAttachment.set(true);
+    this.apiService.uploadAttachment(this.editingTask.id, file).subscribe({
+      next: () => { this.loadAttachments(this.editingTask.id); this.uploadingAttachment.set(false); },
+      error: (err) => {
+        console.error('Erro ao enviar arquivo:', err);
+        this.uploadingAttachment.set(false);
+        this.showToast('Não foi possível enviar o arquivo.');
+      }
+    });
+  }
+
+  onRemoveAttachment(id: number) {
+    if (!this.editingTask) return;
+    this.apiService.deleteAttachment(id).subscribe({
+      next: () => this.loadAttachments(this.editingTask.id),
+      error: (err) => console.error('Erro ao excluir arquivo:', err)
     });
   }
 
@@ -1020,6 +1007,75 @@ export class TaskListComponent implements OnInit {
         : t
     ));
     this.apiService.reorderTasks(items).subscribe();
+  }
+
+  // ---------- Kanban (colunas por status) ----------
+
+  kanbanColumns = computed(() => {
+    const tasks = this.tasks();
+    const bySort = (a: any, b: any) => (a.sort_order ?? 0) - (b.sort_order ?? 0);
+
+    const cols: { status: any; tasks: any[] }[] = this.statuses().map(s => ({
+      status: s,
+      tasks: tasks.filter(t => t.status_id === s.id).sort(bySort),
+    }));
+
+    const noStatus = tasks.filter(t => !t.status_id).sort(bySort);
+    if (noStatus.length > 0) {
+      cols.unshift({ status: null, tasks: noStatus });
+    }
+    return cols;
+  });
+
+  kanbanDropIds = computed(() =>
+    this.kanbanColumns().map(c => 'kanban-' + (c.status?.id ?? 'none'))
+  );
+
+  kanbanDropId(col: any): string {
+    return 'kanban-' + (col.status?.id ?? 'none');
+  }
+
+  onKanbanDrop(event: CdkDragDrop<any[]>, targetCol: any) {
+    const task = event.item.data;
+    const sameCol = event.previousContainer === event.container;
+
+    if (sameCol) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    }
+
+    const newStatusId = targetCol.status?.id ?? null;
+    const items = event.container.data.map((t: any, i: number) => ({ id: t.id, sort_order: i }));
+    const orderById = new Map(items.map((it: any) => [it.id, it.sort_order]));
+
+    this.tasks.set(this.tasks().map(t => {
+      const patch: any = {};
+      if (orderById.has(t.id)) patch.sort_order = orderById.get(t.id);
+      if (t.id === task.id && !sameCol) {
+        patch.status_id = newStatusId;
+        patch.status = targetCol.status;
+        patch.completed_at = targetCol.status?.name && /conclu/i.test(targetCol.status.name)
+          ? (t.completed_at ?? new Date().toISOString())
+          : null;
+      }
+      return Object.keys(patch).length ? { ...t, ...patch } : t;
+    }));
+
+    if (!sameCol) {
+      this.apiService.updateTask(task.id, { status_id: newStatusId }).subscribe({
+        next: (updated) => {
+          this.tasks.set(this.tasks().map(t => t.id === updated.id ? { ...t, ...updated } : t));
+          if (updated.status?.name && /conclu/i.test(updated.status.name)) {
+            const msg = this.MOTIVATIONAL_COMPLETE[Math.floor(Math.random() * this.MOTIVATIONAL_COMPLETE.length)];
+            this.showToast(msg);
+          }
+        },
+        error: () => this.loadTasks(),
+      });
+    }
+
+    this.apiService.reorderTasks(items).subscribe({ error: () => this.loadTasks() });
   }
 
   // ---------- JSON Bulk Import ----------

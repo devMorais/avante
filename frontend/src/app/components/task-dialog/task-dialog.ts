@@ -59,14 +59,19 @@ export class TaskDialog implements OnChanges {
   @Input() comments: any[] = [];
   @Input() savingComment = false;
 
+  @Input() attachments: any[] = [];
+  @Input() uploadingAttachment = false;
+
   @Output() closeDialog = new EventEmitter<void>();
   @Output() save = new EventEmitter<TaskFormValue>();
   @Output() addComment = new EventEmitter<{ content: string }>();
   @Output() removeComment = new EventEmitter<number>();
   @Output() manageAssignees = new EventEmitter<void>();
   @Output() deleteTask = new EventEmitter<void>();
+  @Output() uploadAttachment = new EventEmitter<File>();
+  @Output() removeAttachment = new EventEmitter<number>();
 
-  activeTab: 'details' | 'notes' = 'details';
+  activeTab: 'details' | 'notes' | 'files' = 'details';
 
   // Imagens coladas na descrição (base64, localStorage)
   descImages: { id: string; data: string; name: string }[] = [];
@@ -638,6 +643,34 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
   }
 
   onClose() { this.closeDialog.emit(); }
+
+  // -------- Arquivos compartilhados (servidor, todos podem baixar) --------
+
+  onAttachmentFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (file) this.uploadAttachment.emit(file);
+    input.value = '';
+  }
+
+  onRemoveAttachment(id: number) { this.removeAttachment.emit(id); }
+
+  formatFileSize(bytes: number): string {
+    if (!bytes) return '0 KB';
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
+  fileIconFor(mime: string | null): string {
+    if (!mime) return '📄';
+    if (mime.startsWith('image/')) return '🖼️';
+    if (mime.includes('pdf')) return '📕';
+    if (mime.includes('zip') || mime.includes('rar') || mime.includes('7z')) return '🗜️';
+    if (mime.includes('word') || mime.includes('document')) return '📝';
+    if (mime.includes('sheet') || mime.includes('excel')) return '📊';
+    if (mime.includes('presentation') || mime.includes('powerpoint')) return '📽️';
+    return '📄';
+  }
 
   // -------- Tags --------
 
