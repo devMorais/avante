@@ -2,7 +2,7 @@
 
 > ⚠️ Mantenha este arquivo atualizado a cada mudança estrutural do projeto.
 > Ele serve como memória viva para desenvolvedores e IAs entenderem o projeto rapidamente.
-> Última atualização: 02/07/2026 — Leva grande: alinhamento fino da tabela + ações em massa (Tipo/Tags, endpoint bulk-update, setas nos popovers); modo claro/escuro em todo o sistema (ThemeService, tokens globais); notificações in-app (sino no sidebar) + foto real nos comentários; anexos de arquivo compartilhados por tarefa (aba "Arquivos", servidor); área de Marketing funcional (calendário de conteúdo, pipeline de leads, banco de ideias, campanhas, desempenho); área de Analytics funcional (distribuição, velocidade, carga por pessoa, burndown, cycle time, export CSV/PDF); infraestrutura de avisos via WhatsApp (opt-in no perfil, gateway plugável, comando agendado). Antes: Arquivar/restaurar quadros (archived_at; seção colapsável "Arquivados" na board-list; endpoints PATCH archive/unarchive); Modal só fecha no X; comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; sidebar no perfil.
+> Última atualização: 04/07/2026 — Correção de documentação após auditoria técnica completa: visão **Kanban real com drag-and-drop** (`@angular/cdk/drag-drop`, toggle Tabela/Kanban) documentada no task-list (existia no código mas não estava descrita aqui); removida a menção a paginação de 25/página (`GET /api/tasks` não pagina, retorna tudo); Analytics não é mais menu placeholder. Board de produção (id=8) zerado e recriado com plano novo focado em prontidão comercial (multi-tenancy, autorização, segurança, testes, responsividade) — ver task `[META-01]` no board para o histórico completo da auditoria. Antes (02/07/2026): Leva grande: alinhamento fino da tabela + ações em massa (Tipo/Tags, endpoint bulk-update, setas nos popovers); modo claro/escuro em todo o sistema (ThemeService, tokens globais); notificações in-app (sino no sidebar) + foto real nos comentários; anexos de arquivo compartilhados por tarefa (aba "Arquivos", servidor); área de Marketing funcional (calendário de conteúdo, pipeline de leads, banco de ideias, campanhas, desempenho); área de Analytics funcional (distribuição, velocidade, carga por pessoa, burndown, cycle time, export CSV/PDF); infraestrutura de avisos via WhatsApp (opt-in no perfil, gateway plugável, comando agendado). Antes disso: Arquivar/restaurar quadros (archived_at; seção colapsável "Arquivados" na board-list; endpoints PATCH archive/unarchive); Modal só fecha no X; comentários abaixo da descrição; colar imagens (Ctrl+V) na descrição; tipo de tarefa (DB) com faixa colorida; full-width geral; sidebar no perfil.
 
 ---
 
@@ -341,16 +341,17 @@ const BACKEND_URL = environment.backendUrl;
 - Lista quadros com busca
 - Cria/edita/deleta quadros (com ícone)
 - Abre sidebar para gerenciar usuários
-- Sidebar com menus placeholder: Analytics e EduCore (badge "Em breve", toast ao clicar)
+- Sidebar com menu placeholder: EduCore (badge "Em breve", toast ao clicar) — Analytics já é real (ver `app-analytics`)
 
 **task-list** (página principal)
-- Agrupamento por sprint ordenado por `start_date`
-- Cabeçalho por sprint: nome, contagem, datas, barra de progresso, badge "Vencida/Finalizada", botão "Finalizar Sprint"
+- Duas visões alternáveis (toggle no header): **Tabela** (agrupada por sprint, ordenado por `start_date`) e **Kanban** (uma coluna por status, incluindo "Sem status") — ambas com drag-and-drop real via `@angular/cdk/drag-drop` (`cdkDropList`/`cdkDrag`), persistindo `sort_order` via `reorderTasks()`
+- Cabeçalho por sprint (visão Tabela): nome, contagem, datas, barra de progresso, badge "Vencida/Finalizada", botão "Finalizar Sprint"
+- Mudança de status por 3 caminhos: popover no badge (Tabela), drag-and-drop entre colunas (Kanban), ação em massa
 - Seleção individual e por sprint com indeterminate
 - Barra flutuante de ações em lote (status, prioridade, mover sprint)
 - Mover tarefas entre sprints via modal
-- Sidebar com abas: Tasks, Sprints, Statuses + menus Analytics e EduCore (em breve)
-- Paginação 25/página, filtros, ordenação local
+- Sidebar com abas: Tasks, Sprints, Statuses + menu EduCore (em breve)
+- **Sem paginação real ainda**: `GET /api/tasks` retorna todas as tasks do board de uma vez (`TaskController::index` não pagina); filtros e ordenação são locais no frontend
 - **Importar JSON em massa**: botão no header, modal com textarea JSON, sprint/status padrão, barra de progresso por tarefa
 - **Toast motivacional** ao mover tarefa para status "Concluída" (7 frases aleatórias)
 - Responsivo: task-row vira card em mobile (meta de status/prioridade inline)
@@ -481,7 +482,7 @@ public function getAvatarUrlAttribute($value): ?string {
 
 ### Paginação de tasks
 
-- 25 itens por página
+- **Ainda não existe** — `GET /api/tasks` devolve todas as tasks do board numa resposta só (sem `page`/`per_page` reais no backend, embora o tipo do método `getTasks` no `api.ts` já preveja os parâmetros)
 - Filtros: `board_id`, `status_ids[]`, `priorities[]`, `assignee_ids[]`, `search`
 - Ordenação local no frontend
 
@@ -501,9 +502,9 @@ public function getAvatarUrlAttribute($value): ?string {
 - Importação sequencial (uma tarefa por vez via `POST /api/tasks`), barra de progresso em tempo real
 - Erros por item são listados mas não interrompem o restante da importação
 
-### Menus placeholder (em breve)
+### Menu placeholder (em breve)
 
-- Sidebars de `board-list` e `task-list` têm itens "Analytics" e "EduCore"
+- Sidebars de `board-list` e `task-list` têm o item "EduCore" (Analytics deixou de ser placeholder em 02/07/2026 — ver histórico de decisões)
 - Badge âmbar "Em breve" visível quando sidebar expandida
 - Clicar exibe toast roxo gradiente "Funcionalidade em evolução. Em breve!"
 - Implementar ao integrar com EduCore (leitor de PDFs em `C:\Users\UITEC\Herd\EduCore`)
@@ -610,3 +611,5 @@ DEPLOY.md
 | 02/07/2026 | Anexos de tarefa no servidor (`storage/app/public`, mesmo padrão do avatar) em vez de localStorage | Precisam ser baixáveis por qualquer pessoa do quadro, não só por quem enviou — diferente do "Caderno" (pessoal, local) |
 | 02/07/2026 | Dark mode via classe `.dark` em `<html>` + tokens CSS centralizados em `styles.scss` | Componentes já usavam os mesmos nomes de variável duplicados por arquivo; centralizar foi suficiente para o tema propagar sem reescrever cada tela |
 | 02/07/2026 | WhatsApp: infraestrutura completa (opt-in no perfil, `WhatsAppGateway` HTTP plugável, comando `app:notify-whatsapp-digest` agendado) sem conectar um provedor real | Sem conta/credenciais de um gateway (Z-API/UltraMsg/Meta Cloud API) ainda; serviço loga em vez de enviar quando `WHATSAPP_API_URL` não está no `.env` — plugar depois é só configurar o `.env` |
+| 04/07/2026 | Backlog do board 8 (produção) zerado e recriado do zero, ancorado numa auditoria técnica de código (não em suposições) | O board anterior tinha ~1/3 das tarefas marcadas "Concluída" sem nenhuma linha de código correspondente (due_date/story_points/checklist nunca existiram) e ~1/5 de recursos já prontos (Kanban, dark mode, tags, notificações) sem status nenhum — os dados não eram confiáveis para planejar o próximo passo |
+| 04/07/2026 | Demandas do novo plano são independentes e full-stack (sem split backend/frontend por pessoa) | Evita bloqueio de uma pessoa esperando a outra; Fernando e Claudia executam tanto back quanto front, complexidade decide quem pega cada uma |
