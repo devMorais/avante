@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { forkJoin } from 'rxjs';
 import { ApiService } from '../../services/api';
 
 import { Button } from '../../shared/ui/button/button';
@@ -661,15 +662,17 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  onUploadAttachment(file: File) {
-    if (!this.editingTask) return;
+  onUploadAttachment(files: File[]) {
+    if (!this.editingTask || !files.length) return;
+    const taskId = this.editingTask.id;
     this.uploadingAttachment.set(true);
-    this.apiService.uploadAttachment(this.editingTask.id, file).subscribe({
-      next: () => { this.loadAttachments(this.editingTask.id); this.uploadingAttachment.set(false); },
+    forkJoin(files.map((file) => this.apiService.uploadAttachment(taskId, file))).subscribe({
+      next: () => { this.loadAttachments(taskId); this.uploadingAttachment.set(false); },
       error: (err) => {
-        console.error('Erro ao enviar arquivo:', err);
+        console.error('Erro ao enviar arquivo(s):', err);
+        this.loadAttachments(taskId); // alguns podem ter subido antes do erro — recarrega pra refletir
         this.uploadingAttachment.set(false);
-        this.showToast('Não foi possível enviar o arquivo.');
+        this.showToast(files.length > 1 ? 'Não foi possível enviar todos os arquivos.' : 'Não foi possível enviar o arquivo.');
       }
     });
   }

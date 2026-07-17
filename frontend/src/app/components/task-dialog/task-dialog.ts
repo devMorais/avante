@@ -68,7 +68,7 @@ export class TaskDialog implements OnChanges {
   @Output() removeComment = new EventEmitter<number>();
   @Output() manageAssignees = new EventEmitter<void>();
   @Output() deleteTask = new EventEmitter<void>();
-  @Output() uploadAttachment = new EventEmitter<File>();
+  @Output() uploadAttachment = new EventEmitter<File[]>();
   @Output() removeAttachment = new EventEmitter<number>();
 
   activeTab: 'details' | 'notes' | 'files' = 'details';
@@ -648,8 +648,8 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
 
   onAttachmentFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
-    if (file) this.uploadAttachment.emit(file);
+    const files = input.files ? Array.from(input.files) : [];
+    if (files.length) this.uploadAttachment.emit(files);
     input.value = '';
   }
 
@@ -659,6 +659,10 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
     if (!bytes) return '0 KB';
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
+  isImage(mime: string | null): boolean {
+    return !!mime && mime.startsWith('image/');
   }
 
   fileIconFor(mime: string | null): string {

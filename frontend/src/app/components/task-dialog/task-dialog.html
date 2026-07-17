@@ -607,13 +607,24 @@ $$
           stroke="currentColor" stroke-width="2" stroke-linecap="round" class="spin">
           <path d="M21 12a9 9 0 1 1-6.219-8.56" />
         </svg>
-        {{ uploadingAttachment ? 'Enviando...' : 'Enviar arquivo' }}
-        <input type="file" (change)="onAttachmentFileSelected($event)" [disabled]="uploadingAttachment" />
+        {{ uploadingAttachment ? 'Enviando...' : 'Enviar arquivos' }}
+        <input type="file" multiple (change)="onAttachmentFileSelected($event)" [disabled]="uploadingAttachment" />
       </label>
 
       <div class="files-list">
         <div *ngFor="let a of attachments" class="file-item">
-          <span class="file-icon">{{ fileIconFor(a.mime_type) }}</span>
+          <button
+            *ngIf="isImage(a.mime_type); else fileIconTpl"
+            type="button"
+            class="file-thumb"
+            (click)="openImageViewer({ data: a.url, name: a.original_name })"
+            appTooltip="Ver imagem"
+          >
+            <img [src]="a.url" [alt]="a.original_name" loading="lazy" />
+          </button>
+          <ng-template #fileIconTpl>
+            <span class="file-icon">{{ fileIconFor(a.mime_type) }}</span>
+          </ng-template>
           <div class="file-info">
             <span class="file-name" [appTooltip]="a.original_name">{{ a.original_name }}</span>
             <span class="file-meta">
