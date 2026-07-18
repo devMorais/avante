@@ -914,6 +914,7 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 10px;
   background: var(--surface);
   border: 1px solid var(--border);
