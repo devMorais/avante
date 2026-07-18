@@ -61,6 +61,15 @@
       <div class="details-main">
         <div class="field field--full">
           <div class="field-label-row">
+            <span class="field-label">Título <span class="field-required">*</span></span>
+            <span class="field-counter">{{ formTitulo.length }}/150</span>
+          </div>
+          <input type="text" [(ngModel)]="formTitulo" maxlength="150" class="field-input"
+            placeholder="Título curto — é o que aparece no card do Kanban" />
+        </div>
+
+        <div class="field field--full">
+          <div class="field-label-row">
             <span class="field-label">História / Descrição</span>
             <span class="field-counter">{{ charCount }} chars · {{ wordCount }} palavras</span>
           </div>
@@ -675,7 +684,7 @@ $$
       </button>
       <span class="dialog-actions-spacer"></span>
       <app-button variant="text" (clicked)="onClose()">Cancelar</app-button>
-      <app-button variant="primary" (clicked)="onSave()" [disabled]="!formDescription.trim() || saving">
+      <app-button variant="primary" (clicked)="onSave()" [disabled]="!formTitulo.trim() || !formDescription.trim() || saving">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round" *ngIf="!saving">
           <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>

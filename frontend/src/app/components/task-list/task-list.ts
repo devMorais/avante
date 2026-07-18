@@ -86,11 +86,26 @@ export class TaskListComponent implements OnInit {
     if (this.currentArea() !== prevArea || s === 'tasks' || s === 'marketing') {
       this.loadAll();
     }
+    this.syncSectionToUrl();
   }
 
   setMarketingTab(t: 'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance') {
     this.marketingTab.set(t);
     if (t === 'tasks') this.loadAll();
+    this.syncSectionToUrl();
+  }
+
+  // Guarda a aba/sub-aba ativa na URL (?section=...&mtab=...) para sobreviver
+  // a um F5 — sem isso a tela sempre voltava pra "Tarefas" ao atualizar a página.
+  private syncSectionToUrl() {
+    const queryParams: any = { section: this.section() };
+    if (this.section() === 'marketing') queryParams.mtab = this.marketingTab();
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
 
   reloadPriorities() { this.loadPriorities(); }
@@ -112,6 +127,15 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.boardId = Number(this.route.snapshot.paramMap.get('id'));
+
+    const qp = this.route.snapshot.queryParamMap;
+    const validSections = ['tasks', 'sprints', 'statuses', 'priorities', 'types', 'marketing', 'analytics', 'educore'];
+    const qSection = qp.get('section');
+    if (qSection && validSections.includes(qSection)) this.section.set(qSection as any);
+    const qMtab = qp.get('mtab');
+    const validMtabs = ['tasks', 'pipeline', 'ideas', 'campaigns', 'performance'];
+    if (qMtab && validMtabs.includes(qMtab)) this.marketingTab.set(qMtab as any);
+
     this.loadBoard();
     this.loadSprints();
     this.loadStatuses();
@@ -216,7 +240,7 @@ export class TaskListComponent implements OnInit {
     const d = dir === 'asc' ? 1 : -1;
     return [...tasks].sort((a, b) => {
       let av: any, bv: any;
-      if (field === 'description') { av = (a.description ?? '').toLowerCase(); bv = (b.description ?? '').toLowerCase(); }
+      if (field === 'description') { av = this.titleFor(a).toLowerCase(); bv = this.titleFor(b).toLowerCase(); }
       else if (field === 'status') { av = (a.status?.name ?? '').toLowerCase(); bv = (b.status?.name ?? '').toLowerCase(); }
       else if (field === 'priority') {
         av = this.priorityOrder(a.priority);
@@ -1182,6 +1206,7 @@ export class TaskListComponent implements OnInit {
       const payload: any = {
         board_id: this.boardId,
         area: this.currentArea(),
+        titulo: (item.titulo ?? item.description).trim().slice(0, 150),
         description: item.description.trim(),
         priority: item.priority ?? 'Média',
         epic: item.epic ?? undefined,
@@ -1245,6 +1270,12 @@ export class TaskListComponent implements OnInit {
     const maxLength = 200;
     if (trimmed.length <= maxLength) return trimmed;
     return trimmed.slice(0, maxLength).trimEnd() + '…';
+  }
+
+  // Título curto exibido no card/linha — usa o campo dedicado `titulo`;
+  // cai pra descrição só como salvaguarda (tarefa antiga sem titulo preenchido).
+  titleFor(task: any): string {
+    return task?.titulo?.trim() || this.summaryFor(task?.description);
   }
 
   copiedTaskId = signal<number | null>(null);

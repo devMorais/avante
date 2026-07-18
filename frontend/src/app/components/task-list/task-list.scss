@@ -807,7 +807,7 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
 .kanban-board {
   display: flex;
   align-items: stretch;
-  gap: 16px;
+  gap: 20px;
   height: calc(100vh - 250px);
   min-height: 460px;
   overflow-x: auto;
@@ -826,8 +826,8 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
 }
 
 .kanban-col {
-  flex: 0 0 306px;
-  width: 306px;
+  flex: 0 0 322px;
+  width: 322px;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -890,8 +890,8 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 10px;
+  gap: 10px;
+  padding: 12px;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   transition: background 0.15s ease, box-shadow 0.15s ease;
 
@@ -935,7 +935,7 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
 }
 
 .kanban-card-preview {
-  width: 278px;
+  width: 292px;
   cursor: grabbing;
   box-shadow: 0 16px 40px rgba(28, 28, 31, 0.24);
   border-color: var(--accent);
@@ -983,8 +983,8 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
 
 .kanban-card-title {
   margin: 0;
-  font-size: 13.5px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.4;
   color: var(--text-primary);
   display: -webkit-box;

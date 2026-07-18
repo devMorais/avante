@@ -41,7 +41,11 @@ class TaskController extends Controller
             });
         }
         if ($request->filled('search')) {
-            $query->where('description', 'like', '%' . $request->search . '%');
+            $term = '%' . $request->search . '%';
+            $query->where(function ($q) use ($term) {
+                $q->where('titulo', 'like', $term)
+                    ->orWhere('description', 'like', $term);
+            });
         }
 
         $query->orderBy('sort_order')->orderBy('created_at', 'desc');
@@ -57,6 +61,7 @@ class TaskController extends Controller
             'sprint_id'   => 'nullable|exists:sprints,id',
             'status_id'   => 'nullable|exists:statuses,id',
             'assigned_to' => 'nullable|exists:users,id',
+            'titulo'      => 'required|string|max:150',
             'description' => 'required|string',
             'priority'    => 'nullable|string',
             'epic'        => 'nullable|string',
@@ -109,6 +114,7 @@ class TaskController extends Controller
             'assignee_ids.*' => 'exists:users,id',
             'tag_ids'        => 'nullable|array',
             'tag_ids.*'      => 'exists:tags,id',
+            'titulo'         => 'sometimes|required|string|max:150',
             'description'    => 'sometimes|required|string',
             'priority'       => 'nullable|string',
             'epic'           => 'nullable|string',

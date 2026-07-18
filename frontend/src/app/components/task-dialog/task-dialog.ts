@@ -18,6 +18,7 @@ import { TooltipDirective } from '../../shared/ui/tooltip/tooltip';
 import { ApiService } from '../../services/api';
 
 export interface TaskFormValue {
+  titulo: string;
   description: string;
   status_id: number | null;
   priority: string;
@@ -114,6 +115,7 @@ export class TaskDialog implements OnChanges {
 
   onDelete() { this.deleteTask.emit(); }
 
+  formTitulo = '';
   formDescription = '';
   formStatusId: number | null = null;
   formPriority = 'Média';
@@ -179,6 +181,7 @@ export class TaskDialog implements OnChanges {
     this.previewMode = false;
 
     if (this.mode === 'edit' && this.task) {
+      this.formTitulo = this.task.titulo ?? '';
       this.formDescription = this.task.description ?? '';
       this.formStatusId = this.task.status_id;
       this.formPriority = this.task.priority ?? 'Média';
@@ -192,6 +195,7 @@ export class TaskDialog implements OnChanges {
       this.descImages = this.loadDescImages(this.task.id);
       this.startTimer(this.task.id);
     } else {
+      this.formTitulo = '';
       this.formDescription = '';
       this.formStatusId = this.statuses[0]?.id ?? null;
       this.formPriority = 'Média';
@@ -702,8 +706,9 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
   }
 
   onSave() {
-    if (!this.formDescription.trim() || this.saving) return;
+    if (!this.formTitulo.trim() || !this.formDescription.trim() || this.saving) return;
     this.save.emit({
+      titulo: this.formTitulo.trim(),
       description: this.formDescription.trim(),
       status_id: this.formStatusId,
       priority: this.formPriority,

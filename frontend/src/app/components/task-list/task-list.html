@@ -555,7 +555,7 @@
                 <!-- Drag preview -->
                 <div *cdkDragPlaceholder class="task-drag-placeholder"></div>
                 <div *cdkDragPreview class="task-drag-preview">
-                  <span class="task-drag-preview-text">{{ summaryFor(task.description) }}</span>
+                  <span class="task-drag-preview-text">{{ titleFor(task) }}</span>
                 </div>
 
                 <!-- Faixa de tipo (cor) — clique abre popover de tipo -->
@@ -579,7 +579,7 @@
                 </div>
 
                 <div class="task-title-cell">
-                  <span class="task-title">{{ summaryFor(task.description) }}</span>
+                  <span class="task-title">{{ titleFor(task) }}</span>
                   <span *ngIf="task.release" class="task-release-badge" [appTooltip]="'Release: ' + task.release">
                     {{ task.release }}
                   </span>
@@ -741,7 +741,7 @@
                   </span>
                 </div>
 
-                <p class="kanban-card-title">{{ summaryFor(task.description) }}</p>
+                <p class="kanban-card-title">{{ titleFor(task) }}</p>
 
                 <div class="kanban-card-tags" *ngIf="task.tags?.length > 0 || task.epic">
                   <span *ngIf="task.epic" class="kanban-card-epic">{{ task.epic }}</span>
@@ -784,7 +784,7 @@
                 </span>
               </div>
 
-              <p class="kanban-card-title">{{ summaryFor(task.description) }}</p>
+              <p class="kanban-card-title">{{ titleFor(task) }}</p>
 
               <div class="kanban-card-tags" *ngIf="task.tags?.length > 0 || task.epic">
                 <span *ngIf="task.epic" class="kanban-card-epic" [appTooltip]="task.epic">{{ task.epic }}</span>

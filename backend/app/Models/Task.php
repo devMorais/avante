@@ -15,6 +15,7 @@ class Task extends Model
         'sprint_id',
         'status_id',
         'assigned_to',
+        'titulo',
         'description',
         'priority',
         'epic',
