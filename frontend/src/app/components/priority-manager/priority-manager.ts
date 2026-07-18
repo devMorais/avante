@@ -24,6 +24,10 @@ export class PriorityManager implements OnInit {
   @Input() boardId!: number;
   @Output() prioritiesChanged = new EventEmitter<void>();
 
+  // Prioridades de programação e de marketing são conjuntos separados —
+  // a sub-navegação troca qual conjunto é exibido/editado aqui.
+  area = signal<'programming' | 'marketing'>('programming');
+
   priorities = signal<any[]>([]);
   loading = signal(true);
   saving = signal(false);
@@ -45,9 +49,15 @@ export class PriorityManager implements OnInit {
 
   ngOnInit(): void { this.loadPriorities(); }
 
+  setArea(a: 'programming' | 'marketing') {
+    if (this.area() === a) return;
+    this.area.set(a);
+    this.loadPriorities();
+  }
+
   loadPriorities() {
     this.loading.set(true);
-    this.apiService.getPriorities(this.boardId).subscribe({
+    this.apiService.getPriorities(this.boardId, this.area()).subscribe({
       next: (data) => { this.priorities.set(data); this.loading.set(false); },
       error: () => this.loading.set(false)
     });
@@ -100,14 +110,16 @@ export class PriorityManager implements OnInit {
     if (!this.form.name.trim() || this.saving()) return;
     this.saving.set(true);
 
-    const payload = {
+    const isEdit = this.dialogMode === 'edit' && this.editingPriority;
+    const payload: any = {
       board_id: this.boardId,
       name: this.form.name.trim(),
       color: this.form.color || '#6B6B70',
       order: Number(this.form.order),
     };
+    if (!isEdit) payload.area = this.area();
 
-    const req$ = this.dialogMode === 'edit' && this.editingPriority
+    const req$ = isEdit
       ? this.apiService.updatePriority(this.editingPriority.id, payload)
       : this.apiService.createPriority(payload);
 

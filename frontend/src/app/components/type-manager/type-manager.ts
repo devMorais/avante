@@ -24,6 +24,10 @@ export class TypeManager implements OnInit {
   @Input() boardId!: number;
   @Output() typesChanged = new EventEmitter<void>();
 
+  // Tipos de programação e de marketing são conjuntos separados — a
+  // sub-navegação troca qual conjunto é exibido/editado aqui.
+  area = signal<'programming' | 'marketing'>('programming');
+
   types = signal<any[]>([]);
   loading = signal(true);
   saving = signal(false);
@@ -45,9 +49,15 @@ export class TypeManager implements OnInit {
 
   ngOnInit(): void { this.loadTypes(); }
 
+  setArea(a: 'programming' | 'marketing') {
+    if (this.area() === a) return;
+    this.area.set(a);
+    this.loadTypes();
+  }
+
   loadTypes() {
     this.loading.set(true);
-    this.apiService.getTaskTypes(this.boardId).subscribe({
+    this.apiService.getTaskTypes(this.boardId, this.area()).subscribe({
       next: (data) => { this.types.set(data); this.loading.set(false); },
       error: () => this.loading.set(false)
     });
@@ -96,14 +106,16 @@ export class TypeManager implements OnInit {
     if (!this.form.name.trim() || this.saving()) return;
     this.saving.set(true);
 
-    const payload = {
+    const isEdit = this.dialogMode === 'edit' && this.editingType;
+    const payload: any = {
       board_id: this.boardId,
       name: this.form.name.trim(),
       color: this.form.color || '#6B6B70',
       order: Number(this.form.order),
     };
+    if (!isEdit) payload.area = this.area();
 
-    const req$ = this.dialogMode === 'edit' && this.editingType
+    const req$ = isEdit
       ? this.apiService.updateTaskType(this.editingType.id, payload)
       : this.apiService.createTaskType(payload);
 

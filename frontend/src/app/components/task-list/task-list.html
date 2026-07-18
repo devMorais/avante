@@ -727,8 +727,48 @@
               (click)="openEditTaskDialog(task)">
 
               <div *cdkDragPlaceholder class="kanban-card-placeholder"></div>
-              <div *cdkDragPreview class="task-drag-preview">
-                <span class="task-drag-preview-text">{{ summaryFor(task.description) }}</span>
+              <div *cdkDragPreview class="kanban-card kanban-card-preview">
+                <span class="kanban-card-strip"
+                  [style.background]="task.type ? typeColor(task.type) : 'transparent'"></span>
+
+                <div class="kanban-card-top" *ngIf="task.type || task.priority">
+                  <span class="kanban-card-type" *ngIf="task.type" [style.color]="typeColor(task.type)">
+                    {{ task.type }}
+                  </span>
+                  <span class="kanban-card-priority" [style.color]="priorityColor(task.priority)"
+                    [style.background]="priorityColor(task.priority) + '18'" *ngIf="task.priority">
+                    {{ task.priority }}
+                  </span>
+                </div>
+
+                <p class="kanban-card-title">{{ summaryFor(task.description) }}</p>
+
+                <div class="kanban-card-tags" *ngIf="task.tags?.length > 0 || task.epic">
+                  <span *ngIf="task.epic" class="kanban-card-epic">{{ task.epic }}</span>
+                  <span *ngFor="let tag of task.tags?.slice(0, 3)" class="task-tag-chip"
+                    [style.background]="tag.color + '20'" [style.color]="tag.color"
+                    [style.border-color]="tag.color + '50'">{{ tag.name }}</span>
+                  <span *ngIf="task.tags?.length > 3" class="task-tag-more">+{{ task.tags.length - 3 }}</span>
+                </div>
+
+                <div class="kanban-card-foot">
+                  <span class="kanban-card-sprint" *ngIf="task.sprint?.name">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    {{ task.sprint.name }}
+                  </span>
+                  <span class="kanban-card-release" *ngIf="task.release">{{ task.release }}</span>
+                  <div class="kanban-card-avatars" *ngIf="task.assignees?.length > 0">
+                    <ng-container *ngFor="let a of task.assignees.slice(0, 3)">
+                      <app-avatar [name]="a.name" [photoUrl]="a.avatar_url" size="sm"></app-avatar>
+                    </ng-container>
+                    <span *ngIf="task.assignees.length > 3" class="assignee-avatar--more">
+                      +{{ task.assignees.length - 3 }}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <span class="kanban-card-strip"

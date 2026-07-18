@@ -1,5 +1,10 @@
 <div class="status-manager">
 
+  <div class="sm-area-tabs">
+    <button class="sm-area-tab" [class.active]="area() === 'programming'" (click)="setArea('programming')">Programação</button>
+    <button class="sm-area-tab" [class.active]="area() === 'marketing'" (click)="setArea('marketing')">Marketing</button>
+  </div>
+
   <div class="sm-header">
     <div class="sm-header-left">
       <h2 class="sm-title">Tipos de tarefa</h2>

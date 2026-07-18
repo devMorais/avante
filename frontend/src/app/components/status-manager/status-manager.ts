@@ -24,6 +24,11 @@ export class StatusManager implements OnInit {
   @Input() boardId!: number;
   @Output() statusesChanged = new EventEmitter<void>();
 
+  // Status de programação e de marketing são conjuntos separados (cada
+  // tarefa pertence a uma área) — a sub-navegação troca qual conjunto é
+  // exibido/editado aqui, sem misturar os dois.
+  area = signal<'programming' | 'marketing'>('programming');
+
   statuses = signal<any[]>([]);
   loading = signal(true);
   saving = signal(false);
@@ -45,9 +50,15 @@ export class StatusManager implements OnInit {
 
   ngOnInit(): void { this.loadStatuses(); }
 
+  setArea(a: 'programming' | 'marketing') {
+    if (this.area() === a) return;
+    this.area.set(a);
+    this.loadStatuses();
+  }
+
   loadStatuses() {
     this.loading.set(true);
-    this.apiService.getStatuses(this.boardId).subscribe({
+    this.apiService.getStatuses(this.boardId, this.area()).subscribe({
       next: (data) => { this.statuses.set(data); this.loading.set(false); },
       error: () => this.loading.set(false)
     });
@@ -100,14 +111,16 @@ export class StatusManager implements OnInit {
     if (!this.form.name.trim() || this.saving()) return;
     this.saving.set(true);
 
-    const payload = {
+    const isEdit = this.dialogMode === 'edit' && this.editingStatus;
+    const payload: any = {
       board_id: this.boardId,
       name: this.form.name.trim(),
       color: this.form.color || '#6B6B70',
       order: Number(this.form.order),
     };
+    if (!isEdit) payload.area = this.area();
 
-    const req$ = this.dialogMode === 'edit' && this.editingStatus
+    const req$ = isEdit
       ? this.apiService.updateStatus(this.editingStatus.id, payload)
       : this.apiService.createStatus(payload);
 
