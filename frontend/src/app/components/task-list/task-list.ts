@@ -76,9 +76,14 @@ export class TaskListComponent implements OnInit {
 
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
   setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities' | 'types' | 'marketing' | 'analytics' | 'educore') {
+    const prevArea = this.currentArea();
     this.section.set(s);
     if (s === 'marketing') {
       this.marketingTab.set('tasks');
+    }
+    // troca de área (programação <-> marketing): recarrega tasks/status/prioridades/tipos
+    // do conjunto certo — sem isso a tela ficava mostrando os dados da área anterior.
+    if (this.currentArea() !== prevArea || s === 'tasks' || s === 'marketing') {
       this.loadAll();
     }
   }
@@ -262,7 +267,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); this.loadTags(); this.loadPriorities(); }
+  loadAll() { this.loadSprints(); this.loadStatuses(); this.loadUsers(); this.loadTasks(); this.loadTags(); this.loadPriorities(); this.loadTaskTypes(); }
 
   loadSprints() {
     this.apiService.getSprints(this.boardId).subscribe({
