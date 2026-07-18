@@ -919,9 +919,10 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 16px 18px 16px 20px;
-  min-height: 148px;
+  height: 198px;
   cursor: pointer;
   box-shadow: var(--shadow-rest);
+  overflow: hidden;
   transition: transform 0.12s ease, box-shadow 0.14s ease, border-color 0.14s ease;
 
   &:hover {
