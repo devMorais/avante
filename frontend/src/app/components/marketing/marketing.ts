@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api';
 
-type MarketingTab = 'calendar' | 'pipeline' | 'ideas' | 'campaigns' | 'performance';
+type MarketingTab = 'pipeline' | 'ideas' | 'campaigns' | 'performance';
 
 const CHANNELS = [
   { value: 'instagram', label: 'Instagram' },
@@ -40,8 +40,8 @@ const STAGES = [
 })
 export class Marketing implements OnChanges {
   @Input() boardId!: number;
+  @Input() activeTab: MarketingTab = 'pipeline';
 
-  tab = signal<MarketingTab>('calendar');
   channels = CHANNELS;
   stages = STAGES;
   channelColor(v: string) { return CHANNEL_COLORS[v] || '#6B6B70'; }
@@ -49,7 +49,6 @@ export class Marketing implements OnChanges {
 
   loading = signal(true);
 
-  posts = signal<any[]>([]);
   leads = signal<any[]>([]);
   ideas = signal<any[]>([]);
   campaigns = signal<any[]>([]);
@@ -63,51 +62,12 @@ export class Marketing implements OnChanges {
     }
   }
 
-  setTab(t: MarketingTab) { this.tab.set(t); }
-
   private loadAll() {
     this.loading.set(true);
-    this.api.getMarketingPosts(this.boardId).subscribe(d => this.posts.set(d));
     this.api.getMarketingLeads(this.boardId).subscribe(d => this.leads.set(d));
     this.api.getMarketingIdeas(this.boardId).subscribe(d => this.ideas.set(d));
     this.api.getMarketingCampaigns(this.boardId).subscribe(d => this.campaigns.set(d));
     this.api.getMarketingMetrics(this.boardId).subscribe(d => { this.metrics.set(d); this.loading.set(false); });
-  }
-
-  // ========== Posts / Calendário ==========
-
-  postForm = { title: '', caption: '', channel: 'instagram', scheduled_at: '', status: 'idea' as 'idea' | 'scheduled' | 'published' };
-  savingPost = signal(false);
-  postFormOpen = signal(false);
-
-  openPostForm() { this.postFormOpen.set(true); }
-  closePostForm() {
-    this.postFormOpen.set(false);
-    this.postForm = { title: '', caption: '', channel: 'instagram', scheduled_at: '', status: 'idea' };
-  }
-
-  savePost() {
-    if (!this.postForm.title.trim()) return;
-    this.savingPost.set(true);
-    this.api.createMarketingPost({ board_id: this.boardId, ...this.postForm }).subscribe({
-      next: (p) => { this.posts.set([...this.posts(), p]); this.savingPost.set(false); this.closePostForm(); },
-      error: () => this.savingPost.set(false),
-    });
-  }
-
-  setPostStatus(post: any, status: string) {
-    this.api.updateMarketingPost(post.id, { status }).subscribe(updated => {
-      this.posts.set(this.posts().map(p => p.id === post.id ? updated : p));
-    });
-  }
-
-  deletePost(id: number) {
-    this.api.deleteMarketingPost(id).subscribe(() => this.posts.set(this.posts().filter(p => p.id !== id)));
-  }
-
-  postsByStatus(status: string) {
-    return this.posts().filter(p => p.status === status)
-      .sort((a, b) => (a.scheduled_at ?? '').localeCompare(b.scheduled_at ?? ''));
   }
 
   // ========== Leads / Pipeline ==========

@@ -15,6 +15,7 @@ class PriorityController extends Controller
         if ($request->has('board_id')) {
             $query->where('board_id', $request->board_id);
         }
+        $query->where('area', $request->input('area', 'programming'));
 
         return response()->json($query->orderBy('order')->get());
     }
@@ -23,13 +24,18 @@ class PriorityController extends Controller
     {
         $validated = $request->validate([
             'board_id' => 'required|exists:boards,id',
+            'area'     => 'nullable|in:programming,marketing',
             'name'     => 'required|string|max:255',
             'color'    => 'nullable|string|max:7',
             'order'    => 'nullable|integer',
         ]);
 
+        $validated['area'] ??= 'programming';
+
         if (!isset($validated['order'])) {
-            $validated['order'] = Priority::where('board_id', $validated['board_id'])->max('order') + 1;
+            $validated['order'] = Priority::where('board_id', $validated['board_id'])
+                ->where('area', $validated['area'])
+                ->max('order') + 1;
         }
 
         $priority = Priority::create($validated);
@@ -51,8 +57,10 @@ class PriorityController extends Controller
         $priority->update($validated);
 
         // Cascata: renomeia o valor nas tarefas que usam essa prioridade
+        // (filtra por area também — nomes podem se repetir entre áreas)
         if (isset($validated['name']) && $validated['name'] !== $oldName) {
             Task::where('board_id', $priority->board_id)
+                ->where('area', $priority->area)
                 ->where('priority', $oldName)
                 ->update(['priority' => $validated['name']]);
         }

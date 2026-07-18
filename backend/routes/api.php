@@ -9,7 +9,6 @@ use App\Http\Controllers\MarketingCampaignController;
 use App\Http\Controllers\MarketingIdeaController;
 use App\Http\Controllers\MarketingLeadController;
 use App\Http\Controllers\MarketingMetricController;
-use App\Http\Controllers\MarketingPostController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SprintController;
 use App\Http\Controllers\PriorityController;
@@ -69,7 +68,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/notifications/{id}/read', [NotificationController::class, 'markRead']);
 
     // Marketing
-    Route::apiResource('marketing-posts', MarketingPostController::class)->except(['show']);
     Route::apiResource('marketing-leads', MarketingLeadController::class)->except(['show']);
     Route::apiResource('marketing-ideas', MarketingIdeaController::class)->except(['show']);
     Route::post('/marketing-ideas/{id}/upvote', [MarketingIdeaController::class, 'upvote']);

@@ -14,6 +14,7 @@ class StatusController extends Controller
         if ($request->has('board_id')) {
             $query->where('board_id', $request->board_id);
         }
+        $query->where('area', $request->input('area', 'programming'));
 
         return response()->json($query->orderBy('order')->get());
     }
@@ -22,13 +23,18 @@ class StatusController extends Controller
     {
         $validated = $request->validate([
             'board_id' => 'required|exists:boards,id',
+            'area'     => 'nullable|in:programming,marketing',
             'name'     => 'required|string|max:255',
             'color'    => 'nullable|string|max:7',
             'order'    => 'nullable|integer',
         ]);
 
+        $validated['area'] ??= 'programming';
+
         if (!isset($validated['order'])) {
-            $validated['order'] = Status::where('board_id', $validated['board_id'])->max('order') + 1;
+            $validated['order'] = Status::where('board_id', $validated['board_id'])
+                ->where('area', $validated['area'])
+                ->max('order') + 1;
         }
 
         $status = Status::create($validated);

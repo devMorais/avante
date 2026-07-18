@@ -15,6 +15,7 @@ class TaskTypeController extends Controller
         if ($request->has('board_id')) {
             $query->where('board_id', $request->board_id);
         }
+        $query->where('area', $request->input('area', 'programming'));
 
         return response()->json($query->orderBy('order')->get());
     }
@@ -23,13 +24,18 @@ class TaskTypeController extends Controller
     {
         $validated = $request->validate([
             'board_id' => 'required|exists:boards,id',
+            'area'     => 'nullable|in:programming,marketing',
             'name'     => 'required|string|max:255',
             'color'    => 'nullable|string|max:7',
             'order'    => 'nullable|integer',
         ]);
 
+        $validated['area'] ??= 'programming';
+
         if (!isset($validated['order'])) {
-            $validated['order'] = TaskType::where('board_id', $validated['board_id'])->max('order') + 1;
+            $validated['order'] = TaskType::where('board_id', $validated['board_id'])
+                ->where('area', $validated['area'])
+                ->max('order') + 1;
         }
 
         $type = TaskType::create($validated);
@@ -51,8 +57,10 @@ class TaskTypeController extends Controller
         $type->update($validated);
 
         // Cascata: renomeia o valor nas tarefas que usam esse tipo
+        // (filtra por area também — nomes podem se repetir entre áreas)
         if (isset($validated['name']) && $validated['name'] !== $oldName) {
             Task::where('board_id', $type->board_id)
+                ->where('area', $type->area)
                 ->where('type', $oldName)
                 ->update(['type' => $validated['name']]);
         }

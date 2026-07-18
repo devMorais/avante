@@ -73,13 +73,22 @@
 
 <div class="page">
 
-  <!-- ===== SEÇÃO TAREFAS ===== -->
-  <ng-container *ngIf="section() === 'tasks'">
+  <!-- ===== SEÇÃO TAREFAS (programação) OU sub-aba "Tarefas" de Marketing ===== -->
+  <ng-container *ngIf="section() === 'tasks' || (section() === 'marketing' && marketingTab() === 'tasks')">
+
+    <!-- Sub-navegação do Marketing (Tarefas | Vendas & Pipeline | Banco de Ideias | Campanhas | Desempenho) -->
+    <div class="mkt-subtabs" *ngIf="section() === 'marketing'">
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'tasks'" (click)="setMarketingTab('tasks')">Tarefas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'pipeline'" (click)="setMarketingTab('pipeline')">Vendas &amp; Pipeline</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'ideas'" (click)="setMarketingTab('ideas')">Banco de Ideias</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'campaigns'" (click)="setMarketingTab('campaigns')">Campanhas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'performance'" (click)="setMarketingTab('performance')">Desempenho</button>
+    </div>
 
     <!-- ===== HEADER REDESENHADO ===== -->
     <div class="page-header">
       <div class="header-left">
-        <button class="back-link" (click)="goBack()">
+        <button class="back-link" (click)="goBack()" *ngIf="section() === 'tasks'">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round">
             <path d="m15 18-6-6 6-6" />
@@ -96,7 +105,7 @@
             </svg>
             {{ board().name }}
           </div>
-          <h1 class="header-title">Atividades</h1>
+          <h1 class="header-title">{{ section() === 'marketing' ? 'Tarefas de Marketing' : 'Atividades' }}</h1>
         </div>
 
         <!-- Stats chips -->
@@ -798,8 +807,15 @@
     <app-type-manager [boardId]="boardId" (typesChanged)="reloadTaskTypes()"></app-type-manager>
   </ng-container>
 
-  <ng-container *ngIf="section() === 'marketing'">
-    <app-marketing [boardId]="boardId"></app-marketing>
+  <ng-container *ngIf="section() === 'marketing' && marketingTab() !== 'tasks'">
+    <div class="mkt-subtabs">
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'tasks'" (click)="setMarketingTab('tasks')">Tarefas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'pipeline'" (click)="setMarketingTab('pipeline')">Vendas &amp; Pipeline</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'ideas'" (click)="setMarketingTab('ideas')">Banco de Ideias</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'campaigns'" (click)="setMarketingTab('campaigns')">Campanhas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'performance'" (click)="setMarketingTab('performance')">Desempenho</button>
+    </div>
+    <app-marketing [boardId]="boardId" [activeTab]="marketingSubTab()"></app-marketing>
   </ng-container>
 
   <ng-container *ngIf="section() === 'analytics'">

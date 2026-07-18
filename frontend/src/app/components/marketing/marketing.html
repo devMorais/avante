@@ -12,94 +12,10 @@
     </div>
   </div>
 
-  <div class="mkt-tabs">
-    <button class="mkt-tab" [class.active]="tab() === 'calendar'" (click)="setTab('calendar')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-      Calendário
-      <span class="mkt-tab-count" *ngIf="posts().length">{{ posts().length }}</span>
-    </button>
-    <button class="mkt-tab" [class.active]="tab() === 'pipeline'" (click)="setTab('pipeline')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-      Vendas &amp; Pipeline
-      <span class="mkt-tab-count" *ngIf="leads().length">{{ leads().length }}</span>
-    </button>
-    <button class="mkt-tab" [class.active]="tab() === 'ideas'" (click)="setTab('ideas')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M15 2a6 6 0 0 0-4 10.584V15a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2.416A6 6 0 0 0 15 2z"/></svg>
-      Banco de Ideias
-      <span class="mkt-tab-count" *ngIf="ideas().length">{{ ideas().length }}</span>
-    </button>
-    <button class="mkt-tab" [class.active]="tab() === 'campaigns'" (click)="setTab('campaigns')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg>
-      Campanhas
-      <span class="mkt-tab-count" *ngIf="campaigns().length">{{ campaigns().length }}</span>
-    </button>
-    <button class="mkt-tab" [class.active]="tab() === 'performance'" (click)="setTab('performance')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
-      Desempenho
-    </button>
-  </div>
-
   <div class="mkt-content" *ngIf="!loading(); else loadingTpl">
 
-    <!-- ===== CALENDÁRIO DE CONTEÚDO ===== -->
-    <div class="mkt-panel" *ngIf="tab() === 'calendar'">
-      <div class="mkt-panel-toolbar">
-        <p class="mkt-panel-hint">Componha posts, escolha o canal e agende — publicar continua manual por enquanto.</p>
-        <button class="mkt-add-btn" (click)="openPostForm()" *ngIf="!postFormOpen()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
-          Novo post
-        </button>
-      </div>
-
-      <div class="mkt-inline-form" *ngIf="postFormOpen()">
-        <input type="text" placeholder="Título do post..." [(ngModel)]="postForm.title" class="mkt-input" />
-        <textarea placeholder="Legenda / roteiro..." [(ngModel)]="postForm.caption" class="mkt-textarea" rows="2"></textarea>
-        <div class="mkt-form-row">
-          <select [(ngModel)]="postForm.channel" class="mkt-select">
-            <option *ngFor="let c of channels" [value]="c.value">{{ c.label }}</option>
-          </select>
-          <input type="datetime-local" [(ngModel)]="postForm.scheduled_at" class="mkt-input" />
-          <select [(ngModel)]="postForm.status" class="mkt-select">
-            <option value="idea">Ideia</option>
-            <option value="scheduled">Agendado</option>
-            <option value="published">Publicado</option>
-          </select>
-        </div>
-        <div class="mkt-form-actions">
-          <button class="mkt-btn-ghost" (click)="closePostForm()">Cancelar</button>
-          <button class="mkt-btn-primary" [disabled]="savingPost() || !postForm.title.trim()" (click)="savePost()">
-            {{ savingPost() ? 'Salvando...' : 'Adicionar' }}
-          </button>
-        </div>
-      </div>
-
-      <div class="mkt-kanban mkt-kanban--3">
-        <div class="mkt-kcol" *ngFor="let s of [{v:'idea',l:'Ideia'},{v:'scheduled',l:'Agendado'},{v:'published',l:'Publicado'}]">
-          <div class="mkt-kcol-head">{{ s.l }} <span>{{ postsByStatus(s.v).length }}</span></div>
-          <div class="mkt-kcard" *ngFor="let p of postsByStatus(s.v)">
-            <div class="mkt-kcard-top">
-              <span class="mkt-channel-dot" [style.background]="channelColor(p.channel)"></span>
-              <span class="mkt-kcard-title">{{ p.title }}</span>
-              <button class="mkt-kcard-del" (click)="deletePost(p.id)">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
-              </button>
-            </div>
-            <p class="mkt-kcard-caption" *ngIf="p.caption">{{ p.caption }}</p>
-            <div class="mkt-kcard-foot">
-              <span *ngIf="p.scheduled_at">{{ p.scheduled_at | date:'dd/MM/yy HH:mm' }}</span>
-              <div class="mkt-kcard-move">
-                <button *ngIf="s.v !== 'idea'" (click)="setPostStatus(p, s.v === 'published' ? 'scheduled' : 'idea')" title="Mover para trás">‹</button>
-                <button *ngIf="s.v !== 'published'" (click)="setPostStatus(p, s.v === 'idea' ? 'scheduled' : 'published')" title="Mover para frente">›</button>
-              </div>
-            </div>
-          </div>
-          <p class="mkt-kcol-empty" *ngIf="postsByStatus(s.v).length === 0">Nada por aqui</p>
-        </div>
-      </div>
-    </div>
-
     <!-- ===== VENDAS & PIPELINE ===== -->
-    <div class="mkt-panel" *ngIf="tab() === 'pipeline'">
+    <div class="mkt-panel" *ngIf="activeTab === 'pipeline'">
       <div class="mkt-panel-toolbar">
         <p class="mkt-panel-hint">
           Valor em aberto no funil: <strong>{{ pipelineValue() | currency:'BRL' }}</strong>
@@ -147,7 +63,7 @@
     </div>
 
     <!-- ===== BANCO DE IDEIAS ===== -->
-    <div class="mkt-panel" *ngIf="tab() === 'ideas'">
+    <div class="mkt-panel" *ngIf="activeTab === 'ideas'">
       <div class="mkt-panel-toolbar">
         <p class="mkt-panel-hint">Capture ideias de conteúdo e campanhas — vote nas melhores para priorizar depois.</p>
         <button class="mkt-add-btn" (click)="openIdeaForm()" *ngIf="!ideaFormOpen()">
@@ -190,7 +106,7 @@
     </div>
 
     <!-- ===== CAMPANHAS ===== -->
-    <div class="mkt-panel" *ngIf="tab() === 'campaigns'">
+    <div class="mkt-panel" *ngIf="activeTab === 'campaigns'">
       <div class="mkt-panel-toolbar">
         <p class="mkt-panel-hint">Acompanhe campanhas com canais, orçamento e período.</p>
         <button class="mkt-add-btn" (click)="openCampaignForm()" *ngIf="!campaignFormOpen()">
@@ -243,7 +159,7 @@
     </div>
 
     <!-- ===== DESEMPENHO ===== -->
-    <div class="mkt-panel" *ngIf="tab() === 'performance'">
+    <div class="mkt-panel" *ngIf="activeTab === 'performance'">
       <div class="mkt-panel-toolbar">
         <p class="mkt-panel-hint">Registre métricas por canal e período para acompanhar a evolução.</p>
         <button class="mkt-add-btn" (click)="openMetricForm()" *ngIf="!metricFormOpen()">

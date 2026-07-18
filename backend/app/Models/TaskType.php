@@ -11,7 +11,7 @@ class TaskType extends Model
 
     protected $table = 'task_types';
 
-    protected $fillable = ['board_id', 'name', 'color', 'order'];
+    protected $fillable = ['board_id', 'area', 'name', 'color', 'order'];
 
     public function board()
     {

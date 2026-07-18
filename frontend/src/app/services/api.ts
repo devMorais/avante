@@ -60,8 +60,9 @@ export class ApiService {
     priorities?: string[];
     assignee_ids?: number[];
     tag_ids?: number[];
+    area?: 'programming' | 'marketing';
   } = {}): Observable<any> {
-    let query = `board_id=${boardId}`;
+    let query = `board_id=${boardId}&area=${params.area ?? 'programming'}`;
 
     if (params.page) query += `&page=${params.page}`;
     if (params.per_page) query += `&per_page=${params.per_page}`;
@@ -143,8 +144,8 @@ export class ApiService {
     return this.http.delete(`${API_URL}/users/${id}`);
   }
 
-  getStatuses(boardId: number): Observable<any> {
-    return this.http.get(`${API_URL}/statuses?board_id=${boardId}`);
+  getStatuses(boardId: number, area: 'programming' | 'marketing' = 'programming'): Observable<any> {
+    return this.http.get(`${API_URL}/statuses?board_id=${boardId}&area=${area}`);
   }
 
   createStatus(data: any): Observable<any> {
@@ -261,11 +262,11 @@ export class ApiService {
 
   // ---------- Priorities ----------
 
-  getPriorities(boardId: number): Observable<any> {
-    return this.http.get(`${API_URL}/priorities?board_id=${boardId}`);
+  getPriorities(boardId: number, area: 'programming' | 'marketing' = 'programming'): Observable<any> {
+    return this.http.get(`${API_URL}/priorities?board_id=${boardId}&area=${area}`);
   }
 
-  createPriority(data: { board_id: number; name: string; color: string }): Observable<any> {
+  createPriority(data: { board_id: number; area?: string; name: string; color: string }): Observable<any> {
     return this.http.post(`${API_URL}/priorities`, data);
   }
 
@@ -279,11 +280,11 @@ export class ApiService {
 
   // ---------- Task types (tipos) ----------
 
-  getTaskTypes(boardId: number): Observable<any> {
-    return this.http.get(`${API_URL}/task-types?board_id=${boardId}`);
+  getTaskTypes(boardId: number, area: 'programming' | 'marketing' = 'programming'): Observable<any> {
+    return this.http.get(`${API_URL}/task-types?board_id=${boardId}&area=${area}`);
   }
 
-  createTaskType(data: { board_id: number; name: string; color: string }): Observable<any> {
+  createTaskType(data: { board_id: number; area?: string; name: string; color: string }): Observable<any> {
     return this.http.post(`${API_URL}/task-types`, data);
   }
 
@@ -315,24 +316,6 @@ export class ApiService {
 
   deleteTag(id: number): Observable<any> {
     return this.http.delete(`${API_URL}/tags/${id}`);
-  }
-
-  // ---------- Marketing: Posts (calendário de conteúdo) ----------
-
-  getMarketingPosts(boardId: number): Observable<any> {
-    return this.http.get(`${API_URL}/marketing-posts?board_id=${boardId}`);
-  }
-
-  createMarketingPost(data: any): Observable<any> {
-    return this.http.post(`${API_URL}/marketing-posts`, data);
-  }
-
-  updateMarketingPost(id: number, data: any): Observable<any> {
-    return this.http.put(`${API_URL}/marketing-posts/${id}`, data);
-  }
-
-  deleteMarketingPost(id: number): Observable<any> {
-    return this.http.delete(`${API_URL}/marketing-posts/${id}`);
   }
 
   // ---------- Marketing: Leads (vendas & pipeline) ----------

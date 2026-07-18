@@ -11,6 +11,7 @@ class Status extends Model
 
     protected $fillable = [
         'board_id',
+        'area',
         'name',
         'color',
         'order',
@@ -27,14 +28,16 @@ class Status extends Model
     }
 
     /**
-     * ID do status considerado "concluído" de um board, pelo nome
-     * (Concluído/Concluido/Done/Finalizado) — usado ao finalizar sprint
-     * e para marcar tasks.completed_at automaticamente.
+     * ID do status considerado "concluído" de um board+área, pelo nome
+     * (Concluído/Concluido/Done/Finalizado/Publicado) — usado ao finalizar
+     * sprint e para marcar tasks.completed_at automaticamente. "Publicado"
+     * cobre o status final do fluxo de marketing.
      */
-    public static function concludedIdFor(int $boardId): ?int
+    public static function concludedIdFor(int $boardId, string $area = 'programming'): ?int
     {
         return static::where('board_id', $boardId)
-            ->whereRaw("LOWER(name) IN ('concluído', 'concluido', 'done', 'finalizado')")
+            ->where('area', $area)
+            ->whereRaw("LOWER(name) IN ('concluído', 'concluido', 'done', 'finalizado', 'publicado', 'publicada')")
             ->value('id');
     }
 }

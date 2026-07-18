@@ -23,6 +23,7 @@ class TaskController extends Controller
         if ($request->has('board_id')) {
             $query->where('board_id', $request->board_id);
         }
+        $query->where('area', $request->input('area', 'programming'));
         if ($request->filled('status_ids')) {
             $query->whereIn('status_id', $request->status_ids);
         }
@@ -52,6 +53,7 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'board_id'    => 'required|exists:boards,id',
+            'area'        => 'nullable|in:programming,marketing',
             'sprint_id'   => 'nullable|exists:sprints,id',
             'status_id'   => 'nullable|exists:statuses,id',
             'assigned_to' => 'nullable|exists:users,id',
@@ -64,6 +66,8 @@ class TaskController extends Controller
             'tag_ids'     => 'nullable|array',
             'tag_ids.*'   => 'exists:tags,id',
         ]);
+
+        $validated['area'] ??= 'programming';
 
         if (!isset($validated['sort_order'])) {
             $validated['sort_order'] = Task::where('board_id', $validated['board_id'])
@@ -215,7 +219,7 @@ class TaskController extends Controller
      */
     private function syncCompletedAt(Task $task): void
     {
-        $concludedId = Status::concludedIdFor($task->board_id);
+        $concludedId = Status::concludedIdFor($task->board_id, $task->area);
         $isConcluded = $concludedId && (int) $task->status_id === (int) $concludedId;
 
         if ($isConcluded && !$task->completed_at) {

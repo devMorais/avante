@@ -9,7 +9,7 @@ class Priority extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['board_id', 'name', 'color', 'order'];
+    protected $fillable = ['board_id', 'area', 'name', 'color', 'order'];
 
     public function board()
     {

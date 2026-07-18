@@ -57,9 +57,35 @@ export class TaskListComponent implements OnInit {
   sidebarCollapsed = signal(false);
   section = signal('tasks');
 
+  // Sub-navegação dentro da seção "marketing": 'tasks' reusa a mesma Tabela/Kanban
+  // de tarefas (área marketing); as demais delegam pro <app-marketing>.
+  marketingTab = signal<'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance'>('tasks');
+
+  // Área ativa: decide se Tabela/Kanban/Sprints mostram tarefas de programação
+  // ou de marketing — cada uma com seu próprio conjunto de status/prioridades/tipos.
+  currentArea = computed<'programming' | 'marketing'>(() =>
+    this.section() === 'marketing' && this.marketingTab() === 'tasks' ? 'marketing' : 'programming'
+  );
+
+  // Sub-tab de marketing SEM 'tasks' — tipo estreito para o binding com <app-marketing>,
+  // que só é renderizado quando marketingTab() !== 'tasks' (ver *ngIf no template).
+  marketingSubTab = computed<'pipeline' | 'ideas' | 'campaigns' | 'performance'>(() => {
+    const t = this.marketingTab();
+    return t === 'tasks' ? 'pipeline' : t;
+  });
+
   toggleSidebar() { this.sidebarCollapsed.set(!this.sidebarCollapsed()); }
   setSection(s: 'tasks' | 'sprints' | 'statuses' | 'priorities' | 'types' | 'marketing' | 'analytics' | 'educore') {
     this.section.set(s);
+    if (s === 'marketing') {
+      this.marketingTab.set('tasks');
+      this.loadAll();
+    }
+  }
+
+  setMarketingTab(t: 'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance') {
+    this.marketingTab.set(t);
+    if (t === 'tasks') this.loadAll();
   }
 
   reloadPriorities() { this.loadPriorities(); }
@@ -216,6 +242,7 @@ export class TaskListComponent implements OnInit {
       priorities: this.currentFilters.priorities.length ? this.currentFilters.priorities : undefined,
       assignee_ids: this.currentFilters.assignee_ids.length ? this.currentFilters.assignee_ids : undefined,
       tag_ids: this.currentFilters.tag_ids?.length ? this.currentFilters.tag_ids : undefined,
+      area: this.currentArea(),
     }).subscribe({
       next: (res) => {
         const list = Array.isArray(res) ? res : (res.data ?? []);
@@ -251,7 +278,7 @@ export class TaskListComponent implements OnInit {
   }
 
   loadStatuses() {
-    this.apiService.getStatuses(this.boardId).subscribe({
+    this.apiService.getStatuses(this.boardId, this.currentArea()).subscribe({
       next: (data) => { this.statuses.set(data); this.loading.set(false); },
       error: (err) => { console.error('Erro ao carregar status:', err); this.loading.set(false); }
     });
@@ -272,14 +299,14 @@ export class TaskListComponent implements OnInit {
   }
 
   loadPriorities() {
-    this.apiService.getPriorities(this.boardId).subscribe({
+    this.apiService.getPriorities(this.boardId, this.currentArea()).subscribe({
       next: (data) => this.priorities.set(data),
       error: () => {}
     });
   }
 
   loadTaskTypes() {
-    this.apiService.getTaskTypes(this.boardId).subscribe({
+    this.apiService.getTaskTypes(this.boardId, this.currentArea()).subscribe({
       next: (data) => this.taskTypes.set(data),
       error: () => {}
     });
@@ -312,7 +339,9 @@ export class TaskListComponent implements OnInit {
       : this.tasks();
 
     const groups: { sprint: any | null; tasks: any[] }[] = [];
-    for (const sprint of this.sprints()) {
+    // sprints já finalizadas somem da Tabela de Atividades — continuam disponíveis
+    // (e reabríveis) na sub-aba "Sprints" do gerenciador.
+    for (const sprint of this.sprints().filter(s => !s.finished_at)) {
       const key = this.groupKey(sprint);
       const sprintTasks = this.sortGroupTasks(allTasks.filter(t => t.sprint_id === sprint.id), key);
       groups.push({ sprint, tasks: sprintTasks });
@@ -611,8 +640,12 @@ export class TaskListComponent implements OnInit {
 
   confirmSaveTask(formValue: TaskFormValue) {
     this.saving.set(true);
-    const payload = { board_id: this.boardId, ...formValue };
-    const request$ = this.dialogMode === 'edit' && this.editingTask
+    const isEdit = this.dialogMode === 'edit' && this.editingTask;
+    // area só é definida na criação — edição não muda a área da tarefa
+    const payload = isEdit
+      ? { board_id: this.boardId, ...formValue }
+      : { board_id: this.boardId, area: this.currentArea(), ...formValue };
+    const request$ = isEdit
       ? this.apiService.updateTask(this.editingTask.id, payload)
       : this.apiService.createTask(payload);
     request$.subscribe({
@@ -1143,6 +1176,7 @@ export class TaskListComponent implements OnInit {
       const item = tasks[idx];
       const payload: any = {
         board_id: this.boardId,
+        area: this.currentArea(),
         description: item.description.trim(),
         priority: item.priority ?? 'Média',
         epic: item.epic ?? undefined,
