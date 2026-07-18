@@ -914,11 +914,12 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 14px 14px 18px;
-  min-height: 124px;
+  border-radius: var(--radius-md);
+  padding: 16px 18px 16px 20px;
+  min-height: 132px;
   cursor: pointer;
   box-shadow: var(--shadow-rest);
   transition: transform 0.12s ease, box-shadow 0.14s ease, border-color 0.14s ease;
@@ -955,7 +956,6 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 7px;
   min-width: 0;
 }
 
@@ -992,15 +992,13 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  flex: 1;
 }
 
 .kanban-card-tags {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
-  margin-top: 9px;
+  gap: 6px;
 }
 
 .kanban-card-epic {
@@ -1025,7 +1023,7 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   align-items: center;
   gap: 8px;
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 12px;
   min-width: 0;
 
   &:not(:first-child) {
