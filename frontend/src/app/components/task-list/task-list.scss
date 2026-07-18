@@ -986,10 +986,10 @@ $cols: 26px 34px 1fr 128px 108px 96px 104px 124px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
+  min-height: calc(1.4em * 2);
   color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
