@@ -98,10 +98,19 @@ function tipoPorCodigo(codigo: string): ConteudoTipo {
   return 'post';
 }
 
-function extrairTitulo(description: string, codigo: string): string {
-  const semCodigo = description.slice(codigo.length + 2).trim(); // remove "[S1-R02] "
+// O texto após "[CÓDIGO] " segue formato diferente por tipo:
+//   Reels:      "Título · Pilar: X"        -> título vem ANTES do ·
+//   Carrossel:  "Título" (sem ·)           -> a linha inteira é o título
+//   Story/Post: "Story · Título real"      -> título vem DEPOIS do primeiro · (o
+//               texto antes do · é só o rótulo genérico do formato, não o tema real)
+function extrairTitulo(description: string, codigo: string, tipo: ConteudoTipo): string {
+  const semCodigo = description.slice(codigo.length + 2).trim();
   const primeiraLinha = semCodigo.split('\n')[0];
-  return primeiraLinha.split('·')[0].trim();
+  const partes = primeiraLinha.split('·').map(p => p.trim());
+
+  if (partes.length === 1) return partes[0]; // carrossel, sem separador
+  if (tipo === 'story' || tipo === 'post') return partes.slice(1).join(' · ');
+  return partes[0]; // reels
 }
 
 // Distribui os itens de um tipo pelos dias do rodízio, em ordem — ex: os 20 Reels
@@ -342,7 +351,7 @@ export class Marketing implements OnChanges {
       itens.push({
         id: t.id,
         codigo,
-        titulo: extrairTitulo(t.description ?? '', codigo),
+        titulo: extrairTitulo(t.description ?? '', codigo, tipo),
         tipo,
         statusNome: t.status?.name ?? '—',
         statusCor: t.status?.color ?? '#6B6B70',
