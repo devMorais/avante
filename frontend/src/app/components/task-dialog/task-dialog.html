@@ -623,7 +623,7 @@ $$
       <div class="files-list">
         <div *ngFor="let a of attachments" class="file-item">
           <button
-            *ngIf="isImage(a.mime_type); else fileIconTpl"
+            *ngIf="isImage(a.mime_type); else videoThumbTpl"
             type="button"
             class="file-thumb"
             (click)="openImageViewer({ data: a.url, name: a.original_name })"
@@ -631,13 +631,28 @@ $$
           >
             <img [src]="a.url" [alt]="a.original_name" loading="lazy" />
           </button>
+          <ng-template #videoThumbTpl>
+            <button
+              *ngIf="isVideo(a.mime_type); else fileIconTpl"
+              type="button"
+              class="file-thumb file-thumb-video"
+              (click)="openImageViewer({ data: a.url, name: a.original_name, video: true })"
+              appTooltip="Reproduzir vídeo"
+            >
+              <video [src]="a.url" preload="metadata" muted (loadedmetadata)="onVideoDuration(a.id, $event)"></video>
+              <span class="file-thumb-play">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              </span>
+            </button>
+          </ng-template>
           <ng-template #fileIconTpl>
             <span class="file-icon">{{ fileIconFor(a.mime_type) }}</span>
           </ng-template>
           <div class="file-info">
             <span class="file-name" [appTooltip]="a.original_name">{{ a.original_name }}</span>
             <span class="file-meta">
-              {{ formatFileSize(a.size) }} · enviado por {{ a.user?.name || 'alguém' }} ·
+              {{ formatFileSize(a.size) }}<ng-container *ngIf="videoDurations[a.id]"> · {{ videoDurations[a.id] }}</ng-container>
+              · enviado por {{ a.user?.name || 'alguém' }} ·
               {{ a.created_at | date:'dd/MM/yy HH:mm' }}
             </span>
           </div>
@@ -664,9 +679,18 @@ $$
       </div>
     </div>
 
-    <!-- Visualizador de imagem em tela cheia -->
+    <!-- Visualizador de imagem/vídeo em tela cheia -->
     <div class="image-viewer-overlay" *ngIf="viewingImage" (click)="closeImageViewer()">
-      <img [src]="viewingImage.data" [alt]="viewingImage.name" (click)="$event.stopPropagation()" />
+      <video
+        *ngIf="viewingImage.video; else viewerImgTpl"
+        [src]="viewingImage.data"
+        controls
+        autoplay
+        (click)="$event.stopPropagation()"
+      ></video>
+      <ng-template #viewerImgTpl>
+        <img [src]="viewingImage.data" [alt]="viewingImage.name" (click)="$event.stopPropagation()" />
+      </ng-template>
       <button class="image-viewer-close" (click)="closeImageViewer()" type="button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
           stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>

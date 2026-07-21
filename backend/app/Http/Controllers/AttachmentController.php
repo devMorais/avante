@@ -17,7 +17,7 @@ class AttachmentController extends Controller
     public function store(Request $request, Task $task)
     {
         $request->validate([
-            'file' => 'required|file|max:10240', // 10MB — qualquer tipo, arquivo oficial da tarefa
+            'file' => 'required|file|max:102400', // 100MB — qualquer tipo (inclui vídeos de Reels), arquivo oficial da tarefa
         ]);
 
         $file = $request->file('file');

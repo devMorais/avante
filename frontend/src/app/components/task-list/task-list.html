@@ -706,7 +706,11 @@
     </ng-template>
 
     <!-- ===== VISÃO KANBAN ===== -->
-    <div *ngIf="viewMode() === 'kanban'" class="kanban-board" cdkDropListGroup>
+    <div *ngIf="viewMode() === 'kanban'" class="kanban-scroll-wrap">
+      <div class="kanban-scroll-top" #kanbanScrollTop (scroll)="onKanbanTopScroll($event)">
+        <div class="kanban-scroll-top-spacer" [style.width.px]="kanbanContentWidth()"></div>
+      </div>
+      <div class="kanban-board" cdkDropListGroup #kanbanScrollMain (scroll)="onKanbanMainScroll($event)">
       <ng-container *ngIf="!loading(); else loadingTpl">
         <div class="kanban-col" *ngFor="let col of kanbanColumns()">
 
@@ -826,6 +830,7 @@
           <p>Tente ajustar os filtros ou crie uma nova atividade.</p>
         </div>
       </ng-container>
+      </div>
     </div>
 
   </ng-container>

@@ -1224,7 +1224,7 @@ select.field-input { cursor: pointer; height: 40px; padding: 0 12px; }
   justify-content: center;
   padding: 24px;
 
-  img {
+  img, video {
     max-width: 90vw; max-height: 90vh;
     object-fit: contain; border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0,0,0,.5);
@@ -1335,6 +1335,30 @@ select.field-input { cursor: pointer; height: 40px; padding: 0 12px; }
     border-color: var(--accent, #6366f1);
     transform: scale(1.04);
   }
+}
+
+.file-thumb-video {
+  position: relative;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #000;
+  }
+}
+
+.file-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+
+  svg { flex-shrink: 0; }
 }
 
 .file-info {

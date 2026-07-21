@@ -142,7 +142,8 @@ export class TaskDialog implements OnChanges {
 
   // Images (base64, localStorage)
   noteImages: { id: string; data: string; name: string }[] = [];
-  viewingImage: { data: string; name: string } | null = null;
+  viewingImage: { data: string; name: string; video?: boolean } | null = null;
+  videoDurations: Record<number, string> = {};
   imageUploading = false;
 
   // Timer
@@ -476,7 +477,7 @@ export class TaskDialog implements OnChanges {
     if (this.task?.id) this.persistImages(this.task.id);
   }
 
-  openImageViewer(img: { data: string; name: string }) { this.viewingImage = img; }
+  openImageViewer(img: { data: string; name: string; video?: boolean }) { this.viewingImage = img; }
   closeImageViewer() { this.viewingImage = null; }
 
   // -------- Imagens coladas na descrição --------
@@ -669,9 +670,22 @@ ${imagesHtml ? `<div class="section-title">Imagens / Fotos do Caderno</div><div 
     return !!mime && mime.startsWith('image/');
   }
 
+  isVideo(mime: string | null): boolean {
+    return !!mime && mime.startsWith('video/');
+  }
+
+  onVideoDuration(attachmentId: number, event: Event) {
+    const seconds = (event.target as HTMLVideoElement).duration;
+    if (!isFinite(seconds)) return;
+    const m = Math.floor(seconds / 60);
+    const s = Math.round(seconds % 60).toString().padStart(2, '0');
+    this.videoDurations[attachmentId] = `${m}:${s}`;
+  }
+
   fileIconFor(mime: string | null): string {
     if (!mime) return '📄';
     if (mime.startsWith('image/')) return '🖼️';
+    if (mime.startsWith('video/')) return '🎬';
     if (mime.includes('pdf')) return '📕';
     if (mime.includes('zip') || mime.includes('rar') || mime.includes('7z')) return '🗜️';
     if (mime.includes('word') || mime.includes('document')) return '📝';

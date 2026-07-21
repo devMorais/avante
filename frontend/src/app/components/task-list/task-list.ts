@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, computed, HostListener } from '@angular/core';
+import { Component, OnInit, signal, computed, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -1075,6 +1075,33 @@ export class TaskListComponent implements OnInit {
   }
 
   // ---------- Kanban (colunas por status) ----------
+
+  // Largura total do conteúdo do board — usada pra dar ao scrollbar-espelho do
+  // topo a mesma extensão de rolagem do board de verdade (colunas: 322px + gap 20px).
+  kanbanContentWidth = computed(() => {
+    const n = this.kanbanColumns().length;
+    return n > 0 ? n * 322 + (n - 1) * 20 : 0;
+  });
+
+  @ViewChild('kanbanScrollTop') kanbanScrollTopRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('kanbanScrollMain') kanbanScrollMainRef?: ElementRef<HTMLDivElement>;
+  private syncingKanbanScroll = false;
+
+  onKanbanTopScroll(event: Event) {
+    if (this.syncingKanbanScroll) return;
+    this.syncingKanbanScroll = true;
+    const main = this.kanbanScrollMainRef?.nativeElement;
+    if (main) main.scrollLeft = (event.target as HTMLElement).scrollLeft;
+    this.syncingKanbanScroll = false;
+  }
+
+  onKanbanMainScroll(event: Event) {
+    if (this.syncingKanbanScroll) return;
+    this.syncingKanbanScroll = true;
+    const top = this.kanbanScrollTopRef?.nativeElement;
+    if (top) top.scrollLeft = (event.target as HTMLElement).scrollLeft;
+    this.syncingKanbanScroll = false;
+  }
 
   kanbanColumns = computed(() => {
     const tasks = this.tasks();
