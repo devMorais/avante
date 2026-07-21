@@ -59,7 +59,7 @@ export class TaskListComponent implements OnInit {
 
   // Sub-navegação dentro da seção "marketing": 'tasks' reusa a mesma Tabela/Kanban
   // de tarefas (área marketing); as demais delegam pro <app-marketing>.
-  marketingTab = signal<'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance'>('tasks');
+  marketingTab = signal<'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance' | 'agenda'>('tasks');
 
   // Área ativa: decide se Tabela/Kanban/Sprints mostram tarefas de programação
   // ou de marketing — cada uma com seu próprio conjunto de status/prioridades/tipos.
@@ -69,7 +69,7 @@ export class TaskListComponent implements OnInit {
 
   // Sub-tab de marketing SEM 'tasks' — tipo estreito para o binding com <app-marketing>,
   // que só é renderizado quando marketingTab() !== 'tasks' (ver *ngIf no template).
-  marketingSubTab = computed<'pipeline' | 'ideas' | 'campaigns' | 'performance'>(() => {
+  marketingSubTab = computed<'pipeline' | 'ideas' | 'campaigns' | 'performance' | 'agenda'>(() => {
     const t = this.marketingTab();
     return t === 'tasks' ? 'pipeline' : t;
   });
@@ -89,7 +89,7 @@ export class TaskListComponent implements OnInit {
     this.syncSectionToUrl();
   }
 
-  setMarketingTab(t: 'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance') {
+  setMarketingTab(t: 'tasks' | 'pipeline' | 'ideas' | 'campaigns' | 'performance' | 'agenda') {
     this.marketingTab.set(t);
     if (t === 'tasks') this.loadAll();
     this.syncSectionToUrl();
@@ -133,7 +133,7 @@ export class TaskListComponent implements OnInit {
     const qSection = qp.get('section');
     if (qSection && validSections.includes(qSection)) this.section.set(qSection as any);
     const qMtab = qp.get('mtab');
-    const validMtabs = ['tasks', 'pipeline', 'ideas', 'campaigns', 'performance'];
+    const validMtabs = ['tasks', 'pipeline', 'ideas', 'campaigns', 'performance', 'agenda'];
     if (qMtab && validMtabs.includes(qMtab)) this.marketingTab.set(qMtab as any);
 
     this.loadBoard();

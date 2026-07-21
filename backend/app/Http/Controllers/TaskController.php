@@ -122,6 +122,7 @@ class TaskController extends Controller
             'type'           => 'nullable|string',
             'notes'          => 'nullable|string',
             'sort_order'     => 'nullable|integer',
+            'scheduled_at'   => 'nullable|date',
         ]);
 
         $oldStatusId = $task->status_id;
@@ -186,13 +187,14 @@ class TaskController extends Controller
             'priority'        => 'nullable|string',
             'type'            => 'nullable|string',
             'sprint_id'       => 'nullable|exists:sprints,id',
+            'scheduled_at'    => 'nullable|date',
             'add_tag_id'      => 'nullable|exists:tags,id',
             'add_assignee_id' => 'nullable|exists:users,id',
         ]);
 
         $ids = $validated['task_ids'];
 
-        $fields = collect($validated)->only(['status_id', 'priority', 'type', 'sprint_id'])->toArray();
+        $fields = collect($validated)->only(['status_id', 'priority', 'type', 'sprint_id', 'scheduled_at'])->toArray();
         if (!empty($fields)) {
             Task::whereIn('id', $ids)->update($fields);
         }

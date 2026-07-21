@@ -220,6 +220,54 @@
       <p class="mkt-empty" *ngIf="metrics().length === 0">Nenhuma métrica registrada ainda.</p>
     </div>
 
+    <!-- ===== AGENDA ===== -->
+    <div class="mkt-panel" *ngIf="activeTab === 'agenda'">
+      <p class="mkt-panel-hint mkt-agenda-aviso">
+        Sugestão de dia e horário baseada em boas práticas do Instagram no Brasil (picos de meio-dia e noite em dias úteis, tarde nos fins de semana) cruzadas com os poucos posts reais que já temos — ainda são só 8 publicações, então a sugestão vai refinar conforme mais dados chegarem. O dia dos Stories já é o rodízio fixo definido no roteiro, não é sugestão.
+      </p>
+
+      <p class="mkt-empty" *ngIf="agendaItens().length === 0">Nenhuma peça de conteúdo encontrada.</p>
+
+      <ng-container *ngFor="let tipo of agendaTipos">
+        <div class="mkt-agenda-grupo" *ngIf="agendaPorTipo(tipo).length > 0">
+          <div class="mkt-agenda-grupo-head">
+            <h3>{{ tipoRotulo[tipo] }} <span class="mkt-agenda-count">{{ agendaPorTipo(tipo).length }}</span></h3>
+            <button class="mkt-btn-ghost" (click)="aplicarSugestaoEmMassa(tipo)">Aplicar sugestão em todos</button>
+          </div>
+
+          <div class="mkt-agenda-table">
+            <div class="mkt-agenda-head">
+              <span>Peça</span><span>Status</span><span>Sugestão</span><span>Agendado para</span><span></span>
+            </div>
+            <div class="mkt-agenda-row" *ngFor="let item of agendaPorTipo(tipo)">
+              <span class="mkt-agenda-titulo">
+                <strong>{{ item.codigo }}</strong> {{ item.titulo }}
+              </span>
+              <span>
+                <span class="mkt-agenda-status" [style.background]="item.statusCor">{{ item.statusNome }}</span>
+              </span>
+              <span class="mkt-agenda-sugestao">{{ item.diaSugerido }} · {{ item.horaSugerida }}</span>
+              <span>
+                <input
+                  type="datetime-local"
+                  class="mkt-input"
+                  [value]="agendaValorCampo(item)"
+                  (change)="onAgendaDataChange(item, $any($event.target).value)"
+                />
+              </span>
+              <button
+                class="mkt-btn-ghost mkt-agenda-aplicar"
+                [disabled]="agendaSalvando().has(item.id)"
+                (click)="aplicarSugestao(item)"
+              >
+                {{ agendaSalvando().has(item.id) ? '...' : (item.scheduledAt ? 'Reaplicar' : 'Usar sugestão') }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
   </div>
 
   <ng-template #loadingTpl>

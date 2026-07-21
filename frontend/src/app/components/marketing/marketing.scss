@@ -533,6 +533,106 @@
   color: var(--text-secondary);
 }
 
+/* ---------- Agenda ---------- */
+
+.mkt-agenda-aviso {
+  background: var(--wash);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.mkt-agenda-grupo {
+  margin-top: 22px;
+
+  &:first-of-type { margin-top: 4px; }
+}
+
+.mkt-agenda-grupo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.mkt-agenda-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--wash);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.mkt-agenda-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.mkt-agenda-head, .mkt-agenda-row {
+  display: grid;
+  grid-template-columns: 1.8fr 0.9fr 1fr 1.2fr 100px;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+.mkt-agenda-head {
+  background: var(--bg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.mkt-agenda-row {
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.mkt-agenda-titulo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  strong { font-family: 'JetBrains Mono', monospace; font-weight: 700; margin-right: 6px; }
+}
+
+.mkt-agenda-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.mkt-agenda-sugestao {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.mkt-agenda-aplicar {
+  font-size: 11px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
 .mkt-loading {
   text-align: center;
   padding: 60px 0;

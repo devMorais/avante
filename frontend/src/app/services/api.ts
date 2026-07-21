@@ -102,6 +102,7 @@ export class ApiService {
     priority?: string | null;
     type?: string | null;
     sprint_id?: number | null;
+    scheduled_at?: string | null;
     add_tag_id?: number;
     add_assignee_id?: number;
   }): Observable<any> {

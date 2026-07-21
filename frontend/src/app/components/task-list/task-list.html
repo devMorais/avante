@@ -75,9 +75,10 @@
   <!-- ===== SEÇÃO TAREFAS (programação) OU sub-aba "Tarefas" de Marketing ===== -->
   <ng-container *ngIf="section() === 'tasks' || (section() === 'marketing' && marketingTab() === 'tasks')">
 
-    <!-- Sub-navegação do Marketing (Tarefas | Vendas & Pipeline | Banco de Ideias | Campanhas | Desempenho) -->
+    <!-- Sub-navegação do Marketing (Tarefas | Agenda | Vendas & Pipeline | Banco de Ideias | Campanhas | Desempenho) -->
     <div class="mkt-subtabs" *ngIf="section() === 'marketing'">
       <button class="mkt-subtab" [class.active]="marketingTab() === 'tasks'" (click)="setMarketingTab('tasks')">Tarefas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'agenda'" (click)="setMarketingTab('agenda')">Agenda</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'pipeline'" (click)="setMarketingTab('pipeline')">Vendas &amp; Pipeline</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'ideas'" (click)="setMarketingTab('ideas')">Banco de Ideias</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'campaigns'" (click)="setMarketingTab('campaigns')">Campanhas</button>
@@ -854,6 +855,7 @@
   <ng-container *ngIf="section() === 'marketing' && marketingTab() !== 'tasks'">
     <div class="mkt-subtabs">
       <button class="mkt-subtab" [class.active]="marketingTab() === 'tasks'" (click)="setMarketingTab('tasks')">Tarefas</button>
+      <button class="mkt-subtab" [class.active]="marketingTab() === 'agenda'" (click)="setMarketingTab('agenda')">Agenda</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'pipeline'" (click)="setMarketingTab('pipeline')">Vendas &amp; Pipeline</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'ideas'" (click)="setMarketingTab('ideas')">Banco de Ideias</button>
       <button class="mkt-subtab" [class.active]="marketingTab() === 'campaigns'" (click)="setMarketingTab('campaigns')">Campanhas</button>

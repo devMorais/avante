@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api';
 
-type MarketingTab = 'pipeline' | 'ideas' | 'campaigns' | 'performance';
+type MarketingTab = 'pipeline' | 'ideas' | 'campaigns' | 'performance' | 'agenda';
 
 const CHANNELS = [
   { value: 'instagram', label: 'Instagram' },
@@ -31,6 +31,85 @@ const STAGES = [
   { value: 'perdido', label: 'Perdido', color: '#DC2626' },
 ];
 
+// ========== Agenda: parsing + heurística de horário ==========
+
+type ConteudoTipo = 'reels' | 'carrossel' | 'story' | 'post';
+
+interface ItemAgenda {
+  id: number;
+  codigo: string; // ex: "S1-R02"
+  titulo: string; // texto curto extraído da description
+  tipo: ConteudoTipo;
+  statusNome: string;
+  statusCor: string;
+  sprintNome: string;
+  scheduledAt: string | null; // ISO local (datetime-local) já existente na task, se houver
+  diaSugerido: string;
+  horaSugerida: string; // "HH:mm"
+}
+
+const TIPO_ROTULO: Record<ConteudoTipo, string> = {
+  reels: 'Reels',
+  carrossel: 'Carrossel',
+  story: 'Story',
+  post: 'Post único',
+};
+
+// Dia da semana já embutido no título de cada Story (rodízio fixo, não é sugestão nossa).
+const DIA_POR_STORY: Record<string, string> = {
+  'S3-S01': 'Segunda',
+  'S3-S02': 'Terça',
+  'S3-S03': 'Quarta',
+  'S3-S04': 'Quinta',
+  'S3-S05': 'Sexta',
+  'S3-S06': 'Sábado',
+  'S3-S07': 'Domingo',
+};
+
+// Reels: guia da sprint fixa "4/semana" — distribuídos em ter/qui/sáb/dom, alternando
+// dentro dos 20 vídeos. Carrosséis e Posts únicos já têm o padrão de dias no próprio
+// nome da sprint ("ter/qui" e "ter/dom"). Horários seguem picos conhecidos do Instagram
+// Brasil (meio-dia e noite em dias úteis, tarde em fim de semana), com sábado puxado
+// pro fim da tarde porque é o único horário com sinal real forte (post de sábado 17h
+// teve alcance de 365, ~3x a média dos outros 7 posts).
+const DIAS_REELS = ['Terça', 'Quinta', 'Sábado', 'Domingo'];
+const DIAS_CARROSSEL = ['Terça', 'Quinta'];
+const DIAS_POST = ['Terça', 'Domingo'];
+
+const HORA_POR_DIA: Record<string, string> = {
+  Segunda: '19:30',
+  Terça: '12:15',
+  Quarta: '19:30',
+  Quinta: '12:15',
+  Sexta: '19:00',
+  Sábado: '17:00', // único horário com sinal real forte (alcance 365 no post de sábado 17h)
+  Domingo: '18:30',
+};
+
+function extrairCodigo(description: string): string | null {
+  const m = description.match(/^\[(S[1-4]-[A-Z]\d{2})\]/);
+  return m ? m[1] : null;
+}
+
+function tipoPorCodigo(codigo: string): ConteudoTipo {
+  if (codigo.startsWith('S1-R')) return 'reels';
+  if (codigo.startsWith('S2-C')) return 'carrossel';
+  if (codigo.startsWith('S3-S')) return 'story';
+  return 'post';
+}
+
+function extrairTitulo(description: string, codigo: string): string {
+  const semCodigo = description.slice(codigo.length + 2).trim(); // remove "[S1-R02] "
+  const primeiraLinha = semCodigo.split('\n')[0];
+  return primeiraLinha.split('·')[0].trim();
+}
+
+// Distribui os itens de um tipo pelos dias do rodízio, em ordem — ex: os 20 Reels
+// caem em Terça, Quinta, Sábado, Domingo, Terça, Quinta... na ordem do código (R01, R02...).
+function diaPorIndice(dias: string[], indice: number): string {
+  return dias[indice % dias.length];
+}
+
 @Component({
   selector: 'app-marketing',
   standalone: true,
@@ -53,6 +132,8 @@ export class Marketing implements OnChanges {
   ideas = signal<any[]>([]);
   campaigns = signal<any[]>([]);
   metrics = signal<any[]>([]);
+  agendaItens = signal<ItemAgenda[]>([]);
+  agendaSalvando = signal<Set<number>>(new Set());
 
   constructor(private api: ApiService) {}
 
@@ -64,6 +145,7 @@ export class Marketing implements OnChanges {
 
   private loadAll() {
     this.loading.set(true);
+    this.loadAgenda();
     this.api.getMarketingLeads(this.boardId).subscribe(d => this.leads.set(d));
     this.api.getMarketingIdeas(this.boardId).subscribe(d => this.ideas.set(d));
     this.api.getMarketingCampaigns(this.boardId).subscribe(d => this.campaigns.set(d));
@@ -220,5 +302,157 @@ export class Marketing implements OnChanges {
 
   barWidthPct(value: number): number {
     return Math.round((value / this.maxReach()) * 100);
+  }
+
+  // ========== Agenda ==========
+
+  tipoRotulo = TIPO_ROTULO;
+  agendaTipos: ConteudoTipo[] = ['reels', 'carrossel', 'story', 'post'];
+
+  private loadAgenda() {
+    this.api.getTasks(this.boardId, { area: 'marketing' }).subscribe({
+      next: (tasks: any[]) => this.agendaItens.set(this.montarAgenda(tasks)),
+      error: () => this.agendaItens.set([]),
+    });
+  }
+
+  private montarAgenda(tasks: any[]): ItemAgenda[] {
+    // contadores por tipo para distribuir cada item pelo rodízio de dias na ordem certa
+    const indicePorTipo: Record<ConteudoTipo, number> = { reels: 0, carrossel: 0, story: 0, post: 0 };
+
+    const itens: ItemAgenda[] = [];
+    for (const t of tasks) {
+      const codigo = extrairCodigo(t.description ?? '');
+      if (!codigo) continue; // ignora tarefas de marketing que não são peças de conteúdo (ex: guias, planos gerais)
+
+      const tipo = tipoPorCodigo(codigo);
+      const indice = indicePorTipo[tipo]++;
+
+      let dia: string;
+      if (tipo === 'story') {
+        dia = DIA_POR_STORY[codigo] ?? 'Segunda';
+      } else if (tipo === 'reels') {
+        dia = diaPorIndice(DIAS_REELS, indice);
+      } else if (tipo === 'carrossel') {
+        dia = diaPorIndice(DIAS_CARROSSEL, indice);
+      } else {
+        dia = diaPorIndice(DIAS_POST, indice);
+      }
+
+      itens.push({
+        id: t.id,
+        codigo,
+        titulo: extrairTitulo(t.description ?? '', codigo),
+        tipo,
+        statusNome: t.status?.name ?? '—',
+        statusCor: t.status?.color ?? '#6B6B70',
+        sprintNome: t.sprint?.name ?? '—',
+        scheduledAt: t.scheduled_at ?? null,
+        diaSugerido: dia,
+        horaSugerida: HORA_POR_DIA[dia] ?? '19:00',
+      });
+    }
+
+    // ordena pelo código (S1-R01, S1-R02... S2-C01...) pra ficar previsível na tela
+    return itens.sort((a, b) => a.codigo.localeCompare(b.codigo));
+  }
+
+  agendaPorTipo(tipo: ConteudoTipo) {
+    return this.agendaItens().filter(i => i.tipo === tipo);
+  }
+
+  // Converte "Terça" + "12:15" numa data real (próxima ocorrência daquele dia da
+  // semana a partir de hoje) no formato que <input type="datetime-local"> aceita.
+  private proximaDataParaSugestao(diaSemana: string, hora: string): string {
+    const DIAS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    const alvo = DIAS.indexOf(diaSemana);
+    const [h, m] = hora.split(':').map(Number);
+
+    const hoje = new Date();
+    let diff = (alvo - hoje.getDay() + 7) % 7;
+    // se cair hoje mas o horário já passou, joga pra semana que vem
+    if (diff === 0 && (hoje.getHours() > h || (hoje.getHours() === h && hoje.getMinutes() >= m))) {
+      diff = 7;
+    }
+    const data = new Date(hoje);
+    data.setDate(hoje.getDate() + diff);
+    data.setHours(h, m, 0, 0);
+
+    const pad = (n: number) => String(n).padStart(2, '0');
+    return `${data.getFullYear()}-${pad(data.getMonth() + 1)}-${pad(data.getDate())}T${pad(data.getHours())}:${pad(data.getMinutes())}`;
+  }
+
+  sugestaoComoDatetimeLocal(item: ItemAgenda): string {
+    return this.proximaDataParaSugestao(item.diaSugerido, item.horaSugerida);
+  }
+
+  // valor pronto pro [value] do <input type="datetime-local"> — o agendamento real
+  // se existir, senão a sugestão calculada
+  agendaValorCampo(item: ItemAgenda): string {
+    if (item.scheduledAt) {
+      return item.scheduledAt.slice(0, 16); // "2026-07-28T19:00:00.000000Z" -> "2026-07-28T19:00"
+    }
+    return this.sugestaoComoDatetimeLocal(item);
+  }
+
+  aplicarSugestao(item: ItemAgenda) {
+    this.salvarAgendamento(item, this.sugestaoComoDatetimeLocal(item));
+  }
+
+  onAgendaDataChange(item: ItemAgenda, valor: string) {
+    if (!valor) return;
+    this.salvarAgendamento(item, valor);
+  }
+
+  private salvarAgendamento(item: ItemAgenda, valorLocal: string) {
+    const emAndamento = new Set(this.agendaSalvando());
+    emAndamento.add(item.id);
+    this.agendaSalvando.set(emAndamento);
+
+    this.api.updateTask(item.id, { scheduled_at: valorLocal }).subscribe({
+      next: (updated) => {
+        this.agendaItens.set(this.agendaItens().map(i =>
+          i.id === item.id ? { ...i, scheduledAt: updated.scheduled_at } : i,
+        ));
+        const novo = new Set(this.agendaSalvando());
+        novo.delete(item.id);
+        this.agendaSalvando.set(novo);
+      },
+      error: () => {
+        const novo = new Set(this.agendaSalvando());
+        novo.delete(item.id);
+        this.agendaSalvando.set(novo);
+      },
+    });
+  }
+
+  aplicarSugestaoEmMassa(tipo: ConteudoTipo) {
+    const itens = this.agendaPorTipo(tipo).filter(i => !i.scheduledAt);
+    if (!itens.length) return;
+
+    const emAndamento = new Set(this.agendaSalvando());
+    for (const i of itens) emAndamento.add(i.id);
+    this.agendaSalvando.set(emAndamento);
+
+    // scheduled_at por item é diferente (dias/horas distintos), então bulk-update de
+    // um valor único não serve aqui — dispara um update por item, mas em paralelo.
+    for (const item of itens) {
+      const valor = this.sugestaoComoDatetimeLocal(item);
+      this.api.updateTask(item.id, { scheduled_at: valor }).subscribe({
+        next: (updated) => {
+          this.agendaItens.set(this.agendaItens().map(i =>
+            i.id === item.id ? { ...i, scheduledAt: updated.scheduled_at } : i,
+          ));
+          const novo = new Set(this.agendaSalvando());
+          novo.delete(item.id);
+          this.agendaSalvando.set(novo);
+        },
+        error: () => {
+          const novo = new Set(this.agendaSalvando());
+          novo.delete(item.id);
+          this.agendaSalvando.set(novo);
+        },
+      });
+    }
   }
 }

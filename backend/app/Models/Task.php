@@ -24,6 +24,12 @@ class Task extends Model
         'notes',
         'sort_order',
         'completed_at',
+        'scheduled_at',
+    ];
+
+    protected $casts = [
+        'completed_at' => 'datetime',
+        'scheduled_at' => 'datetime',
     ];
 
     public function board()
