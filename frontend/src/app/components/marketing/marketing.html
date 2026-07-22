@@ -237,32 +237,57 @@
 
           <div class="mkt-agenda-table">
             <div class="mkt-agenda-head">
-              <span>Peça</span><span>Status</span><span>Sugestão</span><span>Agendado para</span><span></span>
+              <span>Peça</span><span>Status</span><span>Sugestão</span><span>Agendado para</span><span>Legenda</span><span></span>
             </div>
-            <div class="mkt-agenda-row" *ngFor="let item of agendaPorTipo(tipo)">
-              <span class="mkt-agenda-titulo">
-                <strong>{{ item.codigo }}</strong> {{ item.titulo }}
-              </span>
-              <span>
-                <span class="mkt-agenda-status" [style.background]="item.statusCor">{{ item.statusNome }}</span>
-              </span>
-              <span class="mkt-agenda-sugestao">{{ item.diaSugerido }} · {{ item.horaSugerida }}</span>
-              <span>
-                <input
-                  type="datetime-local"
-                  class="mkt-input"
-                  [value]="agendaValorCampo(item)"
-                  (change)="onAgendaDataChange(item, $any($event.target).value)"
-                />
-              </span>
-              <button
-                class="mkt-btn-ghost mkt-agenda-aplicar"
-                [disabled]="agendaSalvando().has(item.id)"
-                (click)="aplicarSugestao(item)"
-              >
-                {{ agendaSalvando().has(item.id) ? '...' : (item.scheduledAt ? 'Reaplicar' : 'Usar sugestão') }}
-              </button>
-            </div>
+            <ng-container *ngFor="let item of agendaPorTipo(tipo)">
+              <div class="mkt-agenda-row">
+                <span class="mkt-agenda-titulo">
+                  <strong>{{ item.codigo }}</strong> {{ item.titulo }}
+                </span>
+                <span>
+                  <span class="mkt-agenda-status" [style.background]="item.statusCor">{{ item.statusNome }}</span>
+                </span>
+                <span class="mkt-agenda-sugestao">{{ item.diaSugerido }} · {{ item.horaSugerida }}</span>
+                <span>
+                  <input
+                    type="datetime-local"
+                    class="mkt-input"
+                    [value]="agendaValorCampo(item)"
+                    (change)="onAgendaDataChange(item, $any($event.target).value)"
+                  />
+                </span>
+                <span>
+                  <button
+                    class="mkt-btn-ghost mkt-agenda-legenda-btn"
+                    *ngIf="item.legenda !== null"
+                    (click)="toggleLegenda(item)"
+                  >
+                    {{ agendaLegendaAberta() === item.id ? 'Fechar' : 'Ver legenda' }}
+                  </button>
+                  <span class="mkt-agenda-sem-legenda" *ngIf="item.legenda === null">—</span>
+                </span>
+                <button
+                  class="mkt-btn-ghost mkt-agenda-aplicar"
+                  [disabled]="agendaSalvando().has(item.id)"
+                  (click)="aplicarSugestao(item)"
+                >
+                  {{ agendaSalvando().has(item.id) ? '...' : (item.scheduledAt ? 'Reaplicar' : 'Usar sugestão') }}
+                </button>
+              </div>
+
+              <div class="mkt-agenda-legenda-painel" *ngIf="agendaLegendaAberta() === item.id">
+                <textarea
+                  class="mkt-textarea"
+                  rows="3"
+                  [(ngModel)]="agendaLegendaRascunho"
+                ></textarea>
+                <div class="mkt-agenda-legenda-acoes">
+                  <span class="mkt-agenda-legenda-hint">Editada só aqui na Agenda — não altera o card no Avante.</span>
+                  <button class="mkt-btn-ghost" (click)="copiarLegenda(agendaLegendaRascunho)">Copiar</button>
+                  <button class="mkt-btn-primary" (click)="salvarLegendaLocal(item)">Salvar</button>
+                </div>
+              </div>
+            </ng-container>
           </div>
         </div>
       </ng-container>

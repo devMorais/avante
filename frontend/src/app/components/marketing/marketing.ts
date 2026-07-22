@@ -46,6 +46,7 @@ interface ItemAgenda {
   scheduledAt: string | null; // ISO local (datetime-local) já existente na task, se houver
   diaSugerido: string;
   horaSugerida: string; // "HH:mm"
+  legenda: string | null; // texto pronto pra colar no post (com hashtags), extraído da description — null quando o tipo não tem (Reels, Story)
 }
 
 const TIPO_ROTULO: Record<ConteudoTipo, string> = {
@@ -119,6 +120,22 @@ function diaPorIndice(dias: string[], indice: number): string {
   return dias[indice % dias.length];
 }
 
+// Legenda pronta pra colar no post — só existe em Carrossel ("✍️ LEGENDA PRONTA (colar
+// no post): "...") e Post único ("Legenda: "..."" dentro do bloco 🎯 CONTEXTO). Reels
+// e Story não têm campo de legenda no roteiro (Reels só tem o texto falado no vídeo,
+// Stories não usam legenda no Instagram) — retorna null nesses casos.
+function extrairLegenda(description: string, tipo: ConteudoTipo): string | null {
+  if (tipo === 'carrossel') {
+    const m = description.match(/LEGENDA PRONTA[^:]*:\s*\n?\s*["“]([\s\S]*?)["”]/i);
+    return m ? m[1].trim() : null;
+  }
+  if (tipo === 'post') {
+    const m = description.match(/\bLegenda:\s*["“]([\s\S]*?)["”]/i);
+    return m ? m[1].trim() : null;
+  }
+  return null;
+}
+
 @Component({
   selector: 'app-marketing',
   standalone: true,
@@ -143,6 +160,8 @@ export class Marketing implements OnChanges {
   metrics = signal<any[]>([]);
   agendaItens = signal<ItemAgenda[]>([]);
   agendaSalvando = signal<Set<number>>(new Set());
+  agendaLegendaAberta = signal<number | null>(null);
+  agendaLegendaRascunho = '';
 
   constructor(private api: ApiService) {}
 
@@ -359,6 +378,7 @@ export class Marketing implements OnChanges {
         scheduledAt: t.scheduled_at ?? null,
         diaSugerido: dia,
         horaSugerida: HORA_POR_DIA[dia] ?? '19:00',
+        legenda: extrairLegenda(t.description ?? '', tipo),
       });
     }
 
@@ -463,5 +483,27 @@ export class Marketing implements OnChanges {
         },
       });
     }
+  }
+
+  // Legenda: exibida/editável só em memória (não grava de volta na description do
+  // card no Avante — evita regex de escrita mexendo no texto fonte do roteiro).
+  toggleLegenda(item: ItemAgenda) {
+    if (this.agendaLegendaAberta() === item.id) {
+      this.agendaLegendaAberta.set(null);
+      return;
+    }
+    this.agendaLegendaAberta.set(item.id);
+    this.agendaLegendaRascunho = item.legenda ?? '';
+  }
+
+  salvarLegendaLocal(item: ItemAgenda) {
+    this.agendaItens.set(this.agendaItens().map(i =>
+      i.id === item.id ? { ...i, legenda: this.agendaLegendaRascunho } : i,
+    ));
+    this.agendaLegendaAberta.set(null);
+  }
+
+  copiarLegenda(legenda: string) {
+    navigator.clipboard?.writeText(legenda);
   }
 }

@@ -583,7 +583,7 @@
 
 .mkt-agenda-head, .mkt-agenda-row {
   display: grid;
-  grid-template-columns: 1.8fr 0.9fr 1fr 1.2fr 100px;
+  grid-template-columns: 1.6fr 0.9fr 1fr 1.2fr 90px 100px;
   align-items: center;
   gap: 8px;
   padding: 9px 12px;
@@ -631,6 +631,38 @@
   font-size: 11px;
   padding: 5px 10px;
   white-space: nowrap;
+}
+
+.mkt-agenda-legenda-btn {
+  font-size: 11px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.mkt-agenda-sem-legenda {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.mkt-agenda-legenda-painel {
+  padding: 10px 12px 14px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mkt-agenda-legenda-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mkt-agenda-legenda-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-right: auto;
 }
 
 .mkt-loading {
