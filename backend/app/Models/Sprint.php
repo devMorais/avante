@@ -15,6 +15,7 @@ class Sprint extends Model
         'start_date',
         'end_date',
         'finished_at',
+        'sort_order',
     ];
 
     protected $casts = [

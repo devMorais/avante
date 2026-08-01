@@ -297,6 +297,8 @@ export class TaskListComponent implements OnInit {
     this.apiService.getSprints(this.boardId).subscribe({
       next: (data) => {
         const sorted = [...data].sort((a, b) => {
+          const orderDiff = (a.sort_order ?? 0) - (b.sort_order ?? 0);
+          if (orderDiff !== 0) return orderDiff;
           if (a.start_date && b.start_date) return a.start_date.localeCompare(b.start_date);
           return (a.name ?? '').localeCompare(b.name ?? '');
         });
@@ -387,6 +389,8 @@ export class TaskListComponent implements OnInit {
     this.apiService.getSprints(this.boardId).subscribe({
       next: (data) => {
         const sorted = [...data].sort((a, b) => {
+          const orderDiff = (a.sort_order ?? 0) - (b.sort_order ?? 0);
+          if (orderDiff !== 0) return orderDiff;
           if (a.start_date && b.start_date) return a.start_date.localeCompare(b.start_date);
           return (a.name ?? '').localeCompare(b.name ?? '');
         });

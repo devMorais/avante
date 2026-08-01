@@ -17,7 +17,7 @@ class SprintController extends Controller
             $query->where('board_id', $request->board_id);
         }
 
-        return response()->json($query->orderBy('start_date')->get());
+        return response()->json($query->orderBy('sort_order')->orderBy('start_date')->get());
     }
 
     public function store(Request $request)
@@ -27,7 +27,12 @@ class SprintController extends Controller
             'name'       => 'required|string|max:255',
             'start_date' => 'nullable|date',
             'end_date'   => 'nullable|date|after_or_equal:start_date',
+            'sort_order' => 'nullable|integer',
         ]);
+
+        if (!array_key_exists('sort_order', $validated) || $validated['sort_order'] === null) {
+            $validated['sort_order'] = (int) Sprint::where('board_id', $validated['board_id'])->max('sort_order') + 1;
+        }
 
         $sprint = Sprint::create($validated);
 
@@ -42,6 +47,7 @@ class SprintController extends Controller
             'name'       => 'sometimes|string|max:255',
             'start_date' => 'nullable|date',
             'end_date'   => 'nullable|date|after_or_equal:start_date',
+            'sort_order' => 'sometimes|integer',
         ]);
 
         $sprint->update($validated);
