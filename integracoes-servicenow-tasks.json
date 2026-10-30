@@ -1,0 +1,839 @@
+{
+  "board": {
+    "name": "Integrações ServiceNow — Central Omnichannel na PDI"
+  },
+  "task_types": [
+    [
+      "Estudo",
+      "#0284C7"
+    ],
+    [
+      "Prática",
+      "#059669"
+    ],
+    [
+      "Setup",
+      "#D97706"
+    ],
+    [
+      "Projeto",
+      "#7C3AED"
+    ]
+  ],
+  "tags": [
+    [
+      "Fundamentos",
+      "#6B6B70"
+    ],
+    [
+      "Inbound",
+      "#0284C7"
+    ],
+    [
+      "Outbound",
+      "#0891B2"
+    ],
+    [
+      "Segurança",
+      "#DC2626"
+    ],
+    [
+      "Dados",
+      "#D97706"
+    ],
+    [
+      "IntegrationHub",
+      "#7C3AED"
+    ],
+    [
+      "WhatsApp",
+      "#16A34A"
+    ],
+    [
+      "Teams",
+      "#4F46E5"
+    ],
+    [
+      "Instagram",
+      "#DB2777"
+    ],
+    [
+      "Telegram",
+      "#0EA5E9"
+    ],
+    [
+      "Projeto",
+      "#EA580C"
+    ]
+  ],
+  "sprints": [
+    {
+      "name": "Fase 1 — Fundamentos (HTTP, Table API)",
+      "start_date": "2026-10-26",
+      "end_date": "2026-11-01"
+    },
+    {
+      "name": "Fase 2 — Inbound: Scripted REST e segurança",
+      "start_date": "2026-11-02",
+      "end_date": "2026-11-08"
+    },
+    {
+      "name": "Fase 3 — Outbound: REST Message e credenciais",
+      "start_date": "2026-11-09",
+      "end_date": "2026-11-15"
+    },
+    {
+      "name": "Fase 4 — Dados, MID Server e webhooks",
+      "start_date": "2026-11-16",
+      "end_date": "2026-11-22"
+    },
+    {
+      "name": "Fase 5 — IntegrationHub e Flow",
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-29"
+    },
+    {
+      "name": "Fase 6 — Canais: WhatsApp, Teams, Instagram, Telegram",
+      "start_date": "2026-11-30",
+      "end_date": "2026-12-06"
+    },
+    {
+      "name": "Fase 7 — Projeto Central Omnichannel (parte 1)",
+      "start_date": "2026-12-16",
+      "end_date": "2026-12-23"
+    },
+    {
+      "name": "Fase 8 — Projeto: robustez, testes e demo",
+      "start_date": "2026-12-28",
+      "end_date": "2026-12-30"
+    }
+  ],
+  "tasks": [
+    {
+      "codigo": "INT-01",
+      "sprint": 1,
+      "epic": "Fundamentos",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-01] Seg 26/10 — Mapa das integrações da ServiceNow",
+      "description": "📅 Seg 26/10 · ⏰ 19:00\n\nComo dev ServiceNow, quero entender todas as formas de entrar e sair dado da plataforma.\n\nO que fazer:\n- Ler inbound × outbound web services\n- Listar os caminhos: Table API, Scripted REST, Import Set, REST Message, SOAP, IntegrationHub/spokes, MID Server, e-mail, eventos\n- Fazer um mapa (papel ou draw.io): para cada caminho, quando usar\n\nCritérios de aceite:\n- Mapa feito e você explica quando usar cada caminho\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\inbound-web-services.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\outbound-web-services.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\exploring-integration-hub.md",
+      "scheduled_at": "2026-10-26 19:00:00",
+      "tags": [
+        "Fundamentos"
+      ]
+    },
+    {
+      "codigo": "INT-02",
+      "sprint": 1,
+      "epic": "Fundamentos",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-02] Qua 28/10 — HTTP, JSON e Postman do zero",
+      "description": "📅 Qua 28/10 · ⏰ 19:00\n\nComo dev ServiceNow, quero falar a língua de qualquer API.\n\nO que fazer:\n- Verbos (GET/POST/PUT/PATCH/DELETE), status codes (200, 201, 400, 401, 403, 404, 429, 500), headers, body JSON\n- Tipos de autenticação: Basic, Bearer token, API Key, OAuth 2.0\n- Instalar o Postman e chamar uma API pública (ex.: https://brasilapi.com.br/api/cep/v1/01001000)\n\nCritérios de aceite:\n- Você lê uma resposta HTTP e diz o que aconteceu só pelo status e headers\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-10-28 19:00:00",
+      "tags": [
+        "Fundamentos"
+      ]
+    },
+    {
+      "codigo": "INT-03",
+      "sprint": 1,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-03] Sex 30/10 — Table API — CRUD na PDI pelo Postman",
+      "description": "📅 Sex 30/10 · ⏰ 19:00\n\nComo dev ServiceNow, quero manipular qualquer tabela da ServiceNow de fora.\n\nO que fazer:\n- GET incident com sysparm_query, sysparm_fields, sysparm_limit, sysparm_display_value\n- POST, PATCH e DELETE de um registro\n- Testar com usuário SEM role e ver o 403 (ACL vale na API)\n\nCritérios de aceite:\n- Coleção do Postman 'ServiceNow PDI' com as 4 operações funcionando\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-apis\\c_TableAPI.md",
+      "scheduled_at": "2026-10-30 19:00:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-04",
+      "sprint": 1,
+      "epic": "Inbound",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-04] Dom 01/11 — REST API Explorer, Import Set API e Attachment API",
+      "description": "📅 Dom 01/11 · ⏰ 14:00\n\nComo dev ServiceNow, quero conhecer as APIs prontas além da Table API.\n\nO que fazer:\n- Usar o REST API Explorer para gerar a chamada\n- Import Set API: inserir em uma staging table\n- Attachment API: subir um arquivo num incident\n\nCritérios de aceite:\n- 3 chamadas novas na coleção do Postman\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\use-REST-API-Explorer.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-apis\\c_ImportSetAPI.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-apis\\c_AttachmentAPI.md",
+      "scheduled_at": "2026-11-01 14:00:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-05",
+      "sprint": 2,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-05] Seg 02/11 — Scripted REST API — sua primeira API",
+      "description": "📅 Seg 02/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero criar endpoints próprios quando a Table API não serve.\n\nO que fazer:\n- Criar o serviço e 2 resources (GET /status e POST /mensagem)\n- request.body.data, response.setStatus, response.setBody\n- Chamar pelo Postman\n\nCritérios de aceite:\n- Endpoint próprio respondendo GET e POST\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\t_CreateAScriptedRESTService.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\t_CreateAScriptedRESTAPIResource.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\r_ScriptedRESTServiceScriptExamples.md",
+      "scheduled_at": "2026-11-02 19:00:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-06",
+      "sprint": 2,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-06] Qua 04/11 — Scripted REST — versão, parâmetros e boas práticas",
+      "description": "📅 Qua 04/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero desenhar API como profissional.\n\nO que fazer:\n- Versionamento (v1/v2), path params e query params\n- Response headers e schema\n- Ler as boas práticas e aplicar no endpoint de ontem\n\nCritérios de aceite:\n- Endpoint com versão, path param e erros tratados (400/404)\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\scripted-rest-good-practices.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\define-scripted-rest-api-schema.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\define-scripted-api-response-header.md",
+      "scheduled_at": "2026-11-04 19:00:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-07",
+      "sprint": 2,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-07] Sex 06/11 — Segurança na entrada — usuário de integração, ACL por path, API Key",
+      "description": "📅 Sex 06/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero abrir API sem abrir a instância.\n\nO que fazer:\n- Usuário de integração com 'Web service access only'\n- ACL por path no Scripted REST\n- Autenticação por API Key / HMAC\n\nCritérios de aceite:\n- Endpoint aceita API Key e recusa sem ela (401)\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\add-a-path-based-acl-for-a-scripted-rest-api.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\platform-security\\authentication\\api-key-and-hmac-rest-apis.md",
+      "scheduled_at": "2026-11-06 19:00:00",
+      "tags": [
+        "Inbound",
+        "Segurança"
+      ]
+    },
+    {
+      "codigo": "INT-08",
+      "sprint": 2,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-08] Dom 08/11 — OAuth 2.0 na entrada (client credentials)",
+      "description": "📅 Dom 08/11 · ⏰ 14:00\n\nComo dev ServiceNow, quero entregar a um sistema externo um acesso com token, não com senha.\n\nO que fazer:\n- Criar o OAuth Application Registry na PDI\n- Pegar o token pelo Postman e chamar a Table API com Bearer\n- Ver expiração e refresh\n\nCritérios de aceite:\n- Chamada com Bearer token funcionando\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\platform-security\\authentication\\client-credentials-grant.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\t_EnableOAuthWithREST.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-api-explorer\\r_RESTOAuthExample.md",
+      "scheduled_at": "2026-11-08 14:00:00",
+      "tags": [
+        "Inbound",
+        "Segurança"
+      ]
+    },
+    {
+      "codigo": "INT-09",
+      "sprint": 3,
+      "epic": "Outbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-09] Seg 09/11 — REST Message — chamar uma API externa",
+      "description": "📅 Seg 09/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero fazer a ServiceNow buscar e enviar dados para fora.\n\nO que fazer:\n- Criar REST Message para a BrasilAPI (CEP)\n- HTTP Method com variável ${cep}\n- Testar pelo botão Test\n\nCritérios de aceite:\n- REST Message retornando 200 com o JSON\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\c_OutboundRESTWebService.md",
+      "scheduled_at": "2026-11-09 19:00:00",
+      "tags": [
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-10",
+      "sprint": 3,
+      "epic": "Outbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-10] Qua 11/11 — RESTMessageV2 em script — síncrono, assíncrono e erros",
+      "description": "📅 Qua 11/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero chamar API dentro de Business Rule / Script Include sem travar a tela.\n\nO que fazer:\n- sn_ws.RESTMessageV2: execute × executeAsync + waitForResponse\n- getStatusCode, getBody, getErrorMessage, try/catch\n- Business Rule que preenche cidade a partir do CEP\n\nCritérios de aceite:\n- Registro preenchido automaticamente pela API\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\c_ScriptingOutboundREST.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\r_DirectRESTMessageV2Example.md",
+      "scheduled_at": "2026-11-11 19:00:00",
+      "tags": [
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-11",
+      "sprint": 3,
+      "epic": "Outbound",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-11] Sex 13/11 — Autenticação de saída — Basic, OAuth 2.0 e Connection & Credential Alias",
+      "description": "📅 Sex 13/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero guardar credencial do jeito certo.\n\nO que fazer:\n- Basic auth profile × OAuth 2.0 profile\n- Connection & Credential Alias (o padrão para spokes e flows)\n- Por que token nunca vai em script\n\nCritérios de aceite:\n- Um alias criado e usado por uma chamada\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\c_OutboundRESTAuth.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\managing-connections-integration-hub.md",
+      "scheduled_at": "2026-11-13 19:00:00",
+      "tags": [
+        "Outbound",
+        "Segurança"
+      ]
+    },
+    {
+      "codigo": "INT-12",
+      "sprint": 3,
+      "epic": "Outbound",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-12] Dom 15/11 — Debug de integração — Outbound HTTP log",
+      "description": "📅 Dom 15/11 · ⏰ 14:00\n\nComo dev ServiceNow, quero descobrir por que uma integração falhou.\n\nO que fazer:\n- Ligar o log de requisições de saída e ler um request/response\n- Forçar erros (URL errada, 401, timeout) e ver no log\n\nCritérios de aceite:\n- Você acha a causa de 3 erros forçados só pelo log\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\outbound-request-logging.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\outbound-logging-properties.md",
+      "scheduled_at": "2026-11-15 14:00:00",
+      "tags": [
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-13",
+      "sprint": 4,
+      "epic": "Dados",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-13] Seg 16/11 — Import Set, Data Source e Transform Map (com coalesce)",
+      "description": "📅 Seg 16/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero carregar dados em massa sem duplicar.\n\nO que fazer:\n- Data Source de arquivo (CSV/Excel)\n- Transform map com coalesce e transform script\n- Rodar 2 vezes e ver que não duplica\n\nCritérios de aceite:\n- Importação idempotente\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\system-import-sets\\",
+      "scheduled_at": "2026-11-16 19:00:00",
+      "tags": [
+        "Dados"
+      ]
+    },
+    {
+      "codigo": "INT-14",
+      "sprint": 4,
+      "epic": "Dados",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-14] Qua 18/11 — Data Source REST + importação agendada",
+      "description": "📅 Qua 18/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero puxar dados de uma API de tempos em tempos.\n\nO que fazer:\n- Data Source do tipo REST (ou script) chamando uma API pública\n- Scheduled Data Import\n\nCritérios de aceite:\n- Importação rodando sozinha\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\system-import-sets\\",
+      "scheduled_at": "2026-11-18 19:00:00",
+      "tags": [
+        "Dados"
+      ]
+    },
+    {
+      "codigo": "INT-15",
+      "sprint": 4,
+      "epic": "Fundamentos",
+      "priority": "Media",
+      "type": "Estudo",
+      "titulo": "[INT-15] Sex 20/11 — MID Server e ECC Queue",
+      "description": "📅 Sex 20/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero saber quando a integração precisa entrar na rede interna do cliente.\n\nO que fazer:\n- O que é o MID Server e quando é obrigatório\n- ECC Queue: como a mensagem viaja\n- REST via MID\n\nCritérios de aceite:\n- Você explica a um cliente por que ele precisa (ou não) de MID\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\servicenow-platform\\mid-server\\ecc-queue-mid-server.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\c_OutboundRESTMIDServerSupport.md",
+      "scheduled_at": "2026-11-20 19:00:00",
+      "tags": [
+        "Fundamentos"
+      ]
+    },
+    {
+      "codigo": "INT-16",
+      "sprint": 4,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-16] Dom 22/11 — Webhook de entrada + processamento assíncrono (evento)",
+      "description": "📅 Dom 22/11 · ⏰ 14:00\n\nComo dev ServiceNow, quero receber webhook rápido e processar depois.\n\nO que fazer:\n- Scripted REST recebe o webhook e responde 200 na hora\n- gs.eventQueue() + Script Action processa o payload\n- Testar com webhook.site / Postman\n\nCritérios de aceite:\n- Webhook responde em < 1s e o processamento acontece no evento\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\system-events\\",
+      "scheduled_at": "2026-11-22 14:00:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-17",
+      "sprint": 5,
+      "epic": "IntegrationHub",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-17] Seg 23/11 — IntegrationHub — spokes, plugins e o que a PDI tem",
+      "description": "📅 Seg 23/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero saber quando usar spoke pronto e quando construir.\n\nO que fazer:\n- O que é spoke, action, connection\n- Ver quais plugins de IntegrationHub a sua PDI tem (ativar pelo developer site se precisar)\n- Anotar: WhatsApp/Teams nativos exigem licença\n\nCritérios de aceite:\n- Lista do que a PDI tem e do que não tem\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\ih-plugins.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\configuring-integration-hub.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\activating_a_pdi_plugin_from_the_developer_site.md",
+      "scheduled_at": "2026-11-23 19:00:00",
+      "tags": [
+        "IntegrationHub"
+      ]
+    },
+    {
+      "codigo": "INT-18",
+      "sprint": 5,
+      "epic": "IntegrationHub",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-18] Qua 25/11 — Action Designer — passo REST numa action própria",
+      "description": "📅 Qua 25/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero criar uma action reutilizável em qualquer flow.\n\nO que fazer:\n- Action com inputs, REST step, script de parse e outputs\n- Usar a action num flow\n\nCritérios de aceite:\n- Action própria chamando API e devolvendo outputs\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\rest-request-action-designer.md",
+      "scheduled_at": "2026-11-25 19:00:00",
+      "tags": [
+        "IntegrationHub"
+      ]
+    },
+    {
+      "codigo": "INT-19",
+      "sprint": 5,
+      "epic": "IntegrationHub",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-19] Sex 27/11 — Data Stream (paginação) e tratamento de erro em flow",
+      "description": "📅 Sex 27/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero integrar listas grandes sem estourar limite.\n\nO que fazer:\n- Data Stream action com paginação\n- Error handling no flow (try/catch, status)\n\nCritérios de aceite:\n- Flow lendo várias páginas e tratando falha\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\data-stream-actions.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\data-stream-design.md",
+      "scheduled_at": "2026-11-27 19:00:00",
+      "tags": [
+        "IntegrationHub"
+      ]
+    },
+    {
+      "codigo": "INT-20",
+      "sprint": 5,
+      "epic": "IntegrationHub",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[INT-20] Dom 29/11 — REST Trigger — flow disparado por chamada externa",
+      "description": "📅 Dom 29/11 · ⏰ 14:00\n\nComo dev ServiceNow, quero deixar sistema externo disparar um flow direto.\n\nO que fazer:\n- Criar flow com REST trigger\n- Chamar pelo Postman\n\nCritérios de aceite:\n- Flow disparado de fora\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\rest-trigger.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\set-up-external-webhook-endpoints.md",
+      "scheduled_at": "2026-11-29 14:00:00",
+      "tags": [
+        "IntegrationHub",
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-21",
+      "sprint": 6,
+      "epic": "WhatsApp",
+      "priority": "Alta",
+      "type": "Setup",
+      "titulo": "[INT-21] Seg 30/11 — WhatsApp Cloud API — conta Meta for Developers e número de teste",
+      "description": "📅 Seg 30/11 · ⏰ 19:00\n\nComo dev ServiceNow, quero ter o WhatsApp pronto para conectar na PDI.\n\nO que fazer:\n- Criar conta em developers.facebook.com e um app do tipo Business\n- Ativar WhatsApp, pegar o número de teste e cadastrar o seu celular\n- Mandar mensagem pelo Postman (Graph API /messages)\n\nCritérios de aceite:\n- Mensagem do Postman chegou no seu WhatsApp\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Doc oficial Meta: developers.facebook.com/docs/whatsapp/cloud-api\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\conversational-interfaces\\virtual-agent\\configure-whatsapp-cloud-api-provider-properties.md (como o produto nativo faz, para comparar)",
+      "scheduled_at": "2026-11-30 19:00:00",
+      "tags": [
+        "WhatsApp"
+      ]
+    },
+    {
+      "codigo": "INT-22",
+      "sprint": 6,
+      "epic": "Teams",
+      "priority": "Alta",
+      "type": "Setup",
+      "titulo": "[INT-22] Qua 02/12 — Microsoft Teams — webhook de canal",
+      "description": "📅 Qua 02/12 · ⏰ 19:00\n\nComo dev ServiceNow, quero ter o Teams pronto para receber alertas da PDI.\n\nO que fazer:\n- Criar um canal num Teams PESSOAL (nunca o da Chaintech)\n- Criar o webhook pelo app Workflows ('post to a channel when a webhook request is received')\n- Mandar um card pelo Postman\n\nCritérios de aceite:\n- Mensagem do Postman apareceu no canal\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\microsoft-teams-spoke.md\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\setup-webhook-ms-teams-graph.md\n- ⚠️ Palpite: conta Teams gratuita pode não ter Workflows — se não tiver, usar Slack (slack-spoke.md) no lugar",
+      "scheduled_at": "2026-12-02 19:00:00",
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "codigo": "INT-23",
+      "sprint": 6,
+      "epic": "Instagram",
+      "priority": "Media",
+      "type": "Setup",
+      "titulo": "[INT-23] Sex 04/12 — Instagram — conta profissional e Messaging API",
+      "description": "📅 Sex 04/12 · ⏰ 19:00\n\nComo dev ServiceNow, quero ter o Instagram pronto para receber e responder DM.\n\nO que fazer:\n- Converter um Instagram de teste para conta profissional e ligar a uma página do Facebook\n- No app Meta, adicionar Instagram e testar no Graph API Explorer\n\nCritérios de aceite:\n- Token de teste funcionando no Graph API Explorer\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Doc oficial Meta: developers.facebook.com/docs/instagram-platform\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\facebook-spoke.md\n- ⚠️ App em modo desenvolvimento só fala com contas cadastradas como testers",
+      "scheduled_at": "2026-12-04 19:00:00",
+      "tags": [
+        "Instagram"
+      ]
+    },
+    {
+      "codigo": "INT-24",
+      "sprint": 6,
+      "epic": "Telegram",
+      "priority": "Media",
+      "type": "Setup",
+      "titulo": "[INT-24] Dom 06/12 — Telegram bot + desenho da arquitetura do sistema",
+      "description": "📅 Dom 06/12 · ⏰ 14:00\n\nComo dev ServiceNow, quero ter um canal fácil de testar e o desenho do sistema antes de construir.\n\nO que fazer:\n- Criar bot no @BotFather e testar sendMessage pelo Postman\n- Desenhar a Central Omnichannel: canais → webhook (Scripted REST) → evento → tabelas → Teams; e a volta: UI Action → Script Include → REST Message\n\nCritérios de aceite:\n- Diagrama pronto\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- core.telegram.org/bots/api",
+      "scheduled_at": "2026-12-06 14:00:00",
+      "tags": [
+        "Telegram"
+      ]
+    },
+    {
+      "codigo": "INT-25",
+      "sprint": 7,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Setup",
+      "titulo": "[INT-25] Qua 16/12 — Criar o app scoped 'Central Omnichannel' e ligar ao GitHub desde o dia 1",
+      "description": "📅 Qua 16/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- App scoped na PDI\n- Tabelas: Contato, Conversa, Mensagem (canal, direção, status, payload)\n- Linkar o app ao Git (backup: a PDI pode ser recolhida se ficar parada)\n\nCritérios de aceite:\n- App criado com as 3 tabelas e 1º commit no GitHub\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\",
+      "scheduled_at": "2026-12-16 07:00:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-26",
+      "sprint": 7,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-26] Qua 16/12 — Credenciais e propriedades por canal",
+      "description": "📅 Qua 16/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Connection & Credential Alias para WhatsApp, Telegram, Instagram e Teams\n- System properties do app (ex.: verify token, ids)\n\nCritérios de aceite:\n- Nenhum token em script\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\managing-connections-integration-hub.md",
+      "scheduled_at": "2026-12-16 08:45:00",
+      "tags": [
+        "Projeto",
+        "Segurança"
+      ]
+    },
+    {
+      "codigo": "INT-27",
+      "sprint": 7,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-27] Qua 16/12 — Script Include OmniSender — uma porta de saída para todos os canais",
+      "description": "📅 Qua 16/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Método enviar(conversa, texto) que escolhe o canal\n- Grava a Mensagem de saída com status\n\nCritérios de aceite:\n- Interface única pronta (canais entram nos próximos dias)\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-16 10:30:00",
+      "tags": [
+        "Projeto",
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-28",
+      "sprint": 7,
+      "epic": "WhatsApp",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-28] Qui 17/12 — WhatsApp — saída (texto e template)",
+      "description": "📅 Qui 17/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- REST Message para a Graph API /messages\n- OmniSender.whatsapp()\n\nCritérios de aceite:\n- Mensagem enviada da PDI chega no celular\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-17 07:00:00",
+      "tags": [
+        "WhatsApp",
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-29",
+      "sprint": 7,
+      "epic": "WhatsApp",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-29] Qui 17/12 — WhatsApp — entrada: webhook na PDI",
+      "description": "📅 Qui 17/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Scripted REST: GET de verificação (hub.challenge) e POST de mensagens\n- Cadastrar a URL da PDI no app Meta\n\nCritérios de aceite:\n- Mensagem do celular vira registro na PDI\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-17 08:45:00",
+      "tags": [
+        "WhatsApp",
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-30",
+      "sprint": 7,
+      "epic": "WhatsApp",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-30] Qui 17/12 — WhatsApp ida e volta + leitura do Outbound HTTP log",
+      "description": "📅 Qui 17/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Conversa completa\n- Ler o log de saída e o de entrada\n\nCritérios de aceite:\n- Conversa de 5 mensagens registrada certinha\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\web-services\\outbound-request-logging.md",
+      "scheduled_at": "2026-12-17 10:30:00",
+      "tags": [
+        "WhatsApp"
+      ]
+    },
+    {
+      "codigo": "INT-31",
+      "sprint": 7,
+      "epic": "Segurança",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-31] Sex 18/12 — Validar a assinatura do webhook (X-Hub-Signature-256)",
+      "description": "📅 Sex 18/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Calcular HMAC SHA-256 do corpo com o app secret e comparar\n- Recusar com 401 se não bater\n\nCritérios de aceite:\n- Chamada falsa pelo Postman é recusada\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\platform-security\\authentication\\api-key-and-hmac-rest-apis.md",
+      "scheduled_at": "2026-12-18 07:00:00",
+      "tags": [
+        "Segurança",
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-32",
+      "sprint": 7,
+      "epic": "Inbound",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-32] Sex 18/12 — Processamento assíncrono — evento + Script Action",
+      "description": "📅 Sex 18/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Webhook só grava o payload e dispara evento\n- Script Action cria Contato/Conversa/Mensagem\n\nCritérios de aceite:\n- Webhook responde rápido mesmo com processamento pesado\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\system-events\\",
+      "scheduled_at": "2026-12-18 08:45:00",
+      "tags": [
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-33",
+      "sprint": 7,
+      "epic": "Telegram",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-33] Sex 18/12 — Telegram — entrada e saída reaproveitando o padrão",
+      "description": "📅 Sex 18/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- setWebhook apontando para a PDI\n- OmniSender.telegram()\n\nCritérios de aceite:\n- Telegram funcionando igual ao WhatsApp\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-18 10:30:00",
+      "tags": [
+        "Telegram"
+      ]
+    },
+    {
+      "codigo": "INT-34",
+      "sprint": 7,
+      "epic": "Teams",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-34] Seg 21/12 — Teams — alerta de mensagem nova",
+      "description": "📅 Seg 21/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Flow: Mensagem de entrada criada → action própria (REST) → card no canal\n\nCritérios de aceite:\n- Alerta chega no Teams com link do registro\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\integration-hub\\rest-request-action-designer.md",
+      "scheduled_at": "2026-12-21 07:00:00",
+      "tags": [
+        "Teams",
+        "IntegrationHub"
+      ]
+    },
+    {
+      "codigo": "INT-35",
+      "sprint": 7,
+      "epic": "Teams",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-35] Seg 21/12 — Teams — card com dados da conversa e botão para abrir na PDI",
+      "description": "📅 Seg 21/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Adaptive Card com canal, contato e última mensagem\n\nCritérios de aceite:\n- Card bonito e clicável\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-21 08:45:00",
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "codigo": "INT-36",
+      "sprint": 7,
+      "epic": "IntegrationHub",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-36] Seg 21/12 — Regra de 'sem resposta em 15 min' → Teams",
+      "description": "📅 Seg 21/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Flow agendado ou SLA simples\n- Alerta no Teams\n\nCritérios de aceite:\n- Alerta disparando na hora certa\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-21 10:30:00",
+      "tags": [
+        "IntegrationHub"
+      ]
+    },
+    {
+      "codigo": "INT-37",
+      "sprint": 7,
+      "epic": "Instagram",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-37] Ter 22/12 — Instagram — entrada pelo mesmo webhook (roteado por 'object')",
+      "description": "📅 Ter 22/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Assinar o webhook de mensagens do Instagram no app Meta\n- Rotear no Scripted REST: whatsapp_business_account × instagram\n\nCritérios de aceite:\n- DM do Instagram vira registro\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-22 07:00:00",
+      "tags": [
+        "Instagram",
+        "Inbound"
+      ]
+    },
+    {
+      "codigo": "INT-38",
+      "sprint": 7,
+      "epic": "Instagram",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-38] Ter 22/12 — Instagram — resposta pela PDI",
+      "description": "📅 Ter 22/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- OmniSender.instagram()\n\nCritérios de aceite:\n- Resposta chega na DM\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-22 08:45:00",
+      "tags": [
+        "Instagram",
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-39",
+      "sprint": 7,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-39] Ter 22/12 — Tela do atendente — UI Action 'Responder'",
+      "description": "📅 Ter 22/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- UI Action na Conversa abre campo e chama OmniSender\n- Lista de conversas abertas por canal\n\nCritérios de aceite:\n- Atendente responde qualquer canal da mesma tela\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-22 10:30:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-40",
+      "sprint": 7,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-40] Qua 23/12 — Widget de timeline da conversa no Service Portal",
+      "description": "📅 Qua 23/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Widget mostrando as mensagens em balões por direção\n\nCritérios de aceite:\n- Timeline funcionando\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-23 07:00:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-41",
+      "sprint": 7,
+      "epic": "Dados",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-41] Qua 23/12 — Importar contatos de planilha",
+      "description": "📅 Qua 23/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Import Set + transform + coalesce pelo telefone\n\nCritérios de aceite:\n- Contatos importados sem duplicar\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\system-import-sets\\",
+      "scheduled_at": "2026-12-23 08:45:00",
+      "tags": [
+        "Dados"
+      ]
+    },
+    {
+      "codigo": "INT-42",
+      "sprint": 7,
+      "epic": "Outbound",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-42] Qua 23/12 — Enriquecer contato com API pública (CEP → endereço)",
+      "description": "📅 Qua 23/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Action de IntegrationHub reaproveitada\n\nCritérios de aceite:\n- Contato enriquecido automaticamente\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-23 10:30:00",
+      "tags": [
+        "Outbound"
+      ]
+    },
+    {
+      "codigo": "INT-43",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-43] Seg 28/12 — Falha e reenvio — status da mensagem + scheduled job de retry",
+      "description": "📅 Seg 28/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Status: enviada / falhou / reenviada\n- Scheduled job reenvia falhas com limite de tentativas\n\nCritérios de aceite:\n- Falha forçada é reenviada sozinha\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-28 07:00:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-44",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-44] Seg 28/12 — Observabilidade — log do app",
+      "description": "📅 Seg 28/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Tabela de log ou gs.error com prefixo do app\n- Painel simples de mensagens por canal/status\n\nCritérios de aceite:\n- Você acha qualquer erro em 1 minuto\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-28 08:45:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-45",
+      "sprint": 8,
+      "epic": "Segurança",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-45] Seg 28/12 — Roles e ACLs do app (atendente × admin)",
+      "description": "📅 Seg 28/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Role atendente: lê e responde\n- Role admin: vê credenciais/propriedades\n\nCritérios de aceite:\n- Atendente não vê configuração\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\platform-security\\access-control\\",
+      "scheduled_at": "2026-12-28 10:30:00",
+      "tags": [
+        "Segurança"
+      ]
+    },
+    {
+      "codigo": "INT-46",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[INT-46] Ter 29/12 — Testes automatizados (ATF) dos fluxos principais",
+      "description": "📅 Ter 29/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- ATF: criar mensagem de entrada e verificar conversa\n- ATF: UI Action responder\n\nCritérios de aceite:\n- Suite ATF passando\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": "📚 Documentação:\n- Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\automated-test-framework-atf\\",
+      "scheduled_at": "2026-12-29 07:00:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-47",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-47] Ter 29/12 — Commit final no Git + documentação do app (README)",
+      "description": "📅 Ter 29/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- README: arquitetura, como configurar cada canal, como testar\n\nCritérios de aceite:\n- Repositório com README completo\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-29 08:45:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-48",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-48] Ter 29/12 — Revisão de segurança final",
+      "description": "📅 Ter 29/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Procurar token em script/nota/commit\n- Rodar com usuário sem role\n\nCritérios de aceite:\n- Nenhum segredo exposto\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-29 10:30:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-49",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-49] Qua 30/12 — 🏁 Demo ponta a ponta",
+      "description": "📅 Qua 30/12 · ⏰ 07:00\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- WhatsApp → PDI → Teams → atendente responde → chega no WhatsApp\n- Repetir com Instagram e Telegram\n\nCritérios de aceite:\n- Os 3 canais funcionando de ponta a ponta\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-30 07:00:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-50",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[INT-50] Qua 30/12 — Retrospectiva — o que domino × o que falta",
+      "description": "📅 Qua 30/12 · ⏰ 08:45\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Para cada card do quadro: domino / mais ou menos / não\n- Plano de janeiro (SOAP, MID na prática, spokes licenciados)\n\nCritérios de aceite:\n- Plano de janeiro escrito\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-30 08:45:00",
+      "tags": [
+        "Projeto"
+      ]
+    },
+    {
+      "codigo": "INT-51",
+      "sprint": 8,
+      "epic": "Projeto",
+      "priority": "Alta",
+      "type": "Projeto",
+      "titulo": "[INT-51] Qua 30/12 — (Opcional) Gravar vídeo em PT para o canal",
+      "description": "📅 Qua 30/12 · ⏰ 10:30\n\nComo dev ServiceNow, quero evoluir a Central Omnichannel na PDI.\n\nO que fazer:\n- Só PDI e contas pessoais; esconder tokens e números\n\nCritérios de aceite:\n- Vídeo gravado sem nenhum dado sensível\n\n🔒 Regras: tudo na sua PDI e em contas pessoais — nunca demo5/demo4/chaintech nem o Teams da Chaintech. Token/senha NUNCA em script, nota ou print: só em Credentials / Connection & Credential Alias.",
+      "notes": null,
+      "scheduled_at": "2026-12-30 10:30:00",
+      "tags": [
+        "Projeto"
+      ]
+    }
+  ]
+}

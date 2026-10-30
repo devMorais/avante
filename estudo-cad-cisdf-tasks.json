@@ -1,0 +1,2025 @@
+{
+  "board": {
+    "name": "Estudo CIS-DF + CAD — Dezembro 2026",
+    "objetivo": "Plano diário (manhã 7h-12h): CIS-DF prova 10/12/2026 11h (retake); CAD prova 14 ou 15/12. Blueprints oficiais."
+  },
+  "task_types": [
+    [
+      "Estudo",
+      "#0284C7"
+    ],
+    [
+      "Prática",
+      "#059669"
+    ],
+    [
+      "Simulado",
+      "#DC2626"
+    ],
+    [
+      "Revisão",
+      "#D97706"
+    ],
+    [
+      "Prova",
+      "#7C3AED"
+    ]
+  ],
+  "tags": [
+    [
+      "CIS-DF",
+      "#7C3AED"
+    ],
+    [
+      "CAD",
+      "#0891B2"
+    ]
+  ],
+  "sprints": [
+    {
+      "name": "Semana 0 — Arranque",
+      "start_date": "2026-10-23",
+      "end_date": "2026-10-25"
+    },
+    {
+      "name": "Semana 1 — Ingest × Criar app",
+      "start_date": "2026-10-26",
+      "end_date": "2026-11-01"
+    },
+    {
+      "name": "Semana 2 — CSDM/Govern × Criar app/Interface",
+      "start_date": "2026-11-02",
+      "end_date": "2026-11-08"
+    },
+    {
+      "name": "Semana 3 — Govern × Interface",
+      "start_date": "2026-11-09",
+      "end_date": "2026-11-15"
+    },
+    {
+      "name": "Semana 4 — Configuration × Segurança",
+      "start_date": "2026-11-16",
+      "end_date": "2026-11-22"
+    },
+    {
+      "name": "Semana 5 — Insight × Automação",
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-29"
+    },
+    {
+      "name": "Semana 6 — Reta final CIS-DF (1)",
+      "start_date": "2026-11-30",
+      "end_date": "2026-12-06"
+    },
+    {
+      "name": "Semana 7 — PROVA CIS-DF 10/12",
+      "start_date": "2026-12-07",
+      "end_date": "2026-12-10"
+    },
+    {
+      "name": "Semana 8 — Reta final + PROVA CAD",
+      "start_date": "2026-12-11",
+      "end_date": "2026-12-15"
+    }
+  ],
+  "tasks": [
+    {
+      "codigo": "CIS-01",
+      "sprint": 1,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-01] Sex 23/10 — Objetivo 7 — como Asset e CI se alinham",
+      "description": "📅 Sex 23/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 7 — como Asset e CI se alinham\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Ler a doc de sincronização Asset × CI (Model category é o elo)\n- Escrever o ANCHOR do objetivo 7 no CIS-DF-INGEST.md\n- Explicar em voz alta, em PT e em EN, sem olhar\n\nCritérios de aceite:\n- Objetivo 7 marcado ✅ no CIS-DF-INGEST.md\n- Você sabe dizer qual campo liga asset e CI\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\servicenow-platform\\configuration-management-database-cmdb\\ (buscar 'model category', 'asset CI'). Na aula 2 do Arno o instrutor errou este ponto.",
+      "scheduled_at": "2026-10-23 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-01",
+      "sprint": 1,
+      "epic": "CAD · Preparação",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-01] Sex 23/10 — Arranque do CAD — PDI, cursos oficiais e simulado",
+      "description": "📅 Sex 23/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Arranque do CAD — PDI, cursos oficiais e simulado\", para acertar as questões de Preparação (— da prova).\n\nO que fazer:\n- Conferir a PDI de desenvolvimento ativa\n- Inscrever-se nos 3 cursos oficiais: Welcome to ServiceNow · Scripting in ServiceNow Fundamentals · Application Development Fundamentals\n- Comprar o simulado de CAD (Lucky X na Udemy)\n- Ler o 07-CAD\\CAD-BLUEPRINT.md inteiro\n\nCritérios de aceite:\n- Cursos na sua lista da ServiceNow University e simulado comprado\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Blueprint: Desktop\\Contexto-IA\\07-CAD\\CAD-BLUEPRINT.md",
+      "scheduled_at": "2026-10-23 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-01",
+      "sprint": 1,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-01] Sex 23/10 — Prática do dia — CIS-DF (Ingest) + CAD (Preparação)",
+      "description": "📅 Sex 23/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (Preparação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-23 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-01",
+      "sprint": 1,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-01] Sáb 24/10 — 🎯 Simulado CIS-DF completo e cronometrado",
+      "description": "📅 Sáb 24/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "CIS-DF: Lucky X / curso oficial (não o banco de 178).",
+      "scheduled_at": "2026-10-24 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-01",
+      "sprint": 1,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-01] Sáb 24/10 — Revisão do simulado CIS-DF — cada erro vira card",
+      "description": "📅 Sáb 24/10 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-10-24 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-02",
+      "sprint": 1,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-02] Sáb 24/10 — Prática CAD — 20 questões do domínio da semana",
+      "description": "📅 Sáb 24/10 · ⏰ 11:00\n\nComo candidato ao CAD, quero manter o ritmo de questões no dia do simulado de CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-10-24 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-02",
+      "sprint": 1,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-02] Dom 25/10 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 25/10 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-10-25 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-02",
+      "sprint": 2,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-02] Seg 26/10 — Objetivo 1 — relacionamentos automáticos × manuais",
+      "description": "📅 Seg 26/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 1 — relacionamentos automáticos × manuais\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Discovery / Service Mapping / Service Graph Connector criam relacionamento sozinhos; Relationship Editor e suggested relationships são manuais\n- ANCHOR do objetivo 1\n- Na PDI: criar 1 relacionamento pelo Relationship Editor\n\nCritérios de aceite:\n- Objetivo 1 ✅\n- Regra fixada: no Relationship Editor, (Parent) = o CI aberto vira pai\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "PDI dev384562 (Australia — não fazer upgrade).",
+      "scheduled_at": "2026-10-26 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-02",
+      "sprint": 2,
+      "epic": "CAD · D1 Criar app (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-02] Seg 26/10 — O app combina com a ServiceNow? + o que é Application scope",
+      "description": "📅 Seg 26/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"O app combina com a ServiceNow? + o que é Application scope\", para acertar as questões de D1 Criar app (20% da prova).\n\nO que fazer:\n- Critérios de 'good fit' (processo com registro, aprovação, tarefa, relatório)\n- Global × scoped: o que o escopo protege\n\nCritérios de aceite:\n- Você explica quando NÃO construir na ServiceNow\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\",
+      "scheduled_at": "2026-10-26 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-03",
+      "sprint": 2,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-03] Seg 26/10 — Prática do dia — CIS-DF (Ingest) + CAD (D1 Criar app)",
+      "description": "📅 Seg 26/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D1 Criar app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-26 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-03",
+      "sprint": 2,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-03] Ter 27/10 — Objetivo 5 — CIs e atributos não descobríveis",
+      "description": "📅 Ter 27/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 5 — CIs e atributos não descobríveis\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Transformar a lista discoverable × non-discoverable (13/10) em ANCHOR\n- Como manter o manual: Data Manager (attestation), CMDB Workspace, import\n\nCritérios de aceite:\n- Objetivo 5 ✅\n- Regra: gravado na máquina = discoverable; group/owner/assigned/used for = manual\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Fonte: Desktop\\Contexto-IA\\01-CIS-DF\\CIS-DF-HANDOFF.md (entrada de 13/10).",
+      "scheduled_at": "2026-10-27 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-03",
+      "sprint": 2,
+      "epic": "CAD · D1 Criar app (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-03] Ter 27/10 — Criar o app scoped na PDI",
+      "description": "📅 Ter 27/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Criar o app scoped na PDI\", para acertar as questões de D1 Criar app (20% da prova).\n\nO que fazer:\n- Criar app no App Engine Studio (ou Studio)\n- Ver o prefixo x_ e o que o app gera\n\nCritérios de aceite:\n- App criado na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\app-engine-studio\\",
+      "scheduled_at": "2026-10-27 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-04",
+      "sprint": 2,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-04] Ter 27/10 — Prática do dia — CIS-DF (Ingest) + CAD (D1 Criar app)",
+      "description": "📅 Ter 27/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D1 Criar app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-27 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-04",
+      "sprint": 2,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-04] Qua 28/10 — Objetivo 2 — automação da integração (IntegrationHub ETL, Service Graph Connectors)",
+      "description": "📅 Qua 28/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 2 — automação da integração (IntegrationHub ETL, Service Graph Connectors)\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- O que é cada um e quando usar\n- Por que os dois passam pelo IRE\n- ANCHOR do objetivo 2\n\nCritérios de aceite:\n- Objetivo 2 ✅\n- Você responde: dado externo que precisa passar pelo IRE → qual ferramenta\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\servicenow-platform\\cmdb-integration-commons\\ e Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\api-reference\\rest-apis\\cmdb-ingest-api.md",
+      "scheduled_at": "2026-10-28 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-04",
+      "sprint": 2,
+      "epic": "CAD · D1 Criar app (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-04] Qua 28/10 — Modelo de dados — tabelas, extensão, campos, referência",
+      "description": "📅 Qua 28/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Modelo de dados — tabelas, extensão, campos, referência\", para acertar as questões de D1 Criar app (20% da prova).\n\nO que fazer:\n- Tabela nova estendendo Task × tabela sem extensão\n- 5 campos de tipos diferentes (incluindo Reference e Choice)\n- O que vem herdado da Task\n\nCritérios de aceite:\n- Tabela criada; você explica herança de tabela\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-10-28 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-05",
+      "sprint": 2,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-05] Qua 28/10 — Prática do dia — CIS-DF (Ingest) + CAD (D1 Criar app)",
+      "description": "📅 Qua 28/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D1 Criar app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-28 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-05",
+      "sprint": 2,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-05] Qui 29/10 — Objetivo 4 — dívida técnica e upgradeability",
+      "description": "📅 Qui 29/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 4 — dívida técnica e upgradeability\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Não customizar tabela base; estender a classe certa\n- IRE + identification rules em vez de script\n- Service Graph Connector em vez de transform map caseiro\n- ANCHOR com 3 'faça × não faça'\n\nCritérios de aceite:\n- Objetivo 4 ✅\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Ligue com o objetivo 3: a pergunta nunca é 'como trago o dado', é 'o dado passa pelo IRE?'.",
+      "scheduled_at": "2026-10-29 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-05",
+      "sprint": 2,
+      "epic": "CAD · D1 Criar app (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-05] Qui 29/10 — Módulos e menus da aplicação",
+      "description": "📅 Qui 29/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Módulos e menus da aplicação\", para acertar as questões de D1 Criar app (20% da prova).\n\nO que fazer:\n- Application menu + módulos (list, new, filtered)\n- Ordem e roles do módulo\n\nCritérios de aceite:\n- App navegável pelo menu\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-10-29 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-06",
+      "sprint": 2,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-06] Qui 29/10 — Prática do dia — CIS-DF (Ingest) + CAD (D1 Criar app)",
+      "description": "📅 Qui 29/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D1 Criar app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-29 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-06",
+      "sprint": 2,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-06] Sex 30/10 — Objetivo 6 — identificadores de segurança/regulatórios × objetos CSDM",
+      "description": "📅 Sex 30/10 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Objetivo 6 — identificadores de segurança/regulatórios × objetos CSDM\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Onde ficam classificação de dados e compliance contra Business Application / Service\n- ANCHOR do objetivo 6\n\nCritérios de aceite:\n- Os 7 objetivos do CIS-DF-INGEST.md ✅\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Doc: buscar 'data classification' e 'compliance' em Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\servicenow-platform\\configuration-management-database-cmdb\\",
+      "scheduled_at": "2026-10-30 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-06",
+      "sprint": 2,
+      "epic": "CAD · D1 Criar app (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-06] Sex 30/10 — Application scope — cross-scope e restricted caller access",
+      "description": "📅 Sex 30/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Application scope — cross-scope e restricted caller access\", para acertar as questões de D1 Criar app (20% da prova).\n\nO que fazer:\n- Cross-scope privileges, runtime access tracking\n- Rodada de 15 questões do domínio 1\n\nCritérios de aceite:\n- Domínio 1 acima de 75%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-10-30 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-07",
+      "sprint": 2,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-07] Sex 30/10 — Prática do dia — CIS-DF (Ingest) + CAD (D1 Criar app)",
+      "description": "📅 Sex 30/10 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D1 Criar app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-10-30 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-02",
+      "sprint": 2,
+      "epic": "CAD · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-02] Sáb 31/10 — 🎯 Simulado CAD: Lucky X Exam 1 + Exam 2 (58 questões, diagnóstico)",
+      "description": "📅 Sáb 31/10 · ⏰ 07:00\n\nComo candidato ao CAD, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "Udemy: Pass ServiceNow Certified Application Developer CAD 10/2026 (Lucky X). Exam 1 + Exam 2 seguidos, ~90 min. Diagnóstico: ainda é cedo, nota baixa é esperada. Pesos: usar a blueprint oficial (20/20/20/20/10/10), não os da descrição do curso.",
+      "scheduled_at": "2026-10-31 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-03",
+      "sprint": 2,
+      "epic": "CAD · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-03] Sáb 31/10 — Revisão do simulado CAD — cada erro vira card",
+      "description": "📅 Sáb 31/10 · ⏰ 09:00\n\nComo candidato ao CAD, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-10-31 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-08",
+      "sprint": 2,
+      "epic": "CIS-DF · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-08] Sáb 31/10 — Prática CIS-DF — 20 questões do domínio da semana",
+      "description": "📅 Sáb 31/10 · ⏰ 11:00\n\nComo candidato ao CIS-DF, quero manter o ritmo de questões no dia do simulado de CAD.\n\nO que fazer:\n- 20 questões\n- Erros → card\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-10-31 11:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-04",
+      "sprint": 2,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-04] Dom 01/11 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 01/11 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-11-01 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-07",
+      "sprint": 3,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-07] Seg 02/11 — Teste de fogo — 25 questões só de Ingest",
+      "description": "📅 Seg 02/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Teste de fogo — 25 questões só de Ingest\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- 25 questões cronometradas (1min30 cada), sem consultar\n- Cada erro: traduzir o enunciado → doc → card\n\nCritérios de aceite:\n- Nota anotada no HANDOFF (meta > 70%; na prova foi 29%)\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Não usar o 'banco de 178' (veio de dumps).",
+      "scheduled_at": "2026-11-02 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-07",
+      "sprint": 3,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-07] Seg 02/11 — Forms — layout, seções, views, adicionar/remover campos",
+      "description": "📅 Seg 02/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Forms — layout, seções, views, adicionar/remover campos\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- Form Designer × Form Layout\n- Views e seções\n- Adicionar e remover campos de form e de tabela\n\nCritérios de aceite:\n- Form da sua tabela com seções\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-02 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-09",
+      "sprint": 3,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-09] Seg 02/11 — Prática do dia — CIS-DF (Ingest) + CAD (D2 Interface)",
+      "description": "📅 Seg 02/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-02 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-08",
+      "sprint": 3,
+      "epic": "CIS-DF · CSDM",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-08] Ter 03/11 — Curso do Arno — Seção 2 (CSDM Primer)",
+      "description": "📅 Ter 03/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Curso do Arno — Seção 2 (CSDM Primer)\", para acertar as questões de CSDM (10% da prova).\n\nO que fazer:\n- Assistir a seção 2\n- Ficha da aula: objetivos traduzidos · tabela 🇬🇧|🇧🇷|🔴 prova · frase-chave\n- Conferir cada afirmação do instrutor na doc local\n\nCritérios de aceite:\n- Seção 2 concluída e ficha feita no CIS-DF-VOCAB.html\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Slides: ServiceNow CMDB Course Materials - All slides.pdf",
+      "scheduled_at": "2026-11-03 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-08",
+      "sprint": 3,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-08] Ter 03/11 — Client Scripts — onLoad, onChange, onSubmit, onCellEdit",
+      "description": "📅 Ter 03/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Client Scripts — onLoad, onChange, onSubmit, onCellEdit\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- g_form, g_user (getFullName() é método válido de GlideUser)\n- Um script de cada tipo na PDI\n\nCritérios de aceite:\n- 4 client scripts funcionando\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-03 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-10",
+      "sprint": 3,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-10] Ter 03/11 — Prática do dia — CIS-DF (CSDM) + CAD (D2 Interface)",
+      "description": "📅 Ter 03/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (CSDM), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-03 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-09",
+      "sprint": 3,
+      "epic": "CIS-DF · CSDM",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-09] Qua 04/11 — CSDM — os 7 domínios e os estágios",
+      "description": "📅 Qua 04/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"CSDM — os 7 domínios e os estágios\", para acertar as questões de CSDM (10% da prova).\n\nO que fazer:\n- Foundation, Ideation & Strategy, Design & Planning, Build & Integration, Service Delivery, Service Consumption, Manage Portfolio\n- Foundation → Crawl → Walk → Run → Fly\n- lifecycle_stage / lifecycle_stage_status\n\nCritérios de aceite:\n- Você desenha os 7 domínios de cabeça (CSDM 5 tem 7, não 5)\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Material de terceiros com 'Sell/Consume' está em CSDM 4.",
+      "scheduled_at": "2026-11-04 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-09",
+      "sprint": 3,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-09] Qua 04/11 — UI Policies × Client Scripts e debug no cliente",
+      "description": "📅 Qua 04/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"UI Policies × Client Scripts e debug no cliente\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- Quando usar cada um; ordem de execução\n- Debug: console do navegador, JavaScript Log, jslog()\n\nCritérios de aceite:\n- Você debuga um client script quebrado de propósito\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-04 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-11",
+      "sprint": 3,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-11] Qua 04/11 — Prática do dia — CIS-DF (CSDM) + CAD (D2 Interface)",
+      "description": "📅 Qua 04/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (CSDM), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-04 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-10",
+      "sprint": 3,
+      "epic": "CIS-DF · CSDM",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-10] Qui 05/11 — CSDM — Business Application × Application Service × Technical Service",
+      "description": "📅 Qui 05/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"CSDM — Business Application × Application Service × Technical Service\", para acertar as questões de CSDM (10% da prova).\n\nO que fazer:\n- Quem é operacional e quem não é (cmdb_ci_business_app × cmdb_ci_service_auto)\n- Onde o incidente aponta\n- 15 questões de CSDM\n\nCritérios de aceite:\n- CSDM acima de 80% nas questões\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-05 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-10",
+      "sprint": 3,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-10] Qui 05/11 — Server-side scripts — Business Rules e GlideRecord",
+      "description": "📅 Qui 05/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Server-side scripts — Business Rules e GlideRecord\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- before / after / async / display; current e previous\n- Por que não usar current.update() no before\n- Debug: gs.info, Script Debugger\n\nCritérios de aceite:\n- Uma BR de cada tipo na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\business-rules-classic\\",
+      "scheduled_at": "2026-11-05 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-12",
+      "sprint": 3,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-12] Qui 05/11 — Prática do dia — CIS-DF (CSDM) + CAD (D2 Interface)",
+      "description": "📅 Qui 05/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (CSDM), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-05 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-11",
+      "sprint": 3,
+      "epic": "CIS-DF · Govern",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-11] Sex 06/11 — As 6 métricas do health score",
+      "description": "📅 Sex 06/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"As 6 métricas do health score\", para acertar as questões de Govern (38,7% da prova).\n\nO que fazer:\n- 3 KPIs e 6 métricas: Completeness = Required + Recommended · Correctness = Orphan + Staleness + Duplicate · Compliance = Audit\n- Staleness padrão = 60 dias\n\nCritérios de aceite:\n- Você escreve as 6 métricas de cabeça\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Govern = 38,7% da prova (o maior peso).",
+      "scheduled_at": "2026-11-06 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-11",
+      "sprint": 3,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-11] Sex 06/11 — Record Producer como interface do app",
+      "description": "📅 Sex 06/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Record Producer como interface do app\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- Record Producer gravando na sua tabela\n- Variáveis → campos; script do producer\n\nCritérios de aceite:\n- Registro criado pelo Service Portal via Record Producer\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-06 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-13",
+      "sprint": 3,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-13] Sex 06/11 — Prática do dia — CIS-DF (Govern) + CAD (D2 Interface)",
+      "description": "📅 Sex 06/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Govern), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-06 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-03",
+      "sprint": 3,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-03] Sáb 07/11 — 🎯 Simulado CIS-DF completo e cronometrado",
+      "description": "📅 Sáb 07/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "CIS-DF: Lucky X / curso oficial (não o banco de 178).",
+      "scheduled_at": "2026-11-07 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-05",
+      "sprint": 3,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-05] Sáb 07/11 — Revisão do simulado CIS-DF — cada erro vira card",
+      "description": "📅 Sáb 07/11 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-11-07 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-14",
+      "sprint": 3,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-14] Sáb 07/11 — Prática CAD — 20 questões do domínio da semana",
+      "description": "📅 Sáb 07/11 · ⏰ 11:00\n\nComo candidato ao CAD, quero manter o ritmo de questões no dia do simulado de CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-07 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-06",
+      "sprint": 3,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-06] Dom 08/11 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 08/11 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-11-08 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-12",
+      "sprint": 4,
+      "epic": "CIS-DF · Govern",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-12] Seg 09/11 — Data Manager — políticas",
+      "description": "📅 Seg 09/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Data Manager — políticas\", para acertar as questões de Govern (38,7% da prova).\n\nO que fazer:\n- Attestation, Certification, Retire, Archive, Delete\n- Propósito e requisitos do Data Manager\n\nCritérios de aceite:\n- Attestation × Certification em uma frase cada\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-09 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-12",
+      "sprint": 4,
+      "epic": "CAD · D2 Interface (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-12] Seg 09/11 — Rodada de 20 questões do domínio 2",
+      "description": "📅 Seg 09/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Rodada de 20 questões do domínio 2\", para acertar as questões de D2 Interface (20% da prova).\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Domínio 2 acima de 75%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-09 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-15",
+      "sprint": 4,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-15] Seg 09/11 — Prática do dia — CIS-DF (Govern) + CAD (D2 Interface)",
+      "description": "📅 Seg 09/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Govern), 1min30 cada\n- 15 questões de CAD (D2 Interface)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-09 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-13",
+      "sprint": 4,
+      "epic": "CIS-DF · Govern",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-13] Ter 10/11 — Papéis-chave e governança",
+      "description": "📅 Ter 10/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Papéis-chave e governança\", para acertar as questões de Govern (38,7% da prova).\n\nO que fazer:\n- Papéis: CMDB admin, data steward, owner, data manager\n- Metas de boa governança e o que é preciso para governar\n\nCritérios de aceite:\n- Você liga cada papel à sua responsabilidade\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-10 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-13",
+      "sprint": 4,
+      "epic": "CAD · D3 Segurança (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-13] Ter 10/11 — Restringir acesso ao app e aos módulos",
+      "description": "📅 Ter 10/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Restringir acesso ao app e aos módulos\", para acertar as questões de D3 Segurança (20% da prova).\n\nO que fazer:\n- Roles no application menu e nos módulos\n- Role do app, herança de role\n\nCritérios de aceite:\n- Usuário sem role não vê o app\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\platform-security\\access-control\\",
+      "scheduled_at": "2026-11-10 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-16",
+      "sprint": 4,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-16] Ter 10/11 — Prática do dia — CIS-DF (Govern) + CAD (D3 Segurança)",
+      "description": "📅 Ter 10/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Govern), 1min30 cada\n- 15 questões de CAD (D3 Segurança)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-10 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-14",
+      "sprint": 4,
+      "epic": "CIS-DF · Govern",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-14] Qua 11/11 — Rodada de 30 questões de Govern",
+      "description": "📅 Qua 11/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Rodada de 30 questões de Govern\", para acertar as questões de Govern (38,7% da prova).\n\nO que fazer:\n- 30 questões cronometradas\n- Erros → tradução → doc → card\n\nCritérios de aceite:\n- Govern acima de 75%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-11 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-14",
+      "sprint": 4,
+      "epic": "CAD · D3 Segurança (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-14] Qua 11/11 — Access Controls — tipos e ordem de avaliação",
+      "description": "📅 Qua 11/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Access Controls — tipos e ordem de avaliação\", para acertar as questões de D3 Segurança (20% da prova).\n\nO que fazer:\n- Table × field, wildcard (*)\n- Ordem: role → condition → script; tabela antes do campo\n- ACL criada automaticamente ao criar tabela no app\n\nCritérios de aceite:\n- Você descreve a ordem de avaliação sem olhar\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\ACL-access-checks.md",
+      "scheduled_at": "2026-11-11 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-17",
+      "sprint": 4,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-17] Qua 11/11 — Prática do dia — CIS-DF (Govern) + CAD (D3 Segurança)",
+      "description": "📅 Qua 11/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Govern), 1min30 cada\n- 15 questões de CAD (D3 Segurança)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-11 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-15",
+      "sprint": 4,
+      "epic": "CIS-DF · Configuration",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-15] Qui 12/11 — CI Class Manager",
+      "description": "📅 Qui 12/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"CI Class Manager\", para acertar as questões de Configuration (14% da prova).\n\nO que fazer:\n- Atributos, hierarquia, identification e reconciliation rules, principal class, recommended fields\n- Na PDI: abrir uma classe e achar cada item\n\nCritérios de aceite:\n- Regra: objeto é classe/atributo/regra → CI Class Manager, SEMPRE\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\servicenow-platform\\cmdb-ci-class-models\\",
+      "scheduled_at": "2026-11-12 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-15",
+      "sprint": 4,
+      "epic": "CAD · D3 Segurança (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-15] Qui 12/11 — Testar e debugar ACL",
+      "description": "📅 Qui 12/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Testar e debugar ACL\", para acertar as questões de D3 Segurança (20% da prova).\n\nO que fazer:\n- Debug Security Rules, impersonar usuário\n- Access Analyzer\n\nCritérios de aceite:\n- Você explica um 'acesso negado' pelo debug\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-12 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-18",
+      "sprint": 4,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-18] Qui 12/11 — Prática do dia — CIS-DF (Configuration) + CAD (D3 Segurança)",
+      "description": "📅 Qui 12/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Configuration), 1min30 cada\n- 15 questões de CAD (D3 Segurança)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-12 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-16",
+      "sprint": 4,
+      "epic": "CIS-DF · Configuration",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-16] Sex 13/11 — IRE — identificação, reconciliação e precedência",
+      "description": "📅 Sex 13/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"IRE — identificação, reconciliação e precedência\", para acertar as questões de Configuration (14% da prova).\n\nO que fazer:\n- Identification rules, reconciliation rules, data source precedence\n- O que o IRE faz quando há duplicata\n\nCritérios de aceite:\n- Você explica o caminho de um payload pelo IRE\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-13 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-16",
+      "sprint": 4,
+      "epic": "CAD · D3 Segurança (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-16] Sex 13/11 — GlideSystem para scriptar segurança",
+      "description": "📅 Sex 13/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"GlideSystem para scriptar segurança\", para acertar as questões de D3 Segurança (20% da prova).\n\nO que fazer:\n- gs.hasRole(), gs.getUser(), gs.getUserID(), gs.isLoggedIn()\n- ACL com script usando answer\n\nCritérios de aceite:\n- ACL com script funcionando na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-13 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-19",
+      "sprint": 4,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-19] Sex 13/11 — Prática do dia — CIS-DF (Configuration) + CAD (D3 Segurança)",
+      "description": "📅 Sex 13/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Configuration), 1min30 cada\n- 15 questões de CAD (D3 Segurança)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-13 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-04",
+      "sprint": 4,
+      "epic": "CAD · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-04] Sáb 14/11 — 🎯 Simulado CAD: Lucky X Exam 3 + Exam 4 (58 questões)",
+      "description": "📅 Sáb 14/11 · ⏰ 07:00\n\nComo candidato ao CAD, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "Lucky X Exam 3 + Exam 4. Comparar com 31/10 por domínio. Exams 1-4 se parecem (aluna relatou repetição): se reconhecer a questão de cor, marque e não conte como acerto.",
+      "scheduled_at": "2026-11-14 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-07",
+      "sprint": 4,
+      "epic": "CAD · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-07] Sáb 14/11 — Revisão do simulado CAD — cada erro vira card",
+      "description": "📅 Sáb 14/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-11-14 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-20",
+      "sprint": 4,
+      "epic": "CIS-DF · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-20] Sáb 14/11 — Prática CIS-DF — 20 questões do domínio da semana",
+      "description": "📅 Sáb 14/11 · ⏰ 11:00\n\nComo candidato ao CIS-DF, quero manter o ritmo de questões no dia do simulado de CAD.\n\nO que fazer:\n- 20 questões\n- Erros → card\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-14 11:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-08",
+      "sprint": 4,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-08] Dom 15/11 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 15/11 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-11-15 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-17",
+      "sprint": 5,
+      "epic": "CIS-DF · Configuration",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-17] Seg 16/11 — CMDB 360 / multisource",
+      "description": "📅 Seg 16/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"CMDB 360 / multisource\", para acertar as questões de Configuration (14% da prova).\n\nO que fazer:\n- CMDB 360 = 1 CI, N fontes (compare attribute values / find gap)\n- Quando habilitar e o que mostra\n\nCritérios de aceite:\n- Você diferencia CMDB 360 de CMDB Health\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-16 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-17",
+      "sprint": 5,
+      "epic": "CAD · D3 Segurança (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-17] Seg 16/11 — Application Scope protegendo artefatos + 20 questões D3",
+      "description": "📅 Seg 16/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Application Scope protegendo artefatos + 20 questões D3\", para acertar as questões de D3 Segurança (20% da prova).\n\nO que fazer:\n- Application access (can read/create/update/delete, web services)\n- Protection policy (read-only / protected)\n- 20 questões do domínio 3\n\nCritérios de aceite:\n- Domínio 3 acima de 75%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-16 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-21",
+      "sprint": 5,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-21] Seg 16/11 — Prática do dia — CIS-DF (Configuration) + CAD (D3 Segurança)",
+      "description": "📅 Seg 16/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Configuration), 1min30 cada\n- 15 questões de CAD (D3 Segurança)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-16 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-18",
+      "sprint": 5,
+      "epic": "CIS-DF · Configuration",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-18] Ter 17/11 — Rodada de 25 questões de Configuration",
+      "description": "📅 Ter 17/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Rodada de 25 questões de Configuration\", para acertar as questões de Configuration (14% da prova).\n\nO que fazer:\n- 25 questões cronometradas\n- Erros → card\n\nCritérios de aceite:\n- Configuration acima de 75%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-17 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-18",
+      "sprint": 5,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-18] Ter 17/11 — Flow Designer — trigger, actions, flow logic, subflow",
+      "description": "📅 Ter 17/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Flow Designer — trigger, actions, flow logic, subflow\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Flow com trigger de registro + aprovação\n- Testar e debugar (Test, Execution Details)\n\nCritérios de aceite:\n- Flow rodando na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\workflow-studio\\",
+      "scheduled_at": "2026-11-17 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-22",
+      "sprint": 5,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-22] Ter 17/11 — Prática do dia — CIS-DF (Configuration) + CAD (D4 Automação)",
+      "description": "📅 Ter 17/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Configuration), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-17 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-19",
+      "sprint": 5,
+      "epic": "CIS-DF · Insight",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-19] Qua 18/11 — CMDB Workspace, NLQ e Query Builder",
+      "description": "📅 Qua 18/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"CMDB Workspace, NLQ e Query Builder\", para acertar as questões de Insight (16,7% da prova).\n\nO que fazer:\n- O que mora no Workspace (NLQ mora no Workspace — recaída nº5)\n- Query Builder: consultas por relacionamento\n- Na PDI: navegar o Workspace\n\nCritérios de aceite:\n- Regra: objeto que NÃO é classe (CI, task, policy, duplicata, busca) → CMDB Workspace\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Insight = 16,7% da prova.",
+      "scheduled_at": "2026-11-18 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-19",
+      "sprint": 5,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-19] Qua 18/11 — Workflow (legado) — o mínimo da prova",
+      "description": "📅 Qua 18/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Workflow (legado) — o mínimo da prova\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Activities, transições, testar o workflow\n- Workflow × Flow Designer: quando cada um\n\nCritérios de aceite:\n- Você explica a diferença\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\legacy-workflow\\",
+      "scheduled_at": "2026-11-18 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-23",
+      "sprint": 5,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-23] Qua 18/11 — Prática do dia — CIS-DF (Insight) + CAD (D4 Automação)",
+      "description": "📅 Qua 18/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Insight), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-18 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-20",
+      "sprint": 5,
+      "epic": "CIS-DF · Insight",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-20] Qui 19/11 — Dashboards de saúde e Data Foundations",
+      "description": "📅 Qui 19/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Dashboards de saúde e Data Foundations\", para acertar as questões de Insight (16,7% da prova).\n\nO que fazer:\n- CMDB Health Dashboard, CMDB Data Foundations Dashboard\n- Quem mede × quem age × quem define × quem mostra\n\nCritérios de aceite:\n- Tabela 'quem faz o quê' refeita de cabeça\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-19 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-20",
+      "sprint": 5,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-20] Qui 19/11 — Application Properties",
+      "description": "📅 Qui 19/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Application Properties\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Criar propriedade no escopo do app\n- gs.getProperty() e página de propriedades do app\n\nCritérios de aceite:\n- Propriedade lida por script na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-19 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-24",
+      "sprint": 5,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-24] Qui 19/11 — Prática do dia — CIS-DF (Insight) + CAD (D4 Automação)",
+      "description": "📅 Qui 19/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Insight), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-19 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-21",
+      "sprint": 5,
+      "epic": "CIS-DF · Insight",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-21] Sex 20/11 — Rodada de 25 questões de Insight",
+      "description": "📅 Sex 20/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Rodada de 25 questões de Insight\", para acertar as questões de Insight (16,7% da prova).\n\nO que fazer:\n- 25 questões\n- Erros → card\n\nCritérios de aceite:\n- Insight acima de 75%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-20 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-21",
+      "sprint": 5,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-21] Sex 20/11 — Events e Scheduled Script Executions",
+      "description": "📅 Sex 20/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Events e Scheduled Script Executions\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Event Registry, gs.eventQueue(), Script Action\n- Scheduled Job: Run = Monthly, Day = 31 roda no último dia do mês (questão oficial)\n\nCritérios de aceite:\n- Evento disparando script na PDI\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\build-workflows\\system-events\\",
+      "scheduled_at": "2026-11-20 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-25",
+      "sprint": 5,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-25] Sex 20/11 — Prática do dia — CIS-DF (Insight) + CAD (D4 Automação)",
+      "description": "📅 Sex 20/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Insight), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-20 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-05",
+      "sprint": 5,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-05] Sáb 21/11 — 🎯 Simulado CIS-DF completo e cronometrado",
+      "description": "📅 Sáb 21/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "CIS-DF: Lucky X / curso oficial (não o banco de 178).",
+      "scheduled_at": "2026-11-21 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-09",
+      "sprint": 5,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-09] Sáb 21/11 — Revisão do simulado CIS-DF — cada erro vira card",
+      "description": "📅 Sáb 21/11 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-11-21 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-26",
+      "sprint": 5,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-26] Sáb 21/11 — Prática CAD — 20 questões do domínio da semana",
+      "description": "📅 Sáb 21/11 · ⏰ 11:00\n\nComo candidato ao CAD, quero manter o ritmo de questões no dia do simulado de CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-21 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-10",
+      "sprint": 5,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-10] Dom 22/11 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 22/11 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-11-22 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-22",
+      "sprint": 6,
+      "epic": "CIS-DF · Ingest",
+      "priority": "Urgente",
+      "type": "Estudo",
+      "titulo": "[CIS-22] Seg 23/11 — Ingest — revisão + 20 questões",
+      "description": "📅 Seg 23/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Ingest — revisão + 20 questões\", para acertar as questões de Ingest (20,7% da prova).\n\nO que fazer:\n- Reler o CIS-DF-INGEST.md inteiro\n- 20 questões de Ingest\n\nCritérios de aceite:\n- Ingest acima de 75%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Foi o domínio que reprovou a 1ª prova.",
+      "scheduled_at": "2026-11-23 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-22",
+      "sprint": 6,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-22] Seg 23/11 — Script Includes utilitários (Utils) + GlideAjax",
+      "description": "📅 Seg 23/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Script Includes utilitários (Utils) + GlideAjax\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Script Include com classe (Class.create) × classless\n- Client callable + GlideAjax assíncrono\n\nCritérios de aceite:\n- GlideAjax buscando valor de um Utils\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-23 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-27",
+      "sprint": 6,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-27] Seg 23/11 — Prática do dia — CIS-DF (Ingest) + CAD (D4 Automação)",
+      "description": "📅 Seg 23/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Ingest), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-23 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-23",
+      "sprint": 6,
+      "epic": "CIS-DF · Govern",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-23] Ter 24/11 — Govern — revisão + 25 questões",
+      "description": "📅 Ter 24/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Govern — revisão + 25 questões\", para acertar as questões de Govern (38,7% da prova).\n\nO que fazer:\n- Reler Govern no CIS-DF.md\n- 25 questões\n\nCritérios de aceite:\n- Govern acima de 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-24 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-23",
+      "sprint": 6,
+      "epic": "CAD · D4 Automação (20%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-23] Ter 24/11 — E-mail — enviar e receber + 20 questões D4",
+      "description": "📅 Ter 24/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"E-mail — enviar e receber + 20 questões D4\", para acertar as questões de D4 Automação (20% da prova).\n\nO que fazer:\n- Notification por evento e por registro\n- Inbound Email Action (receber)\n- 20 questões do domínio 4\n\nCritérios de aceite:\n- Domínio 4 acima de 75%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-24 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-28",
+      "sprint": 6,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-28] Ter 24/11 — Prática do dia — CIS-DF (Govern) + CAD (D4 Automação)",
+      "description": "📅 Ter 24/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Govern), 1min30 cada\n- 15 questões de CAD (D4 Automação)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-24 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-24",
+      "sprint": 6,
+      "epic": "CIS-DF · Configuration",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-24] Qua 25/11 — Curso do Arno — próxima seção (Discovery / hands-on)",
+      "description": "📅 Qua 25/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Curso do Arno — próxima seção (Discovery / hands-on)\", para acertar as questões de Configuration (14% da prova).\n\nO que fazer:\n- Próxima seção do curso\n- Exercício na PDI\n- Ficha da aula\n\nCritérios de aceite:\n- Seção concluída com ficha\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "Sempre na PDI, nunca demo5/demo4/chaintech.",
+      "scheduled_at": "2026-11-25 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-24",
+      "sprint": 6,
+      "epic": "CAD · D5 Dados externos (10%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-24] Qua 25/11 — Importar CSV/Excel — Import Sets e Transform Maps",
+      "description": "📅 Qua 25/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Importar CSV/Excel — Import Sets e Transform Maps\", para acertar as questões de D5 Dados externos (10% da prova).\n\nO que fazer:\n- Staging table, transform map, coalesce, transform scripts\n- Auto Map Matching Fields (questão oficial)\n- Importar uma planilha na PDI\n\nCritérios de aceite:\n- Importação com coalesce funcionando\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\integrate-applications\\system-import-sets\\",
+      "scheduled_at": "2026-11-25 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-29",
+      "sprint": 6,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-29] Qua 25/11 — Prática do dia — CIS-DF (Configuration) + CAD (D5 Dados externos)",
+      "description": "📅 Qua 25/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Configuration), 1min30 cada\n- 15 questões de CAD (D5 Dados externos)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-25 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-25",
+      "sprint": 6,
+      "epic": "CIS-DF · Misto",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-25] Qui 26/11 — 40 questões mistas — foco nos 2 domínios mais fracos",
+      "description": "📅 Qui 26/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"40 questões mistas — foco nos 2 domínios mais fracos\", para acertar as questões de Misto (todos da prova).\n\nO que fazer:\n- 40 questões\n- Erros → card\n\nCritérios de aceite:\n- Nota anotada por domínio\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-26 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-25",
+      "sprint": 6,
+      "epic": "CAD · D5 Dados externos (10%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-25] Qui 26/11 — REST — integrar, testar e debugar",
+      "description": "📅 Qui 26/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"REST — integrar, testar e debugar\", para acertar as questões de D5 Dados externos (10% da prova).\n\nO que fazer:\n- REST Message (saída) e REST API Explorer\n- Scripted REST API (entrada)\n- Debug: outbound HTTP log\n\nCritérios de aceite:\n- Chamada REST funcionando nos dois sentidos\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-26 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-30",
+      "sprint": 6,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-30] Qui 26/11 — Prática do dia — CIS-DF (Misto) + CAD (D5 Dados externos)",
+      "description": "📅 Qui 26/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Misto), 1min30 cada\n- 15 questões de CAD (D5 Dados externos)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-26 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-26",
+      "sprint": 6,
+      "epic": "CIS-DF · Misto",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-26] Sex 27/11 — 40 questões mistas — rodada 2",
+      "description": "📅 Sex 27/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"40 questões mistas — rodada 2\", para acertar as questões de Misto (todos da prova).\n\nO que fazer:\n- 40 questões novas\n- Erros → card\n\nCritérios de aceite:\n- Nota acima da rodada 1\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-27 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-26",
+      "sprint": 6,
+      "epic": "CAD · D6 Gerir app (10%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-26] Sex 27/11 — Baixar/instalar apps e Delegated Development",
+      "description": "📅 Sex 27/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Baixar/instalar apps e Delegated Development\", para acertar as questões de D6 Gerir app (10% da prova).\n\nO que fazer:\n- Instalar app do repositório / Store\n- Delegated Development: permissões de código e code review\n\nCritérios de aceite:\n- Você explica o que o delegated developer pode e não pode\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "Doc: Desktop\\ServiceNow - Doc\\ServiceNowDocs\\ServiceNowDocs\\markdown\\application-development\\application-repository-self-hosted\\",
+      "scheduled_at": "2026-11-27 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-31",
+      "sprint": 6,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-31] Sex 27/11 — Prática do dia — CIS-DF (Misto) + CAD (D6 Gerir app)",
+      "description": "📅 Sex 27/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Misto), 1min30 cada\n- 15 questões de CAD (D6 Gerir app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-27 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-06",
+      "sprint": 6,
+      "epic": "CAD · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-06] Sáb 28/11 — 🎯 Simulado CAD: Lucky X Exam 5 (80 questões)",
+      "description": "📅 Sáb 28/11 · ⏰ 07:00\n\nComo candidato ao CAD, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "Lucky X Exam 5 (80 questões, ~2h). Um dos dois mais realistas segundo as avaliações.",
+      "scheduled_at": "2026-11-28 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-11",
+      "sprint": 6,
+      "epic": "CAD · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-11] Sáb 28/11 — Revisão do simulado CAD — cada erro vira card",
+      "description": "📅 Sáb 28/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-11-28 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-32",
+      "sprint": 6,
+      "epic": "CIS-DF · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-32] Sáb 28/11 — Prática CIS-DF — 20 questões do domínio da semana",
+      "description": "📅 Sáb 28/11 · ⏰ 11:00\n\nComo candidato ao CIS-DF, quero manter o ritmo de questões no dia do simulado de CAD.\n\nO que fazer:\n- 20 questões\n- Erros → card\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-28 11:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-12",
+      "sprint": 6,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-12] Dom 29/11 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 29/11 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-11-29 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-27",
+      "sprint": 7,
+      "epic": "CIS-DF · Misto",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CIS-27] Seg 30/11 — Recaídas — os ANCHORs que já te derrubaram",
+      "description": "📅 Seg 30/11 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Recaídas — os ANCHORs que já te derrubaram\", para acertar as questões de Misto (todos da prova).\n\nO que fazer:\n- Reler todos os ANCHOR de recaída no CIS-DF.md\n- Refazer as questões que geraram cada recaída\n\nCritérios de aceite:\n- Nenhuma recaída sem revisão\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-30 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-27",
+      "sprint": 7,
+      "epic": "CAD · D6 Gerir app (10%)",
+      "priority": "Alta",
+      "type": "Estudo",
+      "titulo": "[CAD-27] Seg 30/11 — Integração Git + 20 questões D5/D6",
+      "description": "📅 Seg 30/11 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"Integração Git + 20 questões D5/D6\", para acertar as questões de D6 Gerir app (10% da prova).\n\nO que fazer:\n- Link do app ao Git, branch, commit, stash, apply remote changes\n- 20 questões de D5 e D6\n\nCritérios de aceite:\n- Domínios 5 e 6 acima de 75%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-11-30 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PRA-33",
+      "sprint": 7,
+      "epic": "Prática diária",
+      "priority": "Alta",
+      "type": "Prática",
+      "titulo": "[PRA-33] Seg 30/11 — Prática do dia — CIS-DF (Misto) + CAD (D6 Gerir app)",
+      "description": "📅 Seg 30/11 · ⏰ 11:00\n\nComo candidato às duas provas, quero transformar a matéria do dia em acerto de questão.\n\nO que fazer:\n- 15 questões de CIS-DF (Misto), 1min30 cada\n- 15 questões de CAD (D6 Gerir app)\n- Cada erro: enunciado traduzido → regra certa\n\nCritérios de aceite:\n- 30 questões feitas e erros anotados",
+      "notes": "",
+      "scheduled_at": "2026-11-30 11:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-28",
+      "sprint": 7,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-28] Ter 01/12 — Ingest — revisão completa dos 7 objetivos",
+      "description": "📅 Ter 01/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Ingest — revisão completa dos 7 objetivos\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-01 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-07",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-07] Ter 01/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Ter 01/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-01 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-34",
+      "sprint": 7,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-34] Ter 01/12 — CAD — 20 questões D1",
+      "description": "📅 Ter 01/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-01 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-29",
+      "sprint": 7,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-29] Qua 02/12 — Govern — revisão completa",
+      "description": "📅 Qua 02/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Govern — revisão completa\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-02 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-08",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-08] Qua 02/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Qua 02/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-02 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-35",
+      "sprint": 7,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-35] Qua 02/12 — CAD — 20 questões D2",
+      "description": "📅 Qua 02/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-02 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-30",
+      "sprint": 7,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-30] Qui 03/12 — Configuration + CSDM — revisão",
+      "description": "📅 Qui 03/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Configuration + CSDM — revisão\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-03 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-09",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-09] Qui 03/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Qui 03/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-03 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-36",
+      "sprint": 7,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-36] Qui 03/12 — CAD — 20 questões D3",
+      "description": "📅 Qui 03/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-03 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-31",
+      "sprint": 7,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-31] Sex 04/12 — Insight — revisão + tabela 'quem faz o quê'",
+      "description": "📅 Sex 04/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Insight — revisão + tabela 'quem faz o quê'\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-04 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-10",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-10] Sex 04/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Sex 04/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-04 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-37",
+      "sprint": 7,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-37] Sex 04/12 — CAD — 20 questões D4",
+      "description": "📅 Sex 04/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-04 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-11",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-11] Sáb 05/12 — 🎯 Simulado CIS-DF completo e cronometrado",
+      "description": "📅 Sáb 05/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "CIS-DF: Lucky X / curso oficial (não o banco de 178).",
+      "scheduled_at": "2026-12-05 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-13",
+      "sprint": 7,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-13] Sáb 05/12 — Revisão do simulado CIS-DF — cada erro vira card",
+      "description": "📅 Sáb 05/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-12-05 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "REV-14",
+      "sprint": 7,
+      "epic": "Revisão semanal",
+      "priority": "Media",
+      "type": "Revisão",
+      "titulo": "[REV-14] Dom 06/12 — Revisão leve da semana (3h) — CIS-DF e CAD",
+      "description": "📅 Dom 06/12 · ⏰ 08:00\n\nComo candidato às duas provas, quero fixar o que vi na semana sem me cansar, para chegar inteiro em dezembro.\n\nO que fazer:\n- 1h: reler os cards/ANCHOR de CIS-DF da semana\n- 1h: reler as anotações de CAD da semana\n- 1h: refazer só as questões que errei na semana\n- Olhar o quadro da próxima semana\n\nCritérios de aceite:\n- Erros da semana refeitos\n- Descanso no resto do dia",
+      "notes": "",
+      "scheduled_at": "2026-12-06 08:00:00",
+      "tags": [
+        "CIS-DF",
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-32",
+      "sprint": 8,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-32] Seg 07/12 — ANCHORs de recaída + drag-and-drop",
+      "description": "📅 Seg 07/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"ANCHORs de recaída + drag-and-drop\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-07 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-12",
+      "sprint": 8,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-12] Seg 07/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Seg 07/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-07 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-38",
+      "sprint": 8,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-38] Seg 07/12 — CAD — 20 questões D5/D6",
+      "description": "📅 Seg 07/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-07 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-33",
+      "sprint": 8,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-33] Ter 08/12 — Último ajuste — os 2 domínios mais fracos (remarcar só até 08/12 11h)",
+      "description": "📅 Ter 08/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Último ajuste — os 2 domínios mais fracos (remarcar só até 08/12 11h)\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler o material do tema\n- Refazer as questões que errei nele\n\nCritérios de aceite:\n- Tema revisado\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-08 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "SIM-13",
+      "sprint": 8,
+      "epic": "CIS-DF · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-13] Ter 08/12 — CIS-DF — Mini-simulado 30 questões",
+      "description": "📅 Ter 08/12 · ⏰ 09:00\n\nComo candidato ao CIS-DF, quero volume de questões em condição de prova na reta final.\n\nO que fazer:\n- 30 questões cronometradas (45 min)\n- Revisão dos erros\n\nCritérios de aceite:\n- Nota anotada; meta > 80%\n\n🔁 Sempre: 10 min de CIS-DF-DRAG.html. Em toda questão: traduzir o enunciado primeiro (palavras-sinal: but · before · after · still · only · combination), depois o OBJETO, depois o verbo. Conferir gabarito na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-08 09:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PRA-39",
+      "sprint": 8,
+      "epic": "CAD · Prática",
+      "priority": "Media",
+      "type": "Prática",
+      "titulo": "[PRA-39] Ter 08/12 — CAD — 20 questões mistas",
+      "description": "📅 Ter 08/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero não esfriar o CAD durante a reta final do CIS-DF.\n\nO que fazer:\n- 20 questões\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-08 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CIS-34",
+      "sprint": 8,
+      "epic": "CIS-DF · Reta final",
+      "priority": "Urgente",
+      "type": "Revisão",
+      "titulo": "[CIS-34] Qua 09/12 — Véspera leve — áudio, cards, logística",
+      "description": "📅 Qua 09/12 · ⏰ 07:00\n\nComo candidato ao CIS-DF, quero dominar \"Véspera leve — áudio, cards, logística\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- 16 min: CIS-DF-AUDIO.mp3\n- Folhear CIS-DF-CARDS.pdf\n- Separar documento, conferir endereço e horário (chegar 10h45)\n- Dormir cedo\n\nCritérios de aceite:\n- Nenhuma matéria nova",
+      "notes": "",
+      "scheduled_at": "2026-12-09 07:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "PROVA-01",
+      "sprint": 8,
+      "epic": "CIS-DF · Prova",
+      "priority": "Urgente",
+      "type": "Prova",
+      "titulo": "[PROVA-01] Qui 10/12 — 🏁 PROVA CIS-DF — 11h, UniCIT Brasília",
+      "description": "📅 Qui 10/12 · ⏰ 11:00\n\nComo candidato ao CIS-DF, quero fazer a prova descansado e com método, para passar no retake.\n\nO que fazer:\n- De manhã só o CIS-DF-AUDIO.mp3\n- Chegar até 10h45 com documento original com foto\n- Pedir o quadro branco; drag-and-drop não pode comer o tempo das outras\n\nCritérios de aceite:\n- Prova feita e resultado anotado no CIS-DF-HANDOFF.md",
+      "notes": "Pedido Pearson 0081-1476-5876. Endereço: SHN Quadra 02 N 87 Bloco F, salas 1620-1623 (perto do Brasília Shopping).",
+      "scheduled_at": "2026-12-10 11:00:00",
+      "tags": [
+        "CIS-DF"
+      ]
+    },
+    {
+      "codigo": "CAD-28",
+      "sprint": 9,
+      "epic": "CAD · Reta final",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[CAD-28] Sex 11/12 — CAD — revisão D1, D2 e D3 (60% da prova)",
+      "description": "📅 Sex 11/12 · ⏰ 07:00\n\nComo candidato ao CAD, quero dominar \"a revisão final\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler as anotações dos domínios 1, 2 e 3\n- 30 questões desses domínios\n\nCritérios de aceite:\n- Acima de 80% nos 3 domínios\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-11 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CAD-29",
+      "sprint": 9,
+      "epic": "CAD · Reta final",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[CAD-29] Sex 11/12 — CAD — revisão D4, D5 e D6",
+      "description": "📅 Sex 11/12 · ⏰ 09:00\n\nComo candidato ao CAD, quero dominar \"a revisão final\", para acertar as questões de D4, D5 e D6 (40% da prova).\n\nO que fazer:\n- Reler anotações de D4, D5 e D6\n- 30 questões desses domínios\n\nCritérios de aceite:\n- Acima de 80%\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-11 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-14",
+      "sprint": 9,
+      "epic": "CAD · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-14] Sáb 12/12 — 🎯 Simulado CAD: Lucky X Exam 6, parte 1 (questões 1-62)",
+      "description": "📅 Sáb 12/12 · ⏰ 07:00\n\nComo candidato ao CAD, quero medir onde estou em condição de prova, para saber onde atacar na semana.\n\nO que fazer:\n- Simulado completo, 90 min, sem consultar, celular longe\n- Registrar a nota por domínio\n\nCritérios de aceite:\n- Nota anotada e comparada com a anterior",
+      "notes": "Lucky X Exam 6 tem 124 questões: hoje 1-62, cronometrado (~90 min).",
+      "scheduled_at": "2026-12-12 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "REV-15",
+      "sprint": 9,
+      "epic": "CAD · Simulado",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[REV-15] Sáb 12/12 — Revisão do simulado CAD — cada erro vira card",
+      "description": "📅 Sáb 12/12 · ⏰ 09:00\n\nComo candidato ao CAD, quero entender cada erro, para não repetir na prova.\n\nO que fazer:\n- Cada erro: traduzir o enunciado → por que errei (inglês? objeto? conceito?) → doc → card/anotação\n- Se o gabarito estiver errado, anotar (terceiros já erraram 7 vezes)\n\nCritérios de aceite:\n- Nenhum erro sem card",
+      "notes": "",
+      "scheduled_at": "2026-12-12 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-15",
+      "sprint": 9,
+      "epic": "CAD · Simulado",
+      "priority": "Alta",
+      "type": "Simulado",
+      "titulo": "[SIM-15] Sáb 12/12 — Refazer só as questões que errei nos Exams 1-5",
+      "description": "📅 Sáb 12/12 · ⏰ 11:00\n\nComo candidato ao CAD, quero mais um volume de questões antes da prova.\n\nO que fazer:\n- 30 questões cronometradas\n- Erros → anotação\n\nCritérios de aceite:\n- Nota anotada",
+      "notes": "Abrir as anotações de erro e refazer só as erradas. Se errar de novo, voltar na doc/PDI.",
+      "scheduled_at": "2026-12-12 11:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "SIM-16",
+      "sprint": 9,
+      "epic": "CAD · Simulado",
+      "priority": "Urgente",
+      "type": "Simulado",
+      "titulo": "[SIM-16] Dom 13/12 — 🎯 Simulado CAD final: Lucky X Exam 6, parte 2 (questões 63-124) + revisão",
+      "description": "📅 Dom 13/12 · ⏰ 07:00\n\nComo candidato ao CAD, quero um último simulado completo, para entrar na prova sabendo o meu nível.\n\nO que fazer:\n- Simulado 90 min\n- Revisão de todos os erros\n\nCritérios de aceite:\n- Nota acima do simulado de 12/12",
+      "notes": "Lucky X Exam 6, questões 63-124. Se a empresa comprar o MeasureUp oficial, trocar por ele em Certification Mode.",
+      "scheduled_at": "2026-12-13 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "CAD-30",
+      "sprint": 9,
+      "epic": "CAD · Reta final",
+      "priority": "Alta",
+      "type": "Revisão",
+      "titulo": "[CAD-30] Seg 14/12 — Véspera leve do CAD — reler anotações de erro",
+      "description": "📅 Seg 14/12 · ⏰ 07:00\n\nComo candidato ao CAD, quero dominar \"a revisão final\", para acertar as questões de todos os domínios (100% da prova).\n\nO que fazer:\n- Reler todas as anotações de erro\n- Conferir data, hora e local da prova\n\nCritérios de aceite:\n- Nenhuma matéria nova estudada\n\n🔁 Sempre: praticar na PDI (nunca demo5/demo4/chaintech). Cada erro vira uma linha: o que confundi → regra certa. Conferir gabarito da Udemy na doc local.",
+      "notes": "",
+      "scheduled_at": "2026-12-14 07:00:00",
+      "tags": [
+        "CAD"
+      ]
+    },
+    {
+      "codigo": "PROVA-02",
+      "sprint": 9,
+      "epic": "CAD · Prova",
+      "priority": "Urgente",
+      "type": "Prova",
+      "titulo": "[PROVA-02] Ter 15/12 — 🏁 PROVA CAD (data a confirmar no agendamento)",
+      "description": "📅 Ter 15/12 · ⏰ 09:00\n\nComo candidato ao CAD, quero fazer a prova com a matéria fechada, para entregar a certificação que a empresa pede.\n\nO que fazer:\n- Chegar 15 min antes, documento original com foto\n- Múltipla seleção: o enunciado diz quantas — sem crédito parcial\n\nCritérios de aceite:\n- Prova feita e resultado anotado",
+      "notes": "Ajustar a data/hora deste card quando o CAD for agendado (14 ou 15/12).",
+      "scheduled_at": "2026-12-15 09:00:00",
+      "tags": [
+        "CAD"
+      ]
+    }
+  ]
+}
